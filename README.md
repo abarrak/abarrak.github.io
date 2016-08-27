@@ -1,4 +1,4 @@
-## abarrakc.com Site & Soures Files
+## abarrak.com Site & Soures Files
 
 ### Theme
 [Lanyon](http://lanyon.getpoole.com/) with my customization in [mine.css](https://github.com/abarrak/abarrak.github.io/blob/src/public/css/mine.css).
@@ -11,4 +11,4 @@ See [config.yml](https://github.com/abarrak/abarrak.github.io/blob/src/_config.y
 and [publish.sh](https://github.com/abarrak/abarrak.github.io/blob/src/publish.sh).
 
 ### Automation
-By running `./publish.sh` in `src`, updates to source + a new generated `/_site` version are pushed to github.
+By running `./publish` in `src`, updates to source + a new generated `/_site` version are pushed to github.
