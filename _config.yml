@@ -1,0 +1,68 @@
+# About/Contact
+# -------------
+author: Abdullah Barrak
+url:  abarrak.com
+email: a@abarrak.com
+accounts:
+  github: https://github.com/abarrak
+  goodreads: https://www.goodreads.com/abarrak
+  linkedin : https://www.linkedin.com/in/abarrak
+  twitter: https://twitter.com/abarrakcom
+
+# Site Settings
+# -------------
+title: Abdullah Barrak's
+tagline: Blog
+description: >
+  A passionate blog about computer programming, reading, thinking, and the like.
+baseurl: ""
+url: http://abarrak.com
+
+
+# Build Settings
+# --------------
+destination: '../abarrak.github.io'
+Keep_files: ['.git', '.gitignore']
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+gems: ['jekyll-gist', 'jekyll-paginate']
+paginate: 5
+paginate_path: /:num/
+extlinks:
+  attributes: { rel: nofollow, target: _blank }
+  rel_exclude: ['abarrak.com']
+
+# Custom variables and Phrases
+# ----------------------------
+home: Home
+en:
+  home: Home
+  about: About
+  works: Works
+  code: Code
+  contact: Contact
+ar:
+  home: الرئيسية
+  about: نبذة
+  works: أعمال
+  code: برمجيات
+  contact: تواصل
+
+# Defaults
+# --------
+defaults:
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      permalink: /:year/:month/:day/:title
+      layout: post
+      author: Abdullah
+      excerpt_separator: <!-- post-excerpt -->
+  -
+    scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
