@@ -2,6 +2,9 @@
  *  Overrides ..
  */
 @media (min-width: 38em) {
+  html {
+    font-size: 19px;
+  }
   .container {
     max-width: 38rem;
   }
