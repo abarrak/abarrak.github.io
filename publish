@@ -5,18 +5,17 @@
 # author: abarrak (github.com/abarrak)
 
 printf "\n..... [1/2] Updating Source Files .....\n"
-printf ".......................................\n"
+printf ".......................................\n\n"
 git add .
 git commit -m "Source Auto Update at: `date`"
 git push origin src
 
 printf "\n..... [2/2] Updating Site Files .....\n"
-printf ".....................................\n"
+printf ".....................................\n\n"
 jekyll build
 cd ../abarrak.github.io
 git add .
 git commit -m "Auto Update at: `date`"
 git push origin master
 
-echo "..... Done ! ....."
-echo ".................."
+printf "\n..... Done ! .....\n..................\n"
