@@ -2,13 +2,21 @@
 
 ## Publish Script.
 # profile using jekyll serve .. once done, run it,
+# author: abarrak (github.com/abarrak)
 
+echo "..... [1/2] Updating Source Files ....." 
+echo "......................................."
 git add .
 git commit -m "Source Auto Update at: `date`"
 git push origin src
 
+echo "..... [2/2] Updating Site Files ....."
+echo "....................................."
 jekyll build
 cd ../abarrak.github.io
 git add .
 git commit -m "Auto Update at: `date`"
 git push origin master
+
+echo "..... Done ! ....."
+echo ".................."
