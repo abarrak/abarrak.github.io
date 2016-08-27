@@ -113,6 +113,10 @@ a.pagination-item:hover {
   -webkit-border-radius: 28px;
   -moz-border-radius: 28px;
   border-radius: 28px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .button:hover {
