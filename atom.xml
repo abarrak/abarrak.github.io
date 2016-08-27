@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Abdullah Barrak's Blog</title>
+ <link href="http://abarrak.com/atom.xml" rel="self"/>
+ <link href="http://abarrak.com/"/>
+ <updated>2016-08-27T03:47:45+03:00</updated>
+ <id>http://abarrak.com</id>
+ <author>
+   <name></name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Fixing Sinatra UTF-8 issue in Tilt rendered templates</title>
+   <link href="http://abarrak.com/2016/08/26/fix-sinatra-tilt-unicode"/>
+   <updated>2016-08-26T00:00:00+03:00</updated>
+   <id>http://abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</id>
+   <content type="html">&lt;p&gt;In the past week, I’v been woking with Sinatra app deployment to AWS Elastic Beanstalk. In development environment everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was suppose to be supporting uft-8 text without issues.&lt;/p&gt;
+
+&lt;h3 id=&quot;symptoms&quot;&gt;&lt;strong&gt;Symptoms&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;The error was appearing in one of the &lt;code class=&quot;highlighter-rouge&quot;&gt;.erb&lt;/code&gt; view files that contains a &lt;code class=&quot;highlighter-rouge&quot;&gt;textarea&lt;/code&gt; field. When non English text is populated in it at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:&lt;/p&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2016-08-26 19:15:53 - Encoding::CompatibilityError - incompatible character encodings: UTF-8 and US-ASCII:
+        /var/app/current/views/review.erb:69:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;block &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;singleton class&lt;span class=&quot;s1&quot;&gt;&#39;
+        /var/app/current/views/review.erb:-7:in `instance_eval&#39;&lt;/span&gt;
+        /var/app/current/views/review.erb:-7:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;singleton class&lt;span class=&quot;s1&quot;&gt;&#39;
+        /var/app/current/views/review.erb:-9:in `__tilt_47353692136320&#39;&lt;/span&gt;
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;call&lt;span class=&quot;s1&quot;&gt;&#39;
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate&#39;&lt;/span&gt;
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;render&lt;span class=&quot;s1&quot;&gt;&#39;
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render&#39;&lt;/span&gt;
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;erb&lt;span class=&quot;s1&quot;&gt;&#39;
+        /var/app/current/helpers.rb:24:in `block (2 levels) in serve_page&#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Guided by the error message indication. I attempted to fix the issue by ensuring that all parts are encoded as UTF-8. I set &lt;code class=&quot;highlighter-rouge&quot;&gt;accept-charset&lt;/code&gt; attribute for the form and texteara tag to &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;UTF-8&quot;&lt;/code&gt;, forced source files to be UTF-8 by inserting &lt;code class=&quot;highlighter-rouge&quot;&gt;# 😁&lt;/code&gt; comment, and checked the Sinatra routing is also set to have
+&lt;code class=&quot;highlighter-rouge&quot;&gt;headers &#39;Content-type&#39; =&amp;gt; &#39;text/html; charset=utf-8&#39;&lt;/code&gt;, But unfortunately none of that was solving the problem.&lt;/p&gt;
+
+&lt;p&gt;By taking closer look at the stack trace, I figured that it was happening specifically during the template rendering phase, and might have something to do with Sinatra’s Tilt library.&lt;/p&gt;
+
+&lt;h3 id=&quot;solution&quot;&gt;&lt;strong&gt;Solution&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Indeed it was caused by Tilt . In fact, it’s a known issue and has been pointed out in the gem’s &lt;a href=&quot;https://github.com/rtomayko/tilt#encodings&quot;&gt;repository main page&lt;/a&gt;.
+Setting ruby’s external encoding plus the source files to &lt;code class=&quot;highlighter-rouge&quot;&gt;UTF-8&lt;/code&gt; solved it for me just like mentioned in the link.&lt;/p&gt;
+
+&lt;p&gt;If you’ve structured your app in the modular style, then set encoding early in the class.&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyApplication&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sinatra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# set encoding.&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In classic applications, this would suffice.&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That’s it. Hope It helps someone else !&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Eloquent Ruby (Book Review)</title>
+   <link href="http://abarrak.com/2016/06/25/elquoent-ruby"/>
+   <updated>2016-06-25T00:00:00+03:00</updated>
+   <id>http://abarrak.com/2016/06/25/elquoent-ruby</id>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/eloquent-ruby-cover.jpg&quot; class=&quot;post-image&quot; alt=&quot;book-cover&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Recently, I’ve read Oslen Russ’s &lt;a href=&quot;https://amzn.com/0321584104&quot; target=&quot;_blank&quot;&gt;“Eloquent Ruby”&lt;/a&gt; and it was delightful read overall.&lt;/p&gt;
+
+&lt;p&gt;The book has a considerable reputation among the community programmers. It’s divided into (4) units on Ruby foundations and software process practices.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Part (1)&lt;/strong&gt; and &lt;strong&gt;(2)&lt;/strong&gt; form the first half of the book. They start with the language basics, types and features, in addition to the coverage of OOP methodologies in Ruby (classes, modules, blocks).&lt;/p&gt;
+
+&lt;p&gt;In &lt;strong&gt;Part (3)&lt;/strong&gt;, we see the metaprogramming capabilities and techniques. First chapter introduces the concept and some hook methods like &lt;code class=&quot;highlighter-rouge&quot;&gt;included&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;inherited&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;at_exit&lt;/code&gt; which keep the application life cycle more interactive and informed. Three consecutive chapters talk about the valuable dynamic programming function &lt;code class=&quot;highlighter-rouge&quot;&gt;method_missing&lt;/code&gt; and its use cases for &lt;strong&gt;better error handling&lt;/strong&gt;, &lt;strong&gt;delegation&lt;/strong&gt;, and &lt;strong&gt;building flexible APIs&lt;/strong&gt;. Last chapters discuss monkey patching and self modifying code. For me this was the most interesting part of the book.
+&lt;!-- post-excerpt --&gt;&lt;/p&gt;
+
+&lt;p&gt;Putting all covered topics in actions is what &lt;strong&gt;Part (4)&lt;/strong&gt; concerns about. The subjects in this part are internal and external DSLs constructions, and publishing Gems (packages), along with a brief tour on some of Ruby’s popular Implementations.&lt;/p&gt;
+
+&lt;p&gt;I liked the writing style the author followed, which was example driven and kind of story telling. Each chapter starts with a motivational situation or by raising question, then it goes for building up the solution and revisiting it for improvements in an iterative way (dominant example is &lt;a href=&quot;https://rubygems.org/gems/document/&quot;&gt;the document class&lt;/a&gt;). Each chapter also has bits of real ruby code from libraries or actual projects in a subsection tilted &lt;em&gt;“In the Wild”&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Albeit there is a small portion of the book that’s outdated, I would argue that the majority of its content is still relevant now and times to come.&lt;/p&gt;
+
+&lt;p&gt;If you’re looking for eloquently written material that explores and explains important aspects and background of the Ruby programming language without going into lengthy documentation details, then go with Eloquent Ruby !&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>

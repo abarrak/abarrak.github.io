@@ -13,7 +13,7 @@
   <link rel="alternate" i18n="ar" href="/ar/" />
   <title>
     
-      Abdullah Barrak's Blog
+      Fixing Sinatra UTF-8 issue in Tilt rendered templates &middot; Abdullah Barrak's Blog
     
   </title>
   <!-- CSS -->
@@ -133,65 +133,60 @@
     </div>
 
     <div class="container content">
-      <div class="posts">
-  
-  <div class="post">
-    <div class="post-heading">
-      <h1 class="post-title">
-        <a href="/2016/08/26/fix-sinatra-tilt-unicode">Fixing Sinatra UTF-8 issue in Tilt rendered templates</a>
-      </h1>
-      <span class="post-date">26 Aug 2016</span>
-    </div>
-    <p>In the past week, I’v been woking with Sinatra app deployment to AWS Elastic Beanstalk. In development environment everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was suppose to be supporting uft-8 text without issues.</p>
+      <div class="post">
+  <div class="post-heading">
+    <h1 class="post-title">Fixing Sinatra UTF-8 issue in Tilt rendered templates</h1>
+    <span class="post-date">26 Aug 2016</span>
+  </div>
+  <p>In the past week, I’v been woking with Sinatra app deployment to AWS Elastic Beanstalk. In development environment everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was suppose to be supporting uft-8 text without issues.</p>
 
 <h3 id="symptoms"><strong>Symptoms</strong></h3>
 <p>The error was appearing in one of the <code class="highlighter-rouge">.erb</code> view files that contains a <code class="highlighter-rouge">textarea</code> field. When non English text is populated in it at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:</p>
 
+<!-- post-excerpt -->
 
-    <div class="right button-container">
-      <a class="button" href="/2016/08/26/fix-sinatra-tilt-unicode">Read More ..</a>
-    </div>
-  </div>
-  <hr />
-  
-  <div class="post">
-    <div class="post-heading">
-      <h1 class="post-title">
-        <a href="/2016/06/25/elquoent-ruby">Eloquent Ruby (Book Review)</a>
-      </h1>
-      <span class="post-date">25 Jun 2016</span>
-    </div>
-    <p><img src="/public/images/eloquent-ruby-cover.jpg" class="post-image" alt="book-cover" /></p>
+<div class="language-sh highlighter-rouge"><pre class="highlight"><code>2016-08-26 19:15:53 - Encoding::CompatibilityError - incompatible character encodings: UTF-8 and US-ASCII:
+        /var/app/current/views/review.erb:69:in <span class="sb">`</span>block <span class="k">in </span>singleton class<span class="s1">'
+        /var/app/current/views/review.erb:-7:in `instance_eval'</span>
+        /var/app/current/views/review.erb:-7:in <span class="sb">`</span>singleton class<span class="s1">'
+        /var/app/current/views/review.erb:-9:in `__tilt_47353692136320'</span>
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in <span class="sb">`</span>call<span class="s1">'
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'</span>
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in <span class="sb">`</span>render<span class="s1">'
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'</span>
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in <span class="sb">`</span>erb<span class="s1">'
+        /var/app/current/helpers.rb:24:in `block (2 levels) in serve_page'</span>
+</code></pre>
+</div>
+<p>Guided by the error message indication. I attempted to fix the issue by ensuring that all parts are encoded as UTF-8. I set <code class="highlighter-rouge">accept-charset</code> attribute for the form and texteara tag to <code class="highlighter-rouge">"UTF-8"</code>, forced source files to be UTF-8 by inserting <code class="highlighter-rouge"># 😁</code> comment, and checked the Sinatra routing is also set to have
+<code class="highlighter-rouge">headers 'Content-type' =&gt; 'text/html; charset=utf-8'</code>, But unfortunately none of that was solving the problem.</p>
 
-<p>Recently, I’ve read Oslen Russ’s <a href="https://amzn.com/0321584104" target="_blank">“Eloquent Ruby”</a> and it was delightful read overall.</p>
+<p>By taking closer look at the stack trace, I figured that it was happening specifically during the template rendering phase, and might have something to do with Sinatra’s Tilt library.</p>
 
-<p>The book has a considerable reputation among the community programmers. It’s divided into (4) units on Ruby foundations and software process practices.</p>
+<h3 id="solution"><strong>Solution</strong></h3>
 
-<p><strong>Part (1)</strong> and <strong>(2)</strong> form the first half of the book. They start with the language basics, types and features, in addition to the coverage of OOP methodologies in Ruby (classes, modules, blocks).</p>
+<p>Indeed it was caused by Tilt . In fact, it’s a known issue and has been pointed out in the gem’s <a href="https://github.com/rtomayko/tilt#encodings">repository main page</a>.
+Setting ruby’s external encoding plus the source files to <code class="highlighter-rouge">UTF-8</code> solved it for me just like mentioned in the link.</p>
 
-<p>In <strong>Part (3)</strong>, we see the metaprogramming capabilities and techniques. First chapter introduces the concept and some hook methods like <code class="highlighter-rouge">included</code>, <code class="highlighter-rouge">inherited</code>, and <code class="highlighter-rouge">at_exit</code> which keep the application life cycle more interactive and informed. Three consecutive chapters talk about the valuable dynamic programming function <code class="highlighter-rouge">method_missing</code> and its use cases for <strong>better error handling</strong>, <strong>delegation</strong>, and <strong>building flexible APIs</strong>. Last chapters discuss monkey patching and self modifying code. For me this was the most interesting part of the book.</p>
+<p>If you’ve structured your app in the modular style, then set encoding early in the class.</p>
 
-
-    <div class="right button-container">
-      <a class="button" href="/2016/06/25/elquoent-ruby">Read More ..</a>
-    </div>
-  </div>
-  <hr />
-  
+<div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyApplication</span> <span class="o">&lt;</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Application</span>
+  <span class="c1"># set encoding.</span>
+  <span class="no">Encoding</span><span class="p">.</span><span class="nf">default_external</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
+<span class="k">end</span>
+</code></pre>
 </div>
 
-<div class="pagination">
-  
-    <span class="pagination-item older">
-      <span class="pagination-icon">&#8672;</span> Older
-    </span>
-  
-  
-    <span class="pagination-item newer">
-      Newer <span class="pagination-icon">&#8674;</span>
-    </span>
-  
+<p>In classic applications, this would suffice.</p>
+
+<div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="no">Encoding</span><span class="p">.</span><span class="nf">default_external</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
+</code></pre>
 </div>
+
+<p>That’s it. Hope It helps someone else !</p>
+
+</div>
+
 
 
     </div>
