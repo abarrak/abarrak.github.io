@@ -124,19 +124,24 @@
     </div>
 
     <div class="container content">
-      <div class="post">
+      <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<div class="post">
   <div class="post-heading">
     <h1 class="post-title">Fixing Sinatra UTF-8 issue in Tilt rendered templates</h1>
     <span class="post-date">26 Aug 2016</span>
   </div>
-  <p>In the past week, I’v been woking with Sinatra app deployment to AWS Elastic Beanstalk. In development environment everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was suppose to be supporting uft-8 text without issues.</p>
+  
+
+<p>In the past week, I’v been woking with Sinatra app deployment to AWS Elastic Beanstalk. In development environment everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was suppose to be supporting uft-8 text without issues.</p>
 
 <h3 id="symptoms"><strong>Symptoms</strong></h3>
 <p>The error was appearing in one of the <code class="highlighter-rouge">.erb</code> view files that contains a <code class="highlighter-rouge">textarea</code> field. When non English text is populated in it at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:</p>
 
 <!-- post-excerpt -->
 
-<div class="language-sh highlighter-rouge"><pre class="highlight"><code>2016-08-26 19:15:53 - Encoding::CompatibilityError - incompatible character encodings: UTF-8 and US-ASCII:
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>2016-08-26 19:15:53 - Encoding::CompatibilityError - incompatible character encodings: UTF-8 and US-ASCII:
         /var/app/current/views/review.erb:69:in <span class="sb">`</span>block <span class="k">in </span>singleton class<span class="s1">'
         /var/app/current/views/review.erb:-7:in `instance_eval'</span>
         /var/app/current/views/review.erb:-7:in <span class="sb">`</span>singleton class<span class="s1">'
@@ -156,12 +161,13 @@
 
 <h3 id="solution"><strong>Solution</strong></h3>
 
-<p>Indeed it was caused by Tilt . In fact, it’s a known issue and has been pointed out in the gem’s <a href="https://github.com/rtomayko/tilt#encodings">repository main page</a>.
+<p>Indeed it was caused by Tilt . In fact, it’s a known issue and has been pointed out in the gem’s <a href="https://github.com/rtomayko/tilt#encodings" rel="nofollow" target="_blank">repository main page</a>.
 Setting ruby’s external encoding plus the source files to <code class="highlighter-rouge">UTF-8</code> solved it for me just like mentioned in the link.</p>
 
 <p>If you’ve structured your app in the modular style, then set encoding early in the class.</p>
 
-<div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyApplication</span> <span class="o">&lt;</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Application</span>
+<div class="language-rb highlighter-rouge">
+<pre class="highlight"><code><span class="k">class</span> <span class="nc">MyApplication</span> <span class="o">&lt;</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Application</span>
   <span class="c1"># set encoding.</span>
   <span class="no">Encoding</span><span class="p">.</span><span class="nf">default_external</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
 <span class="k">end</span>
@@ -170,15 +176,18 @@ Setting ruby’s external encoding plus the source files to <code class="highlig
 
 <p>In classic applications, this would suffice.</p>
 
-<div class="language-rb highlighter-rouge"><pre class="highlight"><code><span class="no">Encoding</span><span class="p">.</span><span class="nf">default_external</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
+<div class="language-rb highlighter-rouge">
+<pre class="highlight"><code><span class="no">Encoding</span><span class="p">.</span><span class="nf">default_external</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
 </code></pre>
 </div>
 
 <p>That’s it. Hope It helps someone else !</p>
 
+
 </div>
 
 
+</body></html>
 
     </div>
   </div>
