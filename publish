@@ -4,19 +4,19 @@
 # profile using jekyll serve .. once done, run it,
 # author: abarrak (github.com/abarrak)
 
-echo "..... [1/2] Updating Source Files ....." 
-echo "......................................."
+printf "\n..... [1/2] Updating Source Files ....."
+printf ".......................................\n"
 git add .
 git commit -m "Source Auto Update at: `date`"
 git push origin src
 
-echo "..... [2/2] Updating Site Files ....."
-echo "....................................."
+printf "\n..... [2/2] Updating Site Files ....."
+printf ".....................................\n"
 jekyll build
 cd ../abarrak.github.io
 git add .
 git commit -m "Auto Update at: `date`"
 git push origin master
 
-echo "..... Done ! ....."
-echo ".................."
+echo "\n..... Done ! ....."
+echo "..................\n"
