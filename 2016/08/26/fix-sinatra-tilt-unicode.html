@@ -30,9 +30,7 @@
 
 
 <body class="theme-base-08">
-  
-
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+  <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item">
@@ -124,16 +122,12 @@
     </div>
 
     <div class="container content">
-      <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html><body>
-<div class="post">
+      <div class="post">
   <div class="post-heading">
     <h1 class="post-title">Fixing Sinatra UTF-8 issue in Tilt rendered templates</h1>
     <span class="post-date">26 Aug 2016</span>
   </div>
-  
-
-<p>In the past week, I’v been woking with Sinatra app deployment to AWS Elastic Beanstalk. In development environment everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was suppose to be supporting uft-8 text without issues.</p>
+  <p>In the past week, I’v been woking with Sinatra app deployment to AWS Elastic Beanstalk. In development environment everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was suppose to be supporting uft-8 text without issues.</p>
 
 <h3 id="symptoms"><strong>Symptoms</strong></h3>
 <p>The error was appearing in one of the <code class="highlighter-rouge">.erb</code> view files that contains a <code class="highlighter-rouge">textarea</code> field. When non English text is populated in it at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:</p>
@@ -183,16 +177,15 @@ Setting ruby’s external encoding plus the source files to <code class="highlig
 
 <p>That’s it. Hope It helps someone else !</p>
 
-
 </div>
 
 
-</body></html>
 
     </div>
   </div>
-
+  
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
   <script>
     (function(document) {
       var toggle = document.querySelector('.sidebar-toggle');
