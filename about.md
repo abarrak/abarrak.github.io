@@ -14,7 +14,7 @@ list_order: 1
   </p>
 
   <p>
-  During the study years, I worked and experimented with variety of languages such as C++, Java, C#, Python, Ruby and JavaScript.
+  During the study years, I learned and worked with variety of languages such as C++, Java, C#, Python, Ruby and JavaScript.
   </p>
 
   <p>
