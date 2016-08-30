@@ -26,6 +26,6 @@ list_order: 1
   </p>
 
   <p>
-  I write here to share my thoughts, ideas, book reviews, and knowledge while learning. The learning journey never ends !
+  I write here to share my thoughts, ideas, book reviews, and knowledge while learning. The learning journey never ends!
   </p>
 </div>
