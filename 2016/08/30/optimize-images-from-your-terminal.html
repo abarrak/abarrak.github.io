@@ -12,7 +12,7 @@
   <meta http-equiv="Content-Language" content="en">
   <title>
     
-      Abdullah Barrak's Blog
+      Optimize Image Files from Your Terminal &middot; Abdullah Barrak's Blog
     
   </title>
   <!-- CSS -->
@@ -122,16 +122,12 @@
     </div>
 
     <div class="container content">
-      <div class="posts">
-  
-  <div class="post">
-    <div class="post-heading">
-      <h1 class="post-title">
-        <a href="/2016/08/30/optimize-images-from-your-terminal">Optimize Image Files from Your Terminal</a>
-      </h1>
-      <span class="post-date">30 Aug 2016</span>
-    </div>
-    <p>At many times, you’ll find yourself in need for rapid optimization to images at your hand. There are nice handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of them:</p>
+      <div class="post">
+  <div class="post-heading">
+    <h1 class="post-title">Optimize Image Files from Your Terminal</h1>
+    <span class="post-date">30 Aug 2016</span>
+  </div>
+  <p>At many times, you’ll find yourself in need for rapid optimization to images at your hand. There are nice handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of them:</p>
 
 <h3 id="optipng-advanced-png-optimizerhttpoptipngsourceforgenet">
 <a href="http://optipng.sourceforge.net/" rel="nofollow" target="_blank">1. OptiPNG: Advanced PNG Optimizer</a>:</h3>
@@ -164,70 +160,92 @@
 </code></pre>
 </div>
 
+<!-- post-excerpt -->
 
-    <div class="right button-container">
-      <a class="button" href="/2016/08/30/optimize-images-from-your-terminal">Read More ..</a>
-    </div>
-  </div>
-  <hr>
-  
-  <div class="post">
-    <div class="post-heading">
-      <h1 class="post-title">
-        <a href="/2016/08/26/fix-sinatra-tilt-unicode">Fixing Sinatra UTF-8 issue in Tilt rendered templates</a>
-      </h1>
-      <span class="post-date">26 Aug 2016</span>
-    </div>
-    <p>In the past week, I’v been woking with Sinatra app deployment to AWS Elastic Beanstalk. In development environment everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was suppose to be supporting uft-8 text without issues.</p>
+<h3 id="jpegoptimhttpsgithubcomtjkojpegoptim">
+<a href="https://github.com/tjko/jpegoptim" rel="nofollow" target="_blank">2. jpegoptim</a>:</h3>
 
-<h3 id="symptoms"><strong>Symptoms</strong></h3>
-<p>The error was appearing in one of the <code class="highlighter-rouge">.erb</code> view files that contains a <code class="highlighter-rouge">textarea</code> field. When non English text is populated in it at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:</p>
+<p>Install for Mac OS X:</p>
 
-
-    <div class="right button-container">
-      <a class="button" href="/2016/08/26/fix-sinatra-tilt-unicode">Read More ..</a>
-    </div>
-  </div>
-  <hr>
-  
-  <div class="post">
-    <div class="post-heading">
-      <h1 class="post-title">
-        <a href="/2016/06/25/elquoent-ruby">Eloquent Ruby (Book Review)</a>
-      </h1>
-      <span class="post-date">25 Jun 2016</span>
-    </div>
-    <p><img src="/public/images/eloquent-ruby-cover.jpg" class="post-image" alt="book-cover"></p>
-
-<p>Recently, I’ve read Oslen Russ’s <a href="https://amzn.com/0321584104" target="_blank" rel="nofollow">“Eloquent Ruby”</a> and it was delightful read overall.</p>
-
-<p>The book has a considerable reputation among the community programmers. It’s divided into (4) units on Ruby foundations and software process practices.</p>
-
-<p><strong>Part (1)</strong> and <strong>(2)</strong> form the first half of the book. They start with the language basics, types and features, in addition to the coverage of OOP methodologies in Ruby (classes, modules, blocks).</p>
-
-<p>In <strong>Part (3)</strong>, we see the metaprogramming capabilities and techniques. First chapter introduces the concept and some hook methods like <code class="highlighter-rouge">included</code>, <code class="highlighter-rouge">inherited</code>, and <code class="highlighter-rouge">at_exit</code> which keep the application life cycle more interactive and informed. Three consecutive chapters talk about the valuable dynamic programming function <code class="highlighter-rouge">method_missing</code> and its use cases for <strong>better error handling</strong>, <strong>delegation</strong>, and <strong>building flexible APIs</strong>. Last chapters discuss monkey patching and self modifying code. For me this was the most interesting part of the book.</p>
-
-
-    <div class="right button-container">
-      <a class="button" href="/2016/06/25/elquoent-ruby">Read More ..</a>
-    </div>
-  </div>
-  <hr>
-  
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>brew install jpegoptim
+</code></pre>
 </div>
 
-<div class="pagination">
-  
-    <span class="pagination-item older">
-      <span class="pagination-icon">⇠</span> Older
-    </span>
-  
-  
-    <span class="pagination-item newer">
-      Newer <span class="pagination-icon">⇢</span>
-    </span>
-  
+<p>Install for Linux Ubuntu:</p>
+
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>sudo apt-get install jpegoptim
+</code></pre>
 </div>
+
+<p>Run the next command to optimize an image, <code class="highlighter-rouge">-m</code> controls the image quality (0-100):</p>
+
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>jpegoptim -m70 &lt;img-name.png&gt;
+</code></pre>
+</div>
+
+<p>Or optimize all recursively:</p>
+
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>find . -iname <span class="s2">"*.jpg"</span> -exec jpegoptim -m80 -o -p <span class="o">{}</span> <span class="se">\;</span>
+</code></pre>
+</div>
+
+<h3 id="gifsiclehttpswwwlcdforggifsicle">
+<a href="https://www.lcdf.org/gifsicle/" rel="nofollow" target="_blank">3. gifsicle</a>:</h3>
+
+<p>Install for Mac OS X:</p>
+
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>brew install gifsicle
+</code></pre>
+</div>
+
+<p>For Linux Ubuntu:</p>
+
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>sudo apt-get install gifsicle
+</code></pre>
+</div>
+
+<p>The commands for single image, and a group of images respectively, are:</p>
+
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code><span class="c"># for single image.</span>
+gifsicle --batch -V -O2 &lt;image-name&gt;.gif
+
+<span class="c"># to start from cureent dir and go down.</span>
+find . -iname <span class="s2">"*.gif"</span> -exec gifsicle --batch -V -O2 <span class="o">{}</span> <span class="se">\;</span>
+</code></pre>
+</div>
+
+<h3 id="aliases"><strong>Aliases</strong></h3>
+
+<p>Here are some aliases to keep commands nearby for fast run on the active directory images.</p>
+
+<p>Be warn that those (also the previously mentioned commands) all alter the original images.</p>
+
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code><span class="nb">alias </span><span class="nv">compress_png</span><span class="o">=</span><span class="s2">"optipng -o7 *.png"</span>
+<span class="nb">alias </span><span class="nv">compress_jpg</span><span class="o">=</span><span class="s2">"jpegoptim -m80 *.jpg"</span>
+<span class="nb">alias </span><span class="nv">compress_gif</span><span class="o">=</span><span class="s2">"gifsicle --batch -V -O2 *.gif"</span>
+</code></pre>
+</div>
+
+<p>You can tweak the optimization level and other options to suit your needs.</p>
+
+<h3 id="imageoptim"><strong>ImageOptim</strong></h3>
+
+<p>If you’d like to use a GUI application, <a href="https://imageoptim.com/mac" rel="nofollow" target="_blank">ImageOptim</a> is a pretty open source one for Mac OS X that supports multiple image formats.</p>
+
+<p><img src="/public/images/imageoptim.png" alt="ImageOptim Screen Shot"></p>
+
+<p>Happy mature optimization :) !</p>
+
+</div>
+
 
 
     </div>

@@ -12,7 +12,7 @@
   <meta http-equiv="Content-Language" content="en">
   <title>
     
-      About &middot; Abdullah Barrak's Blog
+      Optimize Image Files from the Terminal &middot; Abdullah Barrak's Blog
     
   </title>
   <!-- CSS -->
@@ -56,7 +56,7 @@
     
       
         
-          <a class="sidebar-nav-item active" href="/about/">
+          <a class="sidebar-nav-item" href="/about/">
           About
           </a>
         
@@ -122,36 +122,116 @@
     </div>
 
     <div class="container content">
-      <div class="page">
-  <h1 class="page-title">About</h1>
-  <div class="about-box">
-  <p>Hi, this is Abdullah and I'd like to welcome you to my blog 😃!</p>
+      <div class="post">
+  <div class="post-heading">
+    <h1 class="post-title">Optimize Image Files from the Terminal</h1>
+    <span class="post-date">29 Jun 2016</span>
+  </div>
+  <p>At several times, you’ll find yourself in need for rapid optimization for a set of images at your hand. There are nice handy utility libraries that can help reduce image sizes with a single command in your terminal. The following  lists some of them:</p>
 
-  <p>
-  <abbr title=" (2016) ">this year</abbr>, I graduated with a bachelor degree in Computer Science.
-  </p>
-  <p>
-  I got into programming when I was 14, crafting little applications in VB6 and PHP 😅.
-  </p>
+<ul>
+  <li>
+<a href="http://optipng.sourceforge.net/" rel="nofollow" target="_blank">OptiPNG: Advanced PNG Optimizer</a>:
+Get it form Mac OS X:</li>
+</ul>
 
-  <p>
-  During the study years, I learned and worked with variety of languages such as C++, Java, C#, Python, Ruby and JavaScript.
-  </p>
-
-  <p>
-  What interests me most in technology is Web development, Data Science and Machine Learning. In the latter two, I did my graduation project about "offline handwriting recognition".
-  </p>
-
-  <p>
-  Beside computer stuff, and when in boredom, I read. Philosophy and literature are my preferred areas in reading.
-  </p>
-
-  <p>
-  I write here to share my thoughts, ideas, book reviews, and knowledge while learning. The learning journey never ends!
-  </p>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>brew install optipng
+</code></pre>
 </div>
 
+<p>for Linux Ubuntu:
+<code class="highlighter-rouge">sh
+apt-get install optipng
+</code></p>
+
+<p>To optimize an image, run:</p>
+
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>optipng &lt;img-name.png&gt;
+</code></pre>
 </div>
+
+<p>or wildcard all recursively of in current directory and sub directories:</p>
+
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>find . -iname <span class="s2">"*.png"</span> -exec optipng -o7 <span class="o">{}</span> <span class="se">\;</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>
+<a href="https://github.com/tjko/jpegoptim" rel="nofollow" target="_blank">jpegoptim</a>:</li>
+</ul>
+
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>brew install jpegoptim
+</code></pre>
+</div>
+
+<p>for Linux Ubuntu:
+<code class="highlighter-rouge">sh
+sudo apt-get install jpegoptim
+</code></p>
+
+<p>To optimize an image, run the the next command with -m flag set the maximum image quality (0-100):</p>
+
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>jpegoptim -m70 &lt;img-name.png&gt;
+</code></pre>
+</div>
+
+<p>or optimize all images in the current and sub directories:</p>
+
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>find . -iname <span class="s2">"*.jpg"</span> -exec jpegoptim -m80 -o -p <span class="o">{}</span> <span class="se">\;</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>
+<a href="https://www.lcdf.org/gifsicle/" rel="nofollow" target="_blank">gifsicle</a>:</li>
+</ul>
+
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>brew install gifsicle
+</code></pre>
+</div>
+
+<p>for Linux Ubuntu:
+<code class="highlighter-rouge">sh
+sudo apt-get install gifsicle
+</code></p>
+
+<p>The commands for single image, and a group of images respectively, are:
+```sh
+# for single image.
+gifsicle –batch -V -O2 <image-name>.gif</image-name></p>
+
+<h1 id="to-start-from-cureent-dir-and-go-down">to start from cureent dir and go down.</h1>
+<p>find . -iname “*.gif” -exec gifsicle –batch -V -O2 {} \;
+```</p>
+
+<h3 id="aliases"><strong>Aliases</strong></h3>
+<p>Here are some aliases to keep commands nearby for fast run on the active directory images.</p>
+
+<p>Be warn that those as with the mentioned previous commands are all alter the original images.
+<code class="highlighter-rouge">sh
+alias compress_png="optipng -o7 *.png"
+alias compress_jpg="jpegoptim -m80 *.jpg"
+alias compress_gif="gifsicle --batch -V -O2 *.gif"
+</code>
+Note that you can tweak the optimization level and other options to suit your needs.</p>
+
+<h3 id="imageoptim"><strong>ImageOptim</strong></h3>
+<p><img src="/public/images/imageoptim.png" alt="ImageOptim Screen Shot">.
+If you like to checkout a GUI app, <a href="https://imageoptim.com/mac" rel="nofollow" target="_blank">ImageOptim</a> is a pretty open source one for Mac OS X that supports multiple image formats.</p>
+
+<p>Happy Optimization :) !</p>
+
+</div>
+
+
 
     </div>
   </div>
