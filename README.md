@@ -12,6 +12,9 @@ and [publish](https://github.com/abarrak/abarrak.github.io/blob/src/publish).
 
 ## Automation
 By running `./publish` in `src`, updates to source + a new generated `/_site` version are pushed to github.
+Runs [Gulp](https://github.com/abarrak/abarrak.github.io/blob/src/gulpfile.js) to bundle and minify assets too.
 
 ## Plugins
 [extlinks](https://github.com/abarrak/abarrak.github.io/blob/src/_plugins/extlinks.rb) takes care of transforming external links with proper target and rel attributes.
+
+[DISQUS](https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions) For comments.
