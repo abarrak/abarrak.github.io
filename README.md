@@ -1,4 +1,4 @@
-# abarrak.com Site & Soure Files
+# abarrak.com Site & Source Files
 
 ## Theme
 [Lanyon](http://lanyon.getpoole.com/) with my customization in [mine.css](https://github.com/abarrak/abarrak.github.io/blob/src/public/css/mine.css).
@@ -12,7 +12,8 @@ and [publish](https://github.com/abarrak/abarrak.github.io/blob/src/publish).
 
 ## Automation
 By running `./publish` in `src`, updates to source + a new generated `/_site` version are pushed to github.
-Runs [Gulp](https://github.com/abarrak/abarrak.github.io/blob/src/gulpfile.js) to bundle and minify assets too.
+
+It also runs [Gulp](https://github.com/abarrak/abarrak.github.io/blob/src/gulpfile.js) to bundle and minify assets too.
 
 ## Plugins
 [extlinks](https://github.com/abarrak/abarrak.github.io/blob/src/_plugins/extlinks.rb) takes care of transforming external links with proper target and rel attributes.
