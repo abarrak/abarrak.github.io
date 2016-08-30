@@ -12,6 +12,7 @@ git push origin src
 
 printf "\n..... [2/2] Updating Site Files .....\n"
 printf ".....................................\n\n"
+export JEKYLL_ENV=production 
 jekyll build
 cd ../abarrak.github.io
 git add .
