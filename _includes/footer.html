@@ -1,9 +1,9 @@
   <label for="sidebar-checkbox" class="sidebar-toggle"></label>
 
   {% if jekyll.environment == 'production' %}
-  <link rel="stylesheet" href="{{ site.baseurl }}/public/all.min.js">
+  <script src="{{ site.baseurl }}/public/all.min.js">
   {% else %}
-  <link rel="stylesheet" href="{{ site.baseurl }}/public/js/blog.css">
+  <script src="{{ site.baseurl }}/public/js/blog.js">
   {% endif %}
   
   {% if jekyll.environment == 'production' %}
