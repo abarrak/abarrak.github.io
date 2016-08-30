@@ -10,7 +10,7 @@ gulp.task('default', ['styles', 'scripts'], function() {
 });
 
 gulp.task('styles', function() {
-   gulp.src("public/css/*.css")
+   gulp.src(["public/css/poole.css", "public/css/lanyon.css", "public/css/*.css"])
         .pipe(concatCss("styles/all.css"))
         .pipe(rename('all.min.css'))
         .pipe(cleanCSS({compatibility: 'ie8'}))
