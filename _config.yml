@@ -26,7 +26,11 @@ Keep_files: ['.git', '.gitignore']
 exclude: ['gulpfile.js', 'node_modules', 'package.json']
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
-gems: ['jekyll-gist', 'jekyll-paginate']
+# lsi: true   when have fair content !
+gems:
+  - jekyll-gist
+  - jekyll-paginate
+  - jekyll-sitemap
 paginate: 5
 paginate_path: /:num/
 extlinks:
