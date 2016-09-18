@@ -1,0 +1,49 @@
+---
+layout: default
+title: الرئيسية
+---
+<div class="posts">
+  {% for post in paginator.posts %}
+  <div class="post">
+    <div class="post-heading">
+      <h1 class="post-title">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </h1>
+      <span class="post-date">{{ post.date | date_to_string }}</span>
+    </div>
+    {{ post.excerpt }}
+    <div class="right button-container">
+      <a class="button" href="{{ post.url }}">اقرأ المزيد ..</a>
+    </div>
+  </div>
+  <hr />
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}/">
+        أحدث <span class="pagination-icon">&#8672;</span>
+      </a>
+    {% else %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}/{{paginator.previous_page}}">
+      أحدث <span class="pagination-icon">&#8672;</span>
+      </a>
+    {% endif %}
+  {% else %}
+    <span class="pagination-item newer">
+      أحدث <span class="pagination-icon">&#8672;</span>
+    </span>
+  {% endif %}
+  {% if paginator.next_page %}
+    <a class="pagination-item older" href="{{ site.baseurl }}/{{paginator.next_page}}">
+      <span class="pagination-icon">&#8674;</span> أقدم
+    </a>
+  {% else %}
+    <span class="pagination-item older">
+      <span class="pagination-icon">&#8674;</span> أقدم
+    </span>
+  {% endif %}
+</div>
+

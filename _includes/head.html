@@ -1,16 +1,21 @@
+{% if page.language == 'en' %}
+  {% assign alternative = 'ar' %}
+{% else %}
+  {% assign alternative = 'en' %}
+{% endif %}
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <meta name="description" content="{{ site.description }}">
-  <meta name="author" content="{{ site.author }}">
-  <meta http-equiv="Content-Language" content="en">
+  <meta name="description" content="{{ site.R.language.description }}">
+  <meta name="author" content="{{ site.R.language.author }}">
+  <meta http-equiv="Content-Language" content="{{ alternative }}">
   <title>
-    {% if page.title == "Home" %}
-      {{ site.title }} {{ site.tagline }}
+    {% if page.title == R.home %}
+      {{ R.title }} {{ R.tagline }}
     {% else %}
-      {{ page.title }} &middot; {{ site.title }} {{ site.tagline }}
+      {{ page.title }} &middot; {{ R.title }} {{ R.tagline }}
     {% endif %}
   </title>
   <!-- CSS -->
@@ -23,7 +28,11 @@
   <link rel="stylesheet" href="{{ site.baseurl }}/public/css/mine.css">
   {% endif %}
   <!-- Fonts -->
+  {% if page.language == 'en' %}
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  {% else %}
+  <link href="https://fonts.googleapis.com/css?family=Scheherazade" rel="stylesheet">
+  {% endif %}
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}/public/icons/apple-touch-icon-precomposed.png">
   <link rel="shortcut icon" href="{{ site.baseurl }}/public/icons/favicon.ico">

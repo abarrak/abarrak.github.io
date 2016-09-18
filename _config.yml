@@ -7,17 +7,14 @@ accounts:
   github: https://github.com/abarrak
   goodreads: https://www.goodreads.com/abarrak
   linkedin : https://www.linkedin.com/in/abarrak
-  twitter: https://twitter.com/abarrakcom
+  twitter: https://twitter.com/abarrak_
 
 # Site Settings
 # -------------
-title: Abdullah Barrak's
-tagline: Blog
-description: >
-  A passionate blog about computer programming, reading, thinking, and the like.
 baseurl: ""
 url: http://abarrak.com
-
+languages: ['en', 'ar']
+language_default: 'en'
 
 # Build Settings
 # --------------
@@ -30,29 +27,13 @@ permalink: /:year/:month/:day/:title/
 gems:
   - jekyll-gist
   - jekyll-paginate
+  - jekyll-multiple-languages
   - jekyll-sitemap
 paginate: 5
 paginate_path: /:num/
 extlinks:
   attributes: { rel: nofollow, target: _blank }
   rel_exclude: ['abarrak.com']
-
-
-# Custom variables and Phrases
-# ----------------------------
-home: Home
-en:
-  home: Home
-  about: About
-  works: Works
-  code: Code
-  contact: Contact
-ar:
-  home: الرئيسية
-  about: نبذة
-  works: أعمال
-  code: برمجيات
-  contact: تواصل
 
 
 # Defaults

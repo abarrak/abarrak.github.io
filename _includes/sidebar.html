@@ -2,14 +2,14 @@
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item">
-    <p>{{ site.description }}</p>
+    <p>{{ R.description }}</p>
   </div>
 
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/">
-      Home
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}{{ link_prefix }}">
+      {{ R.home }}
     </a>
-    {% assign pages_list = site.pages | sort: "list_order" %}
+    {% assign pages_list = site.pages_by_language[page.language] | sort: "list_order" %}
     {% for node in pages_list %}
       {% if node.title != null %}
         {% if node.layout == "page" %}
@@ -20,6 +20,12 @@
       {% endif %}
     {% endfor %}
   </nav>
+
+  <div class="sidebar-item">
+    <b>{{ R.language }}</b> &nbsp;
+      <a style="font-weight: bold;" href="/">{{ R.english }}</a> &nbsp; | &nbsp;
+      <a style="font-weight: bold;" href="{{ site.baseurl }}/ar/">{{ R.arabic }}</a>
+  </div>
 
   <div class=" sidebar-nav-item social-icon">
     <a href="{{ site.accounts.twitter }}" rel="nofollow" target="_blank">
