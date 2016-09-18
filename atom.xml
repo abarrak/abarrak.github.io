@@ -1,16 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>Abdullah Barrak's Blog</title>
+ <title> </title>
  <link href="http://abarrak.com/atom.xml" rel="self"/>
  <link href="http://abarrak.com/"/>
- <updated>2016-09-04T04:59:45+03:00</updated>
+ <updated>2016-09-18T13:17:43+03:00</updated>
  <id>http://abarrak.com</id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>(RVM) أداة لا غنى عنها لمطوري روبي</title>
+   <link href="http://abarrak.com/ar/2016/09/01/rvm-ruby-version-manager-tool"/>
+   <updated>2016-09-01T00:00:00+03:00</updated>
+   <id>http://abarrak.com/ar/2016/09/01/rvm-ruby-version-manager-tool</id>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/rvm-logo.png&quot; class=&quot;post-image&quot; alt=&quot;book-cover&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;(Ruby Version Manager) واحدة من أشهر أدوات إدارة النسخ للغة البرمجة (Ruby).
+وهذه التدوينة تهدف لتعريف وتبيين فائدة استخدامها لمبرمجي روبي.&lt;/p&gt;
+
+&lt;p&gt;بالإمكان تحميل الأداة من &lt;a href=&quot;https://rvm.io&quot;&gt;الموقع الرسمي هنا&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;من أهم الأشياء التي تقدمها RVM تثبيت وإزالة إصدرات روبي المتعددة، واستخدامها جنباً لجنب بلا تعارض.&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;&lt;strong&gt;تثبيت إصدارات اللغة&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;التثبيت بدهي كمثل غالب أدوات إدارة الحِزم (Package Managers). لتثبيت أحد إصدارات روبي، استخدم الأمر التالي:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rvm install &amp;lt;version_number&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;p&gt;مع استبدال &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;version_number&amp;gt;&lt;/code&gt; برقم النسخة. لإصدارات روبي الرسمية (MRI) يكفي إدراج الرقم بمفرده (مثلاً: &lt;code class=&quot;highlighter-rouge&quot;&gt;1.9.3&lt;/code&gt; و &lt;code class=&quot;highlighter-rouge&quot;&gt;2.2.2&lt;/code&gt;)، لإصدارات أخرى، يلزم كتابة اسم الإصدار بأكمله (مثلاً: &lt;code class=&quot;highlighter-rouge&quot;&gt;jruby-1.7&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;وللإزالة، استخدم الآتي:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rvm uninstall &amp;lt;version_number&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;للاطلاع على الإصدارات المُجمعة سلفاً استخدم الأمر التالي، على أن هناك إصدارات أكثر من هذه متوفرة يمكن تنزيلها:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rvm list known
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;&lt;strong&gt;تفعيل واستخدام إصدار معين&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;بعد التثبيت، ستتمكن من تفعيل أية إصدار للجلسة الحالية بالأمر الآتي:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rvm use &amp;lt;version_number&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;بالإضافة للنسخة الحاليةـ هناك نسخة افتراضية تستطيع تحديدها. لرؤية النسخ المثبتة، اكتب:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rvm list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;&lt;strong&gt;إدارة مجموعات الجواهر&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;عندما تتعدد المشاريع والتطبيقات التي تعمل عليها، يصبح من الضروري الفصل بين  مجموعات حزم روبي (الجواهر/Gems) لكل مشروع على حدة.&lt;/p&gt;
+
+&lt;p&gt;أحد أجمل المزايا التي تجعلني معجباً بـ(RVM)، ومفضلاً لها على أدوات كمثل virtualenv لبايثون، هي الآلية المتبعة لتنظيم وإدارة مجموعات الجواهر. بكل بساطة انشىء بيئة معزولة للـ(Gems) بكتابة:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rvm gemset create &amp;lt;gemset_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;استبدل &lt;gemset_name&gt; بالاسم الذي تريده، مثلاً:&lt;/gemset_name&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rvm gemset create my-project
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;واستخدمها بالتعليمة الآتية:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rvm gemset create &amp;lt;version_number&amp;gt;@&amp;lt;gemset_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;لنفرض أننا نملك &lt;code class=&quot;highlighter-rouge&quot;&gt;ruby-2.2.0&lt;/code&gt; وانشأنا المجموعة &lt;code class=&quot;highlighter-rouge&quot;&gt;my-stuff&lt;/code&gt;، التفعيل يكون بما يلي:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rvm use 2.2.0@my-stuff
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;أزل مجموعة محددة بالتعليمة:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rvm gemset delete &amp;lt;version_number&amp;gt;@&amp;lt;gemset_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;&lt;strong&gt;تخصيص إصدار ومجموعة جواهر لمجلد معين&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;عند العمل على مشروع معين تم تخصيص إصدار ومجوعة جواهر له، من الأنسب والأحفظ للوقت والجهد إيجاد وسيلة أخرى بدل كتابة الأمر &lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt; كل مرة.&lt;/p&gt;
+
+&lt;p&gt;تمكنك RVM من ذلك بكل يسر بإنشاء ملفي (.dot) يحوي أحدهما &lt;code class=&quot;highlighter-rouge&quot;&gt;(.ruby-version)&lt;/code&gt; رقم النسخة والآخر &lt;code class=&quot;highlighter-rouge&quot;&gt;(.ruby-gemset)&lt;/code&gt; يحوي اسم المجموعة. انظر المثال التالي:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; “2.2.0” &amp;gt; .ruby-version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; “my-project” &amp;gt; .ruby-gemset
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;&lt;strong&gt;أكثر من ذلك&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;أرجو أن تكون التدوينة قد قدمت استعراضاً وافياً لأهم مميزات RVM لـروبي !&lt;/p&gt;
+
+&lt;p&gt;وللمزيد من الإمكانات والاستعمالات، راجع -قارئي العزيز- الموقع الرسمي &lt;a href=&quot;https://rvm.io&quot;&gt;(https://rvm.io)&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Optimize Image Files from Your Terminal</title>

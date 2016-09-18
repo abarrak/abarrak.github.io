@@ -177,3 +177,51 @@ a.pagination-item:hover {
     filter: alpha(opacity=80);
   }
 }
+
+.rtl {
+  direction: rtl;
+  font-family: 'Scheherazade', serif !important;
+  font-size: 19px;
+}
+
+.rtl h1, .rtl h2, .rtl h3, .rtl h4, .rtl h5, .rtl h6, .rtl p {
+  font-family: 'Scheherazade', serif !important;
+}
+
+.rtl h1 { font-size: 1.9rem; }
+.rtl h2 { font-size: 1.8rem; }
+.rtl h3 { font-size: 1.7rem; }
+.rtl h4 { font-size: 1.6rem; }
+.rtl h5 { font-size: 1.5rem; }
+.rtl h6 { font-size: 1.4rem; }
+.rtl p { font-size: 1.3rem; }
+
+.rtl .post {
+  font-size: 1.4em;
+}
+
+.rtl .button {
+  font-family: Georgia;
+  font-size: 0.6em !important;
+}
+
+.rtl .button, .sidebar-nav, .masthead-title a {
+  font-family: Georgia !important;
+}
+
+.rtl .post-heading {
+    padding-bottom: 0;
+}
+
+.rtl .sidebar-toggle {
+  font-family: "PT Serif", Georgia, "Times New Roman", serif;
+}
+
+.rtl code {
+  font-size: 65%;
+}
+
+.rtl pre {
+  direction: ltr !important;
+  font-size: 80%;
+}
