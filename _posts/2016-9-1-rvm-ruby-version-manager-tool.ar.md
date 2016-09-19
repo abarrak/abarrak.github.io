@@ -68,7 +68,7 @@ $ rvm gemset create my-project
 واستخدمها بالتعليمة الآتية:
 
 ```sh
-$ rvm gemset create <version_number>@<gemset_name>
+$ rvm use <version_number>@<gemset_name>
 ```
 
 لنفرض أننا نملك `ruby-2.2.0` وانشأنا المجموعة `my-stuff`، التفعيل يكون بما يلي:
