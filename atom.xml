@@ -4,7 +4,7 @@
  <title> </title>
  <link href="http://abarrak.com/atom.xml" rel="self"/>
  <link href="http://abarrak.com/"/>
- <updated>2016-09-18T13:17:43+03:00</updated>
+ <updated>2016-09-19T15:07:24+03:00</updated>
  <id>http://abarrak.com</id>
  <author>
    <name></name>
@@ -81,7 +81,7 @@
 
 &lt;p&gt;واستخدمها بالتعليمة الآتية:&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rvm gemset create &amp;lt;version_number&amp;gt;@&amp;lt;gemset_name&amp;gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rvm use &amp;lt;version_number&amp;gt;@&amp;lt;gemset_name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
