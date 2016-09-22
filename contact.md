@@ -17,7 +17,7 @@ list_order: 4
     <br>
     Goodreads <a href="{{ site.accounts.goodreads }}">(@abarrak)</a>
     <br>
-    Twitter <a href="{{ site.accounts.twitter }}">(@abarrakcom)</a>
+    Twitter <a href="{{ site.accounts.twitter }}">(@abarrak_)</a>
     <br>
     LinkedIn <a href="{{ site.accounts.linkedin }}">(@abarrak)</a>
   </div>
