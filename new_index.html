@@ -1,0 +1,28 @@
+{% assign R = site.data.R[page.language] %}
+{% unless page.is_default_language %}
+  {% capture link_prefix %}/{{ page.language }}/{% endcapture %}
+{% endunless %}
+
+<!DOCTYPE html>
+<html lang="{{ page.language }}">
+
+{% include head.html %}
+<body class="theme-base-08 {% if page.language == 'ar' %}layout-reverse rtl{% endif %}">
+
+  <div class="wrap">
+    <div class="masthead">
+      <div class="container">
+        <h3 class="masthead-title">
+          <a href="{{ site.baseurl }}{{ link_prefix }}" title="Home">{{ R.title }}</a>
+          <small>{{ R.tagline }}</small>
+        </h3>
+      </div>
+    </div>
+
+    <div class="container content">
+    </div>
+  </div>
+
+  {% include footer.html %}
+</body>
+</html>
