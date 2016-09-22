@@ -178,6 +178,14 @@ a.pagination-item:hover {
   }
 }
 
+.comments-label {
+  text-transform: uppercase;
+  border-bottom: 1px darkred solid;
+  color: #ac4142;
+  font-family: Georgia, serif, Arial;
+  margin-bottom: 1rem;
+}
+
 .rtl {
   direction: rtl;
   font-family: 'Scheherazade', serif !important;

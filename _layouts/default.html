@@ -1,6 +1,8 @@
 {% assign R = site.data.R[page.language] %}
 {% unless page.is_default_language %}
   {% capture link_prefix %}/{{ page.language }}/{% endcapture %}
+{% else %}
+  {% capture link_prefix %}/{% endcapture %}
 {% endunless %}
 
 <!DOCTYPE html>
@@ -24,7 +26,7 @@
       {{ content | extlinks }}
     </div>
   </div>
-  
+
   {% include footer.html %}
 </body>
 </html>

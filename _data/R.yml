@@ -12,6 +12,8 @@ en:
   language: language
   english: En
   arabic: Ar
+  comments: Comments
+  related_posts: Related Posts
 ar:
   author: عبدالله براك
   title: عبدالله براك
@@ -26,3 +28,5 @@ ar:
   language: اللغة
   english: English
   arabic: العربية
+  comments: التعليقات
+  related_posts: مقالات ذات صلة

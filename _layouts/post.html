@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+{% assign R = site.data.R[page.language] %}
 
 <div class="post">
   <div class="post-heading">
@@ -10,7 +11,9 @@ layout: default
   {{ content | extlinks }}
 </div>
 
+
 {% if page.comments and jekyll.environment == 'production' %}
+<h2 class="comments-label">{{ R.comments }}</h2>
 <div id="disqus_thread"></div>
 <script>
   var disqus_config = function () {
@@ -18,7 +21,7 @@ layout: default
       this.page.identifier = "{{ page.title | slugify }}";
   };
 
-  (function() { 
+  (function() {
       var d = document, s = d.createElement('script');
       s.src = '//abarrak.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());
@@ -32,7 +35,7 @@ layout: default
 
 {% if site.related_posts.length > 0 %}
 <div class="related">
-  <h2>Related Posts</h2>
+  <h2>{{ R.related_posts }}</h2>
   <ul class="related-posts">
     {% for post in site.related_posts limit: 3 %}
       <li>
