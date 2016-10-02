@@ -3,6 +3,8 @@ title: Optimize Image Files from Your Terminal
 tags: Image Optimization, optipng, jpegoptim, gifsicle, ImageOptim, Image Processing
 ---
 
+<img src="{{ site.baseurl }}/public/images/opt-img.jpg" class="post-image resize-50 center-image" />
+
 At many times, you'll find yourself in need for rapid optimization to images at your hand. There are nice handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of them:
 
 ### [1. OptiPNG: Advanced PNG Optimizer](http://optipng.sourceforge.net/):
@@ -26,7 +28,7 @@ optipng <img-name.png>
 ```
 
 To wildcard all images recursively in the current directory and sub directories:
-    
+
 ```sh
 find . -iname "*.png" -exec optipng -o7 {} \;
 ```
@@ -86,7 +88,7 @@ find . -iname "*.gif" -exec gifsicle --batch -V -O2 {} \;
 ### **Aliases**
 
 Here are some aliases to keep commands nearby for fast run on the active directory images.
-    
+
 Be warn that those (also the previously mentioned commands) all alter the original images.
 
 ```sh

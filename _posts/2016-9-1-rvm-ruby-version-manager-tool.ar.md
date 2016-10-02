@@ -3,7 +3,7 @@ title: (RVM) أداة لا غنى عنها لمطوري روبي
 tags: Ruby, روبي, rvm, إدارة نسخ روبي, أدوات إنتاجية, تطوير وبرمجة
 ---
 
-<img src="{{ site.baseurl }}/public/images/rvm-logo.png" class="post-image" alt="rvm-logo" />
+<img src="{{ site.baseurl }}/public/images/rvm-logo.png" class="post-image resize-30" alt="rvm-logo" />
 
 (Ruby Version Manager) واحدة من أشهر أدوات إدارة النسخ للغة البرمجة (Ruby).
 وهذه التدوينة تهدف لتعريف وتبيين فائدة استخدامها لمبرمجي روبي.

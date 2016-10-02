@@ -3,7 +3,7 @@ title: Eloquent Ruby (Book Review)
 tags: Ruby, Book Review, Programming, Reading, Software Development
 ---
 
-<img src="{{ site.baseurl }}/public/images/eloquent-ruby-cover.jpg" class="post-image" alt="book-cover" />
+<img src="{{ site.baseurl }}/public/images/eloquent-ruby-cover.jpg" class="post-image resize-30" alt="book-cover" />
 
 Recently, I've read Oslen Russ's <a href="https://amzn.com/0321584104" target="_blank">"Eloquent Ruby"</a> and it was delightful read overall.
 

@@ -3,7 +3,7 @@ title: مراجعة كتاب (جبروت العقل)
 tags: مراجعة كتاب, العقل, التفكير
 ---
 
-<img src="{{ site.baseurl }}/public/images/book-2543.jpg" class="post-image" alt="book-cover" />
+<img src="{{ site.baseurl }}/public/images/book-2543.jpg" class="post-image resize-30" alt="book-cover" />
 
 قرأت قبل بضعةِ أيام كتاباً لجيلبرت هايت نقله للعربية فؤاد صروف، وقدم له أحمد زكي، بعنوان (جبروت العقل)، وفي لغته الأصلية: (Man's Unconquerable Mind).
 
