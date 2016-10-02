@@ -88,7 +88,6 @@ a.pagination-item:hover {
 
 .post-image {
   height: auto;
-  max-width: 30%;
   float: left;
   display: block;
   margin: 1rem 1.4rem 1rem 0;
@@ -96,6 +95,17 @@ a.pagination-item:hover {
   filter: drop-shadow(3px 5px 3px darkgray);
   -webkit-filter: drop-shadow(3px 5px 3px darkgray);
 }
+
+.center-image {
+  margin: 0 auto;
+  padding-bottom: 0.5rem;
+  float: none;
+}
+
+.resize-30 { max-width: 30%; }
+.resize-40 { max-width: 40%; }
+.resize-50 { max-width: 50%; }
+.resize-60 { max-width: 60%; }
 
 .pagination-icon {
   font-size: 1.2rem;

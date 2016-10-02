@@ -4,7 +4,7 @@
  <title> </title>
  <link href="http://abarrak.com/atom.xml" rel="self"/>
  <link href="http://abarrak.com/"/>
- <updated>2016-10-02T06:05:52+03:00</updated>
+ <updated>2016-10-02T21:47:34+03:00</updated>
  <id>http://abarrak.com</id>
  <author>
    <name></name>
@@ -17,7 +17,7 @@
    <link href="http://abarrak.com/ar/2016/09/28/mans-unconquerable-mind"/>
    <updated>2016-09-28T00:00:00+03:00</updated>
    <id>http://abarrak.com/ar/2016/09/28/mans-unconquerable-mind</id>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/book-2543.jpg&quot; class=&quot;post-image&quot; alt=&quot;book-cover&quot; /&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/book-2543.jpg&quot; class=&quot;post-image resize-30&quot; alt=&quot;book-cover&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;قرأت قبل بضعةِ أيام كتاباً لجيلبرت هايت نقله للعربية فؤاد صروف، وقدم له أحمد زكي، بعنوان (جبروت العقل)، وفي لغته الأصلية: (Man’s Unconquerable Mind).&lt;/p&gt;
 
@@ -36,7 +36,7 @@
    <link href="http://abarrak.com/ar/2016/09/01/rvm-ruby-version-manager-tool"/>
    <updated>2016-09-01T00:00:00+03:00</updated>
    <id>http://abarrak.com/ar/2016/09/01/rvm-ruby-version-manager-tool</id>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/rvm-logo.png&quot; class=&quot;post-image&quot; alt=&quot;rvm-logo&quot; /&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/rvm-logo.png&quot; class=&quot;post-image resize-30&quot; alt=&quot;rvm-logo&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;(Ruby Version Manager) واحدة من أشهر أدوات إدارة النسخ للغة البرمجة (Ruby).
 وهذه التدوينة تهدف لتعريف وتبيين فائدة استخدامها لمبرمجي روبي.&lt;/p&gt;
@@ -143,7 +143,9 @@
    <link href="http://abarrak.com/2016/08/30/optimize-images-from-your-terminal"/>
    <updated>2016-08-30T00:00:00+03:00</updated>
    <id>http://abarrak.com/2016/08/30/optimize-images-from-your-terminal</id>
-   <content type="html">&lt;p&gt;At many times, you’ll find yourself in need for rapid optimization to images at your hand. There are nice handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of them:&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/opt-img.jpg&quot; class=&quot;post-image resize-50 center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;At many times, you’ll find yourself in need for rapid optimization to images at your hand. There are nice handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of them:&lt;/p&gt;
 
 &lt;h3 id=&quot;optipng-advanced-png-optimizerhttpoptipngsourceforgenet&quot;&gt;&lt;a href=&quot;http://optipng.sourceforge.net/&quot;&gt;1. OptiPNG: Advanced PNG Optimizer&lt;/a&gt;:&lt;/h3&gt;
 
@@ -252,7 +254,9 @@ find . -iname &lt;span class=&quot;s2&quot;&gt;&quot;*.gif&quot;&lt;/span&gt; -e
    <link href="http://abarrak.com/2016/08/26/fix-sinatra-tilt-unicode"/>
    <updated>2016-08-26T00:00:00+03:00</updated>
    <id>http://abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</id>
-   <content type="html">&lt;p&gt;In the past week, I’v been woking with Sinatra app deployment to AWS Elastic Beanstalk. In development environment everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was suppose to be supporting uft-8 text without issues.&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/sinatra-logo.png&quot; class=&quot;post-image resize-40 center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the past week, I’v been woking with Sinatra app deployment to AWS Elastic Beanstalk. In development environment everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was suppose to be supporting uft-8 text without issues.&lt;/p&gt;
 
 &lt;h3 id=&quot;symptoms&quot;&gt;&lt;strong&gt;Symptoms&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;The error was appearing in one of the &lt;code class=&quot;highlighter-rouge&quot;&gt;.erb&lt;/code&gt; view files that contains a &lt;code class=&quot;highlighter-rouge&quot;&gt;textarea&lt;/code&gt; field. When non English text is populated in it at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:&lt;/p&gt;
@@ -306,7 +310,7 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
    <link href="http://abarrak.com/2016/06/25/elquoent-ruby"/>
    <updated>2016-06-25T00:00:00+03:00</updated>
    <id>http://abarrak.com/2016/06/25/elquoent-ruby</id>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/eloquent-ruby-cover.jpg&quot; class=&quot;post-image&quot; alt=&quot;book-cover&quot; /&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/eloquent-ruby-cover.jpg&quot; class=&quot;post-image resize-30&quot; alt=&quot;book-cover&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Recently, I’ve read Oslen Russ’s &lt;a href=&quot;https://amzn.com/0321584104&quot; target=&quot;_blank&quot;&gt;“Eloquent Ruby”&lt;/a&gt; and it was delightful read overall.&lt;/p&gt;
 
