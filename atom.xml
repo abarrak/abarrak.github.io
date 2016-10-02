@@ -4,7 +4,7 @@
  <title> </title>
  <link href="http://abarrak.com/atom.xml" rel="self"/>
  <link href="http://abarrak.com/"/>
- <updated>2016-09-22T22:16:02+03:00</updated>
+ <updated>2016-10-02T06:05:52+03:00</updated>
  <id>http://abarrak.com</id>
  <author>
    <name></name>
@@ -13,11 +13,30 @@
 
  
  <entry>
+   <title>مراجعة كتاب (جبروت العقل)</title>
+   <link href="http://abarrak.com/ar/2016/09/28/mans-unconquerable-mind"/>
+   <updated>2016-09-28T00:00:00+03:00</updated>
+   <id>http://abarrak.com/ar/2016/09/28/mans-unconquerable-mind</id>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/book-2543.jpg&quot; class=&quot;post-image&quot; alt=&quot;book-cover&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;قرأت قبل بضعةِ أيام كتاباً لجيلبرت هايت نقله للعربية فؤاد صروف، وقدم له أحمد زكي، بعنوان (جبروت العقل)، وفي لغته الأصلية: (Man’s Unconquerable Mind).&lt;/p&gt;
+
+&lt;p&gt;لا أجد الكثير لأقوله حول الكتاب إلّا أنه بمجمله سهلُ العبارة قريبُ المعنى، يتناول مسائل أساسية حول أهمية التفكير الإنساني ومراحله التاريخية. يبحث الكتاب أيضاً في تعريف المعرفة، وبيان الممكن من حدودها، وأسباب الزلل الفكري بلغة شاعرية وعرض ممزوج بشواهد من الأحداث والقصص. ثم يختتم فصله الأخير بتوكيدات مُوجزة عن الإيمان بما للعقل من مكانة.&lt;/p&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;p&gt;وبرأيي أنّ العديد مما عرضه الكاتب من القضايا أصبح من المسلمات أو الأمور المستقرة التي لا تحتاج لذكرٍ أو لما نجده في بعض الفقْرات من إسهاب وتطويل. وأذكرُ من المآخذ أيضاً افتقار بعض المواضع للانتظام والتسلسل العلمي، ولعل هذا راجع لطبيعة الكتاب المبسطة وزمن كتابته. أمّا الترجمةُ فهي ما زانت الكتاب وأضفت متعةً لقراءته.&lt;/p&gt;
+
+&lt;p&gt;هذه هي المراجعة الأولى التي أكتبها هنا. من الأفكار التي ترد ببالي هو أن اكتب تدوينة واحدة كل شهرٍ لانطباعاتي عمّا قرأته كـ: (ما قرأته مؤخراً) أو (مراجعات القراءة لهذا الشهر) وأرجو أن يكون مناسباً أيضاً لمن يتصفح المدونة.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>(RVM) أداة لا غنى عنها لمطوري روبي</title>
    <link href="http://abarrak.com/ar/2016/09/01/rvm-ruby-version-manager-tool"/>
    <updated>2016-09-01T00:00:00+03:00</updated>
    <id>http://abarrak.com/ar/2016/09/01/rvm-ruby-version-manager-tool</id>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/rvm-logo.png&quot; class=&quot;post-image&quot; alt=&quot;book-cover&quot; /&gt;&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/public/images/rvm-logo.png&quot; class=&quot;post-image&quot; alt=&quot;rvm-logo&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;(Ruby Version Manager) واحدة من أشهر أدوات إدارة النسخ للغة البرمجة (Ruby).
 وهذه التدوينة تهدف لتعريف وتبيين فائدة استخدامها لمبرمجي روبي.&lt;/p&gt;

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://abarrak.com/ar/2016/09/28/mans-unconquerable-mind</loc>
+<lastmod>2016-09-28T00:00:00+03:00</lastmod>
+</url>
+<url>
 <loc>http://abarrak.com/ar/2016/09/01/rvm-ruby-version-manager-tool</loc>
 <lastmod>2016-09-01T00:00:00+03:00</lastmod>
 </url>

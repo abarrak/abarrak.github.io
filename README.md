@@ -1,5 +1,4 @@
 # abarrak.com Site & Source Files
-![logo](https://github.com/abarrak/abarrak.github.io/blob/master/public/images/repo.png)
 
 ## Theme
 [Lanyon](http://lanyon.getpoole.com/) with my customization in [mine.css](https://github.com/abarrak/abarrak.github.io/blob/src/public/css/mine.css).
