@@ -243,3 +243,9 @@ a.pagination-item:hover {
   direction: ltr !important;
   font-size: 80%;
 }
+
+.rtl blockquote {
+  border-right: .25rem solid #e5e5e5;
+  border-left: 0;
+}
+
