@@ -211,7 +211,7 @@ a.pagination-item:hover {
 .rtl {
   direction: rtl;
   font-family: 'Scheherazade', serif !important;
-  font-size: 19px;
+  font-size: 18px;
 }
 
 .rtl h1, .rtl h2, .rtl h3, .rtl h4, .rtl h5, .rtl h6, .rtl p {
@@ -228,6 +228,10 @@ a.pagination-item:hover {
 
 .rtl .post {
   font-size: 1.4em;
+}
+
+.rtl .post-title a:hover {
+  border-bottom: 0;
 }
 
 .rtl .button {
