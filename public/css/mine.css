@@ -25,6 +25,18 @@ hr {
   border-bottom: 2px solid #fff;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
+.post a:hover {
+  border-bottom: dotted 1px;
+}
+
+.masthead-title a:hover {
+  text-decoration: overline;
+}
+
 .page, .post {
     margin-bottom: 2.5em;
 }
