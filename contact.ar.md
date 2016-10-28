@@ -12,8 +12,6 @@ list_order: 4
   </a>
   <p>أو عبر الشبكات الاجتماعية:</p>
   <p class="center">
-    تويتر <a href="{{ site.accounts.twitter }}">(@abarrak_)</a>
-    <br>
     لينكد إنّ <a href="{{ site.accounts.linkedin }}">(@abarrak)</a>
     <br>
     حٍتْ هَب <a href="{{ site.accounts.github }}">(@abarrak)</a>
