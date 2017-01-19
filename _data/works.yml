@@ -1,0 +1,24 @@
+- title: Optical Reader
+  description: A SaaS OCR functionality built on top of Tesseract.
+  link: https://www.opticalreader.net
+  repo_link: https://github.com/abarrak/optical-reader
+  technology_stack:
+    - icon: ruby
+      tooltip: "Programming Language: Ruby"
+    - icon: materializecss
+      tooltip: "CSS Framwork: MaterializeCss"
+    - icon: jquery
+      tooltip: "jQuery"
+    - icon: aws
+      tooltip: "Deployment: AWS"
+      
+- title: OpenCV Helpers
+  description: Facilitate image processing tasks using OpenCV library.
+  link: https://github.com/abarrak/opencv-helpers
+  repo_link: https://github.com/abarrak/opencv-helpers
+  technology_stack:
+    - icon: python
+      tooltip: "Programming Language: Python"
+    - icon: travis
+      tooltip: "CI: Travis"
+  

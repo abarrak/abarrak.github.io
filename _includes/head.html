@@ -1,41 +1,45 @@
-{% if page.language == 'en' %}
-  {% assign alternative = 'ar' %}
-{% else %}
-  {% assign alternative = 'en' %}
-{% endif %}
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <meta name="description" content="{{ site.R.language.description }}">
-  <meta name="author" content="{{ site.R.language.author }}">
-  <meta http-equiv="Content-Language" content="{{ alternative }}">
-  <title>
-    {% if page.title == R.home %}
-      {{ R.title }} {{ R.tagline }}
-    {% else %}
-      {{ page.title }} &middot; {{ R.title }} {{ R.tagline }}
-    {% endif %}
-  </title>
-  <!-- CSS -->
-  {% if jekyll.environment == 'production' %}
-  <link rel="stylesheet" href="{{ site.baseurl }}/public/all.min.css">
-  {% else %}
-  <link rel="stylesheet" href="{{ site.baseurl }}/public/css/poole.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/public/css/syntax.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/public/css/lanyon.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/public/css/mine.css">
-  {% endif %}
-  <!-- Fonts -->
-  {% if page.language == 'en' %}
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  {% else %}
-  <link href="https://fonts.googleapis.com/css?family=Scheherazade" rel="stylesheet">
-  {% endif %}
+	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="author" content="{{ site.author }}">
+
+  <meta name="keywords" content="{% if page.tags %}{{ page.tags | array_to_sentence_string | strip_newlines }}{% else %}{{ site.keywords }}{% endif %}">
+	<meta name="theme-color" content="#943526">
+
+	{% if page.thumbnail %}
+	<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/public/{{ page.thumbnail }}">
+	{% else %}
+	<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/public/thumbnail-1.jpg">
+	{% endif %}
+
+	{% if page.title %}
+	<meta property="og:title" content="{{ site.title }} • {{ page.title }}">
+	{% else %}
+	<meta property="og:title" content="{{ site.title }}">
+	{% endif %}
+	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+	<title>{% if page.title %}{{ page.title | escape }} • {{ site.subtitle }}{% else %}{{ site.title | escape }}{% endif %}</title>
+
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}/public/icons/apple-touch-icon-precomposed.png">
   <link rel="shortcut icon" href="{{ site.baseurl }}/public/icons/favicon.ico">
+
+  <!-- Fonts -->
+	<link rel='stylesheet' id='libretto-fonts-css'  href='https://fonts.googleapis.com/css?family=Libre+Baskerville%3A400%2C700%2C400italic%7CPlayfair+Display%3A400%2C700%2C400italic%2C700italic%7CPlayfair+Display+SC%3A700%2C700italic%7CMontserrat%3A400%7CDroid+Sans+Mono%3A400&#038;subset=latin%2Clatin-ext' type='text/css' media='all'>
+
+  <!-- CSS -->
+  {% if jekyll.environment == 'production' %}
+  <link rel="stylesheet" href="{{ site.baseurl }}/public/css/all.min.css" type="text/css" media="all">
+  {% else %}
+  <link rel="stylesheet" href="{{ site.baseurl }}/public/css/main.css" type="text/css" media="all">
+  <link rel="stylesheet" href="{{ site.baseurl }}/public/css/tooltipster-bundle.css" type="text/css" media="all">
+  <link rel="stylesheet" href="{{ site.baseurl }}/public/css/tooltipster-sideTip-shadow.min.css" type="text/css" media="all">
+  {% endif %}
+
   <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 </head>

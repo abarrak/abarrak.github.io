@@ -3,24 +3,24 @@ var concat    = require('gulp-concat');
 var uglify    = require('gulp-uglify');
 var cleanCSS  = require('gulp-clean-css');
 var concatCss = require('gulp-concat-css');
-var rename    = require('gulp-rename');  
+var rename    = require('gulp-rename');
 
 gulp.task('default', ['styles', 'scripts'], function() {
     console.log("\n... Processing Assets Done ! ...\n");
 });
 
 gulp.task('styles', function() {
-   gulp.src(["public/css/poole.css", "public/css/lanyon.css", "public/css/*.css"])
-        .pipe(concatCss("styles/all.css"))
+   gulp.src(["public/css/*.css", "public/css/*.min.css"])
+        .pipe(concatCss("public/css/all.css"))
         .pipe(rename('all.min.css'))
-        .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest('public/'));
+        .pipe(cleanCSS({ compatibility: 'ie8' }))
+        .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('scripts', function() {  
-    return gulp.src("public/js/*.js")
+gulp.task('scripts', function() {
+    return gulp.src(["public/js/blog.js"])
         .pipe(concat('all.js'))
         .pipe(rename('all.min.js'))
-        .pipe(uglify())        
-        .pipe(gulp.dest("public/"));
+        .pipe(uglify())
+        .pipe(gulp.dest("public/js"));
 });

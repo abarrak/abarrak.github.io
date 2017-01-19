@@ -1,0 +1,32 @@
+---
+layout: page
+title: Works
+icon: page-header-works
+permalink: /works
+---
+
+<ul class="works-list">
+  {% for work in site.data.works %}
+  <li>
+    <a href="{{ work.link }}">{{ work.title }}</a>
+    <small>{{ work.description }}</small>
+    <div class="clearfix">
+      <h6 class="stack-list">
+        {% for tech in work.technology_stack %}
+        <span class="devicons devicons-{{ tech.icon }} tooltip" title="{{ tech.tooltip }}"></span>
+        {% endfor %}
+      </h6>
+
+      <div class="source-link">
+        <span class="devicons devicons-github_alt"></span>
+        <a class="right " href="{{ work.repo_link }}">Source Code</a>
+      </div>
+    </div>
+    <hr>
+  </li>
+  {% endfor %}
+</ul>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" crossorigin="anonymous" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="></script>
+<script src="{{ site.baseurl }}/public/js/tooltipster.bundle.min.js"></script>
+<script src="{{ site.baseurl }}/public/js/tooltip.js"></script>

@@ -1,14 +1,14 @@
 ---
 title: Fixing Sinatra UTF-8 issue in Tilt rendered templates
-tags: Sinatra, Tilt, utf-8, Erb Template, AWS, AWS EB, encoding compatibility error
+tags: [Sinatra, Tilt, UTF-8, AWS, AWS EB, encoding compatibility error]
 ---
 
-<img src="{{ site.baseurl }}/public/images/sinatra-logo.png" class="post-image resize-40 center-image" />
+<img src="{{ site.baseurl }}/public/images/sinatra-logo.png" class="post-image resize-sm center-image" />
 
-In the past week, I'v been woking with Sinatra app deployment to AWS Elastic Beanstalk. In development environment everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was suppose to be supporting uft-8 text without issues.
+In the past week, I'v been deplying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.
 
 ### **Symptoms**
-The error was appearing in one of the `.erb` view files that contains a `textarea` field. When non English text is populated in it at the server, the application crashes with 500 code. Here's a fragment of the error stack trace:
+The error was appearing in one of the `.erb` view files that contains a `textarea` field. When it is populated with a non English text at the server, the application crashes with 500 code. Here's a fragment of the error stack trace:
 
 <!-- post-excerpt -->
 
@@ -28,14 +28,14 @@ The error was appearing in one of the `.erb` view files that contains a `textare
 Guided by the error message indication. I attempted to fix the issue by ensuring that all parts are encoded as UTF-8. I set `accept-charset` attribute for the form and texteara tag to `"UTF-8"`, forced source files to be UTF-8 by inserting `# 😁` comment, and checked the Sinatra routing is also set to have
 `headers 'Content-type' => 'text/html; charset=utf-8'`, But unfortunately none of that was solving the problem.
 
-By taking closer look at the stack trace, I figured that it was happening specifically during the template rendering phase, and might have something to do with Sinatra's Tilt library.
+By taking a closer look at the stack trace, I figured that it was happening specifically during the template rendering phase, and might have something to do with one of Sinatra's dependencies, Tilt rendering library.
 
 ### **Solution**
 
 Indeed it was caused by Tilt . In fact, it's a known issue and has been pointed out in the gem's [repository main page](https://github.com/rtomayko/tilt#encodings).
 Setting ruby's external encoding plus the source files to `UTF-8` solved it for me just like mentioned in the link.
 
-If you've structured your app in the modular style, then set encoding early in the class.
+If you've structured your application in the modular style, then set encoding early in the class.
 
 ```rb
 class MyApplication < Sinatra::Application

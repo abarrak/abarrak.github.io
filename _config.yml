@@ -1,33 +1,35 @@
 # About/Contact
 # -------------
 author: Abdullah Barrak
-url:  www.abarrak.com
 email: a@abarrak.com
 accounts:
   github: https://github.com/abarrak
-  goodreads: https://www.goodreads.com/abarrak
-  linkedin : https://www.linkedin.com/in/abarrak
-  twitter: https://twitter.com/abarrak_
+  linkedin : https://linkedin.com/in/abarrak
+  goodreads: https://goodreads.com/abarrak
+  no_twitter: https://twitter.com/abarrak_
+  
 
 # Site Settings
 # -------------
 baseurl: ""
-url: http://abarrak.com
-languages: ['en', 'ar']
-language_default: 'en'
+url: http://www.abarrak.com
+title: Abdullah Barrak
+subtitle: Abdullah Barrak's Blog
+description: A passionate blog about computer programming, reading, thinking, and the like.
+keywords: Software engineering, Web development, Computers, Programming, Reading
+ 
 
 # Build Settings
 # --------------
 destination: '../abarrak.github.io'
 Keep_files: ['.git', '.gitignore']
-exclude: ['gulpfile.js', 'node_modules', 'package.json']
+exclude: ['gulpfile.js', 'node_modules', 'package.json', 'Gemfile', 'Gemfile.lock', 'README.md']
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
-# lsi: true   when have fair content !
+# lsi: true   # when have fair content !
 gems:
   - jekyll-gist
   - jekyll-paginate
-  - jekyll-multiple-languages
   - jekyll-sitemap
 paginate: 5
 paginate_path: /:num/
@@ -46,7 +48,7 @@ defaults:
     values:
       permalink: /:year/:month/:day/:title
       layout: post
-      author: Abdullah
+      author: Abdullah Barrak
       excerpt_separator: <!-- post-excerpt -->
       comments: true
   -

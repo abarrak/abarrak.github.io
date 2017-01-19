@@ -2,7 +2,12 @@
 layout: default
 ---
 
-<div class="page">
-  <h1 class="page-title">{{ page.title }}</h1>
-  {{ content | extlinks }}
-</div>
+<header class="page-header {{ page.icon }}">
+	<h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+</header>
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+	<div itemprop="articleBody" class="left">
+		{{ content | extlinks }}
+	</div>
+</article>

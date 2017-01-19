@@ -1,11 +1,11 @@
 ---
 title: Optimize Image Files from Your Terminal
-tags: Image Optimization, optipng, jpegoptim, gifsicle, ImageOptim, Image Processing
+tags: [Image Optimization, optipng, jpegoptim, gifsicle, ImageOptim, Image Processing]
 ---
 
-<img src="{{ site.baseurl }}/public/images/opt-img.jpg" class="post-image resize-50 center-image" />
+<img src="{{ site.baseurl }}/public/images/opt-img.jpg" class="post-image resize-md center-image" />
 
-At many times, you'll find yourself in need for rapid optimization to images at your hand. There are nice handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of them:
+In many times you may find yourself in need for rapidly optimzae a bunch of images in your hands. There are handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:
 
 ### [1. OptiPNG: Advanced PNG Optimizer](http://optipng.sourceforge.net/):
 
@@ -24,7 +24,7 @@ apt-get install optipng
 To optimize an image, run:
 
 ```sh
-optipng <img-name.png>
+optipng <img-name>.png
 ```
 
 To wildcard all images recursively in the current directory and sub directories:
@@ -34,7 +34,7 @@ find . -iname "*.png" -exec optipng -o7 {} \;
 ```
 
 <!-- post-excerpt -->
-
+  
 ### [2. jpegoptim](https://github.com/tjko/jpegoptim):
 
 Install for Mac OS X:
@@ -52,7 +52,7 @@ sudo apt-get install jpegoptim
 Run the next command to optimize an image, `-m` controls the image quality (0-100):
 
 ```sh
-jpegoptim -m70 <img-name.png>
+jpegoptim -m70 <img-name>
 ```
 
 Or optimize all recursively:
@@ -60,7 +60,7 @@ Or optimize all recursively:
 ```sh
 find . -iname "*.jpg" -exec jpegoptim -m80 -o -p {} \;
 ```
-
+  
 ### [3. gifsicle](https://www.lcdf.org/gifsicle/):
 
 Install for Mac OS X:

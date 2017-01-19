@@ -1,0 +1,26 @@
+<div class="pagination">
+  {% if paginator.next_page %}
+    <a class="older" href="{{ site.baseurl }}/{{paginator.next_page}}">
+      <span class="pagination-icon">&#8672;</span> Older
+    </a>
+  {% else %}
+    <span class="older">
+      <span class="pagination-icon">&#8672;</span> Older
+    </span>
+  {% endif %}
+  {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+      <a class="newer" href="{{ site.baseurl }}/">
+        Newer <span class="pagination-icon">&#8674;</span>
+      </a>
+    {% else %}
+      <a class="newer" href="{{ site.baseurl }}/{{paginator.previous_page}}">
+      Newer <span class="pagination-icon">&#8674;</span>
+      </a>
+    {% endif %}
+  {% else %}
+    <span class="newer">
+      Newer <span class="pagination-icon">&#8674;</span>
+    </span>
+  {% endif %}
+</div>

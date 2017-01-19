@@ -1,0 +1,40 @@
+---
+layout: default
+title: Tag Cloud
+---
+
+<div class="table-of-contents">
+  <h2 class="page-heading">Tags</h2>
+
+  <div id="tag_cloud">
+  {% for tag in site.tags %}
+    &nbsp;<a href="#{{ tag | first | slugify }}" title="{{ tag | first }}" rel="{{ tag | last | size }}">
+    {{ tag[0] }} ({{ tag | last | size }})
+    </a>&nbsp;
+  {% endfor %}
+  </div>
+
+  <hr>
+
+  <ul id="tag_list" class="post-list">
+  {% for tag in site.tags %}
+    <li class="tag_item" id="{{ tag | first | slugify }}">
+      <h4 class="tag_name">{{ tag | first }}</h4>
+      <span>
+        <ul class="dashed">
+        {% for post in tag[1] %}
+          <li class="tag_post post-meta">
+            <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+        </ul>
+        <br>
+      </span>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" crossorigin="anonymous" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="></script>
+<script src="{{ site.baseurl }}/public/js/jquery.tagcloud.js"></script>
+<script src="{{ site.baseurl }}/public/js/tags.js"></script>
