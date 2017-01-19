@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abdullah Barrak</title>
+    <description>A passionate blog about computer programming, reading, thinking, and the like.</description>
+    <link>http://www.abarrak.com/</link>
+    <atom:link href="http://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 19 Jan 2017 23:06:13 +0300</pubDate>
+    <lastBuildDate>Thu, 19 Jan 2017 23:06:13 +0300</lastBuildDate>
+    <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Optimize Image Files from Your Terminal</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/opt-img.jpg&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In many times you may find yourself in need for rapidly optimzae a bunch of images in your hands. There are handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:&lt;/p&gt;
+
+&lt;h3 id=&quot;1-optipng-advanced-png-optimizer&quot;&gt;&lt;a href=&quot;http://optipng.sourceforge.net/&quot;&gt;1. OptiPNG: Advanced PNG Optimizer&lt;/a&gt;:&lt;/h3&gt;
+
+&lt;p&gt;Get it for Mac OS X:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install optipng
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For Linux Ubuntu:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get install optipng
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To optimize an image, run:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;optipng &amp;lt;img-name&amp;gt;.png
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To wildcard all images recursively in the current directory and sub directories:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find . -iname &lt;span class=&quot;s2&quot;&gt;&quot;*.png&quot;&lt;/span&gt; -exec optipng -o7 &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;h3 id=&quot;2-jpegoptim&quot;&gt;&lt;a href=&quot;https://github.com/tjko/jpegoptim&quot;&gt;2. jpegoptim&lt;/a&gt;:&lt;/h3&gt;
+
+&lt;p&gt;Install for Mac OS X:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install jpegoptim
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Install for Linux Ubuntu:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install jpegoptim
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Run the next command to optimize an image, &lt;code class=&quot;highlighter-rouge&quot;&gt;-m&lt;/code&gt; controls the image quality (0-100):&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jpegoptim -m70 &amp;lt;img-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Or optimize all recursively:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find . -iname &lt;span class=&quot;s2&quot;&gt;&quot;*.jpg&quot;&lt;/span&gt; -exec jpegoptim -m80 -o -p &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;3-gifsicle&quot;&gt;&lt;a href=&quot;https://www.lcdf.org/gifsicle/&quot;&gt;3. gifsicle&lt;/a&gt;:&lt;/h3&gt;
+
+&lt;p&gt;Install for Mac OS X:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install gifsicle
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For Linux Ubuntu:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install gifsicle
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The commands for single image, and a group of images respectively, are:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# for single image.&lt;/span&gt;
+gifsicle --batch -V -O2 &amp;lt;image-name&amp;gt;.gif
+
+&lt;span class=&quot;c&quot;&gt;# to start from cureent dir and go down.&lt;/span&gt;
+find . -iname &lt;span class=&quot;s2&quot;&gt;&quot;*.gif&quot;&lt;/span&gt; -exec gifsicle --batch -V -O2 &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;aliases&quot;&gt;&lt;strong&gt;Aliases&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Here are some aliases to keep commands nearby for fast run on the active directory images.&lt;/p&gt;
+
+&lt;p&gt;Be warn that those (also the previously mentioned commands) all alter the original images.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_png&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;optipng -o7 *.png&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_jpg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jpegoptim -m80 *.jpg&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_gif&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gifsicle --batch -V -O2 *.gif&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You can tweak the optimization level and other options to suit your needs.&lt;/p&gt;
+
+&lt;h3 id=&quot;imageoptim&quot;&gt;&lt;strong&gt;ImageOptim&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;If you’d like to use a GUI application, &lt;a href=&quot;https://imageoptim.com/mac&quot;&gt;ImageOptim&lt;/a&gt; is a pretty open source one for Mac OS X that supports multiple image formats.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/imageoptim.png&quot; alt=&quot;ImageOptim Screen Shot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Happy mature optimization :) !&lt;/p&gt;
+</description>
+        <pubDate>Tue, 30 Aug 2016 00:00:00 +0300</pubDate>
+        <link>http://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</link>
+        <guid isPermaLink="true">http://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</guid>
+        
+        <category>Image Optimization</category>
+        
+        <category>optipng</category>
+        
+        <category>jpegoptim</category>
+        
+        <category>gifsicle</category>
+        
+        <category>ImageOptim</category>
+        
+        <category>Image Processing</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Fixing Sinatra UTF-8 issue in Tilt rendered templates</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/sinatra-logo.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the past week, I’v been deplying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.&lt;/p&gt;
+
+&lt;h3 id=&quot;symptoms&quot;&gt;&lt;strong&gt;Symptoms&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;The error was appearing in one of the &lt;code class=&quot;highlighter-rouge&quot;&gt;.erb&lt;/code&gt; view files that contains a &lt;code class=&quot;highlighter-rouge&quot;&gt;textarea&lt;/code&gt; field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:&lt;/p&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2016-08-26 19:15:53 - Encoding::CompatibilityError - incompatible character encodings: UTF-8 and US-ASCII:
+        /var/app/current/views/review.erb:69:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;block &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;singleton class&lt;span class=&quot;s1&quot;&gt;'
+        /var/app/current/views/review.erb:-7:in `instance_eval'&lt;/span&gt;
+        /var/app/current/views/review.erb:-7:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;singleton class&lt;span class=&quot;s1&quot;&gt;'
+        /var/app/current/views/review.erb:-9:in `__tilt_47353692136320'&lt;/span&gt;
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;call&lt;span class=&quot;s1&quot;&gt;'
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'&lt;/span&gt;
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;render&lt;span class=&quot;s1&quot;&gt;'
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'&lt;/span&gt;
+        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;erb&lt;span class=&quot;s1&quot;&gt;'
+        /var/app/current/helpers.rb:24:in `block (2 levels) in serve_page'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Guided by the error message indication. I attempted to fix the issue by ensuring that all parts are encoded as UTF-8. I set &lt;code class=&quot;highlighter-rouge&quot;&gt;accept-charset&lt;/code&gt; attribute for the form and texteara tag to &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;UTF-8&quot;&lt;/code&gt;, forced source files to be UTF-8 by inserting &lt;code class=&quot;highlighter-rouge&quot;&gt;# 😁&lt;/code&gt; comment, and checked the Sinatra routing is also set to have
+&lt;code class=&quot;highlighter-rouge&quot;&gt;headers 'Content-type' =&amp;gt; 'text/html; charset=utf-8'&lt;/code&gt;, But unfortunately none of that was solving the problem.&lt;/p&gt;
+
+&lt;p&gt;By taking a closer look at the stack trace, I figured that it was happening specifically during the template rendering phase, and might have something to do with one of Sinatra’s dependencies, Tilt rendering library.&lt;/p&gt;
+
+&lt;h3 id=&quot;solution&quot;&gt;&lt;strong&gt;Solution&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Indeed it was caused by Tilt . In fact, it’s a known issue and has been pointed out in the gem’s &lt;a href=&quot;https://github.com/rtomayko/tilt#encodings&quot;&gt;repository main page&lt;/a&gt;.
+Setting ruby’s external encoding plus the source files to &lt;code class=&quot;highlighter-rouge&quot;&gt;UTF-8&lt;/code&gt; solved it for me just like mentioned in the link.&lt;/p&gt;
+
+&lt;p&gt;If you’ve structured your application in the modular style, then set encoding early in the class.&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyApplication&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sinatra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# set encoding.&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In classic applications, this would suffice.&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That’s it. Hope It helps someone else !&lt;/p&gt;
+</description>
+        <pubDate>Fri, 26 Aug 2016 00:00:00 +0300</pubDate>
+        <link>http://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</link>
+        <guid isPermaLink="true">http://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</guid>
+        
+        <category>Sinatra</category>
+        
+        <category>Tilt</category>
+        
+        <category>UTF-8</category>
+        
+        <category>AWS</category>
+        
+        <category>AWS EB</category>
+        
+        <category>encoding compatibility error</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

@@ -1,150 +1,75 @@
-
-
-
 <!DOCTYPE html>
-<html lang="en">
-
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <meta http-equiv="Content-Language" content="ar">
-  <title>
-    
-      Optimize Image Files from Your Terminal &middot; Abdullah Barrak's Blog
-    
-  </title>
-  <!-- CSS -->
-  
-  <link rel="stylesheet" href="/public/all.min.css">
-  
-  <!-- Fonts -->
-  
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  
+	<meta name="description" content="In many times you may find yourself in need for rapidly optimzae a bunch of images in your hands. There are handy utility libraries that can help you reduce ...">
+  <meta name="author" content="Abdullah Barrak">
+
+  <meta name="keywords" content="Image Optimization, optipng, jpegoptim, gifsicle, ImageOptim, and Image Processing">
+	<meta name="theme-color" content="#943526">
+
+	
+	<meta property="og:image" content="http://www.abarrak.com/public/thumbnail-1.jpg">
+	
+
+	
+	<meta property="og:title" content="Abdullah Barrak • Optimize Image Files from Your Terminal">
+	
+	<link rel="canonical" href="http://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal">
+
+	<title>Optimize Image Files from Your Terminal • Abdullah Barrak's Blog</title>
+
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/icons/apple-touch-icon-precomposed.png">
   <link rel="shortcut icon" href="/public/icons/favicon.ico">
+
+  <!-- Fonts -->
+	<link rel='stylesheet' id='libretto-fonts-css'  href='https://fonts.googleapis.com/css?family=Libre+Baskerville%3A400%2C700%2C400italic%7CPlayfair+Display%3A400%2C700%2C400italic%2C700italic%7CPlayfair+Display+SC%3A700%2C700italic%7CMontserrat%3A400%7CDroid+Sans+Mono%3A400&#038;subset=latin%2Clatin-ext' type='text/css' media='all'>
+
+  <!-- CSS -->
+  
+  <link rel="stylesheet" href="/public/css/all.min.css" type="text/css" media="all">
+  
+
   <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="http://www.abarrak.com/feed.xml">
 </head>
 
-<body class="theme-base-08 ">
-  <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
-<!-- Toggleable sidebar -->
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-item">
-    <p>A passionate blog about computer programming, reading, thinking, and the like.
-</p>
-  </div>
+<body>
 
-  <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/">
-      Home
-    </a>
-    
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/about/">
-          About
-          </a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/works/">
-          Works
-          </a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/code/">
-          Code
-          </a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/contact/">
-          Contact
-          </a>
-        
-      
-    
-  </nav>
+	<header class="site-header">
+	<div class="wrapper-fluid">
+		<a class="site-title" href="/">Abdullah Barrak</a>
 
-  <div class="sidebar-item">
-    <b>language</b>
-    <div class="center">
-      <a style="font-weight: bold;" href="/">English</a> &nbsp; | &nbsp;
-      <a style="font-weight: bold;" href="/ar/">العربية</a>
-    </div>
-  </div>
-
-  <div class=" sidebar-nav-item social-icon">
-    <a href="https://www.linkedin.com/in/abarrak" rel="nofollow" target="_blank">
-    <img src="/public/icons/linkedin-icon.png" alt="LinkedIn Icon">
-    </a>
-    <a href="https://www.goodreads.com/abarrak" rel="nofollow" target="_blank">
-      <img src="/public/icons/goodreads-icon.png" alt="Goodreads Icon">
-    </a>
-    <a href="https://github.com/abarrak" rel="nofollow" target="_blank">
-      <img src="/public/icons/github-icon.png" alt="Github Icon">
-    </a>
-  </div>
-
-  <div class="sidebar-item center">
-    <p>
-      abarrak.com (2016).
-    </p>
-  </div>
-</div>
+    <ul class="links">
+      <li><a href="/about">About</a></li>
+      <li><a href="/works">Works</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+	</div>
+</header>
 
 
-  <div class="wrap">
-    <div class="masthead">
-      <div class="container">
-        <h3 class="masthead-title">
-          <a href="/" title="Home">Abdullah Barrak's</a>
-          <small>Blog</small>
-        </h3>
-      </div>
-    </div>
+	<div class="page-content">
+		<div class="wrapper">
+			<header class="post-header">
+	<div>
+		<span>Posted on </span><span class="post-meta">August 30, 2016</span>
+	</div>
 
-    <div class="container content">
-      
+	<h1 class="post-title" itemprop="name headline">Optimize Image Files from Your Terminal</h1>
+</header>
 
-<div class="post">
-  <div class="post-heading">
-    <h1 class="post-title">Optimize Image Files from Your Terminal</h1>
-    
-      <span class="post-date">30 Aug 2016</span>
-    
-  </div>
-  <p><img src="/public/images/opt-img.jpg" class="post-image resize-50 center-image"></p>
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="entry-content" itemprop="articleBody">
+		<p><img src="/public/images/opt-img.jpg" class="post-image resize-md center-image"></p>
 
-<p>At many times, you’ll find yourself in need for rapid optimization to images at your hand. There are nice handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of them:</p>
+<p>In many times you may find yourself in need for rapidly optimzae a bunch of images in your hands. There are handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:</p>
 
-<h3 id="optipng-advanced-png-optimizerhttpoptipngsourceforgenet">
+<h3 id="1-optipng-advanced-png-optimizer">
 <a href="http://optipng.sourceforge.net/" rel="nofollow" target="_blank">1. OptiPNG: Advanced PNG Optimizer</a>:</h3>
 
 <p>Get it for Mac OS X:</p>
@@ -164,7 +89,7 @@
 <p>To optimize an image, run:</p>
 
 <div class="language-sh highlighter-rouge">
-<pre class="highlight"><code>optipng &lt;img-name.png&gt;
+<pre class="highlight"><code>optipng &lt;img-name&gt;.png
 </code></pre>
 </div>
 
@@ -177,7 +102,7 @@
 
 <!-- post-excerpt -->
 
-<h3 id="jpegoptimhttpsgithubcomtjkojpegoptim">
+<h3 id="2-jpegoptim">
 <a href="https://github.com/tjko/jpegoptim" rel="nofollow" target="_blank">2. jpegoptim</a>:</h3>
 
 <p>Install for Mac OS X:</p>
@@ -197,7 +122,7 @@
 <p>Run the next command to optimize an image, <code class="highlighter-rouge">-m</code> controls the image quality (0-100):</p>
 
 <div class="language-sh highlighter-rouge">
-<pre class="highlight"><code>jpegoptim -m70 &lt;img-name.png&gt;
+<pre class="highlight"><code>jpegoptim -m70 &lt;img-name&gt;
 </code></pre>
 </div>
 
@@ -208,7 +133,7 @@
 </code></pre>
 </div>
 
-<h3 id="gifsiclehttpswwwlcdforggifsicle">
+<h3 id="3-gifsicle">
 <a href="https://www.lcdf.org/gifsicle/" rel="nofollow" target="_blank">3. gifsicle</a>:</h3>
 
 <p>Install for Mac OS X:</p>
@@ -259,14 +184,14 @@ find . -iname <span class="s2">"*.gif"</span> -exec gifsicle --batch -V -O2 <spa
 
 <p>Happy mature optimization :) !</p>
 
-</div>
+	</div>
 
-
+	
 <h2 class="comments-label">Comments</h2>
 <div id="disqus_thread"></div>
 <script>
   var disqus_config = function () {
-      this.page.url = "http://abarrak.com/2016/08/30/optimize-images-from-your-terminal";
+      this.page.url = "http://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal";
       this.page.identifier = "optimize-image-files-from-your-terminal";
   };
 
@@ -278,32 +203,99 @@ find . -iname <span class="s2">"*.gif"</span> -exec gifsicle --batch -V -O2 <spa
   })();
 </script>
 <noscript>
-  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow" target="_blank">comments powered by Disqus.</a>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow" target="_blank">comments powered by Disqus.</a>
 </noscript>
 
 
+</article>
+
+<div id="post-nav">
+	<div class="next">
+		
+	</div>
+
+	<div class="previous">
+		
+		<a href="/2016/08/26/fix-sinatra-tilt-unicode">
+			<span>Previous entry</span>
+			Fixing Sinatra UTF-8 issue in Tilt rendered templates
+		</a>
+		
+	</div>
+</div>
+
+		</div>
+	</div>
+
+	<footer class="site-footer">
+	<div class="wrapper-fluid footet-wrapper">
+
+		<!-- <h2 class="footer-heading">Blog</h2> -->
+
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-1 footer-left">
+				<a href="">Abdullah Barrak's Blog</a>
+				<ul class="contact-list">
+					<li>A passionate blog about computer programming, reading, thinking, and the like.</li>
+					<li><b>(2016 - 2017)</b></li>
+				</ul>
+			</div>
+
+			<div class="footer-col footer-col-1 footer-right">
+				<p class="center">
+					<a href="/tags">Tag Cloud</a> |
+					subscribe <a href="/feed.xml">via RSS</a>
+				</p>
+
+				<div class="social-links">
+				
+					<a href="https://github.com/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/github-icon.png" alt="Github Icon">
+					</a>
+				
+
+				
+					<a href="https://goodreads.com/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/goodreads-icon.png" alt="Goodreads Icon">
+					</a>
+				
+
+				
+
+				
+					<a href="https://linkedin.com/in/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/linkedin-icon.png" alt="LinkedIn Icon">
+					</a>
+				
+
+					<a href="mailto:a@abarrak.com" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/mail-icon.png" alt="Email Icon">
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</footer>
 
 
-    </div>
-  </div>
+<script src="/public/all.min.js"></script>
 
-    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-  
-  <script src="/public/all.min.js"></script>
-  
 
-  
-  
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-83251901-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-83251901-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
 
 </body>
 </html>
