@@ -6,7 +6,7 @@
     - icon: ruby
       tooltip: "Programming Language: Ruby"
     - icon: materializecss
-      tooltip: "CSS Framwork: MaterializeCss"
+      tooltip: "CSS Framework: MaterializeCss"
     - icon: jquery
       tooltip: "jQuery"
     - icon: aws
