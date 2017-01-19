@@ -43,6 +43,12 @@
 					</a>
 				{% endif %}
 
+				{% if site.accounts.stackoverflow %}
+					<a href="{{ site.accounts.stackoverflow }}" rel="nofollow" target="_blank">
+						<img class="icon" src="{{ site.baseurl }}/public/icons/stackoverflow-icon.png" alt="stackoverflow Icon">
+					</a>
+				{% endif %}
+
 					<a href="mailto:{{ site.email }}" rel="nofollow" target="_blank">
 						<img class="icon" src="{{ site.baseurl }}/public/icons/mail-icon.png" alt="Email Icon">
 					</a>
