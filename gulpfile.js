@@ -10,7 +10,7 @@ gulp.task('default', ['styles', 'scripts'], function() {
 });
 
 gulp.task('styles', function() {
-   gulp.src(["public/css/*.css", "public/css/*.min.css"])
+   gulp.src(["../abarrak.github.io/public/css/*.css", "public/css/*.min.css"])
         .pipe(concatCss("public/css/all.css"))
         .pipe(rename('all.min.css'))
         .pipe(cleanCSS({ compatibility: 'ie8' }))
