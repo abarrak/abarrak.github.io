@@ -1,9 +1,5 @@
 # abarrak.com Site & Source Files
 
-## Theme
-[Lanyon](http://lanyon.getpoole.com/) with my customization in [mine.css](https://github.com/abarrak/abarrak.github.io/blob/src/public/css/mine.css).
-
-
 ## Source
 The main jekyll files reside in `src` branch. `master` holds the generated `/_site`.
 
@@ -17,9 +13,12 @@ It also runs [Gulp](https://github.com/abarrak/abarrak.github.io/blob/src/gulpfi
 
 ![Auto](https://github.com/abarrak/abarrak.github.io/blob/master/public/images/automation.png)
 
+## Theme
+A customized version of the beautiful [Libretto](https://github.com/ferrolho/jekyll-theme-libretto) theme.
+
 ## Plugins
 * [extlinks](https://github.com/abarrak/abarrak.github.io/blob/src/_plugins/extlinks.rb) takes care of transforming external links with proper target and rel attributes.
 
 * [DISQUS](https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions) For comments.
 
-* [jekyll-multiple-languages](https://github.com/Anthony-Gaudino/jekyll-multiple-languages-plugin) For i18n.
+* ~~[jekyll-multiple-languages](https://github.com/Anthony-Gaudino/jekyll-multiple-languages-plugin) For i18n.~~
