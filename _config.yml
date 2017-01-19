@@ -23,7 +23,7 @@ keywords: Software engineering, Web development, Computers, Programming, Reading
 # --------------
 destination: '../abarrak.github.io'
 Keep_files: ['.git', '.gitignore']
-exclude: ['gulpfile.js', 'node_modules', 'package.json', 'Gemfile', 'Gemfile.lock', 'README.md']
+exclude: ['gulpfile.js', 'node_modules', 'package.json', 'Gemfile', 'Gemfile.lock']
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
 # lsi: true   # when have fair content !
