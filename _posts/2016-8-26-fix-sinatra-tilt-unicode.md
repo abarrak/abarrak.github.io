@@ -5,7 +5,7 @@ tags: [Sinatra, Tilt, UTF-8, AWS, AWS EB, encoding compatibility error]
 
 <img src="{{ site.baseurl }}/public/images/sinatra-logo.png" class="post-image resize-sm center-image" />
 
-In the past week, I'v been deplying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.
+In the past week, I'v been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.
 
 ### **Symptoms**
 The error was appearing in one of the `.erb` view files that contains a `textarea` field. When it is populated with a non English text at the server, the application crashes with 500 code. Here's a fragment of the error stack trace:

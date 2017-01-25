@@ -5,7 +5,7 @@ tags: [Image Optimization, optipng, jpegoptim, gifsicle, ImageOptim, Image Proce
 
 <img src="{{ site.baseurl }}/public/images/opt-img.jpg" class="post-image resize-md center-image" />
 
-In many times you may find yourself in need for rapidly optimzae a bunch of images in your hands. There are handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:
+In many times you may find yourself in need for optimzing rapidly a bunch of images in your hands. There are handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:
 
 ### [1. OptiPNG: Advanced PNG Optimizer](http://optipng.sourceforge.net/):
 
@@ -34,7 +34,7 @@ find . -iname "*.png" -exec optipng -o7 {} \;
 ```
 
 <!-- post-excerpt -->
-  
+
 ### [2. jpegoptim](https://github.com/tjko/jpegoptim):
 
 Install for Mac OS X:
@@ -60,7 +60,7 @@ Or optimize all recursively:
 ```sh
 find . -iname "*.jpg" -exec jpegoptim -m80 -o -p {} \;
 ```
-  
+
 ### [3. gifsicle](https://www.lcdf.org/gifsicle/):
 
 Install for Mac OS X:
