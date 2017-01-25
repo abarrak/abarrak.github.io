@@ -5,15 +5,15 @@
     <description>A passionate blog about computer programming, reading, thinking, and the like.</description>
     <link>http://www.abarrak.com/</link>
     <atom:link href="http://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 20 Jan 2017 02:59:12 +0300</pubDate>
-    <lastBuildDate>Fri, 20 Jan 2017 02:59:12 +0300</lastBuildDate>
+    <pubDate>Wed, 25 Jan 2017 22:59:53 +0300</pubDate>
+    <lastBuildDate>Wed, 25 Jan 2017 22:59:53 +0300</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
         <title>Optimize Image Files from Your Terminal</title>
         <description>&lt;p&gt;&lt;img src=&quot;/public/images/opt-img.jpg&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;In many times you may find yourself in need for rapidly optimzae a bunch of images in your hands. There are handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:&lt;/p&gt;
+&lt;p&gt;In many times you may find yourself in need for optimzing rapidly a bunch of images in your hands. There are handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:&lt;/p&gt;
 
 &lt;h3 id=&quot;1-optipng-advanced-png-optimizer&quot;&gt;&lt;a href=&quot;http://optipng.sourceforge.net/&quot;&gt;1. OptiPNG: Advanced PNG Optimizer&lt;/a&gt;:&lt;/h3&gt;
 
@@ -138,7 +138,7 @@ find . -iname &lt;span class=&quot;s2&quot;&gt;&quot;*.gif&quot;&lt;/span&gt; -e
         <title>Fixing Sinatra UTF-8 issue in Tilt rendered templates</title>
         <description>&lt;p&gt;&lt;img src=&quot;/public/images/sinatra-logo.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;In the past week, I’v been deplying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.&lt;/p&gt;
+&lt;p&gt;In the past week, I’v been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.&lt;/p&gt;
 
 &lt;h3 id=&quot;symptoms&quot;&gt;&lt;strong&gt;Symptoms&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;The error was appearing in one of the &lt;code class=&quot;highlighter-rouge&quot;&gt;.erb&lt;/code&gt; view files that contains a &lt;code class=&quot;highlighter-rouge&quot;&gt;textarea&lt;/code&gt; field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:&lt;/p&gt;

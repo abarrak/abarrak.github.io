@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="In the past week, I’v been deplying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I publishe...">
+	<meta name="description" content="In the past week, I’v been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I publish...">
   <meta name="author" content="Abdullah Barrak">
 
   <meta name="keywords" content="Sinatra, Tilt, UTF-8, AWS, AWS EB, and encoding compatibility error">
@@ -67,7 +67,7 @@
 	<div class="entry-content" itemprop="articleBody">
 		<p><img src="/public/images/sinatra-logo.png" class="post-image resize-sm center-image"></p>
 
-<p>In the past week, I’v been deplying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.</p>
+<p>In the past week, I’v been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.</p>
 
 <h3 id="symptoms"><strong>Symptoms</strong></h3>
 <p>The error was appearing in one of the <code class="highlighter-rouge">.erb</code> view files that contains a <code class="highlighter-rouge">textarea</code> field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:</p>
