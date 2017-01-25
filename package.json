@@ -1,0 +1,27 @@
+{
+  "name": "abarrak-blog",
+  "version": "1.0.0",
+  "description": "abarrak.com files ..",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abarrak/abarrak.github.io.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abarrak/abarrak.github.io/issues"
+  },
+  "homepage": "https://github.com/abarrak/abarrak.github.io#readme",
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-clean-css": "latest",
+    "gulp-concat": "latest",
+    "gulp-concat-css": "latest",
+    "gulp-rename": "latest",
+    "gulp-uglify": "latest"
+  }
+}
