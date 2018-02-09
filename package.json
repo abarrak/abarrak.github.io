@@ -18,10 +18,10 @@
   "homepage": "https://github.com/abarrak/abarrak.github.io#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-clean-css": "latest",
+    "gulp-clean-css": "^3.9.2",
     "gulp-concat": "latest",
-    "gulp-concat-css": "latest",
+    "gulp-concat-css": "^3.0.0",
     "gulp-rename": "latest",
-    "gulp-uglify": "latest"
+    "gulp-uglify": "^3.0.0"
   }
 }
