@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/abarrak/abarrak.github.io#readme",
   "devDependencies": {
-    "gulp": "latest",
+    "gulp": "^3.9.1",
     "gulp-clean-css": "latest",
     "gulp-concat": "latest",
     "gulp-concat-css": "latest",
