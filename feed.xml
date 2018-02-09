@@ -5,8 +5,8 @@
     <description>A passionate blog about computer programming, reading, thinking, and the like.</description>
     <link>http://www.abarrak.com/</link>
     <atom:link href="http://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 10 Feb 2018 00:18:12 +0300</pubDate>
-    <lastBuildDate>Sat, 10 Feb 2018 00:18:12 +0300</lastBuildDate>
+    <pubDate>Sat, 10 Feb 2018 00:24:08 +0300</pubDate>
+    <lastBuildDate>Sat, 10 Feb 2018 00:24:08 +0300</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -206,11 +206,13 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
     
       <item>
         <title>Eloquent Ruby (Book Review)</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/eloquent-ruby-cover.jpg&quot; class=&quot;post-image resize-30&quot; alt=&quot;book-cover&quot; /&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/eloquent-ruby-cover.jpg&quot; class=&quot;post-image resize-sm center-image&quot; alt=&quot;book-cover&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Recently, I’ve read Oslen Russ’s &lt;a href=&quot;https://amzn.com/0321584104&quot; target=&quot;_blank&quot;&gt;“Eloquent Ruby”&lt;/a&gt; and it was delightful read overall.&lt;/p&gt;
 
 &lt;p&gt;The book has a considerable reputation among the community programmers. It’s divided into (4) units on Ruby foundations and the software process practices.&lt;/p&gt;
+
+&lt;!-- post-excerpt --&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -221,8 +223,9 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
 &lt;p&gt;In &lt;strong&gt;Part (3)&lt;/strong&gt;, we see the language metaprogramming capabilities and techniques. First chapter introduces the concept and some hook methods like &lt;code class=&quot;highlighter-rouge&quot;&gt;included&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;inherited&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;at_exit&lt;/code&gt; which keep the application life cycle more interactive and informed. Three consecutive chapters talk about the valuable dynamic programming function &lt;code class=&quot;highlighter-rouge&quot;&gt;method_missing&lt;/code&gt; and its use cases for &lt;strong&gt;better error handling&lt;/strong&gt;, &lt;strong&gt;delegation&lt;/strong&gt;, and &lt;strong&gt;building flexible APIs&lt;/strong&gt;. Last chapters discuss monkey patching and self modifying code. For me this was the most interesting part of the book.
 &lt;!-- post-excerpt --&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;br /&gt;
-Putting all covered topics in action is what &lt;strong&gt;Part (4)&lt;/strong&gt; concerned about. The subjects in this part are internal and external DSLs constructions, and publishing Gems (packages), along with a brief tour on some of Ruby’s popular Implementations.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Putting all covered topics in action is what &lt;strong&gt;Part (4)&lt;/strong&gt; concerned about. The subjects in this part are internal and external DSLs constructions, and publishing Gems (packages), along with a brief tour on some of Ruby’s popular Implementations.&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
