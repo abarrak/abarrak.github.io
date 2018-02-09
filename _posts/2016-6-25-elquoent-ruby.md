@@ -3,15 +3,18 @@ title: Eloquent Ruby (Book Review)
 tags: [Ruby, Book Review, Programming, Reading, Software Development]
 ---
 
-<img src="{{ site.baseurl }}/public/images/eloquent-ruby-cover.jpg" class="post-image resize-30" alt="book-cover" />
+<img src="{{ site.baseurl }}/public/images/eloquent-ruby-cover.jpg" class="post-image resize-sm center-image" alt="book-cover" />
 
 Recently, I've read Oslen Russ's <a href="https://amzn.com/0321584104" target="_blank">"Eloquent Ruby"</a> and it was delightful read overall.
 
 The book has a considerable reputation among the community programmers. It's divided into (4) units on Ruby foundations and the software process practices.
 
+<!-- post-excerpt -->
+
 <br>
 
 **Part (1)** and **(2)** form the first half of the book. They start with the language basics, types and features, in addition to the coverage of OOP methodologies in Ruby (classes, modules, blocks).
+
 
 <br>
 
@@ -19,6 +22,7 @@ In **Part (3)**, we see the language metaprogramming capabilities and techniques
 <!-- post-excerpt -->
 
 <br>
+
 Putting all covered topics in action is what **Part (4)** concerned about. The subjects in this part are internal and external DSLs constructions, and publishing Gems (packages), along with a brief tour on some of Ruby's popular Implementations.
 
 <br>
