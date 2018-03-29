@@ -22,3 +22,12 @@
     - icon: travis
       tooltip: "CI: Travis"
   
+- title: Except Nested
+  description: Hash utility extension for Rails Active Support.
+  link: https://github.com/abarrak/except_nested
+  repo_link: https://github.com/abarrak/except_nested
+  technology_stack:
+    - icon: ruby
+      tooltip: "Programming Language: Ruby"
+    - icon: travis
+      tooltip: "CI: Travis"
