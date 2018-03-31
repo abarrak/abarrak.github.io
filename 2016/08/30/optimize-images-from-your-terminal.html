@@ -74,31 +74,23 @@
 
 <p>Get it for Mac OS X:</p>
 
-<div class="language-sh highlighter-rouge">
-<pre class="highlight"><code>brew install optipng
-</code></pre>
-</div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>optipng
+</code></pre></div></div>
 
 <p>For Linux Ubuntu:</p>
 
-<div class="language-shell highlighter-rouge">
-<pre class="highlight"><code>apt-get install optipng
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>optipng
+</code></pre></div></div>
 
 <p>To optimize an image, run:</p>
 
-<div class="language-sh highlighter-rouge">
-<pre class="highlight"><code>optipng &lt;img-name&gt;.png
-</code></pre>
-</div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>optipng &lt;img-name&gt;.png
+</code></pre></div></div>
 
 <p>To wildcard all images recursively in the current directory and sub directories:</p>
 
-<div class="language-sh highlighter-rouge">
-<pre class="highlight"><code>find . -iname <span class="s2">"*.png"</span> -exec optipng -o7 <span class="o">{}</span> <span class="se">\;</span>
-</code></pre>
-</div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-iname</span> <span class="s2">"*.png"</span> <span class="nt">-exec</span> optipng <span class="nt">-o7</span> <span class="o">{}</span> <span class="se">\;</span>
+</code></pre></div></div>
 
 <!-- post-excerpt -->
 
@@ -107,59 +99,45 @@
 
 <p>Install for Mac OS X:</p>
 
-<div class="language-sh highlighter-rouge">
-<pre class="highlight"><code>brew install jpegoptim
-</code></pre>
-</div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>jpegoptim
+</code></pre></div></div>
 
 <p>Install for Linux Ubuntu:</p>
 
-<div class="language-sh highlighter-rouge">
-<pre class="highlight"><code>sudo apt-get install jpegoptim
-</code></pre>
-</div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>jpegoptim
+</code></pre></div></div>
 
 <p>Run the next command to optimize an image, <code class="highlighter-rouge">-m</code> controls the image quality (0-100):</p>
 
-<div class="language-sh highlighter-rouge">
-<pre class="highlight"><code>jpegoptim -m70 &lt;img-name&gt;
-</code></pre>
-</div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jpegoptim <span class="nt">-m70</span> &lt;img-name&gt;
+</code></pre></div></div>
 
 <p>Or optimize all recursively:</p>
 
-<div class="language-sh highlighter-rouge">
-<pre class="highlight"><code>find . -iname <span class="s2">"*.jpg"</span> -exec jpegoptim -m80 -o -p <span class="o">{}</span> <span class="se">\;</span>
-</code></pre>
-</div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-iname</span> <span class="s2">"*.jpg"</span> <span class="nt">-exec</span> jpegoptim <span class="nt">-m80</span> <span class="nt">-o</span> <span class="nt">-p</span> <span class="o">{}</span> <span class="se">\;</span>
+</code></pre></div></div>
 
 <h3 id="3-gifsicle">
 <a href="https://www.lcdf.org/gifsicle/" rel="nofollow" target="_blank">3. gifsicle</a>:</h3>
 
 <p>Install for Mac OS X:</p>
 
-<div class="language-sh highlighter-rouge">
-<pre class="highlight"><code>brew install gifsicle
-</code></pre>
-</div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>gifsicle
+</code></pre></div></div>
 
 <p>For Linux Ubuntu:</p>
 
-<div class="language-sh highlighter-rouge">
-<pre class="highlight"><code>sudo apt-get install gifsicle
-</code></pre>
-</div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install </span>gifsicle
+</code></pre></div></div>
 
 <p>The commands for single image, and a group of images respectively, are:</p>
 
-<div class="language-sh highlighter-rouge">
-<pre class="highlight"><code><span class="c"># for single image.</span>
-gifsicle --batch -V -O2 &lt;image-name&gt;.gif
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># for single image.</span>
+gifsicle <span class="nt">--batch</span> <span class="nt">-V</span> <span class="nt">-O2</span> &lt;image-name&gt;.gif
 
 <span class="c"># to start from cureent dir and go down.</span>
-find . -iname <span class="s2">"*.gif"</span> -exec gifsicle --batch -V -O2 <span class="o">{}</span> <span class="se">\;</span>
-</code></pre>
-</div>
+find <span class="nb">.</span> <span class="nt">-iname</span> <span class="s2">"*.gif"</span> <span class="nt">-exec</span> gifsicle <span class="nt">--batch</span> <span class="nt">-V</span> <span class="nt">-O2</span> <span class="o">{}</span> <span class="se">\;</span>
+</code></pre></div></div>
 
 <h3 id="aliases"><strong>Aliases</strong></h3>
 
@@ -167,12 +145,10 @@ find . -iname <span class="s2">"*.gif"</span> -exec gifsicle --batch -V -O2 <spa
 
 <p>Be warn that those (also the previously mentioned commands) all alter the original images.</p>
 
-<div class="language-sh highlighter-rouge">
-<pre class="highlight"><code><span class="nb">alias </span><span class="nv">compress_png</span><span class="o">=</span><span class="s2">"optipng -o7 *.png"</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">compress_png</span><span class="o">=</span><span class="s2">"optipng -o7 *.png"</span>
 <span class="nb">alias </span><span class="nv">compress_jpg</span><span class="o">=</span><span class="s2">"jpegoptim -m80 *.jpg"</span>
 <span class="nb">alias </span><span class="nv">compress_gif</span><span class="o">=</span><span class="s2">"gifsicle --batch -V -O2 *.gif"</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>You can tweak the optimization level and other options to suit your needs.</p>
 

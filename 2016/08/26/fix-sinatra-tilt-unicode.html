@@ -74,8 +74,7 @@
 
 <!-- post-excerpt -->
 
-<div class="language-sh highlighter-rouge">
-<pre class="highlight"><code>2016-08-26 19:15:53 - Encoding::CompatibilityError - incompatible character encodings: UTF-8 and US-ASCII:
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2016-08-26 19:15:53 - Encoding::CompatibilityError - incompatible character encodings: UTF-8 and US-ASCII:
         /var/app/current/views/review.erb:69:in <span class="sb">`</span>block <span class="k">in </span>singleton class<span class="s1">'
         /var/app/current/views/review.erb:-7:in `instance_eval'</span>
         /var/app/current/views/review.erb:-7:in <span class="sb">`</span>singleton class<span class="s1">'
@@ -86,8 +85,7 @@
         /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'</span>
         /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in <span class="sb">`</span>erb<span class="s1">'
         /var/app/current/helpers.rb:24:in `block (2 levels) in serve_page'</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Guided by the error message indication. I attempted to fix the issue by ensuring that all parts are encoded as UTF-8. I set <code class="highlighter-rouge">accept-charset</code> attribute for the form and texteara tag to <code class="highlighter-rouge">"UTF-8"</code>, forced source files to be UTF-8 by inserting <code class="highlighter-rouge"># 😁</code> comment, and checked the Sinatra routing is also set to have
 <code class="highlighter-rouge">headers 'Content-type' =&gt; 'text/html; charset=utf-8'</code>, But unfortunately none of that was solving the problem.</p>
 
@@ -100,20 +98,16 @@ Setting ruby’s external encoding plus the source files to <code class="highlig
 
 <p>If you’ve structured your application in the modular style, then set encoding early in the class.</p>
 
-<div class="language-rb highlighter-rouge">
-<pre class="highlight"><code><span class="k">class</span> <span class="nc">MyApplication</span> <span class="o">&lt;</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Application</span>
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyApplication</span> <span class="o">&lt;</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Application</span>
   <span class="c1"># set encoding.</span>
   <span class="no">Encoding</span><span class="p">.</span><span class="nf">default_external</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
 <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>In classic applications, this would suffice.</p>
 
-<div class="language-rb highlighter-rouge">
-<pre class="highlight"><code><span class="no">Encoding</span><span class="p">.</span><span class="nf">default_external</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
-</code></pre>
-</div>
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Encoding</span><span class="p">.</span><span class="nf">default_external</span> <span class="o">=</span> <span class="s2">"UTF-8"</span>
+</code></pre></div></div>
 
 <p>That’s it. Hope It helps someone else !</p>
 
