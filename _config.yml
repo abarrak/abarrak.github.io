@@ -27,8 +27,9 @@ Keep_files: ['.git', '.gitignore']
 exclude: ['gulpfile.js', 'node_modules', 'package.json', 'Gemfile', 'Gemfile.lock']
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
-# lsi: true   # when have fair content !
-gems:
+# when have fair content !
+# lsi: true   
+plugins:
   - jekyll-gist
   - jekyll-paginate
   - jekyll-sitemap
