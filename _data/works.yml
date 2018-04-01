@@ -22,9 +22,19 @@
     - icon: travis
       tooltip: "CI: Travis"
   
+- title: Network Client
+  description: A thin resilient JSON web client built around Ruby's Net::HTTP.
+  link: https://rubygems.org/gems/network-client
+  repo_link: https://github.com/abarrak/network-client
+  technology_stack:
+    - icon: ruby
+      tooltip: "Programming Language: Ruby"
+    - icon: travis
+      tooltip: "CI: Travis"
+
 - title: Except Nested
   description: Hash utility extension for Rails Active Support.
-  link: https://github.com/abarrak/except_nested
+  link: https://rubygems.org/gems/except_nested
   repo_link: https://github.com/abarrak/except_nested
   technology_stack:
     - icon: ruby
