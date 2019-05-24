@@ -1,26 +1,33 @@
-var gulp      = require('gulp');
-var concat    = require('gulp-concat');
-var uglify    = require('gulp-uglify');
-var cleanCSS  = require('gulp-clean-css');
+const { series, src, pipe, dest } = require('gulp');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var cleanCSS = require('gulp-clean-css');
 var concatCss = require('gulp-concat-css');
-var rename    = require('gulp-rename');
+var rename = require('gulp-rename');
 
-gulp.task('default', ['styles', 'scripts'], function() {
-    console.log("\n... Processing Assets Done ! ...\n");
-});
 
-gulp.task('styles', function() {
-   gulp.src(["../abarrak.github.io/public/css/*.css", "public/css/*.min.css"])
-        .pipe(concatCss("public/css/all.css"))
-        .pipe(rename('all.min.css'))
-        .pipe(cleanCSS({ compatibility: 'ie8' }))
-        .pipe(gulp.dest('public/css'));
-});
+function styles(_cb) {
+  src(["../abarrak.github.io/public/css/*.css", "public/css/*.min.css"])
+    .pipe(concatCss("public/css/all.css"))
+    .pipe(rename('all.min.css'))
+    .pipe(cleanCSS({ compatibility: 'ie8' }))
+    .pipe(dest('public/css'));
+  _cb();
+}
 
-gulp.task('scripts', function() {
-    return gulp.src(["public/js/blog.js"])
-        .pipe(concat('all.js'))
-        .pipe(rename('all.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest("public/js"));
-});
+function scripts(_cb) {
+  src(["public/js/blog.js"])
+    .pipe(concat('all.js'))
+    .pipe(rename('all.min.js'))
+    .pipe(uglify())
+    .pipe(dest("public/js"));
+  _cb();
+}
+
+function printSucces(_cb) {
+  console.log("\n... Processing Assets Done ! ...\n");
+  _cb();
+}
+
+exports.default = series(styles, scripts, printSucces);
+exports.build = exports.default;

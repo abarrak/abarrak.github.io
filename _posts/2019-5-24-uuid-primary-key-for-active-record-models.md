@@ -29,6 +29,8 @@ Here are the steps:
    end
    ```
 
+<!-- post-excerpt -->
+
 2. Enable the database support:
 
   - PostgresSQL:
@@ -44,8 +46,6 @@ Here are the steps:
      end
      ```
       For new Postgres versions ( >= 9.4), `pgcrypto` extension can be used alternatively.
-
-<!-- post-excerpt -->
   
   - SQLite:
 
