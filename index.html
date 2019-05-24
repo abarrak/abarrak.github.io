@@ -12,13 +12,13 @@
 	<meta name="theme-color" content="#943526">
 
 	
-	<meta property="og:image" content="http://www.abarrak.com/public/thumbnail-1.jpg">
+	<meta property="og:image" content="http://localhost:4000/public/thumbnail-1.jpg">
 	
 
 	
 	<meta property="og:title" content="Abdullah Barrak">
 	
-	<link rel="canonical" href="http://www.abarrak.com/">
+	<link rel="canonical" href="http://localhost:4000/">
 
 	<title>Abdullah Barrak</title>
 
@@ -31,11 +31,13 @@
 
   <!-- CSS -->
   
-  <link rel="stylesheet" href="/public/css/all.min.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/main.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/tooltipster-bundle.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/tooltipster-sideTip-shadow.min.css" type="text/css" media="all">
   
 
   <!-- RSS -->
-	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="http://www.abarrak.com/feed.xml">
+	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="http://localhost:4000/feed.xml">
 </head>
 
 <body>
@@ -57,6 +59,79 @@
 		<div class="wrapper">
 			<div class="home">
 	<ul class="post-list">
+		
+		<li>
+			<article>
+				<header class="post-header">
+					<div>
+						<span>Posted on </span><span class="post-meta">May 24, 2019</span>
+					</div>
+
+					<h2>
+						<a class="post-link" href="/2019/05/24/uuid-primary-key-for-active-record-models">Using UUIDs as Primary Key for Active Record Models</a>
+					</h2>
+				</header>
+
+				<div class="entry-content">
+					<p><img src="/public/images/uuids-db.png" class="post-image center-image"></p>
+
+<p>It’s advised that using universally unique identifiers (UUIDs) for exposed resource identifiers is <a href="https://github.com/eliotsykes/rails-security-checklist#ids" rel="nofollow" target="_blank">more secure</a>, and <a href="https://tomharrisonjr.com/uuid-or-guid-as-primary-keys-be-careful-7b2aa3dcb439" rel="nofollow" target="_blank">convenient for database distribution</a>.</p>
+
+<p>As expected, it’s relatively simple to configure Active Record to generate with <code class="highlighter-rouge">UUID</code> primary key based migrations.</p>
+
+<h2 id="setup">Setup</h2>
+
+<p>Here are the steps:</p>
+
+<ol>
+  <li>
+    <p>Setup the default generation inside <code class="highlighter-rouge">config/application.rb</code>:</p>
+
+    <div class="language-ruby highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c1"># config/application.rb</span>
+   
+<span class="k">module</span> <span class="nn">SampleApp</span>
+  <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
+    <span class="o">...</span>
+    <span class="c1"># Change the primary key default type to UUIDs.</span>
+    <span class="n">config</span><span class="p">.</span><span class="nf">generators</span> <span class="k">do</span> <span class="o">|</span><span class="n">g</span><span class="o">|</span>
+      <span class="n">g</span><span class="p">.</span><span class="nf">orm</span> <span class="ss">:active_record</span><span class="p">,</span> <span class="ss">primary_key_type: :uuid</span>
+    <span class="k">end</span>
+   <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Enable the database support:</p>
+  </li>
+</ol>
+
+<ul>
+  <li>
+    <p>PostgresSQL:</p>
+
+    <p>Enable  <code class="highlighter-rouge">uuid-ossp</code> extension for random <code class="highlighter-rouge">:uuid</code> generation at the DB level.</p>
+    <div class="language-ruby highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="c1"># db/migrations/xxxxx_enable_uuid_ossp_extension.rb.rb</span>
+     
+ <span class="k">class</span> <span class="nc">EnableUuidOsspExtension</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">5.2</span><span class="p">]</span>
+   <span class="k">def</span> <span class="nf">change</span>
+     <span class="n">enable_extension</span> <span class="s1">'uuid-ossp'</span> <span class="k">unless</span> <span class="n">extension_enabled?</span><span class="p">(</span><span class="s2">"uuid-ossp"</span><span class="p">)</span>
+   <span class="k">end</span>
+ <span class="k">end</span>
+</code></pre></div>    </div>
+    <p>For new Postgres versions ( &gt;= 9.4), <code class="highlighter-rouge">pgcrypto</code> extension can be used alternatively.</p>
+  </li>
+</ul>
+
+
+
+			    <div class="button-container">
+			      <a class="button" href="/2019/05/24/uuid-primary-key-for-active-record-models">Read More ..</a>
+			    </div>
+				</div>
+			</article>
+		</li>
 		
 		<li>
 			<article>
@@ -194,7 +269,7 @@
 				<a href="">Abdullah Barrak's Blog</a>
 				<ul class="contact-list">
 					<li>A passionate blog about computer programming, reading, thinking, and the like.</li>
-					<li><b>(2016 - 2018)</b></li>
+					<li><b>(2016 - 2019)</b></li>
 				</ul>
 			</div>
 
@@ -243,19 +318,9 @@
 </footer>
 
 
-<script src="/public/js/all.min.js"></script>
+<script src="/public/js/blog.js"></script>
 
 
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83251901-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-83251901-1');
-</script>
 
 
 

@@ -3,11 +3,153 @@
   <channel>
     <title>Abdullah Barrak</title>
     <description>A passionate blog about computer programming, reading, thinking, and the like.</description>
-    <link>http://www.abarrak.com/</link>
-    <atom:link href="http://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 01 Apr 2018 23:39:11 +0300</pubDate>
-    <lastBuildDate>Sun, 01 Apr 2018 23:39:11 +0300</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 25 May 2019 00:24:43 +0300</pubDate>
+    <lastBuildDate>Sat, 25 May 2019 00:24:43 +0300</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>Using UUIDs as Primary Key for Active Record Models</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/uuids-db.png&quot; class=&quot;post-image center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s advised that using universally unique identifiers (UUIDs) for exposed resource identifiers is &lt;a href=&quot;https://github.com/eliotsykes/rails-security-checklist#ids&quot;&gt;more secure&lt;/a&gt;, and &lt;a href=&quot;https://tomharrisonjr.com/uuid-or-guid-as-primary-keys-be-careful-7b2aa3dcb439&quot;&gt;convenient for database distribution&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;As expected, it’s relatively simple to configure Active Record to generate with &lt;code class=&quot;highlighter-rouge&quot;&gt;UUID&lt;/code&gt; primary key based migrations.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;Here are the steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Setup the default generation inside &lt;code class=&quot;highlighter-rouge&quot;&gt;config/application.rb&lt;/code&gt;:&lt;/p&gt;
+
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# config/application.rb&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;SampleApp&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Application&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Change the primary key default type to UUIDs.&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;generators&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;orm&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:active_record&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;primary_key_type: :uuid&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Enable the database support:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;PostgresSQL:&lt;/p&gt;
+
+    &lt;p&gt;Enable  &lt;code class=&quot;highlighter-rouge&quot;&gt;uuid-ossp&lt;/code&gt; extension for random &lt;code class=&quot;highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; generation at the DB level.&lt;/p&gt;
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c1&quot;&gt;# db/migrations/xxxxx_enable_uuid_ossp_extension.rb.rb&lt;/span&gt;
+     
+ &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EnableUuidOsspExtension&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;5.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;enable_extension&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'uuid-ossp'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extension_enabled?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;uuid-ossp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;For new Postgres versions ( &amp;gt;= 9.4), &lt;code class=&quot;highlighter-rouge&quot;&gt;pgcrypto&lt;/code&gt; extension can be used alternatively.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;SQLite:&lt;/p&gt;
+
+    &lt;p&gt;As &lt;code class=&quot;highlighter-rouge&quot;&gt;UUID&lt;/code&gt; is not naively available in SQLite.&lt;/p&gt;
+
+    &lt;p&gt;A workaround is to utilize generic &lt;code class=&quot;highlighter-rouge&quot;&gt;varchar&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;blob(16)&lt;/code&gt; columns instead. &lt;a href=&quot;https://stackoverflow.com/a/52032839&quot;&gt;Some people have reported&lt;/a&gt; they needed to load the adapter file in order for it to work.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;SQL Server:&lt;/p&gt;
+
+    &lt;p&gt;Has &lt;code class=&quot;highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; native support (through &lt;code class=&quot;highlighter-rouge&quot;&gt;uniqueidentifier&lt;/code&gt; column type) with the generator.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;
+Now newly generated tables they will contain &lt;code class=&quot;highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; as primary key.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# db/migrations/xxxxx_create_customers.rb&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CreateCustomers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;5.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:customers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;id: :uuid&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:full_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;null: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;index: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;index: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+
+     &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;uuid&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:ceeated_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;null: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;uuid&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:updated_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;null: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+
+     &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;timestamps&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;add_foreign_key&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:customers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;column: :ceeated_by&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;add_foreign_key&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:customers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;column: :updated_by&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Also, the snippet above shows &lt;code class=&quot;highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; type usage for other non-primary key columns too.&lt;/p&gt;
+
+&lt;p&gt;In case you don’t require &lt;code class=&quot;highlighter-rouge&quot;&gt;UUID&lt;/code&gt; key type, it’s possible to get the &lt;code class=&quot;highlighter-rouge&quot;&gt;integer&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;bigint&lt;/code&gt; types back again:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:cities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;id: :integer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:population&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;ordering-results&quot;&gt;Ordering Results&lt;/h2&gt;
+
+&lt;p&gt;A drawback of querying UUID-based tables is that ordering is not simply inferred as with the sequential keys. 
+We have to set it up using default ordering scope, easily:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   &lt;span class=&quot;c1&quot;&gt;# app/models/customer.rb&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Customer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationRecord&lt;/span&gt;
+     &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;default_scope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;created_at: :asc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ensure that indices on &lt;code class=&quot;highlighter-rouge&quot;&gt;created_at&lt;/code&gt; columns already added for boosted performance.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   &lt;span class=&quot;c1&quot;&gt;# db/migrations/xxxxx_add_created_at_indices.rb&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AddCreatedAtIndices&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;5.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;add_index&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:customers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:created_at&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;add_index&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:surveys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:created_at&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;add_index&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:additional_informations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:created_at&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Keep in mind the additional storage cost of &lt;code class=&quot;highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; keys compared to sequential ones, which requires balancing the trade-offs when designing your data models.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 24 May 2019 00:00:00 +0300</pubDate>
+        <link>http://localhost:4000/2019/05/24/uuid-primary-key-for-active-record-models</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/05/24/uuid-primary-key-for-active-record-models</guid>
+        
+        <category>Active Record</category>
+        
+        <category>UUID Primary Key</category>
+        
+        <category>Postgres</category>
+        
+        <category>Ruby</category>
+        
+        <category>Rails</category>
+        
+        
+      </item>
     
       <item>
         <title>Optimize Image Files from Your Terminal</title>
@@ -104,10 +246,10 @@ find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quo
 &lt;p&gt;Happy mature optimization :) !&lt;/p&gt;
 </description>
         <pubDate>Tue, 30 Aug 2016 00:00:00 +0300</pubDate>
-        <link>http://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</link>
-        <guid isPermaLink="true">http://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</guid>
+        <link>http://localhost:4000/2016/08/30/optimize-images-from-your-terminal</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/08/30/optimize-images-from-your-terminal</guid>
         
-        <category>Image Optimization</category>
+        <category>Image Processing</category>
         
         <category>optipng</category>
         
@@ -116,8 +258,6 @@ find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quo
         <category>gifsicle</category>
         
         <category>ImageOptim</category>
-        
-        <category>Image Processing</category>
         
         
       </item>
@@ -171,8 +311,8 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
 &lt;p&gt;That’s it. Hope It helps someone else !&lt;/p&gt;
 </description>
         <pubDate>Fri, 26 Aug 2016 00:00:00 +0300</pubDate>
-        <link>http://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</link>
-        <guid isPermaLink="true">http://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</guid>
+        <link>http://localhost:4000/2016/08/26/fix-sinatra-tilt-unicode</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/08/26/fix-sinatra-tilt-unicode</guid>
         
         <category>Sinatra</category>
         
@@ -181,8 +321,6 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
         <category>UTF-8</category>
         
         <category>AWS</category>
-        
-        <category>AWS EB</category>
         
         <category>encoding compatibility error</category>
         
@@ -224,8 +362,8 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
 &lt;p&gt;If you’re looking for eloquently written material that explores and explains important aspects and background of the Ruby programming language without going into lengthy documentation details, then go with Eloquent Ruby !&lt;/p&gt;
 </description>
         <pubDate>Sat, 25 Jun 2016 00:00:00 +0300</pubDate>
-        <link>http://www.abarrak.com/2016/06/25/elquoent-ruby</link>
-        <guid isPermaLink="true">http://www.abarrak.com/2016/06/25/elquoent-ruby</guid>
+        <link>http://localhost:4000/2016/06/25/elquoent-ruby</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/06/25/elquoent-ruby</guid>
         
         <category>Ruby</category>
         
