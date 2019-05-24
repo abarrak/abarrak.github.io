@@ -1,6 +1,6 @@
 ---
 title: Optimize Image Files from Your Terminal
-tags: [Image Optimization, optipng, jpegoptim, gifsicle, ImageOptim, Image Processing]
+tags: [ Image Processing, optipng, jpegoptim, gifsicle, ImageOptim]
 ---
 
 <img src="{{ site.baseurl }}/public/images/opt-img.jpg" class="post-image resize-md center-image" />

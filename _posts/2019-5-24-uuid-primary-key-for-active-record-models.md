@@ -1,6 +1,6 @@
 ---
 title: Using UUIDs as Primary Key for Active Record Models
-tags: [Active Record, UUID, UUID Primary Key, Postgres, SQLite, Ruby on Rails]
+tags: [Active Record, UUID Primary Key, Postgres, Ruby, Rails]
 ---
 
 <img src="{{ site.baseurl }}/public/images/uuids-db.png" class="post-image center-image" />

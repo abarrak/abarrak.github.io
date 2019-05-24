@@ -1,6 +1,6 @@
 {
   "name": "abarrak-blog",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "abarrak.com files ..",
   "main": "index.js",
   "scripts": {
@@ -17,14 +17,14 @@
   },
   "homepage": "https://github.com/abarrak/abarrak.github.io#readme",
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.9.3",
-    "gulp-concat": "latest",
-    "gulp-concat-css": "^3.1.0",
-    "gulp-rename": "latest",
-    "gulp-uglify": "^3.0.0"
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "4.2.0",
+    "gulp-concat": "2.6.1",
+    "gulp-concat-css": "3.1.0",
+    "gulp-rename": "1.4.0",
+    "gulp-uglify": "3.0.2"
   },
   "dependencies": {
-    "npm": "^5.8.0"
+    "npm": "^6.9.0"
   }
 }

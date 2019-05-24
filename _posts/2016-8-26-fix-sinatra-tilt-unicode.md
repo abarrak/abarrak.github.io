@@ -1,6 +1,6 @@
 ---
 title: Fixing Sinatra UTF-8 issue in Tilt rendered templates
-tags: [Sinatra, Tilt, UTF-8, AWS, AWS EB, encoding compatibility error]
+tags: [Sinatra, Tilt, UTF-8, AWS, encoding compatibility error]
 ---
 
 <img src="{{ site.baseurl }}/public/images/sinatra-logo.png" class="post-image resize-sm center-image" />
