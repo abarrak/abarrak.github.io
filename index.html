@@ -12,13 +12,13 @@
 	<meta name="theme-color" content="#943526">
 
 	
-	<meta property="og:image" content="http://localhost:4000/public/thumbnail-1.jpg">
+	<meta property="og:image" content="http://www.abarrak.com/public/thumbnail-1.jpg">
 	
 
 	
 	<meta property="og:title" content="Abdullah Barrak">
 	
-	<link rel="canonical" href="http://localhost:4000/">
+	<link rel="canonical" href="http://www.abarrak.com/">
 
 	<title>Abdullah Barrak</title>
 
@@ -31,13 +31,11 @@
 
   <!-- CSS -->
   
-  <link rel="stylesheet" href="/public/css/main.css" type="text/css" media="all">
-  <link rel="stylesheet" href="/public/css/tooltipster-bundle.css" type="text/css" media="all">
-  <link rel="stylesheet" href="/public/css/tooltipster-sideTip-shadow.min.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/all.min.css" type="text/css" media="all">
   
 
   <!-- RSS -->
-	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="http://localhost:4000/feed.xml">
+	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="http://www.abarrak.com/feed.xml">
 </head>
 
 <body>
@@ -101,28 +99,7 @@
 <span class="k">end</span>
 </code></pre></div>    </div>
   </li>
-  <li>
-    <p>Enable the database support:</p>
-  </li>
 </ol>
-
-<ul>
-  <li>
-    <p>PostgresSQL:</p>
-
-    <p>Enable  <code class="highlighter-rouge">uuid-ossp</code> extension for random <code class="highlighter-rouge">:uuid</code> generation at the DB level.</p>
-    <div class="language-ruby highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> <span class="c1"># db/migrations/xxxxx_enable_uuid_ossp_extension.rb.rb</span>
-     
- <span class="k">class</span> <span class="nc">EnableUuidOsspExtension</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">5.2</span><span class="p">]</span>
-   <span class="k">def</span> <span class="nf">change</span>
-     <span class="n">enable_extension</span> <span class="s1">'uuid-ossp'</span> <span class="k">unless</span> <span class="n">extension_enabled?</span><span class="p">(</span><span class="s2">"uuid-ossp"</span><span class="p">)</span>
-   <span class="k">end</span>
- <span class="k">end</span>
-</code></pre></div>    </div>
-    <p>For new Postgres versions ( &gt;= 9.4), <code class="highlighter-rouge">pgcrypto</code> extension can be used alternatively.</p>
-  </li>
-</ul>
 
 
 
@@ -318,9 +295,19 @@
 </footer>
 
 
-<script src="/public/js/blog.js"></script>
+<script src="/public/js/all.min.js"></script>
 
 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83251901-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-83251901-1');
+</script>
 
 
 

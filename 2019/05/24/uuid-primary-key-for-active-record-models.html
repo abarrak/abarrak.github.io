@@ -12,13 +12,13 @@
 	<meta name="theme-color" content="#943526">
 
 	
-	<meta property="og:image" content="http://localhost:4000/public/thumbnail-1.jpg">
+	<meta property="og:image" content="http://www.abarrak.com/public/thumbnail-1.jpg">
 	
 
 	
 	<meta property="og:title" content="Abdullah Barrak • Using UUIDs as Primary Key for Active Record Models">
 	
-	<link rel="canonical" href="http://localhost:4000/2019/05/24/uuid-primary-key-for-active-record-models">
+	<link rel="canonical" href="http://www.abarrak.com/2019/05/24/uuid-primary-key-for-active-record-models">
 
 	<title>Using UUIDs as Primary Key for Active Record Models • Abdullah Barrak's Blog</title>
 
@@ -31,13 +31,11 @@
 
   <!-- CSS -->
   
-  <link rel="stylesheet" href="/public/css/main.css" type="text/css" media="all">
-  <link rel="stylesheet" href="/public/css/tooltipster-bundle.css" type="text/css" media="all">
-  <link rel="stylesheet" href="/public/css/tooltipster-sideTip-shadow.min.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/all.min.css" type="text/css" media="all">
   
 
   <!-- RSS -->
-	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="http://localhost:4000/feed.xml">
+	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="http://www.abarrak.com/feed.xml">
 </head>
 
 <body>
@@ -95,9 +93,12 @@
 <span class="k">end</span>
 </code></pre></div>    </div>
   </li>
-  <li>
-    <p>Enable the database support:</p>
-  </li>
+</ol>
+
+<!-- post-excerpt -->
+
+<ol>
+  <li>Enable the database support:</li>
 </ol>
 
 <ul>
@@ -116,11 +117,6 @@
 </code></pre></div>    </div>
     <p>For new Postgres versions ( &gt;= 9.4), <code class="highlighter-rouge">pgcrypto</code> extension can be used alternatively.</p>
   </li>
-</ul>
-
-<!-- post-excerpt -->
-
-<ul>
   <li>
     <p>SQLite:</p>
 
@@ -195,6 +191,25 @@ We have to set it up using default ordering scope, easily:</p>
 	</div>
 
 	
+<h2 class="comments-label">Comments</h2>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+      this.page.url = "http://www.abarrak.com/2019/05/24/uuid-primary-key-for-active-record-models";
+      this.page.identifier = "using-uuids-as-primary-key-for-active-record-models";
+  };
+
+  (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//abarrak.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
 
 </article>
 
@@ -275,9 +290,19 @@ We have to set it up using default ordering scope, easily:</p>
 </footer>
 
 
-<script src="/public/js/blog.js"></script>
+<script src="/public/js/all.min.js"></script>
 
 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83251901-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-83251901-1');
+</script>
 
 
 

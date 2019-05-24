@@ -3,10 +3,10 @@
   <channel>
     <title>Abdullah Barrak</title>
     <description>A passionate blog about computer programming, reading, thinking, and the like.</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 25 May 2019 00:24:43 +0300</pubDate>
-    <lastBuildDate>Sat, 25 May 2019 00:24:43 +0300</lastBuildDate>
+    <link>http://www.abarrak.com/</link>
+    <atom:link href="http://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 25 May 2019 01:03:14 +0300</pubDate>
+    <lastBuildDate>Sat, 25 May 2019 01:03:14 +0300</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
     
       <item>
@@ -38,9 +38,12 @@
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Enable the database support:&lt;/p&gt;
-  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Enable the database support:&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;ul&gt;
@@ -58,11 +61,6 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;For new Postgres versions ( &amp;gt;= 9.4), &lt;code class=&quot;highlighter-rouge&quot;&gt;pgcrypto&lt;/code&gt; extension can be used alternatively.&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!-- post-excerpt --&gt;
-
-&lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;SQLite:&lt;/p&gt;
 
@@ -135,8 +133,8 @@ We have to set it up using default ordering scope, easily:&lt;/p&gt;
 &lt;p&gt;Keep in mind the additional storage cost of &lt;code class=&quot;highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; keys compared to sequential ones, which requires balancing the trade-offs when designing your data models.&lt;/p&gt;
 </description>
         <pubDate>Fri, 24 May 2019 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2019/05/24/uuid-primary-key-for-active-record-models</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/05/24/uuid-primary-key-for-active-record-models</guid>
+        <link>http://www.abarrak.com/2019/05/24/uuid-primary-key-for-active-record-models</link>
+        <guid isPermaLink="true">http://www.abarrak.com/2019/05/24/uuid-primary-key-for-active-record-models</guid>
         
         <category>Active Record</category>
         
@@ -246,8 +244,8 @@ find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quo
 &lt;p&gt;Happy mature optimization :) !&lt;/p&gt;
 </description>
         <pubDate>Tue, 30 Aug 2016 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2016/08/30/optimize-images-from-your-terminal</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/08/30/optimize-images-from-your-terminal</guid>
+        <link>http://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</link>
+        <guid isPermaLink="true">http://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</guid>
         
         <category>Image Processing</category>
         
@@ -311,8 +309,8 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
 &lt;p&gt;That’s it. Hope It helps someone else !&lt;/p&gt;
 </description>
         <pubDate>Fri, 26 Aug 2016 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2016/08/26/fix-sinatra-tilt-unicode</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/08/26/fix-sinatra-tilt-unicode</guid>
+        <link>http://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</link>
+        <guid isPermaLink="true">http://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</guid>
         
         <category>Sinatra</category>
         
@@ -362,8 +360,8 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
 &lt;p&gt;If you’re looking for eloquently written material that explores and explains important aspects and background of the Ruby programming language without going into lengthy documentation details, then go with Eloquent Ruby !&lt;/p&gt;
 </description>
         <pubDate>Sat, 25 Jun 2016 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2016/06/25/elquoent-ruby</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/06/25/elquoent-ruby</guid>
+        <link>http://www.abarrak.com/2016/06/25/elquoent-ruby</link>
+        <guid isPermaLink="true">http://www.abarrak.com/2016/06/25/elquoent-ruby</guid>
         
         <category>Ruby</category>
         

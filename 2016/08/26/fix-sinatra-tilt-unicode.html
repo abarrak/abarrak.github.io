@@ -12,13 +12,13 @@
 	<meta name="theme-color" content="#943526">
 
 	
-	<meta property="og:image" content="http://localhost:4000/public/thumbnail-1.jpg">
+	<meta property="og:image" content="http://www.abarrak.com/public/thumbnail-1.jpg">
 	
 
 	
 	<meta property="og:title" content="Abdullah Barrak • Fixing Sinatra UTF-8 issue in Tilt rendered templates">
 	
-	<link rel="canonical" href="http://localhost:4000/2016/08/26/fix-sinatra-tilt-unicode">
+	<link rel="canonical" href="http://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode">
 
 	<title>Fixing Sinatra UTF-8 issue in Tilt rendered templates • Abdullah Barrak's Blog</title>
 
@@ -31,13 +31,11 @@
 
   <!-- CSS -->
   
-  <link rel="stylesheet" href="/public/css/main.css" type="text/css" media="all">
-  <link rel="stylesheet" href="/public/css/tooltipster-bundle.css" type="text/css" media="all">
-  <link rel="stylesheet" href="/public/css/tooltipster-sideTip-shadow.min.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/all.min.css" type="text/css" media="all">
   
 
   <!-- RSS -->
-	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="http://localhost:4000/feed.xml">
+	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="http://www.abarrak.com/feed.xml">
 </head>
 
 <body>
@@ -116,6 +114,25 @@ Setting ruby’s external encoding plus the source files to <code class="highlig
 	</div>
 
 	
+<h2 class="comments-label">Comments</h2>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+      this.page.url = "http://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode";
+      this.page.identifier = "fixing-sinatra-utf-8-issue-in-tilt-rendered-templates";
+  };
+
+  (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//abarrak.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
 
 </article>
 
@@ -201,9 +218,19 @@ Setting ruby’s external encoding plus the source files to <code class="highlig
 </footer>
 
 
-<script src="/public/js/blog.js"></script>
+<script src="/public/js/all.min.js"></script>
 
 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83251901-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-83251901-1');
+</script>
 
 
 
