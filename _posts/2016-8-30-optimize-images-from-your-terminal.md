@@ -27,13 +27,13 @@ To optimize an image, run:
 optipng <img-name>.png
 ```
 
+<!-- post-excerpt -->
+
 To wildcard all images recursively in the current directory and sub directories:
 
 ```sh
 find . -iname "*.png" -exec optipng -o7 {} \;
 ```
-
-<!-- post-excerpt -->
 
 ### [2. jpegoptim](https://github.com/tjko/jpegoptim):
 

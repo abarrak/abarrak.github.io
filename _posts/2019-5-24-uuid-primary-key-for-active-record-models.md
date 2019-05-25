@@ -28,7 +28,6 @@ Here are the steps:
       end
    end
    ```
-
 <!-- post-excerpt -->
 
 2. Enable the database support:
@@ -62,6 +61,7 @@ Now newly generated tables they will contain `:uuid` as primary key.
 
 ```ruby
 # db/migrations/xxxxx_create_customers.rb
+
 class CreateCustomers < ActiveRecord::Migration[5.2]
  def change
    create_table :customers, id: :uuid do |t|
@@ -79,7 +79,7 @@ class CreateCustomers < ActiveRecord::Migration[5.2]
 end
  ```
 
-Also, the snippet above shows `:uuid` type usage for other non-primary key columns too.
+The snippet above shows `:uuid` type usage for other non-primary key columns too.
 
 In case you don't require `UUID` key type, it's possible to get the `integer` or `bigint` types back again:
 
@@ -95,25 +95,27 @@ end
 A drawback of querying UUID-based tables is that ordering is not simply inferred as with the sequential keys. 
 We have to set it up using default ordering scope, easily:
 
-   ```ruby
-   # app/models/customer.rb
-   class Customer < ApplicationRecord
-     ...
-     default_scope -> { order(created_at: :asc) }
-   end
-   ```
+```ruby
+# app/models/customer.rb
 
-   Ensure that indices on `created_at` columns already added for boosted performance.
+class Customer < ApplicationRecord
+ ...
+ default_scope -> { order(created_at: :asc) }
+end
+```
 
-   ```ruby
-   # db/migrations/xxxxx_add_created_at_indices.rb
-   class AddCreatedAtIndices < ActiveRecord::Migration[5.2]
-     def change
-       add_index :customers, :created_at
-       add_index :surveys, :created_at
-       add_index :additional_informations, :created_at
-     end
-   end
-   ```
+Ensure that indices on `created_at` columns already added for boosted performance.
+
+```ruby
+# db/migrations/xxxxx_add_created_at_indices.rb
+
+class AddCreatedAtIndices < ActiveRecord::Migration[5.2]
+ def change
+   add_index :customers, :created_at
+   add_index :surveys, :created_at
+   add_index :additional_informations, :created_at
+ end
+end
+```
 
 Keep in mind the additional storage cost of `:uuid` keys compared to sequential ones, which requires balancing the trade-offs when designing your data models.
