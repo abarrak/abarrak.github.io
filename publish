@@ -16,7 +16,7 @@ printf ".....................................\n\n"
 gulp
 export JEKYLL_ENV=production
 jekyll build
-git co -- .
+git clean -fd
 cd ../abarrak.github.io
 git add .
 git commit -m "Auto Update at: `date`"
