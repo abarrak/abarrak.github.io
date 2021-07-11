@@ -80,6 +80,21 @@ pre code {
   -webkit-filter: drop-shadow(3px 5px 3px darkgray);
 }
 
+.profile-image {
+  float: right;
+  position: relative;
+  margin-top: -1.5rem;
+  margin-right: -1rem;
+  display: inline;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
+  filter: drop-shadow(3px 4px 3px darkgray);
+  -webkit-filter: drop-shadow(3px 4px 3px darkgray);
+}
+
 .center-image {
   margin: 0 auto;
   padding-bottom: 0.5rem;
