@@ -13,7 +13,8 @@ git push origin src
 printf "\n..... [2/2] Updating Site Files .....\n"
 printf ".....................................\n\n"
 gulp
-jekyll build JEKYLL_ENV=production
+export JEKYLL_ENV=production
+jekyll build
 cd ../abarrak.github.io
 git add .
 git commit -m "Auto Update at: `date`"
