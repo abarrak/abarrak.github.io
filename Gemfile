@@ -1,8 +1,8 @@
 source "https://rubygems.org"
-ruby "2.4.1"
+ruby "2.5.5"
 
-gem "jekyll", "3.7.3"
-gem 'nokogiri'
+gem "jekyll", "4.2"
+gem "nokogiri"
 
 group :jekyll_plugins do
    gem "jekyll-feed"

@@ -41,3 +41,13 @@
       tooltip: "Programming Language: Ruby"
     - icon: travis
       tooltip: "CI: Travis"
+
+- title: Values At Nested
+  description: Hash utility extension for Rails Active Support.
+  link: https://rubygems.org/gems/values_at_nested
+  repo_link: https://github.com/abarrak/values_at_nested
+  technology_stack:
+    - icon: ruby
+      tooltip: "Programming Language: Ruby"
+    - icon: travis
+      tooltip: "CI: Travis"

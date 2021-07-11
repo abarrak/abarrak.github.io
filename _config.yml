@@ -1,7 +1,7 @@
 # About/Contact
 # -------------
 author: Abdullah Barrak
-email: a@abarrak.com
+email: abdullah@abarrak.com
 accounts:
   github: https://github.com/abarrak
   linkedin : https://linkedin.com/in/abarrak
@@ -13,11 +13,11 @@ accounts:
 # Site Settings
 # -------------
 baseurl: ""
-url: http://www.abarrak.com
+url: https://www.abarrak.com
 title: Abdullah Barrak
 subtitle: Abdullah Barrak's Blog
 description: A passionate blog about computer programming, reading, thinking, and the like.
-keywords: Software engineering, Web development, Computers, Programming, Reading
+keywords: Software engineering, Web development, Computers, Programming, Reading, Ruby on Rails
  
 
 # Build Settings
