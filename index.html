@@ -8,17 +8,16 @@
 	<meta name="description" content="A passionate blog about computer programming, reading, thinking, and the like.">
   <meta name="author" content="Abdullah Barrak">
 
-  <meta name="keywords" content="Software engineering, Web development, Computers, Programming, Reading">
+  <meta name="keywords" content="Software engineering, Web development, Computers, Programming, Reading, Ruby on Rails">
 	<meta name="theme-color" content="#943526">
 
 	
-	<meta property="og:image" content="http://www.abarrak.com/public/thumbnail-1.jpg">
+	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
 	
-
 	
 	<meta property="og:title" content="Abdullah Barrak">
 	
-	<link rel="canonical" href="http://www.abarrak.com/">
+	<link rel="canonical" href="https://www.abarrak.com/">
 
 	<title>Abdullah Barrak</title>
 
@@ -35,7 +34,7 @@
   
 
   <!-- RSS -->
-	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="http://www.abarrak.com/feed.xml">
+	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="https://www.abarrak.com/feed.xml">
 </head>
 
 <body>
@@ -75,7 +74,7 @@
 
 <p>It’s advised that using universally unique identifiers (UUIDs) for exposed resource identifiers is <a href="https://github.com/eliotsykes/rails-security-checklist#ids" rel="nofollow" target="_blank">more secure</a>, and <a href="https://tomharrisonjr.com/uuid-or-guid-as-primary-keys-be-careful-7b2aa3dcb439" rel="nofollow" target="_blank">convenient for database distribution</a>.</p>
 
-<p>As expected, it’s relatively simple to configure Active Record to generate with <code class="highlighter-rouge">UUID</code> primary key based migrations.</p>
+<p>As expected, it’s relatively simple to configure Active Record to generate with <code class="language-plaintext highlighter-rouge">UUID</code> primary key based migrations.</p>
 
 <h2 id="setup">Setup</h2>
 
@@ -83,7 +82,7 @@
 
 <ol>
   <li>
-    <p>Setup the default generation inside <code class="highlighter-rouge">config/application.rb</code>:</p>
+    <p>Setup the default generation inside <code class="language-plaintext highlighter-rouge">config/application.rb</code>:</p>
 
     <div class="language-ruby highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code><span class="c1"># config/application.rb</span>
@@ -100,7 +99,6 @@
 </code></pre></div>    </div>
   </li>
 </ol>
-
 
 
 			    <div class="button-container">
@@ -172,7 +170,7 @@
 <p>In the past week, I’v been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.</p>
 
 <h3 id="symptoms"><strong>Symptoms</strong></h3>
-<p>The error was appearing in one of the <code class="highlighter-rouge">.erb</code> view files that contains a <code class="highlighter-rouge">textarea</code> field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:</p>
+<p>The error was appearing in one of the <code class="language-plaintext highlighter-rouge">.erb</code> view files that contains a <code class="language-plaintext highlighter-rouge">textarea</code> field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:</p>
 
 
 
@@ -241,7 +239,7 @@
 				<a href="">Abdullah Barrak's Blog</a>
 				<ul class="contact-list">
 					<li>A passionate blog about computer programming, reading, thinking, and the like.</li>
-					<li><b>(2016 - 2019)</b></li>
+					<li><b>(2016 - 2021)</b></li>
 				</ul>
 			</div>
 
@@ -278,7 +276,7 @@
 					</a>
 				
 
-					<a href="mailto:a@abarrak.com" rel="nofollow" target="_blank">
+					<a href="mailto:abdullah@abarrak.com" rel="nofollow" target="_blank">
 						<img class="icon" src="/public/icons/mail-icon.png" alt="Email Icon">
 					</a>
 				</div>

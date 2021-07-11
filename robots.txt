@@ -1,1 +1,1 @@
-Sitemap: http://www.abarrak.com/sitemap.xml
+Sitemap: https://www.abarrak.com/sitemap.xml

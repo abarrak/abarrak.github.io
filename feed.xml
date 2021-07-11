@@ -3,11 +3,11 @@
   <channel>
     <title>Abdullah Barrak</title>
     <description>A passionate blog about computer programming, reading, thinking, and the like.</description>
-    <link>http://www.abarrak.com/</link>
-    <atom:link href="http://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 25 May 2019 03:11:48 +0300</pubDate>
-    <lastBuildDate>Sat, 25 May 2019 03:11:48 +0300</lastBuildDate>
-    <generator>Jekyll v3.7.3</generator>
+    <link>https://www.abarrak.com/</link>
+    <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 11 Jul 2021 18:16:26 +0300</pubDate>
+    <lastBuildDate>Sun, 11 Jul 2021 18:16:26 +0300</lastBuildDate>
+    <generator>Jekyll v4.2.0</generator>
     
       <item>
         <title>Using UUIDs as Primary Key for Active Record Models</title>
@@ -15,7 +15,7 @@
 
 &lt;p&gt;It’s advised that using universally unique identifiers (UUIDs) for exposed resource identifiers is &lt;a href=&quot;https://github.com/eliotsykes/rails-security-checklist#ids&quot;&gt;more secure&lt;/a&gt;, and &lt;a href=&quot;https://tomharrisonjr.com/uuid-or-guid-as-primary-keys-be-careful-7b2aa3dcb439&quot;&gt;convenient for database distribution&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;As expected, it’s relatively simple to configure Active Record to generate with &lt;code class=&quot;highlighter-rouge&quot;&gt;UUID&lt;/code&gt; primary key based migrations.&lt;/p&gt;
+&lt;p&gt;As expected, it’s relatively simple to configure Active Record to generate with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UUID&lt;/code&gt; primary key based migrations.&lt;/p&gt;
 
 &lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
 
@@ -23,7 +23,7 @@
 
 &lt;ol&gt;
   &lt;li&gt;
-    &lt;p&gt;Setup the default generation inside &lt;code class=&quot;highlighter-rouge&quot;&gt;config/application.rb&lt;/code&gt;:&lt;/p&gt;
+    &lt;p&gt;Setup the default generation inside &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config/application.rb&lt;/code&gt;:&lt;/p&gt;
 
     &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# config/application.rb&lt;/span&gt;
    
@@ -48,7 +48,7 @@
   &lt;li&gt;
     &lt;p&gt;PostgresSQL:&lt;/p&gt;
 
-    &lt;p&gt;Enable  &lt;code class=&quot;highlighter-rouge&quot;&gt;uuid-ossp&lt;/code&gt; extension for random &lt;code class=&quot;highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; generation at the DB level.&lt;/p&gt;
+    &lt;p&gt;Enable  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uuid-ossp&lt;/code&gt; extension for random &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; generation at the DB level.&lt;/p&gt;
     &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c1&quot;&gt;# db/migrations/xxxxx_enable_uuid_ossp_extension.rb.rb&lt;/span&gt;
      
  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EnableUuidOsspExtension&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;5.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
@@ -57,24 +57,24 @@
    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;For new Postgres versions ( &amp;gt;= 9.4), &lt;code class=&quot;highlighter-rouge&quot;&gt;pgcrypto&lt;/code&gt; extension can be used alternatively.&lt;/p&gt;
+    &lt;p&gt;For new Postgres versions ( &amp;gt;= 9.4), &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pgcrypto&lt;/code&gt; extension can be used alternatively.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;SQLite:&lt;/p&gt;
 
-    &lt;p&gt;As &lt;code class=&quot;highlighter-rouge&quot;&gt;UUID&lt;/code&gt; is not naively available in SQLite.&lt;/p&gt;
+    &lt;p&gt;As &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UUID&lt;/code&gt; is not naively available in SQLite.&lt;/p&gt;
 
-    &lt;p&gt;A workaround is to utilize generic &lt;code class=&quot;highlighter-rouge&quot;&gt;varchar&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;blob(16)&lt;/code&gt; columns instead. &lt;a href=&quot;https://stackoverflow.com/a/52032839&quot;&gt;Some people have reported&lt;/a&gt; they needed to load the adapter file in order for it to work.&lt;/p&gt;
+    &lt;p&gt;A workaround is to utilize generic &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;varchar&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blob(16)&lt;/code&gt; columns instead. &lt;a href=&quot;https://stackoverflow.com/a/52032839&quot;&gt;Some people have reported&lt;/a&gt; they needed to load the adapter file in order for it to work.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;SQL Server:&lt;/p&gt;
 
-    &lt;p&gt;Has &lt;code class=&quot;highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; native support (through &lt;code class=&quot;highlighter-rouge&quot;&gt;uniqueidentifier&lt;/code&gt; column type) with the generator.&lt;/p&gt;
+    &lt;p&gt;Has &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; native support (through &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;uniqueidentifier&lt;/code&gt; column type) with the generator.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;br /&gt;
-Now newly generated tables they will contain &lt;code class=&quot;highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; as primary key.&lt;/p&gt;
+Now newly generated tables they will contain &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; as primary key.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# db/migrations/xxxxx_create_customers.rb&lt;/span&gt;
 
@@ -95,9 +95,9 @@ Now newly generated tables they will contain &lt;code class=&quot;highlighter-ro
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;The snippet above shows &lt;code class=&quot;highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; type usage for other non-primary key columns too.&lt;/p&gt;
+&lt;p&gt;The snippet above shows &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; type usage for other non-primary key columns too.&lt;/p&gt;
 
-&lt;p&gt;In case you don’t require &lt;code class=&quot;highlighter-rouge&quot;&gt;UUID&lt;/code&gt; key type, it’s possible to get the &lt;code class=&quot;highlighter-rouge&quot;&gt;integer&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;bigint&lt;/code&gt; types back again:&lt;/p&gt;
+&lt;p&gt;In case you don’t require &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UUID&lt;/code&gt; key type, it’s possible to get the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;integer&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bigint&lt;/code&gt; types back again:&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;create_table&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:cities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;id: :integer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
  &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt;
@@ -118,7 +118,7 @@ We have to set it up using default ordering scope, easily:&lt;/p&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Ensure that indices on &lt;code class=&quot;highlighter-rouge&quot;&gt;created_at&lt;/code&gt; columns already added for boosted performance.&lt;/p&gt;
+&lt;p&gt;Ensure that indices on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;created_at&lt;/code&gt; columns already added for boosted performance.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# db/migrations/xxxxx_add_created_at_indices.rb&lt;/span&gt;
 
@@ -131,11 +131,11 @@ We have to set it up using default ordering scope, easily:&lt;/p&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Keep in mind the additional storage cost of &lt;code class=&quot;highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; keys compared to sequential ones, which requires balancing the trade-offs when designing your data models.&lt;/p&gt;
+&lt;p&gt;Keep in mind the additional storage cost of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; keys compared to sequential ones, which requires balancing the trade-offs when designing your data models.&lt;/p&gt;
 </description>
         <pubDate>Fri, 24 May 2019 00:00:00 +0300</pubDate>
-        <link>http://www.abarrak.com/2019/05/24/uuid-primary-key-for-active-record-models</link>
-        <guid isPermaLink="true">http://www.abarrak.com/2019/05/24/uuid-primary-key-for-active-record-models</guid>
+        <link>https://www.abarrak.com/2019/05/24/uuid-primary-key-for-active-record-models</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2019/05/24/uuid-primary-key-for-active-record-models</guid>
         
         <category>Active Record</category>
         
@@ -192,7 +192,7 @@ We have to set it up using default ordering scope, easily:&lt;/p&gt;
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jpegoptim
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Run the next command to optimize an image, &lt;code class=&quot;highlighter-rouge&quot;&gt;-m&lt;/code&gt; controls the image quality (0-100):&lt;/p&gt;
+&lt;p&gt;Run the next command to optimize an image, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-m&lt;/code&gt; controls the image quality (0-100):&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jpegoptim &lt;span class=&quot;nt&quot;&gt;-m70&lt;/span&gt; &amp;lt;img-name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -245,8 +245,8 @@ find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quo
 &lt;p&gt;Happy mature optimization :) !&lt;/p&gt;
 </description>
         <pubDate>Tue, 30 Aug 2016 00:00:00 +0300</pubDate>
-        <link>http://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</link>
-        <guid isPermaLink="true">http://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</guid>
+        <link>https://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</guid>
         
         <category>Image Processing</category>
         
@@ -268,7 +268,7 @@ find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quo
 &lt;p&gt;In the past week, I’v been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.&lt;/p&gt;
 
 &lt;h3 id=&quot;symptoms&quot;&gt;&lt;strong&gt;Symptoms&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;The error was appearing in one of the &lt;code class=&quot;highlighter-rouge&quot;&gt;.erb&lt;/code&gt; view files that contains a &lt;code class=&quot;highlighter-rouge&quot;&gt;textarea&lt;/code&gt; field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:&lt;/p&gt;
+&lt;p&gt;The error was appearing in one of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.erb&lt;/code&gt; view files that contains a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;textarea&lt;/code&gt; field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:&lt;/p&gt;
 
 &lt;!-- post-excerpt --&gt;
 
@@ -284,15 +284,15 @@ find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quo
         /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;erb&lt;span class=&quot;s1&quot;&gt;'
         /var/app/current/helpers.rb:24:in `block (2 levels) in serve_page'&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Guided by the error message indication. I attempted to fix the issue by ensuring that all parts are encoded as UTF-8. I set &lt;code class=&quot;highlighter-rouge&quot;&gt;accept-charset&lt;/code&gt; attribute for the form and texteara tag to &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;UTF-8&quot;&lt;/code&gt;, forced source files to be UTF-8 by inserting &lt;code class=&quot;highlighter-rouge&quot;&gt;# 😁&lt;/code&gt; comment, and checked the Sinatra routing is also set to have
-&lt;code class=&quot;highlighter-rouge&quot;&gt;headers 'Content-type' =&amp;gt; 'text/html; charset=utf-8'&lt;/code&gt;, But unfortunately none of that was solving the problem.&lt;/p&gt;
+&lt;p&gt;Guided by the error message indication. I attempted to fix the issue by ensuring that all parts are encoded as UTF-8. I set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;accept-charset&lt;/code&gt; attribute for the form and texteara tag to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;UTF-8&quot;&lt;/code&gt;, forced source files to be UTF-8 by inserting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# 😁&lt;/code&gt; comment, and checked the Sinatra routing is also set to have
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;headers 'Content-type' =&amp;gt; 'text/html; charset=utf-8'&lt;/code&gt;, But unfortunately none of that was solving the problem.&lt;/p&gt;
 
 &lt;p&gt;By taking a closer look at the stack trace, I figured that it was happening specifically during the template rendering phase, and might have something to do with one of Sinatra’s dependencies, Tilt rendering library.&lt;/p&gt;
 
 &lt;h3 id=&quot;solution&quot;&gt;&lt;strong&gt;Solution&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;p&gt;Indeed it was caused by Tilt . In fact, it’s a known issue and has been pointed out in the gem’s &lt;a href=&quot;https://github.com/rtomayko/tilt#encodings&quot;&gt;repository main page&lt;/a&gt;.
-Setting ruby’s external encoding plus the source files to &lt;code class=&quot;highlighter-rouge&quot;&gt;UTF-8&lt;/code&gt; solved it for me just like mentioned in the link.&lt;/p&gt;
+Setting ruby’s external encoding plus the source files to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UTF-8&lt;/code&gt; solved it for me just like mentioned in the link.&lt;/p&gt;
 
 &lt;p&gt;If you’ve structured your application in the modular style, then set encoding early in the class.&lt;/p&gt;
 
@@ -310,8 +310,8 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
 &lt;p&gt;That’s it. Hope It helps someone else !&lt;/p&gt;
 </description>
         <pubDate>Fri, 26 Aug 2016 00:00:00 +0300</pubDate>
-        <link>http://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</link>
-        <guid isPermaLink="true">http://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</guid>
+        <link>https://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</guid>
         
         <category>Sinatra</category>
         
@@ -342,7 +342,7 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;In &lt;strong&gt;Part (3)&lt;/strong&gt;, we see the language metaprogramming capabilities and techniques. First chapter introduces the concept and some hook methods like &lt;code class=&quot;highlighter-rouge&quot;&gt;included&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;inherited&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;at_exit&lt;/code&gt; which keep the application life cycle more interactive and informed. Three consecutive chapters talk about the valuable dynamic programming function &lt;code class=&quot;highlighter-rouge&quot;&gt;method_missing&lt;/code&gt; and its use cases for &lt;strong&gt;better error handling&lt;/strong&gt;, &lt;strong&gt;delegation&lt;/strong&gt;, and &lt;strong&gt;building flexible APIs&lt;/strong&gt;. Last chapters discuss monkey patching and self modifying code. For me this was the most interesting part of the book.
+&lt;p&gt;In &lt;strong&gt;Part (3)&lt;/strong&gt;, we see the language metaprogramming capabilities and techniques. First chapter introduces the concept and some hook methods like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;included&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inherited&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;at_exit&lt;/code&gt; which keep the application life cycle more interactive and informed. Three consecutive chapters talk about the valuable dynamic programming function &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;method_missing&lt;/code&gt; and its use cases for &lt;strong&gt;better error handling&lt;/strong&gt;, &lt;strong&gt;delegation&lt;/strong&gt;, and &lt;strong&gt;building flexible APIs&lt;/strong&gt;. Last chapters discuss monkey patching and self modifying code. For me this was the most interesting part of the book.
 &lt;!-- post-excerpt --&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
@@ -361,8 +361,8 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
 &lt;p&gt;If you’re looking for eloquently written material that explores and explains important aspects and background of the Ruby programming language without going into lengthy documentation details, then go with Eloquent Ruby !&lt;/p&gt;
 </description>
         <pubDate>Sat, 25 Jun 2016 00:00:00 +0300</pubDate>
-        <link>http://www.abarrak.com/2016/06/25/elquoent-ruby</link>
-        <guid isPermaLink="true">http://www.abarrak.com/2016/06/25/elquoent-ruby</guid>
+        <link>https://www.abarrak.com/2016/06/25/elquoent-ruby</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2016/06/25/elquoent-ruby</guid>
         
         <category>Ruby</category>
         

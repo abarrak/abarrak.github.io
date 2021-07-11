@@ -12,13 +12,12 @@
 	<meta name="theme-color" content="#943526">
 
 	
-	<meta property="og:image" content="http://www.abarrak.com/public/thumbnail-1.jpg">
+	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
 	
-
 	
 	<meta property="og:title" content="Abdullah Barrak • Fixing Sinatra UTF-8 issue in Tilt rendered templates">
 	
-	<link rel="canonical" href="http://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode">
+	<link rel="canonical" href="https://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode">
 
 	<title>Fixing Sinatra UTF-8 issue in Tilt rendered templates • Abdullah Barrak's Blog</title>
 
@@ -35,7 +34,7 @@
   
 
   <!-- RSS -->
-	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="http://www.abarrak.com/feed.xml">
+	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="https://www.abarrak.com/feed.xml">
 </head>
 
 <body>
@@ -70,7 +69,7 @@
 <p>In the past week, I’v been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.</p>
 
 <h3 id="symptoms"><strong>Symptoms</strong></h3>
-<p>The error was appearing in one of the <code class="highlighter-rouge">.erb</code> view files that contains a <code class="highlighter-rouge">textarea</code> field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:</p>
+<p>The error was appearing in one of the <code class="language-plaintext highlighter-rouge">.erb</code> view files that contains a <code class="language-plaintext highlighter-rouge">textarea</code> field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:</p>
 
 <!-- post-excerpt -->
 
@@ -86,15 +85,15 @@
         /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in <span class="sb">`</span>erb<span class="s1">'
         /var/app/current/helpers.rb:24:in `block (2 levels) in serve_page'</span>
 </code></pre></div></div>
-<p>Guided by the error message indication. I attempted to fix the issue by ensuring that all parts are encoded as UTF-8. I set <code class="highlighter-rouge">accept-charset</code> attribute for the form and texteara tag to <code class="highlighter-rouge">"UTF-8"</code>, forced source files to be UTF-8 by inserting <code class="highlighter-rouge"># 😁</code> comment, and checked the Sinatra routing is also set to have
-<code class="highlighter-rouge">headers 'Content-type' =&gt; 'text/html; charset=utf-8'</code>, But unfortunately none of that was solving the problem.</p>
+<p>Guided by the error message indication. I attempted to fix the issue by ensuring that all parts are encoded as UTF-8. I set <code class="language-plaintext highlighter-rouge">accept-charset</code> attribute for the form and texteara tag to <code class="language-plaintext highlighter-rouge">"UTF-8"</code>, forced source files to be UTF-8 by inserting <code class="language-plaintext highlighter-rouge"># 😁</code> comment, and checked the Sinatra routing is also set to have
+<code class="language-plaintext highlighter-rouge">headers 'Content-type' =&gt; 'text/html; charset=utf-8'</code>, But unfortunately none of that was solving the problem.</p>
 
 <p>By taking a closer look at the stack trace, I figured that it was happening specifically during the template rendering phase, and might have something to do with one of Sinatra’s dependencies, Tilt rendering library.</p>
 
 <h3 id="solution"><strong>Solution</strong></h3>
 
 <p>Indeed it was caused by Tilt . In fact, it’s a known issue and has been pointed out in the gem’s <a href="https://github.com/rtomayko/tilt#encodings" rel="nofollow" target="_blank">repository main page</a>.
-Setting ruby’s external encoding plus the source files to <code class="highlighter-rouge">UTF-8</code> solved it for me just like mentioned in the link.</p>
+Setting ruby’s external encoding plus the source files to <code class="language-plaintext highlighter-rouge">UTF-8</code> solved it for me just like mentioned in the link.</p>
 
 <p>If you’ve structured your application in the modular style, then set encoding early in the class.</p>
 
@@ -118,7 +117,7 @@ Setting ruby’s external encoding plus the source files to <code class="highlig
 <div id="disqus_thread"></div>
 <script>
   var disqus_config = function () {
-      this.page.url = "http://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode";
+      this.page.url = "https://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode";
       this.page.identifier = "fixing-sinatra-utf-8-issue-in-tilt-rendered-templates";
   };
 
@@ -169,7 +168,7 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
 				<a href="">Abdullah Barrak's Blog</a>
 				<ul class="contact-list">
 					<li>A passionate blog about computer programming, reading, thinking, and the like.</li>
-					<li><b>(2016 - 2019)</b></li>
+					<li><b>(2016 - 2021)</b></li>
 				</ul>
 			</div>
 
@@ -206,7 +205,7 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
 					</a>
 				
 
-					<a href="mailto:a@abarrak.com" rel="nofollow" target="_blank">
+					<a href="mailto:abdullah@abarrak.com" rel="nofollow" target="_blank">
 						<img class="icon" src="/public/icons/mail-icon.png" alt="Email Icon">
 					</a>
 				</div>
