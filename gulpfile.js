@@ -11,7 +11,7 @@ function styles(_cb) {
     .pipe(concatCss("public/css/all.css"))
     .pipe(rename('all.min.css'))
     .pipe(cleanCSS({ compatibility: 'ie8' }))
-    .pipe(dest('public/css'));
+    .pipe(dest('../abarrak.github.io/public/css'));
   _cb();
 }
 
@@ -20,7 +20,7 @@ function scripts(_cb) {
     .pipe(concat('all.js'))
     .pipe(rename('all.min.js'))
     .pipe(uglify())
-    .pipe(dest("public/js"));
+    .pipe(dest("../abarrak.github.io/public/js"));
   _cb();
 }
 
