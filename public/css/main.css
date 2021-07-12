@@ -149,7 +149,9 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 
 .about-list li { margin: 0 0 -0.45rem 0; }
 
-.about-list li .detail { display: block; margin: 0; font-size: 0.9rem; opacity: 95%; padding-left: 1.7rem; }
+.about-list li .detail { display: block; margin: 0; opacity: 95%; padding-left: 1.7rem; font-size: 0.9rem; }
+
+@media screen and (max-width: 600px) { .about-list li .detail { padding-left: 1rem; font-size: inherit; } }
 
 .about-list li .detail:last-child { margin-bottom: 0.75rem; }
 
@@ -375,6 +377,8 @@ pre code { padding: 0; font-size: 100%; color: inherit; background-color: transp
 .post-image { height: auto; float: left; display: block; margin: 1rem 1.4rem 1rem 0; border-radius: 0.2rem; filter: drop-shadow(3px 5px 3px darkgray); -webkit-filter: drop-shadow(3px 5px 3px darkgray); }
 
 .profile-image { float: right; position: relative; margin-top: -1.5rem; margin-right: -1rem; display: inline; width: 10rem; height: 10rem; border-radius: 50%; object-fit: cover; object-position: center center; filter: drop-shadow(3px 4px 3px darkgray); -webkit-filter: drop-shadow(3px 4px 3px darkgray); }
+
+@media screen and (max-width: 600px) { .profile-image { margin: 0 auto 2rem auto; float: none; position: relative; display: block; width: 8.5rem; height: 8.5rem; } }
 
 .center-image { margin: 0 auto; padding-bottom: 0.5rem; float: none; }
 
