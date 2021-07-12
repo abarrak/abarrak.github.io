@@ -93,6 +93,15 @@ pre code {
   object-position: center center;
   filter: drop-shadow(3px 4px 3px darkgray);
   -webkit-filter: drop-shadow(3px 4px 3px darkgray);
+
+  @include media-query($on-palm) {
+    margin: 0 auto 2rem auto;
+    float: none;
+    position: relative;
+    display: block;
+    width: 8.5rem;
+    height: 8.5rem;
+  }
 }
 
 .center-image {

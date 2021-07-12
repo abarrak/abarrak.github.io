@@ -188,9 +188,13 @@
     .detail {
       display: block;
       margin: 0;
-      font-size: 0.9rem;
       opacity: 95%;
       padding-left: 1.7rem;
+      font-size: 0.9rem;
+      @include media-query($on-palm) {
+        padding-left: 1rem;
+        font-size: inherit;
+      }
     }
     .detail:last-child {
       margin-bottom: 0.75rem;
