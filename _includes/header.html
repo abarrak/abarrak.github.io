@@ -3,9 +3,23 @@
 		<a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
 
     <ul class="links">
-      <li><a href="{{ site.baseurl }}/about">About</a></li>
-      <li><a href="{{ site.baseurl }}/works">Works</a></li>
-      <li><a href="{{ site.baseurl }}/contact">Contact</a></li>
+      <li><a href="{{ site.baseurl }}/about">{% t about %}</a></li>
+      <li><a href="{{ site.baseurl }}/works">{% t works %}</a></li>
+      <li><a href="{{ site.baseurl }}/contact">{% t contact %}</a></li>
+
+      <li class="lang_link">
+        <small>
+        {% if site.lang == "ar" %}
+          {% capture en_link %}{{ site.baseurl_root }}{{ page.url }}{% endcapture %}
+          <a href="{{ en_link }}" >{% t 'english' %}</a>
+        {% elsif site.lang == "en" %}
+          {% capture ar_link %}{{ site.baseurl_root }}/ar{{ page.url}}{% endcapture %}
+          <a href="{{ ar_link }}" >{% t 'arabic' %}</a>
+        {% endif %}
+        </small>
+      </li>
     </ul>
 	</div>
+
 </header>
+

@@ -22,8 +22,8 @@
     }
 
     li:before {
-      margin-right: 0.5rem;
-      margin-left: 0.5rem;
+      margin-right: 0.2rem;
+      margin-left: 0.2rem;
       content: "|";
       color: #88002F;
     }
@@ -41,6 +41,33 @@
     a:hover {
       color: #610102;
       border-bottom: 1px dotted #780102;
+    }
+
+    // language switch button
+    li.lang_link:before {
+      content: "";
+      margin-right: 0;
+      margin-left: 0;
+    }
+
+    li.lang_link {
+      border: 1px gray dotted;
+      margin-left: 0.8rem;
+
+      padding-left: 0.7rem;
+      padding-right: 0.7rem;
+      padding-top: 0.3rem;
+      padding-bottom: 0.4rem;
+      font-weight: bolder;
+
+      a {
+        color: #787065;
+        text-decoration: all;
+      }
+      a:hover {
+        color: black;
+        border-bottom: 0px;
+      }
     }
   }
 

@@ -14,43 +14,43 @@
 
 			<div class="footer-col footer-col-1 footer-right">
 				<p class="center">
-					<a href="{{ site.baseurl }}/tags">Tag Cloud</a> |
-					subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a>
+					<a href="{{ site.baseurl }}/tags">{% t tag_cloud %}</a> |
+					{% t subscribe %} <a href="{{ '/feed.xml' | prepend: site.baseurl }}">{% t via_rss %}</a>
 				</p>
 
 				<div class="social-links">
 				{% if site.accounts.github %}
 					<a href="{{ site.accounts.github }}" rel="nofollow" target="_blank">
-						<img class="icon" src="{{ site.baseurl }}/public/icons/github-icon.png" alt="Github Icon">
+						<img class="icon" src="{{ site.baseurl_root }}/public/icons/github-icon.png" alt="Github Icon">
 					</a>
 				{% endif %}
 
 				{% if site.accounts.goodreads %}
 					<a href="{{ site.accounts.goodreads }}" rel="nofollow" target="_blank">
-						<img class="icon" src="{{ site.baseurl }}/public/icons/goodreads-icon.png" alt="Goodreads Icon">
-					</a>
-				{% endif %}
-
-				{% if site.accounts.twitter %}
-					<a href="{{ site.accounts.twitter }}" rel="nofollow" target="_blank">
-						<img class="icon" src="{{ site.baseurl }}/public/icons/twitter-icon.png" alt="Github Icon">
+						<img class="icon" src="{{ site.baseurl_root }}/public/icons/goodreads-icon.png" alt="Goodreads Icon">
 					</a>
 				{% endif %}
 
 				{% if site.accounts.linkedin %}
 					<a href="{{ site.accounts.linkedin }}" rel="nofollow" target="_blank">
-						<img class="icon" src="{{ site.baseurl }}/public/icons/linkedin-icon.png" alt="LinkedIn Icon">
+						<img class="icon" src="{{ site.baseurl_root }}/public/icons/linkedin-icon.png" alt="LinkedIn Icon">
 					</a>
 				{% endif %}
 
 				{% if site.accounts.stackoverflow %}
 					<a href="{{ site.accounts.stackoverflow }}" rel="nofollow" target="_blank">
-						<img class="icon" src="{{ site.baseurl }}/public/icons/stackoverflow-icon.png" alt="stackoverflow Icon">
+						<img class="icon" src="{{ site.baseurl_root }}/public/icons/stackoverflow-icon.png" alt="stackoverflow Icon">
+					</a>
+				{% endif %}
+
+				{% if site.accounts.twitter %}
+					<a href="{{ site.accounts.twitter }}" rel="nofollow" target="_blank">
+						<img class="icon" src="{{ site.baseurl_root }}/public/icons/twitter-icon.png" alt="Github Icon">
 					</a>
 				{% endif %}
 
 					<a href="mailto:{{ site.email }}" rel="nofollow" target="_blank">
-						<img class="icon" src="{{ site.baseurl }}/public/icons/mail-icon.png" alt="Email Icon">
+						<img class="icon" src="{{ site.baseurl_root }}/public/icons/mail-icon.png" alt="Email Icon">
 					</a>
 				</div>
 
@@ -61,9 +61,9 @@
 </footer>
 
 {% if jekyll.environment == 'production' %}
-<script src="{{ site.baseurl }}/public/js/all.min.js"></script>
+<script src="{{ site.baseurl_root }}/public/js/all.min.js"></script>
 {% else %}
-<script src="{{ site.baseurl }}/public/js/blog.js"></script>
+<script src="{{ site.baseurl_root }}/public/js/blog.js"></script>
 {% endif %}
 
 {% include google_analytics.html %}

@@ -4,12 +4,22 @@ var uglify = require('gulp-uglify');
 var cleanCSS = require('gulp-clean-css');
 var concatCss = require('gulp-concat-css');
 var rename = require('gulp-rename');
-
+var rtlcss = require('gulp-rtlcss');
 
 function styles(_cb) {
   src(["../abarrak.github.io/public/css/*.css", "public/css/*.min.css"])
     .pipe(concatCss("public/css/all.css"))
     .pipe(rename('all.min.css'))
+    .pipe(cleanCSS({ compatibility: 'ie8' }))
+    .pipe(dest('public/css'));
+  _cb();
+}
+
+function stylesAr(_cb) {
+  src(["../abarrak.github.io/public/css/*.css", "public/css/*.min.css"])
+    .pipe(concatCss("public/css/all.css"))
+    .pipe(rtlcss())
+    .pipe(rename('all.rtl.min.css'))
     .pipe(cleanCSS({ compatibility: 'ie8' }))
     .pipe(dest('public/css'));
   _cb();
@@ -29,5 +39,5 @@ function printSucces(_cb) {
   _cb();
 }
 
-exports.default = series(styles, scripts, printSucces);
+exports.default = series(styles, stylesAr, scripts, printSucces);
 exports.build = exports.default;

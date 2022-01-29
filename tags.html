@@ -4,7 +4,7 @@ title: Tag Cloud
 ---
 
 <div class="table-of-contents">
-  <h2 class="page-heading">Tags</h2>
+  <h2 class="page-heading">{% t 'Tags' %}</h2>
 
   <div id="tag_cloud">
   {% for tag in site.tags %}
@@ -36,5 +36,5 @@ title: Tag Cloud
 </div>
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" crossorigin="anonymous" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="></script>
-<script src="{{ site.baseurl }}/public/js/jquery.tagcloud.js"></script>
-<script src="{{ site.baseurl }}/public/js/tags.js"></script>
+<script src="{{ site.baseurl_root }}/public/js/jquery.tagcloud.js"></script>
+<script src="{{ site.baseurl_root }}/public/js/tags.js"></script>

@@ -6,9 +6,9 @@ accounts:
   github: https://github.com/abarrak
   linkedin : https://linkedin.com/in/abarrak
   goodreads: https://goodreads.com/abarrak
-  no_twitter: https://twitter.com/abarrak_
   stackoverflow: https://stackoverflow.com/users/2925286/abdullah-barrak
-  
+  no_twitter: https://twitter.com/abdullahbarrak
+
 
 # Site Settings
 # -------------
@@ -18,7 +18,7 @@ title: Abdullah Barrak
 subtitle: Abdullah Barrak's Blog
 description: A passionate blog about computer programming, reading, thinking, and the like.
 keywords: Software engineering, Web development, Computers, Programming, Reading, Ruby on Rails
- 
+
 
 # Build Settings
 # --------------
@@ -28,17 +28,21 @@ exclude: ['gulpfile.js', 'node_modules', 'package.json', 'Gemfile', 'Gemfile.loc
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
 # when have fair content !
-# lsi: true   
+# lsi: true
 plugins:
   - jekyll-gist
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-multiple-languages-plugin
 paginate: 5
 paginate_path: /:num/
 extlinks:
   attributes: { rel: nofollow, target: _blank }
   rel_exclude: ['abarrak.com']
 
+languages: ["en", "ar"]
+exclude_from_localizations: ['public']
+default_locale_in_subfolder: false
 
 # Defaults
 # --------

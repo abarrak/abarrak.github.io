@@ -9,7 +9,7 @@ layout: default
 			<article>
 				<header class="post-header">
 					<div>
-						<span>Posted on </span><span class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</span>
+						<span>{% t 'posted_on' %} </span><span class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</span>
 					</div>
 
 					<h2>
@@ -21,7 +21,7 @@ layout: default
 					{{ post.excerpt }}
 
 			    <div class="button-container">
-			      <a class="button" href="{{ post.url }}">Read More ..</a>
+			      <a class="button" href="{{ post.url }}">{% t 'read_more' %}</a>
 			    </div>
 				</div>
 			</article>
