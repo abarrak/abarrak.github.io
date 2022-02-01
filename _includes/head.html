@@ -15,13 +15,19 @@
 	<meta property="og:image" content="{{ site.url }}{{ site.baseurl_root }}/public/thumbnail-1.jpg">
 	{% endif %}
 	{% if page.title %}
-	<meta property="og:title" content="{{ site.title }} • {{ page.title }}">
+	<meta property="og:title" content="{% t {{ site.title }} %} • {% t page.title %}">
 	{% else %}
-	<meta property="og:title" content="{{ site.title }}">
+	<meta property="og:title" content="{% t {{ site.title }} %}">
 	{% endif %}
 	<link rel="canonical" href="{{ page.url | replace: 'index.html', '' | prepend: site.baseurl_root | prepend: site.url }}">
 
-	<title>{% if page.title %}{{ page.title | escape }} • {{ site.subtitle }}{% else %}{{ site.title | escape }}{% endif %}</title>
+	<title>
+    {% if page.title %}
+      {% t {{ page.title | escape }} %} • {% t {{ site.subtitle | escape }} %}
+    {% else %}
+      {% t {{ site.title | escape }} %}
+    {% endif %}
+  </title>
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl_root }}/public/icons/apple-touch-icon-precomposed.png">

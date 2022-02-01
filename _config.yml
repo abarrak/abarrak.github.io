@@ -14,10 +14,10 @@ accounts:
 # -------------
 baseurl: ""
 url: https://www.abarrak.com
-title: Abdullah Barrak
-subtitle: Abdullah Barrak's Blog
-description: A passionate blog about computer programming, reading, thinking, and the like.
-keywords: Software engineering, Web development, Computers, Programming, Reading, Ruby on Rails
+title: global.title
+subtitle: global.subtitle
+description: global.description
+keywords: global.keywords
 
 
 # Build Settings

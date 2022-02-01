@@ -15,6 +15,12 @@ Tags: Tags
 read_more: Read more ..
 Comments: Comments
 
+global:
+  title: Abdullah Barrak
+  subtitle: Abdullah Barrak's Blog
+  description: A passionate blog about computer programming, reading, thinking, and the like.
+  keywords: Software engineering, Web development, Computers, Programming, Reading, Ruby on Rails
+
 titles:
   home: Home
   about: About
