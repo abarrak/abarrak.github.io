@@ -1,26 +1,59 @@
 <div class="pagination">
   {% if paginator.next_page %}
     <a class="older" href="{{ site.baseurl }}/{{paginator.next_page}}">
-      <span class="pagination-icon">&#8672;</span> {% t 'Older' %}
+      <span class="pagination-icon">
+      {% if site.lang == 'ar' %}
+      &#8674;
+      {% else %}
+      &#8672;
+      {% endif %}
+    </span> {% t 'Older' %}
     </a>
   {% else %}
     <span class="older">
-      <span class="pagination-icon">&#8672;</span> {% t 'Older' %}
+      <span class="pagination-icon">
+      {% if site.lang == 'ar' %}
+      &#8674;
+      {% else %}
+      &#8672;
+      {% endif %}
+    </span> {% t 'Older' %}
     </span>
   {% endif %}
   {% if paginator.previous_page %}
     {% if paginator.page == 2 %}
       <a class="newer" href="{{ site.baseurl }}/">
-        {% t 'Newer' %} <span class="pagination-icon">&#8674;</span>
+        {% t 'Newer' %}
+        <span class="pagination-icon">
+        {% if site.lang == 'ar' %}
+          &#8672;
+        {% else %}
+          &#8674;
+      {% endif %}
+      </span>
       </a>
     {% else %}
       <a class="newer" href="{{ site.baseurl }}/{{paginator.previous_page}}">
-      {% t 'Newer' %} <span class="pagination-icon">&#8674;</span>
+      {% t 'Newer' %}
+      <span class="pagination-icon">
+      {% if site.lang == 'ar' %}
+        &#8672;
+      {% else %}
+        &#8674;
+      {% endif %}
+    </span>
       </a>
     {% endif %}
   {% else %}
     <span class="newer">
-      {% t 'Newer' %} <span class="pagination-icon">&#8674;</span>
+      {% t 'Newer' %}
+      <span class="pagination-icon">
+      {% if site.lang == 'ar' %}
+        &#8672;
+      {% else %}
+        &#8674;
+      {% endif %}
+    </span>
     </span>
   {% endif %}
 </div>
