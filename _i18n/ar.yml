@@ -27,3 +27,12 @@ titles:
   works: الأعمال
   contact: تواصل
   not_found: غير موحود
+
+pages:
+  contact:
+    email: البريد الإلكتروني
+    city: الرياض
+    country: المملكة العربية السعودية
+    astrophe: '،'
+
+  

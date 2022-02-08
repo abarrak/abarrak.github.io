@@ -27,3 +27,10 @@ titles:
   works: Works
   contact: Contact
   not_found: Not Found
+
+pages:
+  about:
+    email: Email
+    city: Riyadh
+    country: Saudi Arabia
+    astrophe: ','
