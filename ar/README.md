@@ -21,4 +21,4 @@ A [customized version](https://github.com/abarrak/abarrak.github.io/blob/src/_sa
 
 * [DISQUS](https://help.disqus.com/customer/portal/articles/472138-jekyll-installation-instructions) For comments.
 
-* ~~[jekyll-multiple-languages](https://github.com/Anthony-Gaudino/jekyll-multiple-languages-plugin) For i18n.~~
+* [jekyll-multiple-languages](https://github.com/Anthony-Gaudino/jekyll-multiple-languages-plugin) For i18n.
