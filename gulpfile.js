@@ -8,7 +8,7 @@ var rtlcss = require('gulp-rtlcss');
 var del = require('del');
 
 function clean(_cb) {
-  del(['public/css/all.min.css', 'all.rtl.min.css']);
+  del(['public/css/all.min.css', 'public/css/all.rtl.min.css']);
   _cb();
 }
 
@@ -46,5 +46,6 @@ function printSucces(_cb) {
 }
 
 
-exports.default = series(clean, styles, stylesAr, scripts, printSucces);
+exports.default = series(styles, stylesAr, scripts, printSucces);
+exports.clean = clean;
 exports.build = exports.default;
