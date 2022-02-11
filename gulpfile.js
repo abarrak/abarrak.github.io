@@ -5,7 +5,6 @@ var cleanCSS = require('gulp-clean-css');
 var concatCss = require('gulp-concat-css');
 var rename = require('gulp-rename');
 var rtlcss = require('gulp-rtlcss');
-var process = require("process");
 
 function styles(_cb) {
   src(["../abarrak.github.io/public/css/*.css", "public/css/*.min.css"])
@@ -38,7 +37,6 @@ function scripts(_cb) {
 function printSucces(_cb) {
   console.log("\n... Processing Assets Done ! ...\n");
   _cb();
-  process.exit(0);
 }
 
 
