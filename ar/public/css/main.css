@@ -1,11 +1,11 @@
 @charset "UTF-8";
-@font-face { font-family: libretto-icons libretto-icons; src: url(/ar/public/fonts/libretto-icons/libretto-icons.eot); /* IE9 Compat Modes */ src: url(/ar/public/fonts/libretto-icons/libretto-icons.woff) format("woff"), url(/ar/public/fonts/libretto-icons/libretto-icons.ttf) format("truetype"), url(/ar/public/fonts/libretto-icons/libretto-icons.svg#font_name) format("svg"); /* Legacy iOS */ }
+@font-face { font-family: libretto-icons; src: url(/ar/public/fonts/libretto-icons/libretto-icons.eot); /* IE9 Compat Modes */ src: url(/ar/public/fonts/libretto-icons/libretto-icons.woff) format("woff"), url(/ar/public/fonts/libretto-icons/libretto-icons.ttf) format("truetype"), url(/ar/public/fonts/libretto-icons/libretto-icons.svg#font_name) format("svg"); /* Legacy iOS */ }
 
 @font-face { font-family: devicons; src: url(/ar/public/fonts/devicons/devicons.eot?xqxft6); src: url(/ar/public/fonts/devicons/devicons.eot?#iefixxqxft6) format("embedded-opentype"), url(/ar/public/fonts/devicons/devicons.woff?xqxft6) format("woff"), url(/ar/public/fonts/devicons/devicons.ttf?xqxft6) format("truetype"), url(/ar/public/fonts/devicons/devicons.svg?xqxft6#devicons) format("svg"); font-weight: normal; font-style: normal; }
 
 body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, hr, .works-list hr, .table-of-contents hr, dl, dd, ol, ul, figure { margin: 0; padding: 0; }
 
-body { font: 400 16px/2 "Noto Naskh Arabic Bold", "Libre Baskerville", Baskerville, "Book Antiqua", "Noto Naskh Arabic", Georgia, Times, serif; color: #363431; background-color: #f2f1ed; -webkit-text-size-adjust: 100%; -webkit-font-feature-settings: "kern" 1; -moz-font-feature-settings: "kern" 1; -o-font-feature-settings: "kern" 1; font-feature-settings: "kern" 1; font-kerning: normal; }
+body { font: 400 16px/2 "Libre Baskerville", Baskerville, "Book Antiqua", Georgia, "Noto Naskh Arabic", Times, serif; color: #363431; background-color: #f2f1ed; -webkit-text-size-adjust: 100%; -webkit-font-feature-settings: "kern" 1; -moz-font-feature-settings: "kern" 1; -o-font-feature-settings: "kern" 1; font-feature-settings: "kern" 1; font-kerning: normal; }
 
 h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure, .highlight { margin-bottom: 15px; }
 
@@ -21,11 +21,11 @@ article { background: #faf9f5; box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05); marg
 
 @media screen and (max-width: 600px) { article > .entry-content { font-size: 80%; } }
 
-article > .entry-content:first-letter { color: #b7b1a9; display: inline-block; float: left; font-family: "Playfair Display", "Noto Naskh Arabic Bold"; font-size: 121px; font-style: normal; font-weight: 700; line-height: 70px; margin: 6px 10px 0 -5px; }
+article > .entry-content:first-letter { color: #b7b1a9; display: inline-block; float: left; font-family: "Playfair Display", "Noto Naskh Arabic"; font-size: 121px; font-style: normal; font-weight: 700; line-height: 70px; margin: 6px 10px 0 -5px; }
 
 @media screen and (max-width: 600px) { article > .entry-content:first-letter { font-size: 70px; line-height: 30px; } }
 
-article > .entry-content:first-line { color: #787065; font-family: "Playfair Display SC", "Noto Naskh Arabic Medium"; font-size: 1em; font-style: normal !important; font-weight: bold; letter-spacing: 2px; }
+article > .entry-content:first-line { color: #787065; font-family: "Playfair Display SC", "Noto Naskh Arabic"; font-size: 1em; font-style: normal !important; font-weight: bold; letter-spacing: 2px; }
 
 .post-header, .page-header { border-bottom: 1px solid #d9d6d0; margin-bottom: 2rem; text-align: center; }
 
@@ -113,7 +113,7 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 
 @media screen and (max-width: 600px) { .site-header .links { float: none; text-align: center; font-size: 14px; } .site-header li:before { margin-right: 0.5rem; margin-left: 0.5rem; content: "|"; } .site-header li:first-child:before { content: ""; } }
 
-.site-title { font-family: "Playfair Display", " Noto Naskh Arabic"; font-size: 26px; font-weight: 300; line-height: 56px; margin-bottom: 0; display: inline-block; }
+.site-title { font-family: "Playfair Display", "Noto Naskh Arabic"; font-size: 26px; font-weight: 300; line-height: 56px; margin-bottom: 0; display: inline-block; }
 
 .site-title, .site-title:visited { color: #943526; }
 
@@ -195,7 +195,7 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 
 .post-meta { color: #787065; }
 
-.post-link { display: block; font-family: "Playfair Display", " Noto Naskh Arabic"; font-size: 38px; }
+.post-link { display: block; font-family: "Playfair Display", "Noto Naskh Arabic"; font-size: 38px; }
 
 @media screen and (max-width: 600px) { .post-link { font-size: 1.1em; } }
 
@@ -203,7 +203,7 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 
 .page-header { margin-bottom: 30px; }
 
-.post-title { color: #a09a92; font-family: "Playfair Display", " Noto Naskh Arabic"; font-size: 36px; letter-spacing: -1px; line-height: 1; }
+.post-title { color: #a09a92; font-family: "Playfair Display", "Noto Naskh Arabic"; font-size: 36px; letter-spacing: -1px; line-height: 1; }
 
 @media screen and (max-width: 800px) { .post-title { font-size: 28px; line-height: 1.2; } }
 
