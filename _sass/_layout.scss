@@ -226,6 +226,12 @@
     .detail:last-child {
       margin-bottom: 0.75rem;
     }
+    .thesis {
+      @media screen and (min-width: 400px) {
+        display: block !important;
+        margin-left: 0.5rem;
+      }
+    }
   }
 }
 
