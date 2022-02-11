@@ -27,6 +27,7 @@ titles:
   works: Works
   contact: Contact
   not_found: Not Found
+  tag_cloud: Tag Cloud
 
 pages:
   about:
