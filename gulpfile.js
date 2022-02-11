@@ -8,7 +8,7 @@ var rtlcss = require('gulp-rtlcss');
 var del = require('del');
 
 function clean(_cb) {
-  del(['public/css/all.min.css', 'public/css/all.rtl.min.css', '../abarrak.github.io/'], { force: true });
+  del(['public/css/all.min.css', 'public/css/all.rtl.min.css', '../abarrak.github.io/public/css/*.css'], { force: true });
   _cb();
 }
 

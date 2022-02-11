@@ -13,7 +13,6 @@ git co -- .
 
 printf "\n..... [2/2] Updating Site Files .....\n"
 printf ".....................................\n\n"
-gulp clean
 export JEKYLL_ENV=production
 jekyll build
 gulp
