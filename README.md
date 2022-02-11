@@ -14,7 +14,7 @@ It also runs [Gulp](https://github.com/abarrak/abarrak.github.io/blob/src/gulpfi
 ![Auto](https://github.com/abarrak/abarrak.github.io/blob/master/public/images/automation.png)
 
 ## Theme
-A customized version of the beautiful [Libretto](https://github.com/ferrolho/jekyll-theme-libretto) theme.
+A [customized version](https://github.com/abarrak/abarrak.github.io/blob/src/_sass/_custom.scss) of the beautiful [Libretto](https://github.com/ferrolho/jekyll-theme-libretto) theme.
 
 ## Plugins
 * [extlinks](https://github.com/abarrak/abarrak.github.io/blob/src/_plugins/extlinks.rb) takes care of transforming external links with proper target and rel attributes.
