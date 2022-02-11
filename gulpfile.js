@@ -8,12 +8,12 @@ var rtlcss = require('gulp-rtlcss');
 var del = require('del');
 
 function clean(_cb) {
-  del(['public/css/all.min.css', 'public/css/all.rtl.min.css']);
+  del(['public/css/all.min.css', 'public/css/all.rtl.min.css', '../abarrak.github.io/'], {force: true});
   _cb();
 }
 
 function styles(_cb) {
-  src(["../abarrak.github.io/public/css/*.css", "public/css/*.min.css"])
+  src(["public/css/*.min.css"])
     .pipe(concatCss("public/css/all.css"))
     .pipe(rename('all.min.css'))
     .pipe(cleanCSS({ compatibility: 'ie8' }))
@@ -22,7 +22,7 @@ function styles(_cb) {
 }
 
 function stylesAr(_cb) {
-  src(["../abarrak.github.io/public/css/*.css", "public/css/*.min.css"])
+  src(["public/css/*.min.css"])
     .pipe(concatCss("public/css/all.css"))
     .pipe(rtlcss())
     .pipe(rename('all.rtl.min.css'))

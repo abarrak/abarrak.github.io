@@ -7,7 +7,7 @@ body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, hr, dl, dd, ol, ul, figure {
 
 // ** Basic styling
 body {
-  font: $base-font-weight #{$base-font-size}/#{$base-line-height} "Noto Naskh Arabic Bold", $base-font-family;
+  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
   color: $text-color;
   background-color: $background-color;
   -webkit-text-size-adjust: 100%;
@@ -48,7 +48,7 @@ article {
       color: #b7b1a9;
       display: inline-block;
       float: left;
-      font-family: "Playfair Display", "Noto Naskh Arabic Bold";
+      font-family: "Playfair Display", "Noto Naskh Arabic";
       font-size: 121px;
       font-style: normal;
       font-weight: 700;
@@ -63,7 +63,7 @@ article {
 
     &:first-line {
       color: #787065;
-      font-family: "Playfair Display SC", "Noto Naskh Arabic Medium";
+      font-family: "Playfair Display SC", "Noto Naskh Arabic";
       font-size: 1em;
       font-style: normal !important;
       font-weight: bold;
