@@ -432,8 +432,6 @@ hr.pretty:after, .works-list hr:after, .table-of-contents hr:after { content: 'Â
 
 .table-of-contents ul.dashed > li:before { display: inline-block; content: "â€”"; width: 1em; margin-left: -1em; }
 
-.works-list small { margin-left: 15px; }
-
 .works-list a { line-height: 15px; }
 
 .works-list a:hover { color: #A28669; padding-bottom: 0.3rem; border-bottom: 1px dotted #A28669; }
