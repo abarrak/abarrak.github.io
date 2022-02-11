@@ -1,0 +1,93 @@
+- title: Network Client
+  description: A thin resilient JSON web client built around Ruby's Net::HTTP.
+  link: https://rubygems.org/gems/network-client
+  repo_link: https://github.com/abarrak/network-client
+  technology_stack:
+    - icon: ruby
+      tooltip: "Programming Language: Ruby"
+    - icon: travis
+      tooltip: "CI: Travis"
+
+- title: Why Compiled Languages?
+  description: A simple experiment on compiled and dynamic programming languages comparision.
+  link: https://www.whycompiledlanguages.com
+  repo_link: https://github.com/abarrak/why-compiled-languages
+  technology_stack:
+    - icon: java
+      tooltip: "Programming Language: Java"
+    - icon: go
+      tooltip: "Programming Language: Go"
+    - icon: ruby
+      tooltip: "Programming Language: Ruby"
+    - icon: python
+      tooltip: "Programming Language: Python"
+    - icon: nodejs
+      tooltip: "Programming Language: JavaScript"
+    - icon: git
+      tooltip: "Others"
+      
+- title: OpenCV Helpers
+  description: Facilitate image processing tasks using OpenCV library.
+  link: https://github.com/abarrak/opencv-helpers
+  repo_link: https://github.com/abarrak/opencv-helpers
+  technology_stack:
+    - icon: python
+      tooltip: "Programming Language: Python"
+    - icon: travis
+      tooltip: "CI: Travis"
+
+
+- title: Optical Reader
+  description: A SaaS OCR functionality built on top of Tesseract.
+  link: https://www.opticalreader.net
+  repo_link: https://github.com/abarrak/optical-reader
+  technology_stack:
+    - icon: ruby
+      tooltip: "Programming Language: Ruby"
+    - icon: materializecss
+      tooltip: "CSS Framework: MaterializeCss"
+    - icon: jquery
+      tooltip: "jQuery"
+    - icon: aws
+      tooltip: "Deployment: AWS"
+
+- title: 3scale Profile Policy
+  description: An accounts' profile sharing policy for APICast gateway of 3scale.
+  link: https://github.com/ElmCompany/3scale-profile-share-policy
+  repo_link: https://github.com/ElmCompany/3scale-profile-share-policy
+  technology_stack:
+    - icon: nginx
+      tooltip: "Programming Language: Lua"
+    - icon: openshift
+      tooltip: "Deployment: Openshift"
+
+- title: Except Nested
+  description: Hash utility extension for Rails Active Support.
+  link: https://rubygems.org/gems/except_nested
+  repo_link: https://github.com/abarrak/except_nested
+  technology_stack:
+    - icon: ruby
+      tooltip: "Programming Language: Ruby"
+    - icon: travis
+      tooltip: "CI: Travis"
+
+- title: Values At Nested
+  description: Hash utility extension for Rails Active Support.
+  link: https://rubygems.org/gems/values_at_nested
+  repo_link: https://github.com/abarrak/values_at_nested
+  technology_stack:
+    - icon: ruby
+      tooltip: "Programming Language: Ruby"
+    - icon: travis
+      tooltip: "CI: Travis"
+
+- title: RTL
+  description: A gem for checking RTL/LTR direction of languages.
+  link: https://rubygems.org/gems/rtl
+  repo_link: https://github.com/abarrak/rtl
+  technology_stack:
+    - icon: ruby
+      tooltip: "Programming Language: Ruby"
+    - icon: travis
+      tooltip: "CI: Travis"
+

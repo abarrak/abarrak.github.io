@@ -6,9 +6,11 @@ permalink: /works
 ---
 
 <ul class="works-list">
-  {% for work in site.data.works %}
+  {% assign current_works = "works_" | append: site.lang %}
+  {% for work in site.data[current_works] %}
   <li>
     <a href="{{ work.link }}">{{ work.title }}</a>
+    <br>
     <small>{{ work.description }}</small>
     <div class="clearfix">
       <h6 class="stack-list">
@@ -19,7 +21,7 @@ permalink: /works
 
       <div class="source-link">
         <span class="devicons devicons-github_alt"></span>
-        <a class="right " href="{{ work.repo_link }}">Source Code</a>
+        <a class="right " href="{{ work.repo_link }}">{% t pages.works.source_code %}</a>
       </div>
     </div>
     <hr>

@@ -1,0 +1,97 @@
+- title: معالج طلبات الويب
+  description: مكتبة خفيفة لطلب ومعالجة أوامر الويب للغة روبي.
+  link: https://rubygems.org/gems/network-client
+  repo_link: https://github.com/abarrak/network-client
+  technology_stack:
+    - icon: ruby
+      tooltip: "اللغة البرمجية: روبي"
+    - icon: travis
+      tooltip: "الترابط والبناء: ترافيس"
+
+
+- title: لِمَ اللغات المجمّعَة؟
+  description: تجربة مبسطة تقارن بين أداء اللغات المجمعة والمترجمة.
+  link: https://www.whycompiledlanguages.com
+  repo_link: https://github.com/abarrak/why-compiled-languages
+  technology_stack:
+    - icon: java
+      tooltip: "اللغة البرمجية: جافا"
+    - icon: go
+      tooltip: "اللغة البرمجية: جو"
+    - icon: ruby
+      tooltip: "اللغة البرمجية: روبي"
+    - icon: python
+      tooltip: "اللغة البرمجية: بايثون"
+    - icon: nodejs
+      tooltip: "اللغة البرمجية: جافاسكربت"
+    - icon: git
+      tooltip: "أخرى"
+      
+- title: ملحقات لـ(OpenCV) 
+  description: ملحقات ودوال برمجية لمكتبة معالجعة وتحليل الصور الرقمية (OpenCV).
+  link: https://github.com/abarrak/opencv-helpers
+  repo_link: https://github.com/abarrak/opencv-helpers
+  technology_stack:
+    - icon: python
+      tooltip: "اللغة البرمجية: بايثون"
+    - icon: travis
+      tooltip: "الترابط والبناء: ترافيس"
+
+
+- title: القارىء الضوئي
+  description: خدمة سحابية تقدم عملية القراءة الضوئية للنصوص المصورة وتحويلها لمحتوى نصّي.
+  link: https://www.opticalreader.net
+  repo_link: https://github.com/abarrak/optical-reader
+  technology_stack:
+    - icon: ruby
+      tooltip: "اللغة البرمجية: روبي"
+    - icon: materializecss
+      tooltip: "إطار الواجهة: (MaterializeCss)"
+    - icon: jquery
+      tooltip: "jQuery"
+    - icon: aws
+      tooltip: "النشر: خدمات أمازون (AWS)"
+
+- title: وثيقة بيانات الحساب العامة (3scale)
+  description: مكتبة مساعدة لتمرير بيانات حساب العملاء إلى الواجهات البرمجية في نظام (3scale).
+  link: https://github.com/ElmCompany/3scale-profile-share-policy
+  repo_link: https://github.com/ElmCompany/3scale-profile-share-policy
+  technology_stack:
+    - icon: nginx
+      tooltip: "اللغة البرمجية: Lua"
+    - icon: openshift
+      tooltip: "النشر: أوبن شيفت (OpenShift)"
+
+- title: Except Nested
+  description: ملحق إضافي مساعد للأدلة (Hash) لمكتبة ريلز (Active Support).
+  link: https://rubygems.org/gems/except_nested
+  repo_link: https://github.com/abarrak/except_nested
+  technology_stack:
+    - icon: ruby
+      tooltip: "اللغة البرمجية: روبي"
+    - icon: travis
+      tooltip: "الترابط والبناء: ترافيس"
+
+
+- title: Values At Nested
+  description: ملحق إضافي مساعد للأدلة (Hash) لمكتبة ريلز (Active Support).
+  link: https://rubygems.org/gems/values_at_nested
+  repo_link: https://github.com/abarrak/values_at_nested
+  technology_stack:
+    - icon: ruby
+      tooltip: "اللغة البرمجية: روبي"
+    - icon: travis
+      tooltip: "الترابط والبناء: ترافيس"
+
+
+- title: RTL
+  description: مكتبة للتحقق من اتجاه الكتابة الخاص باللغات.
+  link: https://rubygems.org/gems/rtl
+  repo_link: https://github.com/abarrak/rtl
+  technology_stack:
+    - icon: ruby
+      tooltip: "اللغة البرمجية: روبي"
+    - icon: travis
+      tooltip: "الترابط والبناء: ترافيس"
+
+
