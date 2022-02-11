@@ -26,6 +26,7 @@
     "gulp-uglify": "3.0.2"
   },
   "dependencies": {
+    "del": "^6.0.0",
     "npm": "^6.9.0",
     "rtlcss": "^3.5.0"
   }

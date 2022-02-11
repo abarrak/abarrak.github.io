@@ -5,23 +5,29 @@ var cleanCSS = require('gulp-clean-css');
 var concatCss = require('gulp-concat-css');
 var rename = require('gulp-rename');
 var rtlcss = require('gulp-rtlcss');
+var del = require('del');
+
+function clean(_cb) {
+  del(['public/css/all.min.css', 'all.rtl.min.css']);
+  _cb();
+}
 
 function styles(_cb) {
-  src(["../abarrak.github.io/public/css/*.css", "public/css/*.min.css"])
+  src(["public/css/*.css", "public/css/*.min.css"])
     .pipe(concatCss("public/css/all.css"))
     .pipe(rename('all.min.css'))
     .pipe(cleanCSS({ compatibility: 'ie8' }))
-    .pipe(dest('public/css'));
+    .pipe(dest('public/css'))
   _cb();
 }
 
 function stylesAr(_cb) {
-  src(["../abarrak.github.io/public/css/*.css", "public/css/*.min.css"])
+  src(["public/css/*.css", "public/css/*.min.css"])
     .pipe(concatCss("public/css/all.css"))
     .pipe(rtlcss())
     .pipe(rename('all.rtl.min.css'))
     .pipe(cleanCSS({ compatibility: 'ie8' }))
-    .pipe(dest('public/css'));
+    .pipe(dest('public/css'))
   _cb();
 }
 
@@ -40,5 +46,5 @@ function printSucces(_cb) {
 }
 
 
-exports.default = series(styles, stylesAr, scripts, printSucces);
+exports.default = series(clean, styles, stylesAr, scripts, printSucces);
 exports.build = exports.default;
