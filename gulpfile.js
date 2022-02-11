@@ -13,7 +13,7 @@ function clean(_cb) {
 }
 
 function styles(_cb) {
-  src(["public/css/*.css", "public/css/*.min.css"])
+  src(["../abarrak.github.io/public/css/*.css", "public/css/*.min.css"])
     .pipe(concatCss("public/css/all.css"))
     .pipe(rename('all.min.css'))
     .pipe(cleanCSS({ compatibility: 'ie8' }))
@@ -22,7 +22,7 @@ function styles(_cb) {
 }
 
 function stylesAr(_cb) {
-  src(["public/css/*.css", "public/css/*.min.css"])
+  src(["../abarrak.github.io/public/css/*.css", "public/css/*.min.css"])
     .pipe(concatCss("public/css/all.css"))
     .pipe(rtlcss())
     .pipe(rename('all.rtl.min.css'))
