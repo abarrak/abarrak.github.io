@@ -11,7 +11,7 @@ $devicons-font-name: devicons;
 $devicons-path-file-name: {{ site.baseurl }}/public/fonts/devicons/$devicons-font-name;
 
 @font-face {
-  font-family: $font-name;
+  font-family: $font-name $font-name;
   src: url($font-path-file-name+'.eot'); /* IE9 Compat Modes */
   src: url($font-path-file-name+'.woff') format('woff'), /* Pretty Modern Browsers */
   url($font-path-file-name+'.ttf')  format('truetype'), /* Safari, Android, iOS */
@@ -30,7 +30,7 @@ $devicons-path-file-name: {{ site.baseurl }}/public/fonts/devicons/$devicons-fon
 }
 
 // Our variables
-$base-font-family: "Libre Baskerville", Baskerville, "Book Antiqua", Georgia, Times, serif;
+$base-font-family: "Libre Baskerville", Baskerville, "Book Antiqua", 'Noto Naskh Arabic', Georgia, Times, serif;
 $base-font-size:   16px;
 $base-font-weight: 400;
 $base-line-height: 2;

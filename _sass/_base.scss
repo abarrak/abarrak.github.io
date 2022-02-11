@@ -48,7 +48,7 @@ article {
       color: #b7b1a9;
       display: inline-block;
       float: left;
-      font-family: "Playfair Display";
+      font-family: "Playfair Display", "Noto Naskh Arabic Bold";
       font-size: 121px;
       font-style: normal;
       font-weight: 700;
@@ -63,7 +63,7 @@ article {
 
     &:first-line {
       color: #787065;
-      font-family: "Playfair Display SC";
+      font-family: "Playfair Display SC", "Noto Naskh Arabic Medium";
       font-size: 1em;
       font-style: normal !important;
       font-weight: bold;
