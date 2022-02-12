@@ -9,11 +9,16 @@
 
       <li class="lang_link">
         <small>
+        {% assign is_post_url = page.url | split: '-' | size %}
         {% if site.lang == "ar" %}
-          {% capture en_link %}{{ site.baseurl_root }}{{ page.url }}{% endcapture %}
+          {% capture en_link %}
+            {{ site.baseurl_root }}{% if is_post_url <= 1 %}{{page.url}}{% else %}/{% endif %}
+          {% endcapture %}
           <a href="{{ en_link }}" >{% t 'english' %}</a>
         {% elsif site.lang == "en" %}
-          {% capture ar_link %}{{ site.baseurl_root }}/ar{{ page.url}}{% endcapture %}
+          {% capture ar_link %}
+            {{ site.baseurl_root }}/ar{% if is_post_url <= 1 %}{{page.url}}{% else %}/{% endif %}
+          {% endcapture %}
           <a href="{{ ar_link }}" >{% t 'arabic' %}</a>
         {% endif %}
         </small>
