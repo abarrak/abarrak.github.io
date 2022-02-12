@@ -28,7 +28,7 @@
       tooltip: "أخرى"
       
 - title: ملحقات لـ(OpenCV) 
-  description: ملحقات ودوال برمجية لمكتبة معالجعة وتحليل الصور الرقمية (OpenCV).
+  description: ملحقات ودوال برمجية لمكتبة معالجة وتحليل الصور الرقمية (OpenCV).
   link: https://github.com/abarrak/opencv-helpers
   repo_link: https://github.com/abarrak/opencv-helpers
   technology_stack:

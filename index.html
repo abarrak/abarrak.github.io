@@ -21,7 +21,7 @@ layout: default
 					{{ post.excerpt }}
 
 			    <div class="button-container">
-			      <a class="button" href="{{ post.url }}">{% t 'read_more' %}</a>
+			      <a class="button" href="{{ post.url | prepend: site.baseurl }}">{% t 'read_more' %}</a>
 			    </div>
 				</div>
 			</article>

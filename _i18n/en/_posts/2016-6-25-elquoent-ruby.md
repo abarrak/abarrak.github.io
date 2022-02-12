@@ -1,9 +1,10 @@
 ---
 title: Eloquent Ruby (Book Review)
 tags: [Ruby, Book Review, Programming, Reading, Software Development]
+categories: [Software, Ruby, Book Review]
 ---
 
-<img src="{{ site.baseurl }}/public/images/eloquent-ruby-cover.jpg" class="post-image resize-sm center-image" alt="book-cover" />
+<img src="{{ site.baseurl_root }}/public/images/eloquent-ruby-cover.jpg" class="post-image resize-sm center-image" alt="book-cover" />
 
 Recently, I've read Oslen Russ's <a href="https://amzn.com/0321584104" target="_blank">"Eloquent Ruby"</a> and it was delightful read overall.
 
@@ -19,7 +20,6 @@ The book has a considerable reputation among the community programmers. It's div
 <br>
 
 In **Part (3)**, we see the language metaprogramming capabilities and techniques. First chapter introduces the concept and some hook methods like `included`, `inherited`, and `at_exit` which keep the application life cycle more interactive and informed. Three consecutive chapters talk about the valuable dynamic programming function `method_missing` and its use cases for **better error handling**, **delegation**, and **building flexible APIs**. Last chapters discuss monkey patching and self modifying code. For me this was the most interesting part of the book.
-<!-- post-excerpt -->
 
 <br>
 

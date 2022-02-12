@@ -8,7 +8,7 @@ permalink: /tags
   <h2 class="page-heading">{% t 'Tags' %}</h2>
 
   <div id="tag_cloud">
-  {% for tag in site.tags %}
+  {% for tag in site.categories %}
     &nbsp;<a href="#{{ tag | first | slugify }}" title="{{ tag | first }}" rel="{{ tag | last | size }}">
     {{ tag[0] }} ({{ tag | last | size }})
     </a>&nbsp;
@@ -18,7 +18,7 @@ permalink: /tags
   <hr>
 
   <ul id="tag_list" class="post-list">
-  {% for tag in site.tags %}
+  {% for tag in site.categories %}
     <li class="tag_item" id="{{ tag | first | slugify }}">
       <h4 class="tag_name">{{ tag | first }}</h4>
       <span>

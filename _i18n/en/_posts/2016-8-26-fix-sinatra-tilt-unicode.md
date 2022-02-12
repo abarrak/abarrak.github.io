@@ -1,9 +1,10 @@
 ---
 title: Fixing Sinatra UTF-8 issue in Tilt rendered templates
 tags: [Sinatra, Tilt, UTF-8, AWS, encoding compatibility error]
+categories: [Software, Ruby, Sinatra, Troubleshooting]
 ---
 
-<img src="{{ site.baseurl }}/public/images/sinatra-logo.png" class="post-image resize-sm center-image" />
+<img src="{{ site.baseurl_root }}/public/images/sinatra-logo.png" class="post-image resize-sm center-image" />
 
 In the past week, I'v been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.
 

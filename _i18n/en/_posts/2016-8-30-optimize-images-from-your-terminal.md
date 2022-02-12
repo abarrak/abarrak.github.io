@@ -1,9 +1,10 @@
 ---
 title: Optimize Image Files from Your Terminal
-tags: [ Image Processing, optipng, jpegoptim, gifsicle, ImageOptim]
+tags: [Image Processing, optipng, jpegoptim, gifsicle, ImageOptim]
+categories: [Image Processing, Productivity]
 ---
 
-<img src="{{ site.baseurl }}/public/images/opt-img.jpg" class="post-image resize-md center-image" />
+<img src="{{ site.baseurl_root }}/public/images/opt-img.jpg" class="post-image resize-md center-image" />
 
 In many times you may find yourself in need for optimzing rapidly a bunch of images in your hands. There are handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:
 
