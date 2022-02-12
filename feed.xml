@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>global.title</title>
-    <description>global.description</description>
+    <title></title>
+    <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 11 Feb 2022 22:52:46 +0300</pubDate>
-    <lastBuildDate>Fri, 11 Feb 2022 22:52:46 +0300</lastBuildDate>
+    <pubDate>Sat, 12 Feb 2022 09:52:46 +0300</pubDate>
+    <lastBuildDate>Sat, 12 Feb 2022 09:52:46 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
-        <title>Using UUIDs as Primary Key for Active Record Models</title>
+        <title></title>
         <description>&lt;p&gt;&lt;img src=&quot;/public/images/uuids-db.png&quot; class=&quot;post-image center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;It’s advised that using universally unique identifiers (UUIDs) for exposed resource identifiers is &lt;a href=&quot;https://github.com/eliotsykes/rails-security-checklist#ids&quot;&gt;more secure&lt;/a&gt;, and &lt;a href=&quot;https://tomharrisonjr.com/uuid-or-guid-as-primary-keys-be-careful-7b2aa3dcb439&quot;&gt;convenient for database distribution&lt;/a&gt;.&lt;/p&gt;
@@ -148,10 +148,18 @@ We have to set it up using default ordering scope, easily:&lt;/p&gt;
         <category>Rails</category>
         
         
+        <category>Software</category>
+        
+        <category>Ruby</category>
+        
+        <category>Rails</category>
+        
+        <category>Active Record</category>
+        
       </item>
     
       <item>
-        <title>Optimize Image Files from Your Terminal</title>
+        <title></title>
         <description>&lt;p&gt;&lt;img src=&quot;/public/images/opt-img.jpg&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In many times you may find yourself in need for optimzing rapidly a bunch of images in your hands. There are handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:&lt;/p&gt;
@@ -259,10 +267,14 @@ find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quo
         <category>ImageOptim</category>
         
         
+        <category>Image Processing</category>
+        
+        <category>Productivity</category>
+        
       </item>
     
       <item>
-        <title>Fixing Sinatra UTF-8 issue in Tilt rendered templates</title>
+        <title></title>
         <description>&lt;p&gt;&lt;img src=&quot;/public/images/sinatra-logo.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In the past week, I’v been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.&lt;/p&gt;
@@ -324,10 +336,18 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
         <category>encoding compatibility error</category>
         
         
+        <category>Software</category>
+        
+        <category>Ruby</category>
+        
+        <category>Sinatra</category>
+        
+        <category>Troubleshooting</category>
+        
       </item>
     
       <item>
-        <title>Eloquent Ruby (Book Review)</title>
+        <title></title>
         <description>&lt;p&gt;&lt;img src=&quot;/public/images/eloquent-ruby-cover.jpg&quot; class=&quot;post-image resize-sm center-image&quot; alt=&quot;book-cover&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Recently, I’ve read Oslen Russ’s &lt;a href=&quot;https://amzn.com/0321584104&quot; target=&quot;_blank&quot;&gt;“Eloquent Ruby”&lt;/a&gt; and it was delightful read overall.&lt;/p&gt;
@@ -342,8 +362,7 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;In &lt;strong&gt;Part (3)&lt;/strong&gt;, we see the language metaprogramming capabilities and techniques. First chapter introduces the concept and some hook methods like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;included&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inherited&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;at_exit&lt;/code&gt; which keep the application life cycle more interactive and informed. Three consecutive chapters talk about the valuable dynamic programming function &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;method_missing&lt;/code&gt; and its use cases for &lt;strong&gt;better error handling&lt;/strong&gt;, &lt;strong&gt;delegation&lt;/strong&gt;, and &lt;strong&gt;building flexible APIs&lt;/strong&gt;. Last chapters discuss monkey patching and self modifying code. For me this was the most interesting part of the book.
-&lt;!-- post-excerpt --&gt;&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;Part (3)&lt;/strong&gt;, we see the language metaprogramming capabilities and techniques. First chapter introduces the concept and some hook methods like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;included&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inherited&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;at_exit&lt;/code&gt; which keep the application life cycle more interactive and informed. Three consecutive chapters talk about the valuable dynamic programming function &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;method_missing&lt;/code&gt; and its use cases for &lt;strong&gt;better error handling&lt;/strong&gt;, &lt;strong&gt;delegation&lt;/strong&gt;, and &lt;strong&gt;building flexible APIs&lt;/strong&gt;. Last chapters discuss monkey patching and self modifying code. For me this was the most interesting part of the book.&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -374,6 +393,12 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
         
         <category>Software Development</category>
         
+        
+        <category>Software</category>
+        
+        <category>Ruby</category>
+        
+        <category>Book Review</category>
         
       </item>
     
