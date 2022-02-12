@@ -9,7 +9,14 @@ layout: default
 			<article>
 				<header class="post-header">
 					<div>
-						<span>{% t 'posted_on' %} </span><span class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</span>
+						<span>{% t 'posted_on' %}</span>
+						<span class="post-meta">
+						{% if site.lang == 'ar' %}
+							{{ post.date | arabic_date }}
+						{% else %}
+							{{ post.date | date: "%B %-d, %Y" }}
+						{% endif %}
+						</span>
 					</div>
 
 					<h2>
