@@ -3,14 +3,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{% t site.description %}{% endif %}">
   <meta name="author" content="{{ site.author }}">
 
   <meta name="keywords" content="{% if page.tags %}{{ page.tags | array_to_sentence_string | strip_newlines }}{% else %}{{ site.keywords }}{% endif %}">
 	<meta name="theme-color" content="#943526">
 
   <meta property="og:type" content="{% if page.categories == nil %}website{% else %}article{% endif %}">
-  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 80 }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 80 }}{% else %}{% t site.description %}{% endif %}">
   <meta property="og:url" content="{{ page.url | replace: 'index.html', '' | prepend: site.baseurl_root | prepend: site.url }}">
 	{% if page.thumbnail %}
 	<meta property="og:image" content="{{ site.url }}{{ site.baseurl_root }}/public/{{ page.thumbnail }}">
@@ -20,7 +20,7 @@
 	{% if page.title %}
 	<meta property="og:title" content="{% t {{ site.title }} %} • {% if page.categories == nil %}{% t page.title %}{% else %}{{ page.title }}{% endif %}">
 	{% else %}
-	<meta property="og:title" content="{% t {{ site.title }} %}">
+	<meta property="og:title" content="{% t {{ site.subtitle }} %}">
 	{% endif %}
 	<link rel="canonical" href="{{ page.url | replace: 'index.html', '' | prepend: site.baseurl_root | prepend: site.url }}">
 
