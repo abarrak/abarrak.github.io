@@ -15,7 +15,7 @@
 	<meta property="og:image" content="{{ site.url }}{{ site.baseurl_root }}/public/thumbnail-1.jpg">
 	{% endif %}
 	{% if page.title %}
-	<meta property="og:title" content="{% t {{ site.title }} %} • {% t page.title %}">
+	<meta property="og:title" content="{% t {{ site.title }} %} • {% if page.categories == nil %}{% t page.title %}{% else %}{{ page.title }}{% endif %}">
 	{% else %}
 	<meta property="og:title" content="{% t {{ site.title }} %}">
 	{% endif %}
@@ -23,7 +23,8 @@
 
 	<title>
     {% if page.title %}
-      {% t {{ page.title | escape }} %} • {% t {{ site.subtitle | escape }} %}
+      {% if page.categories == nil %}{% t page.title %}{% else %}{{ page.title }}{% endif %} •
+      {% t {{ site.subtitle | escape }} %}
     {% else %}
       {% t {{ site.title | escape }} %}
     {% endif %}
