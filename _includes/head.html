@@ -9,6 +9,9 @@
   <meta name="keywords" content="{% if page.tags %}{{ page.tags | array_to_sentence_string | strip_newlines }}{% else %}{{ site.keywords }}{% endif %}">
 	<meta name="theme-color" content="#943526">
 
+  <meta property="og:type" content="{% if page.categories == nil %}website{% else %}article{% endif %}">
+  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 80 }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:url" content="{{ page.url | replace: 'index.html', '' | prepend: site.baseurl_root | prepend: site.url }}">
 	{% if page.thumbnail %}
 	<meta property="og:image" content="{{ site.url }}{{ site.baseurl_root }}/public/{{ page.thumbnail }}">
 	{% else %}
