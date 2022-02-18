@@ -89,6 +89,44 @@
 						<span>نُشر في</span>
 						<span class="post-meta">
 						
+							18 فبراير 2022
+						
+						</span>
+					</div>
+
+					<h2>
+						<a class="post-link" href="/ar/2022/02/18/resolving-dockerd-pool-size-less-than-minimum">حل مشكلة إنشاء الحاويات لخادم دوكر بسبب المساحة (Pool Size Limit)</a>
+					</h2>
+				</header>
+
+				<div class="entry-content">
+					<p><img src="/public/images/dockerd-ddevmapper-pool-issue.png" class="post-image resize-md center-image"></p>
+
+<h2 id="المشكلة">المشكلة</h2>
+
+<p>من المتوقع المرور بعدد من المشكلات في أنظمة البناء والترابط (CI/CD) المعتمدة على دوكر (Docker)، وذلك نتيجةً لبعض القيود المعتادة في هذه البيئات، ولِمعمارية الخادم والعميل الأساسية في دوكر.</p>
+
+<p>أدناه إحدى هذه المشكلات تعاملت معها مؤخراً. وهي تحصل أثناء اتصال النظام بـ الخادم <code class="language-plaintext highlighter-rouge">dockerd</code> من أجل بناء نماذج وحاويات تطبيق معين (Images)، أو جلْب نماذج موجودة خارجياً. يظهر نص الخطأ كالتالي:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>failed to prepare a4mv4dh8qcq283c7x47a4nwpg: devmapper: Thin Pool has 161986 free data blocks which is less than minimum required 163840 free data blocks. Create more free space in thin pool or use dm.min_free_space option to change behavior
+</code></pre></div></div>
+
+
+
+			    <div class="button-container">
+			      <a class="button" href="/ar/2022/02/18/resolving-dockerd-pool-size-less-than-minimum">اقرأ المزيد ..</a>
+			    </div>
+				</div>
+			</article>
+		</li>
+		
+		<li>
+			<article>
+				<header class="post-header">
+					<div>
+						<span>نُشر في</span>
+						<span class="post-meta">
+						
 							12 فبراير 2022
 						
 						</span>

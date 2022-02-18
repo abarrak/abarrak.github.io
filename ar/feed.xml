@@ -5,9 +5,87 @@
     <description></description>
     <link>https://www.abarrak.com/ar/</link>
     <atom:link href="https://www.abarrak.com/ar/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 12 Feb 2022 12:15:01 +0300</pubDate>
-    <lastBuildDate>Sat, 12 Feb 2022 12:15:01 +0300</lastBuildDate>
+    <pubDate>Fri, 18 Feb 2022 14:21:43 +0300</pubDate>
+    <lastBuildDate>Fri, 18 Feb 2022 14:21:43 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/dockerd-ddevmapper-pool-issue.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;المشكلة&quot;&gt;المشكلة&lt;/h2&gt;
+
+&lt;p&gt;من المتوقع المرور بعدد من المشكلات في أنظمة البناء والترابط (CI/CD) المعتمدة على دوكر (Docker)، وذلك نتيجةً لبعض القيود المعتادة في هذه البيئات، ولِمعمارية الخادم والعميل الأساسية في دوكر.&lt;/p&gt;
+
+&lt;p&gt;أدناه إحدى هذه المشكلات تعاملت معها مؤخراً. وهي تحصل أثناء اتصال النظام بـ الخادم &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dockerd&lt;/code&gt; من أجل بناء نماذج وحاويات تطبيق معين (Images)، أو جلْب نماذج موجودة خارجياً. يظهر نص الخطأ كالتالي:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;failed to prepare a4mv4dh8qcq283c7x47a4nwpg: devmapper: Thin Pool has 161986 free data blocks which is less than minimum required 163840 free data blocks. Create more free space in thin pool or use dm.min_free_space option to change behavior
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;h2 id=&quot;التحققات&quot;&gt;التحققات&lt;/h2&gt;
+
+&lt;p&gt;كما يظهر في عبارة الخطأ, تتعلق المشكلة بالوصول لاستهلاك كامل المساحة المحددة لمحرك التخزين لخادم دوكر &lt;a href=&quot;https://docs.docker.com/storage/storagedriver/device-mapper-driver/&quot;&gt;device mapper driver&lt;/a&gt;. ويتضح  وجود نقص  في مساحة &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Thin Pool&lt;/code&gt; أدى لفشل إنشاء أو جلْب النماذج الجديدة.&lt;/p&gt;
+
+&lt;p&gt;للتأكد, بالإمكان التحقق من مساحة القرص للخادم &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;df -H&lt;/code&gt; أو أوامر &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker system&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker system info
+docker system &lt;span class=&quot;nb&quot;&gt;df&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;حلول&quot;&gt;حلول&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;كحلٍ مؤقت، زيادة مساحة التخزين المتاحة لدوكر ستقوم بإزالة المشكلة، إن أمكننا التحكم بالمساحات وزياداتها.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;أيضاً، بالإمكان إجراء عمليات المسح الدوري لنماذج الحاويات غير المستخدمة يدوياً أو عبر إجراءات مجدولة (crontab).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# delete specific unused images by pattern:&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;IMAGES&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;my-apps
+docker images | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$IMAGES&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{print $1 &quot;:&quot; $2}'&lt;/span&gt; | xargs docker rmi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;يمكن الحذف بواسطة &lt;a href=&quot;https://docs.docker.com/engine/reference/commandline/image_prune/#filtering&quot;&gt;تحديد عنوان أو تاريخ معين&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# delete 6 months old images:&lt;/span&gt;
+docker image prune &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--force&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--filter&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;until=4368h&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;وأيضاً، بإمكاننا إجراء الأمر &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prune&lt;/code&gt; لمحو كافة المصادر غير المستعملة أو المنتهية:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker system prune
+
+&lt;span class=&quot;c&quot;&gt;# This will remove all unused images:&lt;/span&gt;
+docker image prune &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Fri, 18 Feb 2022 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/ar/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</link>
+        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</guid>
+        
+        <category>cicd</category>
+        
+        <category>pipelines</category>
+        
+        <category>ddevmapper pool issue</category>
+        
+        <category>dockerd</category>
+        
+        <category>docker</category>
+        
+        
+        <category>برمجيات</category>
+        
+        <category>CICD</category>
+        
+        <category>دوكر</category>
+        
+      </item>
     
       <item>
         <title></title>
@@ -33,7 +111,7 @@
 
 &lt;h3 id=&quot;اقتباسٌ-عابر&quot;&gt;&lt;strong&gt;اقتباسٌ عابر&lt;/strong&gt;&lt;/h3&gt;
 
-&lt;p&gt;اقتنت &lt;a href=&quot;https://twitter.com/zohor92&quot;&gt;زوجتي الرائعة&lt;/a&gt; 😀 كتاباً ذا عنوانٍ جاذب “متعة أن تكون في الثلاثين” لـ/ علا ديوب، وابتدأت قراءته، خصوصاً مع اقترابي من الثلاثين ربيعاً في يونيو القادم.&lt;/p&gt;
+&lt;p&gt;اقتنت &lt;a href=&quot;https://twitter.com/zohor92&quot;&gt;زوجتي الرائعة&lt;/a&gt; 😀 كتاباً ذا عنوانٍ جاذب “متعة أن تكون في الثلاثين” لـ/ علا ديوب، فابتدأتُ قراءته، خصوصاً مع اقترابي من الثلاثين ربيعاً في يونيو القادم.&lt;/p&gt;
 
 &lt;p&gt;يتشكل الكتاب من مجموع مقالات واختيارات لكُتَّابٍ عدة، صاغتها المؤلفة وترجمتها في ثلاث فصول: الاستمتاع بالحياة، الحب، الصحة والجسد. بشكل عام، راق لي المحتوى وكالعديد من مؤلفات تطوير الذات وعلم النفس المبسط يوجد بعض التعميمات أو المحتوى الإنشائي نوعاً ما. ختاماً، اقتبس منه الآتي:&lt;/p&gt;
 

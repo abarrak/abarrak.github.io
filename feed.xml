@@ -5,9 +5,87 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 12 Feb 2022 12:15:01 +0300</pubDate>
-    <lastBuildDate>Sat, 12 Feb 2022 12:15:01 +0300</lastBuildDate>
+    <pubDate>Fri, 18 Feb 2022 14:21:42 +0300</pubDate>
+    <lastBuildDate>Fri, 18 Feb 2022 14:21:42 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/dockerd-ddevmapper-pool-issue.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;
+
+&lt;p&gt;Sometimes, when working with docker engine on CI systems, certain type of errors could arise from the challenging restrictions or limits on the environment. This is typical with the inherent server-client architecture of docker.&lt;/p&gt;
+
+&lt;p&gt;Here’s one of the problems that I’ve seen recently. When a client is connecting to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dockerd&lt;/code&gt; in order to build an application image or prepare and pull external images, the server reports this issue:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;failed to prepare a4mv4dh8qcq283c7x47a4nwpg: devmapper: Thin Pool has 161986 free data blocks which is less than minimum required 163840 free data blocks. Create more free space in thin pool or use dm.min_free_space option to change behavior
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;h2 id=&quot;analysis&quot;&gt;Analysis&lt;/h2&gt;
+
+&lt;p&gt;As the log suggests, clearly this is related to the storage limit incurred for the &lt;a href=&quot;https://docs.docker.com/storage/storagedriver/device-mapper-driver/&quot;&gt;device mapper driver&lt;/a&gt;. Here, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Thin Pool&lt;/code&gt; needs additional space to create or pull newer images but the limit is exceeded.&lt;/p&gt;
+
+&lt;p&gt;For diagnostics, check the disk usage on the daemon &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;df -H&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker system&lt;/code&gt; commands.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker system info
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker system &lt;span class=&quot;nb&quot;&gt;df&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;resolutions&quot;&gt;Resolutions&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;As workaround, increasing the volume space is direct resolution in case you have control on it.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Additionally, you can run clean up procedure of outdated and unnecessary images, periodically or through cron tab.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# delete specific unused images by pattern:&lt;/span&gt;
+ &lt;span class=&quot;nv&quot;&gt;IMAGES&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;my-apps
+ docker images | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$IMAGES&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{print $1 &quot;:&quot; $2}'&lt;/span&gt; | xargs docker rmi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Or delete by &lt;a href=&quot;https://docs.docker.com/engine/reference/commandline/image_prune/#filtering&quot;&gt;label or date filteration&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# delete 6 months old images:&lt;/span&gt;
+ docker image prune &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--force&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--filter&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;until=4368h&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Or you may run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prune&lt;/code&gt; to remove all dangling resources (images, containers, etc.)&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; docker system prune
+ 
+ &lt;span class=&quot;c&quot;&gt;# This will remove all unused images:&lt;/span&gt;
+ docker image prune &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Fri, 18 Feb 2022 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</guid>
+        
+        <category>cicd</category>
+        
+        <category>pipelines</category>
+        
+        <category>ddevmapper pool issue</category>
+        
+        <category>dockerd</category>
+        
+        <category>docker</category>
+        
+        
+        <category>Software</category>
+        
+        <category>CICD</category>
+        
+        <category>Docker</category>
+        
+      </item>
     
       <item>
         <title></title>
