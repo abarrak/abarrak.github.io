@@ -135,7 +135,7 @@
  docker images | <span class="nb">grep</span> <span class="nv">$IMAGES</span> | <span class="nb">awk</span> <span class="s1">'{print $1 ":" $2}'</span> | xargs docker rmi
 </code></pre></div></div>
 
-<p>Or delete by <a href="https://docs.docker.com/engine/reference/commandline/image_prune/#filtering" rel="nofollow" target="_blank">label or date filteration</a>:</p>
+<p>Or delete by <a href="https://docs.docker.com/engine/reference/commandline/image_prune/#filtering" rel="nofollow" target="_blank">label/date filteration</a>:</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c"># delete 6 months old images:</span>
  docker image prune <span class="nt">-a</span> <span class="nt">--force</span> <span class="nt">--filter</span> <span class="s2">"until=4368h"</span>
