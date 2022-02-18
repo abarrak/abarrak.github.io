@@ -25,7 +25,7 @@ permalink: /tags
         <ul class="dashed">
         {% for post in tag[1] %}
           <li class="tag_post post-meta">
-            <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+            <a href="{{ post.url | prepend: site.baseurl }}" title="{{ post.title }}">{{ post.title }}</a>
           </li>
         {% endfor %}
         </ul>
