@@ -43,7 +43,7 @@ $ docker system df
  docker images | grep $IMAGES | awk '{print $1 ":" $2}' | xargs docker rmi
  ```
 
- Or delete by [label or date filteration](https://docs.docker.com/engine/reference/commandline/image_prune/#filtering):
+ Or delete by [label/date filteration](https://docs.docker.com/engine/reference/commandline/image_prune/#filtering):
 
  ```shell
  # delete 6 months old images:

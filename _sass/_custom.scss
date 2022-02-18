@@ -9,6 +9,8 @@ code {
   color: #bf616a;
   background-color: #f9f9f9;
   border-radius: 3px;
+  /*rtl:ignore*/
+  direction: ltr !important;
 }
 
 pre {
@@ -23,6 +25,8 @@ pre {
   word-break: break-all;
   word-wrap: break-word;
   background-color: #f9f9f9;
+  /*rtl:ignore*/
+  direction: ltr !important;
 }
 
 pre code {
@@ -30,6 +34,8 @@ pre code {
   font-size: 100%;
   color: inherit;
   background-color: transparent;
+  /*rtl:ignore*/
+  direction: ltr !important;
 }
 
 /* Pygments via Jekyll */
