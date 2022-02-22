@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/ar/</link>
     <atom:link href="https://www.abarrak.com/ar/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 22 Feb 2022 15:28:52 +0300</pubDate>
-    <lastBuildDate>Tue, 22 Feb 2022 15:28:52 +0300</lastBuildDate>
+    <pubDate>Tue, 22 Feb 2022 20:14:32 +0300</pubDate>
+    <lastBuildDate>Tue, 22 Feb 2022 20:14:32 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -20,7 +20,7 @@
 &lt;p&gt;أتمنى أن يلاقي استحسانكم، وأن يقدم الفائدة للمهتمين!&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://abdullah-barrak.gitbook.io/linux-sysops-handbook/&quot;&gt;الكتاب.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://abarrak.gitbook.io/linux-sysops-handbook&quot;&gt;الكتاب.&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/abarrak/linux-sysops-handbook&quot;&gt;الكود المصدري.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
