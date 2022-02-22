@@ -13,5 +13,5 @@ There's a good portion of cheatsheets that help in various commonly needed tasks
 
 I hope you like it and it would be of a good benefit to interested people.
 
-- [Book.](https://abdullah-barrak.gitbook.io/linux-sysops-handbook/)
+- [Book.](https://abarrak.gitbook.io/linux-sysops-handbook)
 - [Source.](https://github.com/abarrak/linux-sysops-handbook)

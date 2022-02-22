@@ -13,5 +13,5 @@ categories: [لينكس, كتب, نظم التشغيل]
 
 أتمنى أن يلاقي استحسانكم، وأن يقدم الفائدة للمهتمين!
 
-- [الكتاب.](https://abdullah-barrak.gitbook.io/linux-sysops-handbook/)
+- [الكتاب.](https://abarrak.gitbook.io/linux-sysops-handbook)
 - [الكود المصدري.](https://github.com/abarrak/linux-sysops-handbook)
