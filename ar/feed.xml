@@ -5,9 +5,43 @@
     <description></description>
     <link>https://www.abarrak.com/ar/</link>
     <atom:link href="https://www.abarrak.com/ar/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 19 Feb 2022 00:34:14 +0300</pubDate>
-    <lastBuildDate>Sat, 19 Feb 2022 00:34:14 +0300</lastBuildDate>
+    <pubDate>Tue, 22 Feb 2022 14:34:35 +0300</pubDate>
+    <lastBuildDate>Tue, 22 Feb 2022 14:34:35 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/linux-book.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;نشرتُ كتاباً مختصراً عن أساسيات نظام التشغيل لينكس وعملياته المختلفة بشكل عملي ومهم لمدراء الأنظمة. 📕&lt;/p&gt;
+
+&lt;p&gt;يوجد العديد من تجميعة من الأوامر المفيدة للعديد من المهام اليومية وغيرها.&lt;/p&gt;
+
+&lt;p&gt;أتمنى أن يلاقي استحسانكم، وأن يقدم الفائدة للمهتمين!&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://abdullah-barrak.gitbook.io/linux-sysops-handbook/&quot;&gt;الكتاب.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/abarrak/linux-sysops-handbook&quot;&gt;الكود المصدري.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 22 Feb 2022 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/ar/2022/02/22/linux-sysops-git-book</link>
+        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/02/22/linux-sysops-git-book</guid>
+        
+        <category>لينكس</category>
+        
+        <category>إدارة الأنظمة</category>
+        
+        <category>كتاب قيت</category>
+        
+        
+        <category>لينكس</category>
+        
+        <category>كتب</category>
+        
+        <category>نظم التشغيل</category>
+        
+      </item>
     
       <item>
         <title></title>

@@ -8,26 +8,26 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="ProblemSometimes, when working with docker engine on CI systems, certain type of errors could arise from the challenging restrictions or limits on the enviro...">
+	<meta name="description" content="I have published a short handbook on Linux administrations covering multiple topics 📕There’s a good portion of cheatsheets that help in various commonly need...">
   <meta name="author" content="Abdullah Barrak">
 
-  <meta name="keywords" content="cicd, pipelines, ddevmapper pool issue, dockerd, and docker">
+  <meta name="keywords" content="linxu, system administration, and gitbook">
 	<meta name="theme-color" content="#943526">
 
   <meta property="og:type" content="article">
-  <meta property="og:description" content="ProblemSometimes, when working with docker engine on CI systems, certain type...">
-  <meta property="og:url" content="https://www.abarrak.com/2022/02/18/resolving-dockerd-pool-size-less-than-minimum">
+  <meta property="og:description" content="I have published a short handbook on Linux administrations covering multiple ...">
+  <meta property="og:url" content="https://www.abarrak.com/2022/02/22/linux-sysops-git-book">
 	
 	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
 	
 	
-	<meta property="og:title" content="Abdullah Barrak • Resolving Image Creation Failure on DockerD due Pool Size Limit">
+	<meta property="og:title" content="Abdullah Barrak • A Git Book on Linux SysOps Essentials">
 	
-	<link rel="canonical" href="https://www.abarrak.com/2022/02/18/resolving-dockerd-pool-size-less-than-minimum">
+	<link rel="canonical" href="https://www.abarrak.com/2022/02/22/linux-sysops-git-book">
 
 	<title>
     
-      Resolving Image Creation Failure on DockerD due Pool Size Limit •
+      A Git Book on Linux SysOps Essentials •
       Abdullah Barrak's Blog
     
   </title>
@@ -86,68 +86,28 @@
 	<div>
 		<span></span><span class="post-meta">
 			
-				February 18, 2022
+				February 22, 2022
 			
 		</span>
 	</div>
 
-	<h1 class="post-title" itemprop="name headline">Resolving Image Creation Failure on DockerD due Pool Size Limit</h1>
+	<h1 class="post-title" itemprop="name headline">A Git Book on Linux SysOps Essentials</h1>
 </header>
 
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="entry-content" itemprop="articleBody">
-		<p><img src="/public/images/dockerd-ddevmapper-pool-issue.png" class="post-image resize-md center-image"></p>
+		<p><img src="/public/images/linux-book.png" class="post-image resize-md center-image"></p>
 
-<h2 id="problem">Problem</h2>
+<p>I have published a short handbook on Linux administrations covering multiple topics 📕</p>
 
-<p>Sometimes, when working with docker engine on CI systems, certain type of errors could arise from the challenging restrictions or limits on the environment. This is typical with the inherent server-client architecture of docker.</p>
+<p>There’s a good portion of cheatsheets that help in various commonly needed tasks.</p>
 
-<p>Here’s one of the problems that I’ve seen recently. When a client is connecting to <code class="language-plaintext highlighter-rouge">dockerd</code> in order to build an application image or prepare and pull external images, the server reports this issue:</p>
+<p>I hope you like it and it would be of a good benefit to interested people.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>failed to prepare a4mv4dh8qcq283c7x47a4nwpg: devmapper: Thin Pool has 161986 free data blocks which is less than minimum required 163840 free data blocks. Create more free space in thin pool or use dm.min_free_space option to change behavior
-</code></pre></div></div>
-
-<!-- post-excerpt -->
-
-<h2 id="analysis">Analysis</h2>
-
-<p>As the log suggests, clearly this is related to the storage limit incurred for the <a href="https://docs.docker.com/storage/storagedriver/device-mapper-driver/" rel="nofollow" target="_blank">device mapper driver</a>. Here, <code class="language-plaintext highlighter-rouge">Thin Pool</code> needs additional space to create or pull newer images but the limit is exceeded.</p>
-
-<p>For diagnostics, check the disk usage on the daemon <code class="language-plaintext highlighter-rouge">df -H</code> or <code class="language-plaintext highlighter-rouge">docker system</code> commands.</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker system info
-<span class="nv">$ </span>docker system <span class="nb">df</span>
-</code></pre></div></div>
-
-<h2 id="resolutions">Resolutions</h2>
-
-<ol>
-  <li>
-    <p>As workaround, increasing the volume space is direct resolution in case you have control on it.</p>
-  </li>
-  <li>
-    <p>Additionally, you can run clean up procedure of outdated and unnecessary images, periodically or through cron tab.</p>
-  </li>
-</ol>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c"># delete specific unused images by pattern:</span>
- <span class="nv">IMAGES</span><span class="o">=</span>my-apps
- docker images | <span class="nb">grep</span> <span class="nv">$IMAGES</span> | <span class="nb">awk</span> <span class="s1">'{print $1 ":" $2}'</span> | xargs docker rmi
-</code></pre></div></div>
-
-<p>Or delete by <a href="https://docs.docker.com/engine/reference/commandline/image_prune/#filtering" rel="nofollow" target="_blank">label/date filteration</a>:</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c"># delete 6 months old images:</span>
- docker image prune <span class="nt">-a</span> <span class="nt">--force</span> <span class="nt">--filter</span> <span class="s2">"until=4368h"</span>
-</code></pre></div></div>
-
-<p>Or you may run <code class="language-plaintext highlighter-rouge">prune</code> to remove all dangling resources (images, containers, etc.)</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> docker system prune
- 
- <span class="c"># This will remove all unused images:</span>
- docker image prune <span class="nt">--all</span>
-</code></pre></div></div>
+<ul>
+  <li><a href="https://abdullah-barrak.gitbook.io/linux-sysops-handbook/" rel="nofollow" target="_blank">Book.</a></li>
+  <li><a href="https://github.com/abarrak/linux-sysops-handbook" rel="nofollow" target="_blank">Source.</a></li>
+</ul>
 
 	</div>
 
@@ -156,8 +116,8 @@
 <div id="disqus_thread"></div>
 <script>
   var disqus_config = function () {
-      this.page.url = "https://www.abarrak.com/2022/02/18/resolving-dockerd-pool-size-less-than-minimum";
-      this.page.identifier = "resolving-image-creation-failure-on-dockerd-due-pool-size-limit";
+      this.page.url = "https://www.abarrak.com/2022/02/22/linux-sysops-git-book";
+      this.page.identifier = "a-git-book-on-linux-sysops-essentials";
   };
 
   (function() {
@@ -177,18 +137,13 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
 <div id="post-nav">
 	<div class="next">
 		
-		<a href="/2022/02/22/linux-sysops-git-book">
-			<span>Next entry</span>
-			A Git Book on Linux SysOps Essentials
-		</a>
-		
 	</div>
 
 	<div class="previous">
 		
-		<a href="/2019/05/24/uuid-primary-key-for-active-record-models">
+		<a href="/2022/02/18/resolving-dockerd-pool-size-less-than-minimum">
 			<span>Previous entry</span>
-			Using UUIDs as Primary Key for Active Record Models
+			Resolving Image Creation Failure on DockerD due Pool Size Limit
 		</a>
 		
 	</div>

@@ -5,9 +5,43 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 19 Feb 2022 00:34:13 +0300</pubDate>
-    <lastBuildDate>Sat, 19 Feb 2022 00:34:13 +0300</lastBuildDate>
+    <pubDate>Tue, 22 Feb 2022 14:34:35 +0300</pubDate>
+    <lastBuildDate>Tue, 22 Feb 2022 14:34:35 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/linux-book.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I have published a short handbook on Linux administrations covering multiple topics 📕&lt;/p&gt;
+
+&lt;p&gt;There’s a good portion of cheatsheets that help in various commonly needed tasks.&lt;/p&gt;
+
+&lt;p&gt;I hope you like it and it would be of a good benefit to interested people.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://abdullah-barrak.gitbook.io/linux-sysops-handbook/&quot;&gt;Book.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/abarrak/linux-sysops-handbook&quot;&gt;Source.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 22 Feb 2022 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/2022/02/22/linux-sysops-git-book</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2022/02/22/linux-sysops-git-book</guid>
+        
+        <category>linxu</category>
+        
+        <category>system administration</category>
+        
+        <category>gitbook</category>
+        
+        
+        <category>Linux</category>
+        
+        <category>Books</category>
+        
+        <category>Operating Systems</category>
+        
+      </item>
     
       <item>
         <title></title>
