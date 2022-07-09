@@ -1,5 +1,5 @@
 english: En
-arabic: العربية
+arabic: ع
 about: سيرة
 works: الأعمال
 contact: تواصل
@@ -13,7 +13,7 @@ Older: أقدم
 Newer: أحدث
 Tags: الكلمات الدلالية
 read_more: اقرأ المزيد ..
-Comments: التعليقات 
+Comments: التعليقات
 
 global:
   title: عبدالله براك
@@ -37,4 +37,4 @@ pages:
     astrophe: '،'
   works:
     source_code: الشفرة البرمجية
-  
+
