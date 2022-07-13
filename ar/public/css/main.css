@@ -91,7 +91,7 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 
 .site-header { background: #faf9f5; border-top: 5px solid #943526; border-bottom: 1px solid #e7e6e4; min-height: 5px; text-align: left; position: relative; overflow: auto; }
 
-.site-header .links { list-style: none; float: right; margin-bottom: 0; line-height: 56px; font-size: 15px; font-family: 'Noto Naskh Arabic'; min-width: 220px; }
+.site-header .links { list-style: none; float: right; margin-bottom: 0; line-height: 56px; font-size: 15px; font-family: 'Noto Naskh Arabic'; min-width: 250px; }
 
 .site-header .links li { display: inline; }
 
