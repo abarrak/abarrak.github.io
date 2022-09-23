@@ -96,6 +96,9 @@ provider "aws" {
 
 Major cloud providers are available along with many of platform or layered tools like `Helm` and `Kubernetes`, [mainly hosted in the public terraform registry](https://registry.terraform.io).
 
+<img src="{{ site.baseurl_root }}/public/images/providers-iac.png" class="post-image-2 resize-md center-image" />
+
+
 Here's an example for simple helm releasing technique to build on:
 
 ```bash
