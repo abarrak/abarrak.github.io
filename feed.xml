@@ -5,9 +5,148 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Jul 2022 00:45:49 +0300</pubDate>
-    <lastBuildDate>Thu, 14 Jul 2022 00:45:49 +0300</lastBuildDate>
+    <pubDate>Fri, 23 Sep 2022 20:30:12 +0300</pubDate>
+    <lastBuildDate>Fri, 23 Sep 2022 20:30:12 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/iac-reflections.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Terraform has emerged as one of the top open source infrastructure as code (IaC) tools, since its initial release by Hashicorp back in 2014.&lt;/p&gt;
+
+&lt;p&gt;The design philosophy behind the tool is to have &lt;strong&gt;declarative&lt;/strong&gt;, and &lt;strong&gt;stateful&lt;/strong&gt; representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of such resources&lt;/p&gt;
+
+&lt;p&gt;The classical example for provisioning AWS EC2 instance concisely capture the design principles.&lt;/p&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;provider &lt;span class=&quot;s2&quot;&gt;&quot;aws&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+resource &lt;span class=&quot;s2&quot;&gt;&quot;aws_vpc&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;example&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  cidr_block &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;10.0.0.0/16&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+resource &lt;span class=&quot;s2&quot;&gt;&quot;aws_instance&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;example_ec2&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  ami           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ami-026b57f3c383c2eec&quot;&lt;/span&gt;
+  instance_type &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;t2.micro&quot;&lt;/span&gt;
+  tags &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    Name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;New example instance&quot;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is not limited to only compute resources, &lt;a href=&quot;https://registry.terraform.io/providers/hashicorp/aws/latest/docs&quot;&gt;many of AWS services are available as well&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;simplified-workflow&quot;&gt;Simplified Workflow&lt;/h3&gt;
+
+&lt;p&gt;The main workflow is conventionally promoted, which is an essential feature:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/terraform-diagram.png&quot; class=&quot;post-image-2 resize-md center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The flow maps cleanly to CLI commands:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;terraform init
+terraform plan
+terraform apply
+terraform show
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Additional linting commands available as well:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;terraform &lt;span class=&quot;nb&quot;&gt;fmt
+&lt;/span&gt;terraform validate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Disposal of resources is simplified as well (without authoring &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.tf&lt;/code&gt; manifests):&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;terraform destroy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;structure&quot;&gt;Structure&lt;/h3&gt;
+
+&lt;p&gt;It’s recommended to factorize input values across environments into variable&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sections&lt;/code&gt;.
+&lt;br /&gt;
+This as well allows for security aspects implementation, like protecting sensitive data.&lt;/p&gt;
+
+&lt;p&gt;Moreover, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;output&lt;/code&gt; blocks provide a way to capture and log information after applying state changes.&lt;/p&gt;
+
+&lt;p&gt;The minimal structure of managed resources in terraform is shown below:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;tree
+├── main.tf
+├── outputs.tf
+├── terraform.tfstate
+├── terraform.tfstate.backup
+└── variables.tf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The  variables and output &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.tf&lt;/code&gt; files are separated to organize things up.&lt;/p&gt;
+
+&lt;p&gt;Finally, the state is tracked in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.tfstate&lt;/code&gt; files and managed internally by Terraform as we apply&lt;/p&gt;
+
+&lt;h3 id=&quot;providers&quot;&gt;Providers&lt;/h3&gt;
+
+&lt;p&gt;The mechanism behind provisioning the intended state of an infrastructure or platform, is carried on by &lt;strong&gt;“providers”&lt;/strong&gt;. which are simply extensions written in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Go&lt;/code&gt; language and expose the resource types they implement.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-apl&quot;&gt;provider &quot;aws&quot; {
+  region = &quot;us-east-1&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Major cloud providers are available along with many of platform or layered tools like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Helm&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Kubernetes&lt;/code&gt;, &lt;a href=&quot;https://registry.terraform.io&quot;&gt;mainly hosted in the public terraform registry&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here’s an example for simple helm releasing technique to build on:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;provider &lt;span class=&quot;s2&quot;&gt;&quot;helm&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  kubernetes &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+resource &lt;span class=&quot;s2&quot;&gt;&quot;helm_release&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;redis&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  name       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;redis-instance&quot;&lt;/span&gt;
+
+  repository &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://charts.bitnami.com/bitnami&quot;&lt;/span&gt;
+  chart      &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;redis&quot;&lt;/span&gt;
+
+  &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    name  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;architecture&quot;&lt;/span&gt;
+    value &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;replication&quot;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;terraform-vs-ansible&quot;&gt;Terraform v.s. Ansible&lt;/h3&gt;
+
+&lt;p&gt;Compared to Ansible as an orchestration tool on the infrastructure layer, I find Terraform overall is more expressive and concise to enable building on modules in much elegant and feasible manner, with the excellent readability of HCL and dependency management of plugins.&lt;/p&gt;
+
+&lt;p&gt;The state is a major difference to consider too.&lt;/p&gt;
+
+&lt;p&gt;Ansible takes a stateless approach by always exchanging the desired state with the target resources in order to know the actual state then apply the delta, if needed. On the other hand, Terraform is stateful and manages the state in local or remote manner.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;All in all, codifying your infra and platform layers (e.g. using terraform) has a key benefit to organizations in adopting the DevOps practices which eventually leads to operational excellence, visibility.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 23 Sep 2022 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/2022/09/23/reflections-on-iac-with-terraform</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2022/09/23/reflections-on-iac-with-terraform</guid>
+        
+        <category>Infrastructure as Code</category>
+        
+        <category>Cloud Computing</category>
+        
+        <category>Linux</category>
+        
+        <category>Automation</category>
+        
+        
+        <category>Automation</category>
+        
+        <category>IaC</category>
+        
+        <category>Cloud</category>
+        
+      </item>
     
       <item>
         <title></title>

@@ -5,9 +5,38 @@
     <description></description>
     <link>https://www.abarrak.com/ar/</link>
     <atom:link href="https://www.abarrak.com/ar/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Jul 2022 00:45:50 +0300</pubDate>
-    <lastBuildDate>Thu, 14 Jul 2022 00:45:50 +0300</lastBuildDate>
+    <pubDate>Fri, 23 Sep 2022 20:30:13 +0300</pubDate>
+    <lastBuildDate>Fri, 23 Sep 2022 20:30:13 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/iac-reflections.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;تعتبر (Terraform) الأداة مفتوحة المصدر الأشهر في مجال أتمتة عمليات البنية التحتية (IaC) منذ تقديمها لأول مرة عام ٢٠١٤ من شركة هاشي كورب.&lt;/p&gt;
+
+&lt;p&gt;تتمثل الفلسفة الأساسية فيها، عبر كتابة توصيف تفاعلي (stateful) لمكونات البنية التحتية، وإدارتها ومتابعتها وتسهيل مشاركتها، سواءً كانت في المصادر السحابية العامة أو الخاصة أو كليهما.&lt;/p&gt;
+
+&lt;p&gt;كتبتُ تدوينة عن تيرافورم وبعض الانطباعات عن الأداة وهيكلتها، &lt;a href=&quot;/2022/09/23/reflections-on-iac-with-terraform&quot;&gt;أحيل عليها هنا، لصعوبة النقل للعربية.&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 23 Sep 2022 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/ar/2022/09/23/reflections-on-iac-with-terraform</link>
+        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/09/23/reflections-on-iac-with-terraform</guid>
+        
+        <category>الأتمتة</category>
+        
+        <category>البنية التحتية</category>
+        
+        <category>الحوسبة السحابية</category>
+        
+        
+        <category>الأتمتة</category>
+        
+        <category>البنية التحتية</category>
+        
+        <category>الحوسبة السحابية</category>
+        
+      </item>
     
       <item>
         <title></title>

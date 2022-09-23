@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="description" content="Terraform has emerged as one of the top open source infrastructure as code (IaC) tools, since its initial release by Hashicorp back in 2014.The design philos...">
+  <meta name="author" content="Abdullah Barrak">
+
+  <meta name="keywords" content="Infrastructure as Code, Cloud Computing, Linux, and Automation">
+	<meta name="theme-color" content="#943526">
+
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="Terraform has emerged as one of the top open source infrastructure as code (I...">
+  <meta property="og:url" content="https://www.abarrak.com/2022/09/23/reflections-on-iac-with-terraform">
+	
+	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
+	
+	
+	<meta property="og:title" content="Abdullah Barrak • Reflections on IaC using Terraform">
+	
+	<link rel="canonical" href="https://www.abarrak.com/2022/09/23/reflections-on-iac-with-terraform">
+
+	<title>
+    
+      Reflections on IaC using Terraform •
+      Abdullah Barrak's Blog
+    
+  </title>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/icons/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/icons/favicon.ico">
+
+  <!-- Fonts -->
+	<link rel='stylesheet' id='libretto-fonts-css'  href='https://fonts.googleapis.com/css?family=Libre+Baskerville%3A400%2C700%2C400italic%7CPlayfair+Display%3A400%2C700%2C400italic%2C700italic%7CPlayfair+Display+SC%3A700%2C700italic%7CMontserrat%3A400%7CDroid+Sans+Mono%3A400&#038;subset=latin%2Clatin-ext' type='text/css' media='all'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/public/css/main.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/tooltipster-bundle.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/tooltipster-sideTip-shadow.min.css" type="text/css" media="all">
+  
+
+  <!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="https://www.abarrak.com/feed.xml">
+</head>
+
+<body>
+
+	<header class="site-header">
+	<div class="wrapper-fluid">
+		<a class="site-title" href="/">Abdullah Barrak</a>
+
+    <ul class="links">
+      <li><a href="/about">About</a></li>
+      <li><a href="/works">Works</a></li>
+      <li><a href="/contact">Contact</a></li>
+
+      <li class="lang_link">
+        <small>
+        
+        
+          
+          <a href="
+            /ar/
+          " >ع</a>
+        
+        </small>
+      </li>
+    </ul>
+	</div>
+
+</header>
+
+
+
+	<div class="page-content">
+		<div class="wrapper">
+			<header class="post-header">
+	<div>
+		<span></span><span class="post-meta">
+			
+				September 23, 2022
+			
+		</span>
+	</div>
+
+	<h1 class="post-title" itemprop="name headline">Reflections on IaC using Terraform</h1>
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="entry-content" itemprop="articleBody">
+		<p><img src="/public/images/iac-reflections.png" class="post-image resize-md center-image"></p>
+
+<p>Terraform has emerged as one of the top open source infrastructure as code (IaC) tools, since its initial release by Hashicorp back in 2014.</p>
+
+<p>The design philosophy behind the tool is to have <strong>declarative</strong>, and <strong>stateful</strong> representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of such resources</p>
+
+<p>The classical example for provisioning AWS EC2 instance concisely capture the design principles.</p>
+
+<!-- post-excerpt -->
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>provider <span class="s2">"aws"</span> <span class="o">{</span> <span class="o">}</span>
+
+resource <span class="s2">"aws_vpc"</span> <span class="s2">"example"</span> <span class="o">{</span>
+  cidr_block <span class="o">=</span> <span class="s2">"10.0.0.0/16"</span>
+<span class="o">}</span>
+
+resource <span class="s2">"aws_instance"</span> <span class="s2">"example_ec2"</span> <span class="o">{</span>
+  ami           <span class="o">=</span> <span class="s2">"ami-026b57f3c383c2eec"</span>
+  instance_type <span class="o">=</span> <span class="s2">"t2.micro"</span>
+  tags <span class="o">=</span> <span class="o">{</span>
+    Name <span class="o">=</span> <span class="s2">"New example instance"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>This is not limited to only compute resources, <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs" rel="nofollow" target="_blank">many of AWS services are available as well</a>.</p>
+
+<h3 id="simplified-workflow">Simplified Workflow</h3>
+
+<p>The main workflow is conventionally promoted, which is an essential feature:</p>
+
+<p><img src="/public/images/terraform-diagram.png" class="post-image-2 resize-md center-image"></p>
+
+<p>The flow maps cleanly to CLI commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terraform init
+terraform plan
+terraform apply
+terraform show
+</code></pre></div></div>
+
+<p>Additional linting commands available as well:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terraform <span class="nb">fmt
+</span>terraform validate
+</code></pre></div></div>
+
+<p>Disposal of resources is simplified as well (without authoring <code class="language-plaintext highlighter-rouge">.tf</code> manifests):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terraform destroy
+</code></pre></div></div>
+
+<h3 id="structure">Structure</h3>
+
+<p>It’s recommended to factorize input values across environments into variable<code class="language-plaintext highlighter-rouge">sections</code>.
+<br>
+This as well allows for security aspects implementation, like protecting sensitive data.</p>
+
+<p>Moreover, <code class="language-plaintext highlighter-rouge">output</code> blocks provide a way to capture and log information after applying state changes.</p>
+
+<p>The minimal structure of managed resources in terraform is shown below:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>tree
+├── main.tf
+├── outputs.tf
+├── terraform.tfstate
+├── terraform.tfstate.backup
+└── variables.tf
+</code></pre></div></div>
+
+<p>The  variables and output <code class="language-plaintext highlighter-rouge">.tf</code> files are separated to organize things up.</p>
+
+<p>Finally, the state is tracked in <code class="language-plaintext highlighter-rouge">.tfstate</code> files and managed internally by Terraform as we apply</p>
+
+<h3 id="providers">Providers</h3>
+
+<p>The mechanism behind provisioning the intended state of an infrastructure or platform, is carried on by <strong>“providers”</strong>. which are simply extensions written in <code class="language-plaintext highlighter-rouge">Go</code> language and expose the resource types they implement.</p>
+
+<pre><code class="language-apl">provider "aws" {
+  region = "us-east-1"
+}
+</code></pre>
+
+<p>Major cloud providers are available along with many of platform or layered tools like <code class="language-plaintext highlighter-rouge">Helm</code> and <code class="language-plaintext highlighter-rouge">Kubernetes</code>, <a href="https://registry.terraform.io" rel="nofollow" target="_blank">mainly hosted in the public terraform registry</a>.</p>
+
+<p>Here’s an example for simple helm releasing technique to build on:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>provider <span class="s2">"helm"</span> <span class="o">{</span>
+  kubernetes <span class="o">{</span> <span class="o">}</span>
+<span class="o">}</span>
+
+resource <span class="s2">"helm_release"</span> <span class="s2">"redis"</span> <span class="o">{</span>
+  name       <span class="o">=</span> <span class="s2">"redis-instance"</span>
+
+  repository <span class="o">=</span> <span class="s2">"https://charts.bitnami.com/bitnami"</span>
+  chart      <span class="o">=</span> <span class="s2">"redis"</span>
+
+  <span class="nb">set</span> <span class="o">{</span>
+    name  <span class="o">=</span> <span class="s2">"architecture"</span>
+    value <span class="o">=</span> <span class="s2">"replication"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="terraform-vs-ansible">Terraform v.s. Ansible</h3>
+
+<p>Compared to Ansible as an orchestration tool on the infrastructure layer, I find Terraform overall is more expressive and concise to enable building on modules in much elegant and feasible manner, with the excellent readability of HCL and dependency management of plugins.</p>
+
+<p>The state is a major difference to consider too.</p>
+
+<p>Ansible takes a stateless approach by always exchanging the desired state with the target resources in order to know the actual state then apply the delta, if needed. On the other hand, Terraform is stateful and manages the state in local or remote manner.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>All in all, codifying your infra and platform layers (e.g. using terraform) has a key benefit to organizations in adopting the DevOps practices which eventually leads to operational excellence, visibility.</p>
+
+	</div>
+
+	
+<h2 class="comments-label">Comments</h2>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+      this.page.url = "https://www.abarrak.com/2022/09/23/reflections-on-iac-with-terraform";
+      this.page.identifier = "reflections-on-iac-using-terraform";
+  };
+
+  (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//abarrak.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+</article>
+
+<div id="post-nav">
+	<div class="next">
+		
+	</div>
+
+	<div class="previous">
+		
+		<a href="/2022/02/22/linux-sysops-git-book">
+			<span>Previous entry</span>
+			A Git Book on Linux SysOps Essentials
+		</a>
+		
+	</div>
+</div>
+
+		</div>
+	</div>
+
+	<footer class="site-footer">
+	<div class="wrapper-fluid footet-wrapper">
+
+		<!-- <h2 class="footer-heading">Blog</h2> -->
+
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-1 footer-left">
+				<a href="">Abdullah Barrak's Blog</a>
+				<ul class="contact-list">
+					<li>A passionate blog about computer programming, reading, thinking, and the like.</li>
+					<li><b>(2016 - 2022)</b></li>
+				</ul>
+			</div>
+
+			<div class="footer-col footer-col-1 footer-right">
+				<p class="center">
+					<a href="/tags">Tag Cloud</a> |
+					subscribe <a href="/feed.xml">via RSS</a>
+				</p>
+
+				<div class="social-links">
+				
+					<a href="https://github.com/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/github-icon.png" alt="Github Icon">
+					</a>
+				
+
+				
+					<a href="https://goodreads.com/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/goodreads-icon.png" alt="Goodreads Icon">
+					</a>
+				
+
+				
+					<a href="https://linkedin.com/in/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/linkedin-icon.png" alt="LinkedIn Icon">
+					</a>
+				
+
+				
+					<a href="https://stackoverflow.com/users/2925286/abdullah-barrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/stackoverflow-icon.png" alt="stackoverflow Icon">
+					</a>
+				
+
+				
+
+					<a href="mailto:abdullah@abarrak.com" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/mail-icon.png" alt="Email Icon">
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</footer>
+
+
+<script src="/public/js/all.min.js"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83251901-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-83251901-1');
+</script>
+
+
+
+
+</body>
+</html>
