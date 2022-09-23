@@ -100,9 +100,9 @@
 
 <p>Terraform has emerged as one of the top open source infrastructure as code (IaC) tools, since its initial release by Hashicorp back in 2014.</p>
 
-<p>The design philosophy behind the tool is to have <strong>declarative</strong>, and <strong>stateful</strong> representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of such resources</p>
+<p>The design philosophy behind the tool is to have <strong>declarative</strong>, and <strong>stateful</strong> representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of such resources.</p>
 
-<p>The classical example for provisioning AWS EC2 instance concisely capture the design principles.</p>
+<p>The classical example for provisioning AWS EC2 instance concisely captures the design principles.</p>
 
 <!-- post-excerpt -->
 
@@ -150,7 +150,7 @@ terraform show
 
 <h3 id="structure">Structure</h3>
 
-<p>It’s recommended to factorize input values across environments into variable<code class="language-plaintext highlighter-rouge">sections</code>.
+<p>It’s recommended to factorize input values across environments into <code class="language-plaintext highlighter-rouge">variable</code> sections.
 <br>
 This as well allows for security aspects implementation, like protecting sensitive data.</p>
 
@@ -166,24 +166,24 @@ This as well allows for security aspects implementation, like protecting sensiti
 └── variables.tf
 </code></pre></div></div>
 
-<p>The  variables and output <code class="language-plaintext highlighter-rouge">.tf</code> files are separated to organize things up.</p>
+<p>The  variables and output files are separated to organize things up.</p>
 
-<p>Finally, the state is tracked in <code class="language-plaintext highlighter-rouge">.tfstate</code> files and managed internally by Terraform as we apply</p>
+<p>Finally, the state is tracked in <code class="language-plaintext highlighter-rouge">.tfstate</code> file  managed internally by Terraform.</p>
 
 <h3 id="providers">Providers</h3>
 
-<p>The mechanism behind provisioning the intended state of an infrastructure or platform, is carried on by <strong>“providers”</strong>. which are simply extensions written in <code class="language-plaintext highlighter-rouge">Go</code> language and expose the resource types they implement.</p>
+<p>The mechanism behind provisioning the intended state of an infrastructure or platform, is carried on by <strong>“providers”</strong>. which are simply extensions written in <code class="language-plaintext highlighter-rouge">Go</code> language and expose the resource types they implement, interfacing with the target infrastructure/platform APIs.</p>
 
 <pre><code class="language-apl">provider "aws" {
   region = "us-east-1"
 }
 </code></pre>
 
-<p>Major cloud providers are available along with many of platform or layered tools like <code class="language-plaintext highlighter-rouge">Helm</code> and <code class="language-plaintext highlighter-rouge">Kubernetes</code>, <a href="https://registry.terraform.io" rel="nofollow" target="_blank">mainly hosted in the public terraform registry</a>.</p>
+<p>Major cloud providers <a href="https://registry.terraform.io" rel="nofollow" target="_blank">are available in the public terraform registry</a>, along with many of platform agnostic plugins, such as <code class="language-plaintext highlighter-rouge">Helm</code> and <code class="language-plaintext highlighter-rouge">Kubernetes</code>.</p>
 
 <p><img src="/public/images/providers-iac.png" class="post-image-2 resize-md center-image"></p>
 
-<p>Here’s an example for simple helm releasing technique to build on:</p>
+<p>Here’s an example for a simple helm releasing technique to build on:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>provider <span class="s2">"helm"</span> <span class="o">{</span>
   kubernetes <span class="o">{</span> <span class="o">}</span>
@@ -204,7 +204,7 @@ resource <span class="s2">"helm_release"</span> <span class="s2">"redis"</span> 
 
 <h3 id="terraform-vs-ansible">Terraform v.s. Ansible</h3>
 
-<p>Compared to Ansible as an orchestration tool on the infrastructure layer, I find Terraform overall is more expressive and concise to enable building on modules in much elegant and feasible manner, with the excellent readability of HCL and dependency management of plugins.</p>
+<p>Compared to Ansible as an orchestration tool on the infrastructure layer, I find that Terraform overall is more expressive and concise to enable building on modules in much elegant and feasible manner, with the excellent readability of HCL and dependency management of plugins.</p>
 
 <p>The state is a major difference to consider too.</p>
 
@@ -212,7 +212,7 @@ resource <span class="s2">"helm_release"</span> <span class="s2">"redis"</span> 
 
 <h3 id="summary">Summary</h3>
 
-<p>All in all, codifying your infra and platform layers (e.g. using terraform) has a key benefit to organizations in adopting the DevOps practices which eventually leads to operational excellence, visibility.</p>
+<p>All in all, codifying infra and platform layers (e.g. using terraform) has a key benefit to organizations in adopting the DevOps practices which leads to operational excellence, eventually.</p>
 
 	</div>
 
