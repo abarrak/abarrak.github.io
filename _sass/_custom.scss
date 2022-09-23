@@ -76,6 +76,15 @@ pre code {
 }
 
 // ** Images
+.post-image-2 {
+  height: auto;
+  float: left;
+  display: block;
+  margin: 1rem 1.4rem 1rem 0;
+  padding: 0.2rem;
+  border: 0.08rem solid gray;
+}
+
 .post-image {
   height: auto;
   float: left;
