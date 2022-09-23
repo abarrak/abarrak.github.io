@@ -8,9 +8,9 @@ categories: [Automation, IaC, Cloud]
 
 Terraform has emerged as one of the top open source infrastructure as code (IaC) tools, since its initial release by Hashicorp back in 2014.
 
-The design philosophy behind the tool is to have **declarative**, and **stateful** representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of such resources
+The design philosophy behind the tool is to have **declarative**, and **stateful** representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of such resources.
 
-The classical example for provisioning AWS EC2 instance concisely capture the design principles.
+The classical example for provisioning AWS EC2 instance concisely captures the design principles.
 
 <!-- post-excerpt -->
 
@@ -62,7 +62,7 @@ terraform destroy
 
 ### Structure
 
-It's recommended to factorize input values across environments into variable`sections`.
+It's recommended to factorize input values across environments into `variable` sections.
 <br>
 This as well allows for security aspects implementation, like protecting sensitive data.
 
@@ -79,14 +79,14 @@ $ tree
 └── variables.tf
 ```
 
-The  variables and output `.tf` files are separated to organize things up.
+The  variables and output files are separated to organize things up.
 
-Finally, the state is tracked in `.tfstate` files and managed internally by Terraform as we apply
+Finally, the state is tracked in `.tfstate` file  managed internally by Terraform.
 
 
 ### Providers
 
-The mechanism behind provisioning the intended state of an infrastructure or platform, is carried on by **"providers"**. which are simply extensions written in `Go` language and expose the resource types they implement.
+The mechanism behind provisioning the intended state of an infrastructure or platform, is carried on by **"providers"**. which are simply extensions written in `Go` language and expose the resource types they implement, interfacing with the target infrastructure/platform APIs.
 
 ```apl
 provider "aws" {
@@ -94,12 +94,12 @@ provider "aws" {
 }
 ```
 
-Major cloud providers are available along with many of platform or layered tools like `Helm` and `Kubernetes`, [mainly hosted in the public terraform registry](https://registry.terraform.io).
+Major cloud providers [are available in the public terraform registry](https://registry.terraform.io), along with many of platform agnostic plugins, such as `Helm` and `Kubernetes`.
 
 <img src="{{ site.baseurl_root }}/public/images/providers-iac.png" class="post-image-2 resize-md center-image" />
 
 
-Here's an example for simple helm releasing technique to build on:
+Here's an example for a simple helm releasing technique to build on:
 
 ```bash
 provider "helm" {
@@ -122,7 +122,7 @@ resource "helm_release" "redis" {
 
 ### Terraform v.s. Ansible
 
-Compared to Ansible as an orchestration tool on the infrastructure layer, I find Terraform overall is more expressive and concise to enable building on modules in much elegant and feasible manner, with the excellent readability of HCL and dependency management of plugins.
+Compared to Ansible as an orchestration tool on the infrastructure layer, I find that Terraform overall is more expressive and concise to enable building on modules in much elegant and feasible manner, with the excellent readability of HCL and dependency management of plugins.
 
 The state is a major difference to consider too.
 
@@ -130,4 +130,4 @@ Ansible takes a stateless approach by always exchanging the desired state with t
 
 ### Summary
 
-All in all, codifying your infra and platform layers (e.g. using terraform) has a key benefit to organizations in adopting the DevOps practices which eventually leads to operational excellence, visibility.
+All in all, codifying infra and platform layers (e.g. using terraform) has a key benefit to organizations in adopting the DevOps practices which leads to operational excellence, eventually.
