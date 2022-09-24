@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 24 Sep 2022 21:31:04 +0300</pubDate>
-    <lastBuildDate>Sat, 24 Sep 2022 21:31:04 +0300</lastBuildDate>
+    <pubDate>Sat, 24 Sep 2022 21:35:01 +0300</pubDate>
+    <lastBuildDate>Sat, 24 Sep 2022 21:35:01 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -154,9 +154,9 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;helm_release&quot;&lt;/span&gt; 
         <title></title>
         <description>&lt;p&gt;&lt;img src=&quot;/public/images/linux-book.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;I have published a short handbook on Linux administrations covering multiple topics 📕&lt;/p&gt;
+&lt;p&gt;I have published a short handbook on basic Linux administration covering multiple topics 📕&lt;/p&gt;
 
-&lt;p&gt;There’s a good portion of cheatsheets that help in various commonly needed tasks.&lt;/p&gt;
+&lt;p&gt;There are cheatsheets that help in various tasks.&lt;/p&gt;
 
 &lt;p&gt;I hope you like it and it would be of a good benefit to interested people.&lt;/p&gt;
 
