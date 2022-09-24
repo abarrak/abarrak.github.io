@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 24 Sep 2022 02:03:10 +0300</pubDate>
-    <lastBuildDate>Sat, 24 Sep 2022 02:03:10 +0300</lastBuildDate>
+    <pubDate>Sat, 24 Sep 2022 21:09:46 +0300</pubDate>
+    <lastBuildDate>Sat, 24 Sep 2022 21:09:46 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -28,7 +28,7 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;aws_vpc&quot;&lt;/span&gt; &lt;s
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 resource &lt;span class=&quot;s2&quot;&gt;&quot;aws_instance&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;example_ec2&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  ami           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ami-026b57f3c383c2eec&quot;&lt;/span&gt;
+  ami &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ami-026b57f3c383c2eec&quot;&lt;/span&gt;
   instance_type &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;t2.micro&quot;&lt;/span&gt;
   tags &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     Name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;New example instance&quot;&lt;/span&gt;
