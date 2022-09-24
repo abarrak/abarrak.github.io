@@ -32,7 +32,7 @@ resource "aws_instance" "example_ec2" {
 
 This is not limited to only compute resources, [many of AWS services are available as well](https://registry.terraform.io/providers/hashicorp/aws/latest/docs).
 
-### Simplified Workflow
+## Simplified Workflow
 
 The main workflow is conventionally promoted, which is an essential feature:
 
@@ -60,7 +60,7 @@ Disposal of resources is simplified as well (without authoring `.tf` manifests):
 terraform destroy
 ```
 
-### Structure
+## Structure
 
 It's recommended to factorize input values across environments into `variable` sections.
 <br>
@@ -84,7 +84,7 @@ The  variables and output files are separated to organize things up.
 Finally, the state is tracked in `.tfstate` file  managed internally by Terraform.
 
 
-### Providers
+## Providers
 
 The mechanism behind provisioning the intended state of an infrastructure or platform, is carried on by **"providers"**. which are simply extensions written in `Go` language and expose the resource types they implement, interfacing with the target infrastructure/platform APIs.
 
@@ -120,7 +120,7 @@ resource "helm_release" "redis" {
 ```
 
 
-### Terraform v.s. Ansible
+## Terraform v.s. Ansible
 
 Compared to Ansible as an orchestration tool on the infrastructure layer, I find that Terraform overall is more expressive and concise to enable building on modules in much elegant and feasible manner, with the excellent readability of HCL and dependency management of plugins.
 
@@ -128,6 +128,6 @@ The state is a major difference to consider too.
 
 Ansible takes a stateless approach by always exchanging the desired state with the target resources in order to know the actual state then apply the delta, if needed. On the other hand, Terraform is stateful and manages the state in local or remote manner.
 
-### Summary
+## Summary
 
 All in all, codifying infra and platform layers (e.g. using terraform) has a key benefit to organizations in adopting the DevOps practices which leads to operational excellence, eventually.
