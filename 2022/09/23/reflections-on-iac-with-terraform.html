@@ -123,7 +123,7 @@ resource <span class="s2">"aws_instance"</span> <span class="s2">"example_ec2"</
 
 <p>This is not limited to only compute resources, <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs" rel="nofollow" target="_blank">many of AWS services are available as well</a>.</p>
 
-<h3 id="simplified-workflow">Simplified Workflow</h3>
+<h2 id="simplified-workflow">Simplified Workflow</h2>
 
 <p>The main workflow is conventionally promoted, which is an essential feature:</p>
 
@@ -148,7 +148,7 @@ terraform show
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terraform destroy
 </code></pre></div></div>
 
-<h3 id="structure">Structure</h3>
+<h2 id="structure">Structure</h2>
 
 <p>It’s recommended to factorize input values across environments into <code class="language-plaintext highlighter-rouge">variable</code> sections.
 <br>
@@ -170,7 +170,7 @@ This as well allows for security aspects implementation, like protecting sensiti
 
 <p>Finally, the state is tracked in <code class="language-plaintext highlighter-rouge">.tfstate</code> file  managed internally by Terraform.</p>
 
-<h3 id="providers">Providers</h3>
+<h2 id="providers">Providers</h2>
 
 <p>The mechanism behind provisioning the intended state of an infrastructure or platform, is carried on by <strong>“providers”</strong>. which are simply extensions written in <code class="language-plaintext highlighter-rouge">Go</code> language and expose the resource types they implement, interfacing with the target infrastructure/platform APIs.</p>
 
@@ -202,7 +202,7 @@ resource <span class="s2">"helm_release"</span> <span class="s2">"redis"</span> 
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h3 id="terraform-vs-ansible">Terraform v.s. Ansible</h3>
+<h2 id="terraform-vs-ansible">Terraform v.s. Ansible</h2>
 
 <p>Compared to Ansible as an orchestration tool on the infrastructure layer, I find that Terraform overall is more expressive and concise to enable building on modules in much elegant and feasible manner, with the excellent readability of HCL and dependency management of plugins.</p>
 
@@ -210,7 +210,7 @@ resource <span class="s2">"helm_release"</span> <span class="s2">"redis"</span> 
 
 <p>Ansible takes a stateless approach by always exchanging the desired state with the target resources in order to know the actual state then apply the delta, if needed. On the other hand, Terraform is stateful and manages the state in local or remote manner.</p>
 
-<h3 id="summary">Summary</h3>
+<h2 id="summary">Summary</h2>
 
 <p>All in all, codifying infra and platform layers (e.g. using terraform) has a key benefit to organizations in adopting the DevOps practices which leads to operational excellence, eventually.</p>
 

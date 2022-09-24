@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 24 Sep 2022 21:09:46 +0300</pubDate>
-    <lastBuildDate>Sat, 24 Sep 2022 21:09:46 +0300</lastBuildDate>
+    <pubDate>Sat, 24 Sep 2022 21:31:04 +0300</pubDate>
+    <lastBuildDate>Sat, 24 Sep 2022 21:31:04 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -38,7 +38,7 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;aws_instance&quot;&lt;/span&gt; 
 
 &lt;p&gt;This is not limited to only compute resources, &lt;a href=&quot;https://registry.terraform.io/providers/hashicorp/aws/latest/docs&quot;&gt;many of AWS services are available as well&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&quot;simplified-workflow&quot;&gt;Simplified Workflow&lt;/h3&gt;
+&lt;h2 id=&quot;simplified-workflow&quot;&gt;Simplified Workflow&lt;/h2&gt;
 
 &lt;p&gt;The main workflow is conventionally promoted, which is an essential feature:&lt;/p&gt;
 
@@ -63,7 +63,7 @@ terraform show
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;terraform destroy
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;structure&quot;&gt;Structure&lt;/h3&gt;
+&lt;h2 id=&quot;structure&quot;&gt;Structure&lt;/h2&gt;
 
 &lt;p&gt;It’s recommended to factorize input values across environments into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;variable&lt;/code&gt; sections.
 &lt;br /&gt;
@@ -85,7 +85,7 @@ This as well allows for security aspects implementation, like protecting sensiti
 
 &lt;p&gt;Finally, the state is tracked in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.tfstate&lt;/code&gt; file  managed internally by Terraform.&lt;/p&gt;
 
-&lt;h3 id=&quot;providers&quot;&gt;Providers&lt;/h3&gt;
+&lt;h2 id=&quot;providers&quot;&gt;Providers&lt;/h2&gt;
 
 &lt;p&gt;The mechanism behind provisioning the intended state of an infrastructure or platform, is carried on by &lt;strong&gt;“providers”&lt;/strong&gt;. which are simply extensions written in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Go&lt;/code&gt; language and expose the resource types they implement, interfacing with the target infrastructure/platform APIs.&lt;/p&gt;
 
@@ -117,7 +117,7 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;helm_release&quot;&lt;/span&gt; 
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;terraform-vs-ansible&quot;&gt;Terraform v.s. Ansible&lt;/h3&gt;
+&lt;h2 id=&quot;terraform-vs-ansible&quot;&gt;Terraform v.s. Ansible&lt;/h2&gt;
 
 &lt;p&gt;Compared to Ansible as an orchestration tool on the infrastructure layer, I find that Terraform overall is more expressive and concise to enable building on modules in much elegant and feasible manner, with the excellent readability of HCL and dependency management of plugins.&lt;/p&gt;
 
@@ -125,7 +125,7 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;helm_release&quot;&lt;/span&gt; 
 
 &lt;p&gt;Ansible takes a stateless approach by always exchanging the desired state with the target resources in order to know the actual state then apply the delta, if needed. On the other hand, Terraform is stateful and manages the state in local or remote manner.&lt;/p&gt;
 
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;All in all, codifying infra and platform layers (e.g. using terraform) has a key benefit to organizations in adopting the DevOps practices which leads to operational excellence, eventually.&lt;/p&gt;
 </description>
