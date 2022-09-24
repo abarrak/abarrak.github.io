@@ -22,7 +22,7 @@ resource "aws_vpc" "example" {
 }
 
 resource "aws_instance" "example_ec2" {
-  ami           = "ami-026b57f3c383c2eec"
+  ami = "ami-026b57f3c383c2eec"
   instance_type = "t2.micro"
   tags = {
     Name = "New example instance"
