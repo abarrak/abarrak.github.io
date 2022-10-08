@@ -19,7 +19,7 @@ article { background: #faf9f5; box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05); marg
 
 @media screen and (max-width: 600px) { article { padding: 1em 1em 0.3em; } }
 
-article a:hover { border-bottom: 0.03rem solid #787065; }
+article a { border-bottom: 0.03rem solid #787065; }
 
 @media screen and (max-width: 600px) { article > .entry-content { font-size: 80%; } }
 
@@ -31,7 +31,7 @@ article > .entry-content:first-line { color: #787065; font-family: "Playfair Dis
 
 .post-header, .page-header { border-bottom: 1px solid #d9d6d0; margin-bottom: 2rem; text-align: center; }
 
-.post-header a:hover, .page-header a:hover { border-bottom: none !important; }
+.post-header a, .page-header a { border-bottom: none !important; }
 
 .post-header:before, .page-header:before { background: #faf9f5; border: 1px solid #d9d6d0; border-radius: 50%; box-shadow: 0 0 0 4px #faf9f5; color: #a09a92; content: "p"; display: inline-block; font-family: libretto-icons; font-size: 21px; line-height: 21px; margin: 1rem auto 2rem; padding: 10px; text-shadow: none; }
 
