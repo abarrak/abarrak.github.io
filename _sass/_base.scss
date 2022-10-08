@@ -39,6 +39,13 @@ article {
     padding: 1em 1em 0.3em;
   }
 
+  a {
+    &:hover {
+      border-bottom: 0.03rem solid  $brand-color;
+    }
+  }
+
+
   > .entry-content {
     @include media-query($on-palm) {
       font-size: 80%;
