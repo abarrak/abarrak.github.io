@@ -367,6 +367,12 @@
 .post-content {
   margin-bottom: $spacing-unit;
 
+  a {
+    &:hover {
+      border-bottom: 0.03rem solid  $brand-color;
+    }
+  }
+
   h2 {
     font-size: 32px;
 
