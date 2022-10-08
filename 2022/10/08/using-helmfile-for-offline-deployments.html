@@ -155,7 +155,6 @@
 <p>The following script saves archived version of the chart’s assets inside <code class="language-plaintext highlighter-rouge">./output</code>.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># offline.sh</span>
-
 <span class="c">#!/bin/bash</span>
 
 <span class="nv">IMAGE_VERSION</span><span class="o">=</span>v2.34.0
@@ -189,6 +188,7 @@ helm pull dex/dex <span class="nt">--version</span> <span class="k">${</span><sp
 <p>Finally, on the production node you would run something similar to this:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker load &lt; ./output/dex_image_<span class="k">*</span>.tar
+<span class="nv">$ </span>docker push
 <span class="nv">$ </span>helmfile <span class="nb">sync</span> <span class="nt">--skip-deps</span> <span class="nt">-f</span> ./output/helmfile-final-<span class="k">*</span>.yml 
 <span class="c"># or</span>
 <span class="nv">$ </span>kubectl apply <span class="nt">-f</span> ./output/plain-final-<span class="k">*</span>.yml

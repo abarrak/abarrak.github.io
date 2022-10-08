@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 09 Oct 2022 01:38:47 +0300</pubDate>
-    <lastBuildDate>Sun, 09 Oct 2022 01:38:47 +0300</lastBuildDate>
+    <pubDate>Sun, 09 Oct 2022 01:43:02 +0300</pubDate>
+    <lastBuildDate>Sun, 09 Oct 2022 01:43:02 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -70,7 +70,6 @@
 &lt;p&gt;The following script saves archived version of the chart’s assets inside &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./output&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# offline.sh&lt;/span&gt;
-
 &lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 
 &lt;span class=&quot;nv&quot;&gt;IMAGE_VERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;v2.34.0
@@ -104,6 +103,7 @@ helm pull dex/dex &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt; &lt;sp
 &lt;p&gt;Finally, on the production node you would run something similar to this:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker load &amp;lt; ./output/dex_image_&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.tar
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker push
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;helmfile &lt;span class=&quot;nb&quot;&gt;sync&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--skip-deps&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; ./output/helmfile-final-&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.yml 
 &lt;span class=&quot;c&quot;&gt;# or&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; ./output/plain-final-&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.yml
