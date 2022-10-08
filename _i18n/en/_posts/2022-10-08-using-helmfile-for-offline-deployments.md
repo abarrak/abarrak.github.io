@@ -66,7 +66,6 @@ The following script saves archived version of the chart's assets inside `./outp
 
 ```bash
 # offline.sh
-
 #!/bin/bash
 
 IMAGE_VERSION=v2.34.0
@@ -103,6 +102,7 @@ Finally, on the production node you would run something similar to this:
 
 ```bash
 $ docker load < ./output/dex_image_*.tar
+$ docker push
 $ helmfile sync --skip-deps -f ./output/helmfile-final-*.yml 
 # or
 $ kubectl apply -f ./output/plain-final-*.yml
