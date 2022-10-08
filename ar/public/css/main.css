@@ -67,7 +67,7 @@ h1, h2, h3, h4, h5, h6 { line-height: initial; font-weight: 400; }
 
 a { color: #787065; text-decoration: none; }
 
-a:hover { color: #6a6359; text-decoration: none; border-bottom: 0.03rem solid #787065; }
+a:hover { color: #6a6359; text-decoration: none; }
 
 blockquote { color: #a09a92; border-left: 4px solid #e7e6e4; padding-left: 15px; font-size: 18px; letter-spacing: -1px; font-style: italic; }
 
@@ -208,6 +208,8 @@ pre > code { border: 0; padding-right: 0; padding-left: 0; }
 @media screen and (max-width: 800px) { .post-title { font-size: 28px; line-height: 1.2; } }
 
 .post-content { margin-bottom: 30px; }
+
+.post-content a:hover { border-bottom: 0.03rem solid #787065; }
 
 .post-content h2 { font-size: 32px; }
 
