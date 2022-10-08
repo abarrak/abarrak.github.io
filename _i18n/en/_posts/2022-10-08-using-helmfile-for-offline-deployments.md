@@ -1,5 +1,5 @@
 ---
-title: Use Helmfile for deployment in Offline Environments
+title: Use Helmfile for Deployment in Offline Environments
 tags: [Helm, Helmfile, Kubernetes, Air-Gapped, Automation]
 categories: [Automation, Kubernetes, Helm, Cloud]
 ---
