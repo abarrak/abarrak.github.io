@@ -84,6 +84,12 @@ article {
   margin-bottom: 2rem;
   text-align: center;
 
+  a {
+    &:hover {
+      border-bottom: none !important;
+    }
+  }
+
   &:before {
     background: #faf9f5;
     border: 1px solid #d9d6d0;
