@@ -4,7 +4,7 @@ tags: [cicd, pipelines, ddevmapper pool issue, dockerd, docker]
 categories: [Software, CICD, Docker]
 ---
 
-
+<br>
 <img src="{{ site.baseurl_root }}/public/images/dockerd-ddevmapper-pool-issue.png" class="post-image resize-md center-image" />
 
 

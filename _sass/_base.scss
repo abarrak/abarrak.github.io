@@ -40,9 +40,7 @@ article {
   }
 
   a {
-    &:hover {
-      border-bottom: 0.03rem solid  $brand-color;
-    }
+    border-bottom: 0.03rem solid  $brand-color;
   }
 
 
@@ -85,9 +83,7 @@ article {
   text-align: center;
 
   a {
-    &:hover {
-      border-bottom: none !important;
-    }
+    border-bottom: none !important;
   }
 
   &:before {

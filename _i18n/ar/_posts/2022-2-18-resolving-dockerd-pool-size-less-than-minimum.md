@@ -2,10 +2,9 @@
 title: حل مشكلة إنشاء الحاويات لخادم دوكر بسبب المساحة (Pool Size Limit)
 tags: [cicd, pipelines, ddevmapper pool issue, dockerd, docker]
 categories: [برمجيات, CICD, دوكر]
-
 ---
 
-
+<br>
 <img src="{{ site.baseurl_root }}/public/images/dockerd-ddevmapper-pool-issue.png" class="post-image resize-md center-image" />
 
 ## المشكلة
