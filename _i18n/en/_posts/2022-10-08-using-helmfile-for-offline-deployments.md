@@ -69,43 +69,51 @@ The following script saves archived version of the chart's assets inside `./outp
 #!/bin/bash
 
 IMAGE_VERSION=v2.34.0
+IMAGE=ghcr.io/dexidp/dex
+CHART_REPO=https://charts.dexidp.io
+CHART=dex/dex
 CHART_VERSION=0.11.1
 
-docker pull ghcr.io/dexidp/dex:${IMAGE_VERSION}
+docker pull ${IMAGE}:${IMAGE_VERSION}
 
-docker tag harbor.local.lan/ghcr.io/dexidp/dex:${IMAGE_VERSION} \
-  ghcr.io/dexidp/dex:${IMAGE_VERSION}  # this is optional.
+# tagging is optional
+docker tag registry.local.lan/${IMAGE}:${IMAGE_VERSION} \
+${IMAGE}:${IMAGE_VERSION}
 
-docker save harbor.local.lan/ghcr.io/dexidp/dex:${IMAGE_VERSION} \
-  -o ./output/images/dex_image_${IMAGE_VERSION}.tar
+docker save registry.local.lan/{IMAGE}:${IMAGE_VERSION} \
+-o ./output/images/{IMAGE}:${IMAGE_VERSION}.tar
 
-helm repo add dex https://charts.dexidp.io
-helm pull dex/dex --version ${CHART_VERSION} --destination ./output/charts/
+helm repo add ${CHART_REPO} 
+helm pull ${CHART} --version ${CHART_VERSION} --destination ./output/charts/
 ```
 
 Then, it should be a matter of executing the following sequence to prepare the final build directory:
 
 ```bash
+$ BUILD_TIME=$(date +%Y-%d-%m-at-%H-%M)
 $ ./offline.sh
 $ export $(cat .env | xargs)
 $ helmfile fetch
-$ helmfile build > ./output/helmfile-final-$(date +%Y-%d-%m-at-%H-%M).yml
+$ helmfile build > ./output/final-$BUILD_TIME.yml
 ```
 
 In case `helmfile` binary is not available in the target environment, just template plain manifests.
 
 ```bash
-$ helmfile template > ./output/plain-final-$(date +%Y-%d-%m-at-%H-%M).yml
+$ helmfile template > ./output/final-${BUILD_TIME}.yml
 ```
 
 Finally, on the production node you would run something similar to this:
 
 ```bash
-$ docker load < ./output/dex_image_*.tar
+$ docker load -i ./output/*.tar
 $ docker push
-$ helmfile sync --skip-deps -f ./output/helmfile-final-*.yml 
-# or
-$ kubectl apply -f ./output/plain-final-*.yml
+$ helmfile sync --skip-deps -f ./output/final-*.yml 
+```
+
+```bash
+# In case `helm` is not available:
+$ kubectl apply -f ./output/final-*.yml
 ```
 
 As you can see, this method is extensible and can be generalized in many ways for any helm-based deployment. For the complete example listing, refere to [the github repo here.](https://github.com/abarrak/dex-helmfile-offline)
