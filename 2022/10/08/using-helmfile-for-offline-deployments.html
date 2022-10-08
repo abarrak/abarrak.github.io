@@ -158,40 +158,47 @@
 <span class="c">#!/bin/bash</span>
 
 <span class="nv">IMAGE_VERSION</span><span class="o">=</span>v2.34.0
+<span class="nv">IMAGE</span><span class="o">=</span>ghcr.io/dexidp/dex
+<span class="nv">CHART_REPO</span><span class="o">=</span>https://charts.dexidp.io
+<span class="nv">CHART</span><span class="o">=</span>dex/dex
 <span class="nv">CHART_VERSION</span><span class="o">=</span>0.11.1
 
-docker pull ghcr.io/dexidp/dex:<span class="k">${</span><span class="nv">IMAGE_VERSION</span><span class="k">}</span>
+docker pull <span class="k">${</span><span class="nv">IMAGE</span><span class="k">}</span>:<span class="k">${</span><span class="nv">IMAGE_VERSION</span><span class="k">}</span>
 
-docker tag harbor.local.lan/ghcr.io/dexidp/dex:<span class="k">${</span><span class="nv">IMAGE_VERSION</span><span class="k">}</span> <span class="se">\</span>
-  ghcr.io/dexidp/dex:<span class="k">${</span><span class="nv">IMAGE_VERSION</span><span class="k">}</span>  <span class="c"># this is optional.</span>
+<span class="c"># tagging is optional</span>
+docker tag registry.local.lan/<span class="k">${</span><span class="nv">IMAGE</span><span class="k">}</span>:<span class="k">${</span><span class="nv">IMAGE_VERSION</span><span class="k">}</span> <span class="se">\</span>
+<span class="k">${</span><span class="nv">IMAGE</span><span class="k">}</span>:<span class="k">${</span><span class="nv">IMAGE_VERSION</span><span class="k">}</span>
 
-docker save harbor.local.lan/ghcr.io/dexidp/dex:<span class="k">${</span><span class="nv">IMAGE_VERSION</span><span class="k">}</span> <span class="se">\</span>
-  <span class="nt">-o</span> ./output/images/dex_image_<span class="k">${</span><span class="nv">IMAGE_VERSION</span><span class="k">}</span>.tar
+docker save registry.local.lan/<span class="o">{</span>IMAGE<span class="o">}</span>:<span class="k">${</span><span class="nv">IMAGE_VERSION</span><span class="k">}</span> <span class="se">\</span>
+<span class="nt">-o</span> ./output/images/<span class="o">{</span>IMAGE<span class="o">}</span>:<span class="k">${</span><span class="nv">IMAGE_VERSION</span><span class="k">}</span>.tar
 
-helm repo add dex https://charts.dexidp.io
-helm pull dex/dex <span class="nt">--version</span> <span class="k">${</span><span class="nv">CHART_VERSION</span><span class="k">}</span> <span class="nt">--destination</span> ./output/charts/
+helm repo add <span class="k">${</span><span class="nv">CHART_REPO</span><span class="k">}</span> 
+helm pull <span class="k">${</span><span class="nv">CHART</span><span class="k">}</span> <span class="nt">--version</span> <span class="k">${</span><span class="nv">CHART_VERSION</span><span class="k">}</span> <span class="nt">--destination</span> ./output/charts/
 </code></pre></div></div>
 
 <p>Then, it should be a matter of executing the following sequence to prepare the final build directory:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./offline.sh
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ BUILD_TIME</span><span class="o">=</span><span class="si">$(</span><span class="nb">date</span> +%Y-%d-%m-at-%H-%M<span class="si">)</span>
+<span class="nv">$ </span>./offline.sh
 <span class="nv">$ </span><span class="nb">export</span> <span class="si">$(</span><span class="nb">cat</span> .env | xargs<span class="si">)</span>
 <span class="nv">$ </span>helmfile fetch
-<span class="nv">$ </span>helmfile build <span class="o">&gt;</span> ./output/helmfile-final-<span class="si">$(</span><span class="nb">date</span> +%Y-%d-%m-at-%H-%M<span class="si">)</span>.yml
+<span class="nv">$ </span>helmfile build <span class="o">&gt;</span> ./output/final-<span class="nv">$BUILD_TIME</span>.yml
 </code></pre></div></div>
 
 <p>In case <code class="language-plaintext highlighter-rouge">helmfile</code> binary is not available in the target environment, just template plain manifests.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>helmfile template <span class="o">&gt;</span> ./output/plain-final-<span class="si">$(</span><span class="nb">date</span> +%Y-%d-%m-at-%H-%M<span class="si">)</span>.yml
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>helmfile template <span class="o">&gt;</span> ./output/final-<span class="k">${</span><span class="nv">BUILD_TIME</span><span class="k">}</span>.yml
 </code></pre></div></div>
 
 <p>Finally, on the production node you would run something similar to this:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker load &lt; ./output/dex_image_<span class="k">*</span>.tar
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker load <span class="nt">-i</span> ./output/<span class="k">*</span>.tar
 <span class="nv">$ </span>docker push
-<span class="nv">$ </span>helmfile <span class="nb">sync</span> <span class="nt">--skip-deps</span> <span class="nt">-f</span> ./output/helmfile-final-<span class="k">*</span>.yml 
-<span class="c"># or</span>
-<span class="nv">$ </span>kubectl apply <span class="nt">-f</span> ./output/plain-final-<span class="k">*</span>.yml
+<span class="nv">$ </span>helmfile <span class="nb">sync</span> <span class="nt">--skip-deps</span> <span class="nt">-f</span> ./output/final-<span class="k">*</span>.yml 
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># In case `helm` is not available:</span>
+<span class="nv">$ </span>kubectl apply <span class="nt">-f</span> ./output/final-<span class="k">*</span>.yml
 </code></pre></div></div>
 
 <p>As you can see, this method is extensible and can be generalized in many ways for any helm-based deployment. For the complete example listing, refere to <a href="https://github.com/abarrak/dex-helmfile-offline" rel="nofollow" target="_blank">the github repo here.</a></p>
