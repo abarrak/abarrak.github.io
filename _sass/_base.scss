@@ -43,7 +43,6 @@ article {
     border-bottom: 0.03rem solid  $brand-color;
   }
 
-
   > .entry-content {
     @include media-query($on-palm) {
       font-size: 80%;

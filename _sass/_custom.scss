@@ -274,12 +274,13 @@ hr.pretty:after {
 
   a {
     line-height: $spacing-unit / 2;
+    border-bottom: none !important;
   }
 
   a:hover {
     color: $cheers-color;
     padding-bottom: 0.3rem;
-    border-bottom: 1px dotted $cheers-color;
+    border-bottom: 1px dotted $cheers-color !important;
   }
 
   @include media-query($on-palm) {
