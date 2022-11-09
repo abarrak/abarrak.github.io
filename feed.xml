@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 10 Oct 2022 03:52:08 +0300</pubDate>
-    <lastBuildDate>Mon, 10 Oct 2022 03:52:08 +0300</lastBuildDate>
+    <pubDate>Wed, 09 Nov 2022 03:43:57 +0300</pubDate>
+    <lastBuildDate>Wed, 09 Nov 2022 03:43:57 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -23,7 +23,7 @@
 
 &lt;p&gt;Let’s say you were deploying an application to a Kubernetes cluster. The idea is to package all dependencies and manifests beforehand in a local or control machine, then push the consolidated deployment directory to the offline machine.&lt;/p&gt;
 
-&lt;p&gt;The digram below depicts the follow.&lt;/p&gt;
+&lt;p&gt;The diagram below depicts the flow.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/images/offline-deployment.png&quot; class=&quot;post-image-2 resize-md center-image&quot; /&gt;&lt;/p&gt;
 
