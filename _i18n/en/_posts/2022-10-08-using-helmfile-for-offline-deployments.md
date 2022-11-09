@@ -16,7 +16,7 @@ One of the interesting ideas I came along recently, is utilizing it for working 
 
 Let's say you were deploying an application to a Kubernetes cluster. The idea is to package all dependencies and manifests beforehand in a local or control machine, then push the consolidated deployment directory to the offline machine.
 
-The digram below depicts the follow.
+The diagram below depicts the flow.
 
 <img src="{{ site.baseurl_root }}/public/images/offline-deployment.png" class="post-image-2 resize-md center-image" />
 
