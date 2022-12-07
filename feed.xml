@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 07 Dec 2022 06:58:11 +0300</pubDate>
-    <lastBuildDate>Wed, 07 Dec 2022 06:58:11 +0300</lastBuildDate>
+    <pubDate>Wed, 07 Dec 2022 07:03:13 +0300</pubDate>
+    <lastBuildDate>Wed, 07 Dec 2022 07:03:13 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -24,7 +24,7 @@
 &lt;p&gt;This roles differs from others in the community by the support to expose TCP/SSH socket for the docker daemon to allow external docker clients to build and use the server as centralized containers engine. Additionally, supports connecting to external image registries by setting the needed variables.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/abarrak/docker-server-role&quot;&gt;Link&lt;/a&gt; - &lt;a href=&quot;https://galaxy.ansible.com/abarrak/docker_server_role&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://galaxy.ansible.com/abarrak/docker_server_role&quot;&gt;Link&lt;/a&gt; - &lt;a href=&quot;https://github.com/abarrak/docker-server-role&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;2-plik-server&quot;&gt;2. Plik Server&lt;/h3&gt;
@@ -40,7 +40,7 @@
 &lt;p&gt;This is merely a wrapper to deploy Bitnami’s redis chart to Kubernetes cluster.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/abarrak/redis-ansible-role&quot;&gt;Link&lt;/a&gt; - &lt;a href=&quot;https://galaxy.ansible.com/abarrak/redis_ansible_role&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://galaxy.ansible.com/abarrak/redis_ansible_role&quot;&gt;Link&lt;/a&gt; - &lt;a href=&quot;https://github.com/abarrak/redis-ansible-role&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;4-samba&quot;&gt;4. Samba&lt;/h3&gt;

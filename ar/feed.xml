@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/ar/</link>
     <atom:link href="https://www.abarrak.com/ar/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 07 Dec 2022 06:58:11 +0300</pubDate>
-    <lastBuildDate>Wed, 07 Dec 2022 06:58:11 +0300</lastBuildDate>
+    <pubDate>Wed, 07 Dec 2022 07:03:13 +0300</pubDate>
+    <lastBuildDate>Wed, 07 Dec 2022 07:03:13 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
@@ -25,7 +25,7 @@
 &lt;p&gt;أيضاً، تم تسهيل إعداده بحيث يرتبط مع مستودعات دوكر (Image registries).&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/abarrak/docker-server-role&quot;&gt;الرابط&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://galaxy.ansible.com/abarrak/docker_server_role&quot;&gt;الرابط&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;2-بلْيك&quot;&gt;2. بلْيك&lt;/h3&gt;
@@ -41,7 +41,7 @@
 &lt;p&gt;هذه الوحدة عبارة عن تسهيل لنشر نظام التخزين المؤقت redis لمنصة كوبرنتيس، وتعتمد على نسخة بِتْ نامي (helm chart).&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/abarrak/redis-ansible-role&quot;&gt;الرابط&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://galaxy.ansible.com/abarrak/redis_ansible_role&quot;&gt;الرابط&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;4-سامبا&quot;&gt;4. سامبا&lt;/h3&gt;
