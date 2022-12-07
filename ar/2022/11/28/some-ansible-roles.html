@@ -8,26 +8,26 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="هذه تدوينة خفيفة، أعطي فيها انطباعات عن كتابين قيّمين قرأتهما في الأسابيع المنصرمة!الأولُ سيرة ذاتية لعالم نفس عاصرَ أهوال الحرب العالمية الثانية؛ وعاش تجربة...">
+	<meta name="description" content="عند الحديث عن إمكانيات المشاركة في محرك آنسبل (Ansible) وإعادة استعمال وحداته التي تم تطويرها، يمكن تلخيص ذلك بوسيلتين: أولاً الوحدات (Roles) وهي عادةً تشمل ...">
   <meta name="author" content="Abdullah Barrak">
 
-  <meta name="keywords" content="القراءة, كتب, العادات الذرية, and الإنسان والبحث عن معنى">
+  <meta name="keywords" content="لينكس and الأتمتة">
 	<meta name="theme-color" content="#943526">
 
   <meta property="og:type" content="article">
-  <meta property="og:description" content="هذه تدوينة خفيفة، أعطي فيها انطباعات عن كتابين قيّمين قرأتهما في الأسابيع الم...">
-  <meta property="og:url" content="https://www.abarrak.com/2022/11/05/reads-and-revisions-2">
+  <meta property="og:description" content="عند الحديث عن إمكانيات المشاركة في محرك آنسبل (Ansible) وإعادة استعمال وحداته...">
+  <meta property="og:url" content="https://www.abarrak.com/2022/11/28/some-ansible-roles">
 	
 	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
 	
 	
-	<meta property="og:title" content="عبدالله براك • قراءات ومراجعات (٢)">
+	<meta property="og:title" content="عبدالله براك • المشاركة والإعادة بواسطة آنسبل (Ansible)">
 	
-	<link rel="canonical" href="https://www.abarrak.com/2022/11/05/reads-and-revisions-2">
+	<link rel="canonical" href="https://www.abarrak.com/2022/11/28/some-ansible-roles">
 
 	<title>
     
-      قراءات ومراجعات (٢) •
+      المشاركة والإعادة بواسطة آنسبل (Ansible) •
       مدوّنة عبدالله براك
     
   </title>
@@ -84,45 +84,61 @@
 	<div>
 		<span></span><span class="post-meta">
 			
-				05 نوفمبر 2022
+				28 نوفمبر 2022
 			
 		</span>
 	</div>
 
-	<h1 class="post-title" itemprop="name headline">قراءات ومراجعات (٢)</h1>
+	<h1 class="post-title" itemprop="name headline">المشاركة والإعادة بواسطة آنسبل (Ansible)</h1>
 </header>
 
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="entry-content" itemprop="articleBody">
-		<p><img src="/public/images/ar-books-review-2.png" class="post-image resize-md center-image"></p>
+		<p><img src="/public/images/ansible.png" class="post-image resize-md center-image"></p>
 
-<p>هذه تدوينة خفيفة، أعطي فيها انطباعات عن كتابين قيّمين قرأتهما في الأسابيع المنصرمة!</p>
+<p>عند الحديث عن إمكانيات المشاركة في محرك آنسبل (Ansible) وإعادة استعمال وحداته التي تم تطويرها، يمكن تلخيص ذلك بوسيلتين: أولاً الوحدات (Roles) وهي عادةً تشمل أتمتة نشر وإدارة برمجية واحدة ومايتعلق بها. ثانياً؛ المجموعات (Collections) وتتضمن عادةً تجميعة من الوحدات roles ، بالإضافة لـ(plugins) مطورةً بلغة بايثون للاحتياجات المتقدمة.</p>
 
-<p>الأولُ سيرة ذاتية لعالم نفس عاصرَ أهوال الحرب العالمية الثانية؛ وعاش تجربة معسكرات الاعتقال النازية يروي تجربته مع خلاصاتٍ عن مدرسته العلاجية. أما الأخر؛ فكتاب تطوير ذات متفردٌ، يقدم نموذجاً لبناءِ تسلسلٍ من الفروقات التحسينية في الحياة اليومية وصولاً لمنشودات المرء من غايات ونجاحات.</p>
+<p>هذه قائمة لبعض الوحدات (Roles) نشرتها للمستودع العام (Ansible Galaxy) خلال الأشهر الماضية:</p>
 
 <!-- post-excerpt -->
 
-<p><br></p>
+<h3 id="1-سيرفر-دوكر">1. سيرفر دوكر</h3>
+<p>تختلف عن الوحدات الموجودة مسبقاً بدعم النشر العام لسيرفر دوكر عبر (TCP/SSH)، مما يسمح باستخدامه للبناء والربط خارجياً.</p>
 
-<h2 id="1-الإنسان-و-البحث-عن-معنى-التسامي-بالذات-كظاهرة-إنساني-فيكتور-فرانكل">1. الإنسان و البحث عن معنى: التسامي بالذات كظاهرة إنساني، فيكتور فرانكل</h2>
+<p>أيضاً، تم تسهيل إعداده بحيث يرتبط مع مستودعات دوكر (Image registries).</p>
 
-<p>كتاب قيّم ونظرة مختلفة لتطبيق العلاج النفسي بطريقة فلسفية ترتكز على إيجاد القيمة والمغزى للحياة.</p>
+<ul>
+  <li><a href="https://github.com/abarrak/docker-server-role" rel="nofollow" target="_blank">الرابط</a></li>
+</ul>
 
-<p>سعى المؤلف لتقديم مبسط لنظريته في العلاج بالمعنى كموقف دفاعي ضد الفكر العدمي تجاه الإنسان، ووجد فيها السَلْوان لما عانه في معسكرات الاعتقال النازّية وقصّه افي الجزء الأول من الكتاب. <a href="https://www.abjjad.com/author/2791670374/%D9%81%D9%8A%D9%83%D8%AA%D9%88%D8%B1-%D8%A7%D9%8A%D9%85%D9%8A%D9%84-%D9%81%D8%B1%D8%A7%D9%86%D9%83%D9%84/quotes" rel="nofollow" target="_blank">حافل بالاقتباسات الرائعة</a>، كالآتي:</p>
+<h3 id="2-بلْيك">2. بلْيك</h3>
 
-<blockquote>
-"إنَّ الحياة ليست بحثاً عن المتعة كما يعتقد فرويد؛ او بحثاً عن السلطة كما علمنا ألفرد أدلر؛ لكنها بحث عن المعنى! إن أعظم مهمة لأي شخص تتمثل في أن يجد معنى في حياته وفي طريقة عيشه"
-</blockquote>
+<p>نظام رفع ملفات مؤقت مع واجهة مستخدم مبسطة.</p>
 
-<p><br></p>
+<ul>
+  <li>
+<a href="https://galaxy.ansible.com/abarrak/plik_ansible_role" rel="nofollow" target="_blank">الرابط</a>.</li>
+</ul>
 
-<h2 id="2-العادات-الذرية-منهج-سهل-لبناء-عادات-جيدة-والتخلص-من-العادات-السيئة-جيمس-كلير">2. العادات الذرية: منهج سهل لبناء عادات جيدة والتخلص من العادات السيئة، جيمس كلير</h2>
+<h3 id="3-ريدس">3. ريدس</h3>
 
-<p>كتاب قيّم بحق، ومختلف.</p>
+<p>هذه الوحدة عبارة عن تسهيل لنشر نظام التخزين المؤقت redis لمنصة كوبرنتيس، وتعتمد على نسخة بِتْ نامي (helm chart).</p>
 
-<p>يقدم المؤلف باستفاضة مفهوم الاعتماد على السلوك المنظم المتكرر “العادات” لبناء حياة إيجابية، بديلًا عن السعي نحو الأهداف أو النتائج مباشرة. وأيضًا، يقترح الأسس الأربعة لتثبيت واستدامة العادات الحسنة: (واضحة، جذابة، سهلة، مشبعة) وعكسها لتجنب العادات السلبية، مع أساليب عملية تنظم وتقرب هذه الأسس للنشاط اليومي. وختاماً يناقش كيفية التحقق من فاعلية العادات بالمراجعة والتأمّل. أنصح بقراءته.</p>
+<ul>
+  <li>
+<a href="https://github.com/abarrak/redis-ansible-role" rel="nofollow" target="_blank">الرابط</a>.</li>
+</ul>
 
-<p><br></p>
+<h3 id="4-سامبا">4. سامبا</h3>
+
+<p>كتبتها بقصد تعلم وتجربة بروتوكول (Samba). مستمدة أساساً من <a href="https://www.redhat.com/sysadmin/getting-started-samba" rel="nofollow" target="_blank">هذه المقالة</a>.</p>
+
+<ul>
+  <li>
+<a href="https://galaxy.ansible.com/abarrak/samba_ansible_role" rel="nofollow" target="_blank">الرابط</a>.</li>
+</ul>
+
+<p>أرجو أن تقدم الفائدة للمهتمين بأحد هذه البرمجيات!</p>
 
 	</div>
 
@@ -131,8 +147,8 @@
 <div id="disqus_thread"></div>
 <script>
   var disqus_config = function () {
-      this.page.url = "https://www.abarrak.com/2022/11/05/reads-and-revisions-2";
-      this.page.identifier = "قراءات-ومراجعات-٢";
+      this.page.url = "https://www.abarrak.com/2022/11/28/some-ansible-roles";
+      this.page.identifier = "المشاركة-والإعادة-بواسطة-آنسبل-ansible";
   };
 
   (function() {
@@ -152,18 +168,13 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
 <div id="post-nav">
 	<div class="next">
 		
-		<a href="/ar/2022/11/28/some-ansible-roles">
-			<span>التدوينة التالية</span>
-			المشاركة والإعادة بواسطة آنسبل (Ansible)
-		</a>
-		
 	</div>
 
 	<div class="previous">
 		
-		<a href="/ar/2022/09/23/reflections-on-iac-with-terraform">
+		<a href="/ar/2022/11/05/reads-and-revisions-2">
 			<span>التدوينة السابقة</span>
-			Terraform وَأتمتة البنية التحتية
+			قراءات ومراجعات (٢)
 		</a>
 		
 	</div>

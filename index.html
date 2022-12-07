@@ -91,6 +91,39 @@
 						<span>Posted on</span>
 						<span class="post-meta">
 						
+							November 28, 2022
+						
+						</span>
+					</div>
+
+					<h2>
+						<a class="post-link" href="/2022/11/28/some-ansible-roles">Ansible Roles and Reusability</a>
+					</h2>
+				</header>
+
+				<div class="entry-content">
+					<p><img src="/public/images/ansible.png" class="post-image resize-md center-image"></p>
+
+<p>Reuse and module sharing in Ansible can be achieved through two methods: A “Role” which forms conceptually a single component and its related tasks. Second, “Content Collections” which form what we could consider as a namespace having a group of roles, in addition to “plugins” that provide the ability to craft custom modules.</p>
+
+<p>Here’s a list of some roles I have published into the galaxy over the past months:</p>
+
+
+
+			    <div class="button-container">
+			      <a class="button" href="/2022/11/28/some-ansible-roles">Read more ..</a>
+			    </div>
+				</div>
+			</article>
+		</li>
+		
+		<li>
+			<article>
+				<header class="post-header">
+					<div>
+						<span>Posted on</span>
+						<span class="post-meta">
+						
 							October 8, 2022
 						
 						</span>
@@ -225,62 +258,6 @@
 
 			    <div class="button-container">
 			      <a class="button" href="/2022/02/18/resolving-dockerd-pool-size-less-than-minimum">Read more ..</a>
-			    </div>
-				</div>
-			</article>
-		</li>
-		
-		<li>
-			<article>
-				<header class="post-header">
-					<div>
-						<span>Posted on</span>
-						<span class="post-meta">
-						
-							May 24, 2019
-						
-						</span>
-					</div>
-
-					<h2>
-						<a class="post-link" href="/2019/05/24/uuid-primary-key-for-active-record-models">Using UUIDs as Primary Key for Active Record Models</a>
-					</h2>
-				</header>
-
-				<div class="entry-content">
-					<p><img src="/public/images/uuids-db.png" class="post-image center-image"></p>
-
-<p>It’s advised that using universally unique identifiers (UUIDs) for exposed resource identifiers is <a href="https://github.com/eliotsykes/rails-security-checklist#ids" rel="nofollow" target="_blank">more secure</a>, and <a href="https://tomharrisonjr.com/uuid-or-guid-as-primary-keys-be-careful-7b2aa3dcb439" rel="nofollow" target="_blank">convenient for database distribution</a>.</p>
-
-<p>As expected, it’s relatively simple to configure Active Record to generate with <code class="language-plaintext highlighter-rouge">UUID</code> primary key based migrations.</p>
-
-<h2 id="setup">Setup</h2>
-
-<p>Here are the steps:</p>
-
-<ol>
-  <li>
-    <p>Setup the default generation inside <code class="language-plaintext highlighter-rouge">config/application.rb</code>:</p>
-
-    <div class="language-ruby highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="c1"># config/application.rb</span>
-   
-<span class="k">module</span> <span class="nn">SampleApp</span>
-  <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
-    <span class="o">...</span>
-    <span class="c1"># Change the primary key default type to UUIDs.</span>
-    <span class="n">config</span><span class="p">.</span><span class="nf">generators</span> <span class="k">do</span> <span class="o">|</span><span class="n">g</span><span class="o">|</span>
-      <span class="n">g</span><span class="p">.</span><span class="nf">orm</span> <span class="ss">:active_record</span><span class="p">,</span> <span class="ss">primary_key_type: :uuid</span>
-    <span class="k">end</span>
-   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-
-			    <div class="button-container">
-			      <a class="button" href="/2019/05/24/uuid-primary-key-for-active-record-models">Read more ..</a>
 			    </div>
 				</div>
 			</article>

@@ -5,9 +5,69 @@
     <description></description>
     <link>https://www.abarrak.com/ar/</link>
     <atom:link href="https://www.abarrak.com/ar/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 09 Nov 2022 04:10:32 +0300</pubDate>
-    <lastBuildDate>Wed, 09 Nov 2022 04:10:32 +0300</lastBuildDate>
+    <pubDate>Wed, 07 Dec 2022 06:58:11 +0300</pubDate>
+    <lastBuildDate>Wed, 07 Dec 2022 06:58:11 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/ansible.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;عند الحديث عن إمكانيات المشاركة في محرك آنسبل (Ansible) وإعادة استعمال وحداته التي تم تطويرها، يمكن تلخيص ذلك بوسيلتين: أولاً الوحدات (Roles) وهي عادةً تشمل أتمتة نشر وإدارة برمجية واحدة ومايتعلق بها. ثانياً؛ المجموعات (Collections) وتتضمن عادةً تجميعة من الوحدات roles ، بالإضافة لـ(plugins) مطورةً بلغة بايثون للاحتياجات المتقدمة.&lt;/p&gt;
+
+&lt;p&gt;هذه قائمة لبعض الوحدات (Roles) نشرتها للمستودع العام (Ansible Galaxy) خلال الأشهر الماضية:&lt;/p&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;h3 id=&quot;1-سيرفر-دوكر&quot;&gt;1. سيرفر دوكر&lt;/h3&gt;
+&lt;p&gt;تختلف عن الوحدات الموجودة مسبقاً بدعم النشر العام لسيرفر دوكر عبر (TCP/SSH)، مما يسمح باستخدامه للبناء والربط خارجياً.&lt;/p&gt;
+
+&lt;p&gt;أيضاً، تم تسهيل إعداده بحيث يرتبط مع مستودعات دوكر (Image registries).&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/abarrak/docker-server-role&quot;&gt;الرابط&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-بلْيك&quot;&gt;2. بلْيك&lt;/h3&gt;
+
+&lt;p&gt;نظام رفع ملفات مؤقت مع واجهة مستخدم مبسطة.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://galaxy.ansible.com/abarrak/plik_ansible_role&quot;&gt;الرابط&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-ريدس&quot;&gt;3. ريدس&lt;/h3&gt;
+
+&lt;p&gt;هذه الوحدة عبارة عن تسهيل لنشر نظام التخزين المؤقت redis لمنصة كوبرنتيس، وتعتمد على نسخة بِتْ نامي (helm chart).&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/abarrak/redis-ansible-role&quot;&gt;الرابط&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;4-سامبا&quot;&gt;4. سامبا&lt;/h3&gt;
+
+&lt;p&gt;كتبتها بقصد تعلم وتجربة بروتوكول (Samba). مستمدة أساساً من &lt;a href=&quot;https://www.redhat.com/sysadmin/getting-started-samba&quot;&gt;هذه المقالة&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://galaxy.ansible.com/abarrak/samba_ansible_role&quot;&gt;الرابط&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;أرجو أن تقدم الفائدة للمهتمين بأحد هذه البرمجيات!&lt;/p&gt;
+</description>
+        <pubDate>Mon, 28 Nov 2022 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/ar/2022/11/28/some-ansible-roles</link>
+        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/11/28/some-ansible-roles</guid>
+        
+        <category>لينكس</category>
+        
+        <category>الأتمتة</category>
+        
+        
+        <category>الأتمتة</category>
+        
+        <category>لينكس</category>
+        
+      </item>
     
       <item>
         <title></title>
