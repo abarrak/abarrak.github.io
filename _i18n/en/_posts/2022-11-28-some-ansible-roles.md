@@ -16,7 +16,7 @@ Here's a list of some roles I have published into the galaxy over the past month
 
   This roles differs from others in the community by the support to expose TCP/SSH socket for the docker daemon to allow external docker clients to build and use the server as centralized containers engine. Additionally, supports connecting to external image registries by setting the needed variables.
 
-- [Link](https://github.com/abarrak/docker-server-role) - [Source](https://galaxy.ansible.com/abarrak/docker_server_role)
+- [Link](https://galaxy.ansible.com/abarrak/docker_server_role) - [Source](https://github.com/abarrak/docker-server-role)
 
 ### 2. Plik Server
 
@@ -28,7 +28,7 @@ Here's a list of some roles I have published into the galaxy over the past month
 
   This is merely a wrapper to deploy Bitnami's redis chart to Kubernetes cluster.
 
-- [Link](https://github.com/abarrak/redis-ansible-role) - [Source](https://galaxy.ansible.com/abarrak/redis_ansible_role)
+- [Link](https://galaxy.ansible.com/abarrak/redis_ansible_role) - [Source](https://github.com/abarrak/redis-ansible-role)
 
 ### 4. Samba
 

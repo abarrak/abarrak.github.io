@@ -17,7 +17,7 @@ categories: [الأتمتة, لينكس]
 
   أيضاً، تم تسهيل إعداده بحيث يرتبط مع مستودعات دوكر (Image registries).
 
-  - [الرابط](https://github.com/abarrak/docker-server-role)
+- [الرابط](https://galaxy.ansible.com/abarrak/docker_server_role)
 
 ### 2. بلْيك
 
@@ -29,7 +29,7 @@ categories: [الأتمتة, لينكس]
 
   هذه الوحدة عبارة عن تسهيل لنشر نظام التخزين المؤقت redis لمنصة كوبرنتيس، وتعتمد على نسخة بِتْ نامي (helm chart).
 
-  - [الرابط](https://github.com/abarrak/redis-ansible-role).
+- [الرابط](https://galaxy.ansible.com/abarrak/redis_ansible_role).
 
 ### 4. سامبا
 
