@@ -8,26 +8,26 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="Reuse and module sharing in Ansible can be achieved through two methods: A “Role” which forms conceptually a single component and its related tasks. Second, ...">
+	<meta name="description" content="I have enjoyed reading this piece on stability and reliability by Colm MacCárthaigh. It is part of a concise and valuable series by AWS authors on the art of...">
   <meta name="author" content="Abdullah Barrak">
 
-  <meta name="keywords" content="Infrastructure as Code, Linux, and Automation">
+  <meta name="keywords" content="Automation, SRE, System Design, Cloud, and AWS">
 	<meta name="theme-color" content="#943526">
 
   <meta property="og:type" content="article">
-  <meta property="og:description" content="Reuse and module sharing in Ansible can be achieved through two methods: A “R...">
-  <meta property="og:url" content="https://www.abarrak.com/2022/11/28/some-ansible-roles">
+  <meta property="og:description" content="I have enjoyed reading this piece on stability and reliability by Colm MacCár...">
+  <meta property="og:url" content="https://www.abarrak.com/2022/12/28/on-aws-builder-lib">
 	
 	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
 	
 	
-	<meta property="og:title" content="Abdullah Barrak • Ansible Roles and Reusability">
+	<meta property="og:title" content="Abdullah Barrak • On Amazon Builders' Library">
 	
-	<link rel="canonical" href="https://www.abarrak.com/2022/11/28/some-ansible-roles">
+	<link rel="canonical" href="https://www.abarrak.com/2022/12/28/on-aws-builder-lib">
 
 	<title>
     
-      Ansible Roles and Reusability •
+      On Amazon Builders' Library •
       Abdullah Barrak's Blog
     
   </title>
@@ -86,65 +86,32 @@
 	<div>
 		<span></span><span class="post-meta">
 			
-				November 28, 2022
+				December 28, 2022
 			
 		</span>
 	</div>
 
-	<h1 class="post-title" itemprop="name headline">Ansible Roles and Reusability</h1>
+	<h1 class="post-title" itemprop="name headline">On Amazon Builders' Library</h1>
 </header>
 
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="entry-content" itemprop="articleBody">
-		<p><img src="/public/images/ansible.png" class="post-image resize-md center-image"></p>
+		<p><img src="/public/images/aws-b-lib.png" class="post-image resize-md center-image"></p>
 
-<p>Reuse and module sharing in Ansible can be achieved through two methods: A “Role” which forms conceptually a single component and its related tasks. Second, “Content Collections” which form what we could consider as a namespace having a group of roles, in addition to “plugins” that provide the ability to craft custom modules.</p>
-
-<p>Here’s a list of some roles I have published into the galaxy over the past months:</p>
+<p>I have enjoyed reading <a href="https://aws.amazon.com/builders-library/reliability-and-constant-work/" rel="nofollow" target="_blank">this piece on stability and reliability by Colm MacCárthaigh</a>. It is part of a concise and valuable series by AWS authors on the art of system operations collected under the name “Amazon Builders’ Library”.</p>
 
 <!-- post-excerpt -->
 
-<h3 id="1-docker-server">1. Docker Server</h3>
+<p>The comparison between coffee urn and computers when building reliable operational model is catching and up to the point. Then, three characteristics taken from this analogy is observed: 1. have a simple constant function that does not scale based on load stress solely, 2. no different modes or operational branching, 3. anti-fragility which is the preparations that hold systems reliable when most needed. The author mentions the coined term for these principles on reliability: <strong>“Constant Work Patterns”</strong>. Route 53 and S3 are presented as use cases that fit and demonstrate the model.</p>
 
-<p>This roles differs from others in the community by the support to expose TCP/SSH socket for the docker daemon to allow external docker clients to build and use the server as centralized containers engine. Additionally, supports connecting to external image registries by setting the needed variables.</p>
+<p>I truly enjoyed the article and definitely will go through the rest of the library including the ones referred by this article. The composition and references among the library content is another consideration to admire here too.</p>
 
-<ul>
-  <li>
-<a href="https://galaxy.ansible.com/abarrak/docker_server_role" rel="nofollow" target="_blank">Link</a> - <a href="https://github.com/abarrak/docker-server-role" rel="nofollow" target="_blank">Source</a>
-</li>
-</ul>
-
-<h3 id="2-plik-server">2. Plik Server</h3>
-
-<p>A temporary file upload system with minimal GUI.</p>
+<p>Finally, thanks to whomever shared this recently <a href="https://news.ycombinator.com/item?id=34103426" rel="nofollow" target="_blank">on HN</a>!</p>
 
 <ul>
-  <li>
-<a href="https://galaxy.ansible.com/abarrak/plik_ansible_role" rel="nofollow" target="_blank">Link</a> - <a href="https://github.com/abarrak/plik-ansible-role" rel="nofollow" target="_blank">Source</a>
-</li>
+  <li><a href="https://aws.amazon.com/builders-library/reliability-and-constant-work/" rel="nofollow" target="_blank">Link.</a></li>
+  <li><a href="https://news.ycombinator.com/item?id=34103426" rel="nofollow" target="_blank">HN Thread.</a></li>
 </ul>
-
-<h3 id="3-redis">3. Redis</h3>
-
-<p>This is merely a wrapper to deploy Bitnami’s redis chart to Kubernetes cluster.</p>
-
-<ul>
-  <li>
-<a href="https://galaxy.ansible.com/abarrak/redis_ansible_role" rel="nofollow" target="_blank">Link</a> - <a href="https://github.com/abarrak/redis-ansible-role" rel="nofollow" target="_blank">Source</a>
-</li>
-</ul>
-
-<h3 id="4-samba">4. Samba</h3>
-
-<p>I wrote this role to learn and experiment with the protocol. Mainly, translated from <a href="https://www.redhat.com/sysadmin/getting-started-samba" rel="nofollow" target="_blank">this article</a>.</p>
-
-<ul>
-  <li>
-<a href="https://galaxy.ansible.com/abarrak/samba_ansible_role" rel="nofollow" target="_blank">Link</a> - <a href="https://github.com/abarrak/samba-ansible-role" rel="nofollow" target="_blank">Source</a>
-</li>
-</ul>
-
-<p>That’s it. I hope you find it insightful.</p>
 
 	</div>
 
@@ -153,8 +120,8 @@
 <div id="disqus_thread"></div>
 <script>
   var disqus_config = function () {
-      this.page.url = "https://www.abarrak.com/2022/11/28/some-ansible-roles";
-      this.page.identifier = "ansible-roles-and-reusability";
+      this.page.url = "https://www.abarrak.com/2022/12/28/on-aws-builder-lib";
+      this.page.identifier = "on-amazon-builders-library";
   };
 
   (function() {
@@ -174,18 +141,13 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
 <div id="post-nav">
 	<div class="next">
 		
-		<a href="/2022/12/28/on-aws-builder-lib">
-			<span>Next entry</span>
-			On Amazon Builders' Library
-		</a>
-		
 	</div>
 
 	<div class="previous">
 		
-		<a href="/2022/10/08/using-helmfile-for-offline-deployments">
+		<a href="/2022/11/28/some-ansible-roles">
 			<span>Previous entry</span>
-			Use Helmfile for Deployment in Offline Environments
+			Ansible Roles and Reusability
 		</a>
 		
 	</div>

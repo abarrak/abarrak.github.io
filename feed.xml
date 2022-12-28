@@ -5,9 +5,55 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 07 Dec 2022 07:03:13 +0300</pubDate>
-    <lastBuildDate>Wed, 07 Dec 2022 07:03:13 +0300</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2022 00:05:42 +0300</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2022 00:05:42 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/aws-b-lib.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I have enjoyed reading &lt;a href=&quot;https://aws.amazon.com/builders-library/reliability-and-constant-work/&quot;&gt;this piece on stability and reliability by Colm MacCárthaigh&lt;/a&gt;. It is part of a concise and valuable series by AWS authors on the art of system operations collected under the name “Amazon Builders’ Library”.&lt;/p&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;p&gt;The comparison between coffee urn and computers when building reliable operational model is catching and up to the point. Then, three characteristics taken from this analogy is observed: 1. have a simple constant function that does not scale based on load stress solely, 2. no different modes or operational branching, 3. anti-fragility which is the preparations that hold systems reliable when most needed. The author mentions the coined term for these principles on reliability: &lt;strong&gt;“Constant Work Patterns”&lt;/strong&gt;. Route 53 and S3 are presented as use cases that fit and demonstrate the model.&lt;/p&gt;
+
+&lt;p&gt;I truly enjoyed the article and definitely will go through the rest of the library including the ones referred by this article. The composition and references among the library content is another consideration to admire here too.&lt;/p&gt;
+
+&lt;p&gt;Finally, thanks to whomever shared this recently &lt;a href=&quot;https://news.ycombinator.com/item?id=34103426&quot;&gt;on HN&lt;/a&gt;!&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://aws.amazon.com/builders-library/reliability-and-constant-work/&quot;&gt;Link.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://news.ycombinator.com/item?id=34103426&quot;&gt;HN Thread.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 28 Dec 2022 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/2022/12/28/on-aws-builder-lib</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2022/12/28/on-aws-builder-lib</guid>
+        
+        <category>Automation</category>
+        
+        <category>SRE</category>
+        
+        <category>System Design</category>
+        
+        <category>Cloud</category>
+        
+        <category>AWS</category>
+        
+        
+        <category>Automation</category>
+        
+        <category>SRE</category>
+        
+        <category>System Design</category>
+        
+        <category>Cloud</category>
+        
+        <category>AWS</category>
+        
+      </item>
     
       <item>
         <title></title>
