@@ -5,13 +5,13 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 29 Dec 2022 00:05:42 +0300</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2022 00:05:42 +0300</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2022 00:07:51 +0300</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2022 00:07:51 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
         <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/aws-b-lib.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/aws-b-lib.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I have enjoyed reading &lt;a href=&quot;https://aws.amazon.com/builders-library/reliability-and-constant-work/&quot;&gt;this piece on stability and reliability by Colm MacCárthaigh&lt;/a&gt;. It is part of a concise and valuable series by AWS authors on the art of system operations collected under the name “Amazon Builders’ Library”.&lt;/p&gt;
 
