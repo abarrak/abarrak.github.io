@@ -4,7 +4,7 @@ tags: [Automation, SRE, System Design, Cloud, AWS]
 categories: [Automation, SRE, System Design, Cloud, AWS]
 ---
 
-<img src="{{ site.baseurl_root }}/public/images/aws-b-lib.png" class="post-image resize-md center-image" />
+<img src="{{ site.baseurl_root }}/public/images/aws-b-lib.png" class="post-image resize-sm center-image" />
 
 I have enjoyed reading [this piece on stability and reliability by Colm MacCárthaigh](https://aws.amazon.com/builders-library/reliability-and-constant-work/). It is part of a concise and valuable series by AWS authors on the art of system operations collected under the name “Amazon Builders’ Library”.
 
