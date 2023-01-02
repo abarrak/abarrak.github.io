@@ -17,4 +17,3 @@ I truly enjoyed the article and definitely will go through the rest of the libra
 Finally, thanks to whomever shared this recently [on HN](https://news.ycombinator.com/item?id=34103426)!
 
 - [Link.](https://aws.amazon.com/builders-library/reliability-and-constant-work/)
-- [HN Thread.](https://news.ycombinator.com/item?id=34103426)
