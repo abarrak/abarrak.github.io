@@ -24,13 +24,13 @@ By doing so, you can basically strengthen your knowledge to pass the professiona
 
 This is mostly focused on developer centric roles when working on the cloud.
 
-Besides the essentials (EC2, IAM, ELB, R53, RDS, S3, CloudFront, KMS, CloudWatch), other development relevant services and topics are covered with precise questions like lambda workloads, serverless offerings (Dynamo, API Gateway, Cognito), CI/CD offerings, working with secrets and configuration as  indicated in [the official guide](https://aws.amazon.com/certification/certified-developer-associate/). Also, Practical DynamoDB and S3 questions with snippet of code are expected. By far, I found this one the easiest in the associate category.
+Besides the essentials (EC2, IAM, ELB, R53, RDS, S3, CloudFront, KMS, CloudWatch), other development relevant services and topics are covered with precise questions like lambda workloads, serverless offerings (Dynamo, API Gateway, Cognito), CI/CD offerings, working with secrets and configuration as  indicated in [the official guide](https://aws.amazon.com/certification/certified-developer-associate/). Also, Practical DynamoDB, lambda, and S3 questions with snippet of code are expected. By far, I found this one the easiest in the associate category.
 
 ### Certified SysOps Admin
 
 This is basically the most involved exam in the associate level in my experience.
 
-There's a focus on [CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html), [Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html), Logging and monitoring, [Event Bridge](https://docs.aws.amazon.com/eventbridge/index.html), [AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html), among other services as detailed [in the 6 domains](https://d1.awsstatic.com/training-and-certification/docs-sysops-associate/AWS-Certified-SysOps-Administrator-Associate_Exam-Guide.pdf). Uniquely, this exam includes a lab section with 3 practical questions which you would solve through the AWS Console.
+There's focus on [CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html), [Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html), Logging and monitoring, [Event Bridge](https://docs.aws.amazon.com/eventbridge/index.html), [AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html), among other services as detailed [in the 6 domains](https://d1.awsstatic.com/training-and-certification/docs-sysops-associate/AWS-Certified-SysOps-Administrator-Associate_Exam-Guide.pdf). Uniquely, this exam includes a lab section with 3 practical questions which you would solve through the AWS Console.
 
 
 ### Solutions Architect Professional
