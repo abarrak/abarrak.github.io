@@ -5,9 +5,81 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Jan 2023 19:51:06 +0300</pubDate>
-    <lastBuildDate>Mon, 02 Jan 2023 19:51:06 +0300</lastBuildDate>
+    <pubDate>Tue, 28 Mar 2023 23:46:55 +0300</pubDate>
+    <lastBuildDate>Tue, 28 Mar 2023 23:46:55 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/aws-exams.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Around last September 2022, after the expiration of my previous AWS certificate [Solution Architect Associate - SAA] , I decided to prepare and take the next level professional certificate [AWS SAP].&lt;/p&gt;
+
+&lt;h2 id=&quot;preparation&quot;&gt;Preparation&lt;/h2&gt;
+
+&lt;p&gt;When you have a working knowledge in the cloud and AWS specifically, it is optimal to seek first the associate level certificates since there are the most information oriented exams (i.e. with good study and practice, your chances for passing are high).&lt;/p&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;p&gt;And that’s what I did by clearing out the following two certificates!&lt;/p&gt;
+
+&lt;p&gt;By doing so, you can basically strengthen your knowledge to pass the professional exam, or the specialty ones afterward.&lt;/p&gt;
+
+&lt;h3 id=&quot;certified-developer&quot;&gt;Certified Developer&lt;/h3&gt;
+
+&lt;p&gt;This is mostly focused on developer centric roles when working on the cloud.&lt;/p&gt;
+
+&lt;p&gt;Besides the essentials (EC2, IAM, ELB, R53, RDS, S3, CloudFront, KMS, CloudWatch), other development relevant services and topics are covered with precise questions like lambda workloads, serverless offerings (Dynamo, API Gateway, Cognito), CI/CD offerings, working with secrets and configuration as  indicated in &lt;a href=&quot;https://aws.amazon.com/certification/certified-developer-associate/&quot;&gt;the official guide&lt;/a&gt;. Also, Practical DynamoDB, lambda, and S3 questions with snippet of code are expected. By far, I found this one the easiest in the associate category.&lt;/p&gt;
+
+&lt;h3 id=&quot;certified-sysops-admin&quot;&gt;Certified SysOps Admin&lt;/h3&gt;
+
+&lt;p&gt;This is basically the most involved exam in the associate level in my experience.&lt;/p&gt;
+
+&lt;p&gt;There’s focus on &lt;a href=&quot;https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html&quot;&gt;CloudFormation&lt;/a&gt;, &lt;a href=&quot;https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html&quot;&gt;Systems Manager&lt;/a&gt;, Logging and monitoring, &lt;a href=&quot;https://docs.aws.amazon.com/eventbridge/index.html&quot;&gt;Event Bridge&lt;/a&gt;, &lt;a href=&quot;https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html&quot;&gt;AWS Config&lt;/a&gt;, among other services as detailed &lt;a href=&quot;https://d1.awsstatic.com/training-and-certification/docs-sysops-associate/AWS-Certified-SysOps-Administrator-Associate_Exam-Guide.pdf&quot;&gt;in the 6 domains&lt;/a&gt;. Uniquely, this exam includes a lab section with 3 practical questions which you would solve through the AWS Console.&lt;/p&gt;
+
+&lt;h3 id=&quot;solutions-architect-professional&quot;&gt;Solutions Architect Professional&lt;/h3&gt;
+
+&lt;p&gt;And Finally, &lt;a href=&quot;https://www.credly.com/badges/f082f973-a262-41ba-aad6-557076601b5b/public_url&amp;gt;&quot;&gt;&lt;span style=&quot;color: darkred&quot;&gt;the happy result letter&lt;/span&gt;&lt;/a&gt; came in with success! 🎉&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/aws-sap-cert.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here things are more interesting than the associate exams. The breadth and depth of domains are much higher. Most if not all of the questions are &lt;strong&gt;compound items&lt;/strong&gt; that explore a combination of services placement or integrations together (e.g. IAM organziation policies SCP and S3, on-premise gateways and connectors to services). Try to cover advanced networking, IAM, storage and files solutions, and IAM/AD/SSO offerings.&lt;/p&gt;
+
+&lt;h3 id=&quot;tips&quot;&gt;Tips&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Follow a curriculum to review any gaps you have, and practice with the instructor through labs.
+&lt;br /&gt;
+&lt;a href=&quot;https://www.udemy.com/user/stephane-maarek/&quot;&gt;Maarek’s courses&lt;/a&gt; are recommended.&lt;/li&gt;
+  &lt;li&gt;The official AWS pages all have PDF exam samples with answers. &lt;br /&gt;
+Go through them to know what to expect, questions style, and how domains are examined.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/open-guides/og-aws&quot;&gt;AWS open guides are very valuable summary&lt;/a&gt;. &lt;br /&gt;
+Keep them in bookmarks!&lt;/li&gt;
+  &lt;li&gt;Have a good night sleep 😴 and attend 20-15 minutes earlier.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 10 Jan 2023 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/2023/01/10/passing-aws-sap</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2023/01/10/passing-aws-sap</guid>
+        
+        <category>AWS SAP</category>
+        
+        <category>Solutions Architect</category>
+        
+        <category>Cloud</category>
+        
+        <category>AWS</category>
+        
+        
+        <category>Exams</category>
+        
+        <category>Architecture</category>
+        
+        <category>Cloud</category>
+        
+        <category>AWS</category>
+        
+      </item>
     
       <item>
         <title></title>
@@ -845,62 +917,6 @@ Setting ruby’s external encoding plus the source files to &lt;code class=&quot
         <category>Sinatra</category>
         
         <category>Troubleshooting</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/eloquent-ruby-cover.jpg&quot; class=&quot;post-image resize-sm center-image&quot; alt=&quot;book-cover&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Recently, I’ve read Oslen Russ’s &lt;a href=&quot;https://amzn.com/0321584104&quot; target=&quot;_blank&quot;&gt;“Eloquent Ruby”&lt;/a&gt; and it was delightful read overall.&lt;/p&gt;
-
-&lt;p&gt;The book has a considerable reputation among the community programmers. It’s divided into (4) units on Ruby foundations and the software process practices.&lt;/p&gt;
-
-&lt;!-- post-excerpt --&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Part (1)&lt;/strong&gt; and &lt;strong&gt;(2)&lt;/strong&gt; form the first half of the book. They start with the language basics, types and features, in addition to the coverage of OOP methodologies in Ruby (classes, modules, blocks).&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;In &lt;strong&gt;Part (3)&lt;/strong&gt;, we see the language metaprogramming capabilities and techniques. First chapter introduces the concept and some hook methods like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;included&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inherited&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;at_exit&lt;/code&gt; which keep the application life cycle more interactive and informed. Three consecutive chapters talk about the valuable dynamic programming function &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;method_missing&lt;/code&gt; and its use cases for &lt;strong&gt;better error handling&lt;/strong&gt;, &lt;strong&gt;delegation&lt;/strong&gt;, and &lt;strong&gt;building flexible APIs&lt;/strong&gt;. Last chapters discuss monkey patching and self modifying code. For me this was the most interesting part of the book.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Putting all covered topics in action is what &lt;strong&gt;Part (4)&lt;/strong&gt; concerned about. The subjects in this part are internal and external DSLs constructions, and publishing Gems (packages), along with a brief tour on some of Ruby’s popular Implementations.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;I liked the writing style the author followed, which was example driven and kind of story telling. Each chapter starts with a motivational situation or by raising question, then it goes on by building up the solution and revisiting it for improvements in an iterative way (dominant example is &lt;a href=&quot;https://rubygems.org/gems/document/&quot;&gt;the document class&lt;/a&gt;). Each chapter also has bits of real ruby code from libraries or actual projects in a subsection tilted &lt;em&gt;“In the Wild”&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;Albeit there is a small portion of the book that’s outdated, I would argue that the majority of its content is still relevant now and times to come.&lt;/p&gt;
-
-&lt;p&gt;If you’re looking for eloquently written material that explores and explains important aspects and background of the Ruby programming language without going into lengthy documentation details, then go with Eloquent Ruby !&lt;/p&gt;
-</description>
-        <pubDate>Sat, 25 Jun 2016 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2016/06/25/elquoent-ruby</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2016/06/25/elquoent-ruby</guid>
-        
-        <category>Ruby</category>
-        
-        <category>Book Review</category>
-        
-        <category>Programming</category>
-        
-        <category>Reading</category>
-        
-        <category>Software Development</category>
-        
-        
-        <category>Software</category>
-        
-        <category>Ruby</category>
-        
-        <category>Book Review</category>
         
       </item>
     
