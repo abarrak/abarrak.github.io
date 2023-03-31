@@ -5,37 +5,37 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 28 Mar 2023 23:56:46 +0300</pubDate>
-    <lastBuildDate>Tue, 28 Mar 2023 23:56:46 +0300</lastBuildDate>
+    <pubDate>Fri, 31 Mar 2023 23:40:30 +0300</pubDate>
+    <lastBuildDate>Fri, 31 Mar 2023 23:40:30 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
         <title></title>
         <description>&lt;p&gt;&lt;img src=&quot;/public/images/aws-exams.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Around last September 2022, after the expiration of my previous AWS certificate [Solution Architect Associate - SAA] , I decided to prepare and take the next level professional certificate [AWS SAP].&lt;/p&gt;
+&lt;p&gt;Around last September 2022, after the expiration of my previous amazon web services certificate [SAA] , I decided to prepare and take the next level professional certificate [AWS SAP].&lt;/p&gt;
 
 &lt;h2 id=&quot;preparation&quot;&gt;Preparation&lt;/h2&gt;
 
-&lt;p&gt;When you have a working knowledge in the cloud and AWS specifically, it is optimal to seek first the associate level certificates since there are the most information oriented exams (i.e. with good study and practice, your chances for passing are high).&lt;/p&gt;
+&lt;p&gt;When you have working knowledge in the cloud and AWS specifically, it is optimal to seek first the associate level certificates since they’re information oriented with good study and practice, your chances for passing are high. By doing so, you also prepare for the professional and specialty levels afterward.&lt;/p&gt;
 
 &lt;!-- post-excerpt --&gt;
 
 &lt;p&gt;And that’s what I did by clearing out the following two certificates!&lt;/p&gt;
 
-&lt;p&gt;By doing so, you can basically strengthen your knowledge to pass the professional exam, or the specialty ones afterward.&lt;/p&gt;
-
 &lt;h3 id=&quot;certified-developer&quot;&gt;Certified Developer&lt;/h3&gt;
 
-&lt;p&gt;This is mostly focused on developer centric roles when working on the cloud.&lt;/p&gt;
+&lt;p&gt;This is mostly focused on developer centric roles when working with AWS.&lt;/p&gt;
 
-&lt;p&gt;Besides the essentials (EC2, IAM, ELB, R53, RDS, S3, CloudFront, KMS, CloudWatch), other development relevant services and topics are covered with precise questions like lambda workloads, serverless offerings (Dynamo, API Gateway, Cognito), CI/CD offerings, working with secrets and configuration as  indicated in &lt;a href=&quot;https://aws.amazon.com/certification/certified-developer-associate/&quot;&gt;the official guide&lt;/a&gt;. Also, Practical DynamoDB, lambda, and S3 questions with snippet of code are expected. By far, I found this one the easiest in the associate category.&lt;/p&gt;
+&lt;p&gt;Besides the essentials (EC2, IAM, ELB, R53, RDS, S3, CloudFront, KMS, CloudWatch), other development relevant services and topics are covered with precise questions like lambda workloads, serverless offerings (Dynamo, API Gateway, Cognito), CI/CD offerings, working with secrets and configuration as  indicated in &lt;a href=&quot;https://aws.amazon.com/certification/certified-developer-associate/&quot;&gt;the official guide&lt;/a&gt;. Also, Practical DynamoDB, lambda, and S3 questions with snippet of code are expected.&lt;/p&gt;
+
+&lt;p&gt;Notably, I found this one the easiest in the associate category. 💡&lt;/p&gt;
 
 &lt;h3 id=&quot;certified-sysops-admin&quot;&gt;Certified SysOps Admin&lt;/h3&gt;
 
 &lt;p&gt;This is basically the most involved exam in the associate level in my experience.&lt;/p&gt;
 
-&lt;p&gt;There’s focus on &lt;a href=&quot;https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html&quot;&gt;CloudFormation&lt;/a&gt;, &lt;a href=&quot;https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html&quot;&gt;Systems Manager&lt;/a&gt;, Logging and monitoring, &lt;a href=&quot;https://docs.aws.amazon.com/eventbridge/index.html&quot;&gt;Event Bridge&lt;/a&gt;, &lt;a href=&quot;https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html&quot;&gt;AWS Config&lt;/a&gt;, among other services as detailed &lt;a href=&quot;https://d1.awsstatic.com/training-and-certification/docs-sysops-associate/AWS-Certified-SysOps-Administrator-Associate_Exam-Guide.pdf&quot;&gt;in the 6 domains&lt;/a&gt;. Uniquely, this exam includes a lab section with 3 practical questions which you would solve through the AWS Console.&lt;/p&gt;
+&lt;p&gt;There’s focus on &lt;a href=&quot;https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html&quot;&gt;CloudFormation&lt;/a&gt;, &lt;a href=&quot;https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html&quot;&gt;Systems Manager&lt;/a&gt;, Logging and monitoring, &lt;a href=&quot;https://docs.aws.amazon.com/eventbridge/index.html&quot;&gt;Event Bridge&lt;/a&gt;, &lt;a href=&quot;https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html&quot;&gt;AWS Config&lt;/a&gt;, among other services as detailed &lt;a href=&quot;https://d1.awsstatic.com/training-and-certification/docs-sysops-associate/AWS-Certified-SysOps-Administrator-Associate_Exam-Guide.pdf&quot;&gt;in the 6 domains&lt;/a&gt;. Uniquely, this one includes a lab section with 3 practical questions which you would solve through the AWS Console.&lt;/p&gt;
 
 &lt;h3 id=&quot;solutions-architect-professional&quot;&gt;Solutions Architect Professional&lt;/h3&gt;
 
@@ -43,7 +43,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/public/images/aws-sap-cert.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Here things are more interesting than the associate exams. The breadth and depth of domains are much higher. Most if not all of the questions are &lt;strong&gt;compound items&lt;/strong&gt; that explore a combination of services placement or integrations together (e.g. IAM organziation policies SCP and S3, on-premise gateways and connectors to services). Try to cover advanced networking, IAM, storage and files solutions, and IAM/AD/SSO offerings.&lt;/p&gt;
+&lt;p&gt;Here things are more interesting than the associate exams. The breadth and depth of domains are much higher. Most if not all of the questions are &lt;strong&gt;compound items&lt;/strong&gt; that explore a combination of services placement or integrations together (e.g. IAM organization policies SCP and S3, on-premise gateways and connectors to services). Try to cover advanced networking, IAM, storage and files solutions, and IAM/AD/SSO offerings.&lt;/p&gt;
 
 &lt;h3 id=&quot;tips&quot;&gt;Tips&lt;/h3&gt;
 
