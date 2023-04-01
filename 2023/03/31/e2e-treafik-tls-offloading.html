@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="description" content="An interesting usecase I have encountered recently is establishing a secure path (bridge) between Traefik as ingress controller and its destination backends....">
+  <meta name="author" content="Abdullah Barrak">
+
+  <meta name="keywords" content="Traefik, Ingress Solutions, Kubernetes, SRE, and TLS">
+	<meta name="theme-color" content="#943526">
+
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="An interesting usecase I have encountered recently is establishing a secure p...">
+  <meta property="og:url" content="https://www.abarrak.com/2023/03/31/e2e-treafik-tls-offloading">
+	
+	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
+	
+	
+	<meta property="og:title" content="Abdullah Barrak • How to implement End-to-End TLS flow using Traefik">
+	
+	<link rel="canonical" href="https://www.abarrak.com/2023/03/31/e2e-treafik-tls-offloading">
+
+	<title>
+    
+      How to implement End-to-End TLS flow using Traefik •
+      Abdullah Barrak's Blog
+    
+  </title>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/icons/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/icons/favicon.ico">
+
+  <!-- Fonts -->
+	<link rel='stylesheet' id='libretto-fonts-css'  href='https://fonts.googleapis.com/css?family=Libre+Baskerville%3A400%2C700%2C400italic%7CPlayfair+Display%3A400%2C700%2C400italic%2C700italic%7CPlayfair+Display+SC%3A700%2C700italic%7CMontserrat%3A400%7CDroid+Sans+Mono%3A400&#038;subset=latin%2Clatin-ext' type='text/css' media='all'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/public/css/main.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/tooltipster-bundle.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/tooltipster-sideTip-shadow.min.css" type="text/css" media="all">
+  
+
+  <!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="https://www.abarrak.com/feed.xml">
+</head>
+
+<body>
+
+	<header class="site-header">
+	<div class="wrapper-fluid">
+		<a class="site-title" href="/">Abdullah Barrak</a>
+
+    <ul class="links">
+      <li><a href="/about">About</a></li>
+      <li><a href="/works">Works</a></li>
+      <li><a href="/contact">Contact</a></li>
+
+      <li class="lang_link">
+        <small>
+        
+        
+          
+          <a href="
+            /ar/
+          " >ع</a>
+        
+        </small>
+      </li>
+    </ul>
+	</div>
+
+</header>
+
+
+
+	<div class="page-content">
+		<div class="wrapper">
+			<header class="post-header">
+	<div>
+		<span></span><span class="post-meta">
+			
+				March 31, 2023
+			
+		</span>
+	</div>
+
+	<h1 class="post-title" itemprop="name headline">How to implement End-to-End TLS flow using Traefik</h1>
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="entry-content" itemprop="articleBody">
+		<p><img src="/public/images/traefik-1.png" class="post-image resize-sm center-image"></p>
+
+<p>An interesting usecase I have encountered recently is establishing a secure path (bridge) between <a href="https://doc.traefik.io/traefik/" rel="nofollow" target="_blank">Traefik</a> as ingress controller and its destination backends.</p>
+
+<p>The post addresses <code class="language-plaintext highlighter-rouge">traefik</code> usage within Kubernetes, however it is applicable to other offerings.</p>
+
+<!-- post-excerpt -->
+
+<h2 id="case">Case</h2>
+
+<p>A flow diagram is probably the way to explain the setup.</p>
+
+<p><img src="/public/images/traefik-ingress-passthrough.png" class="post-image-2 resize-sm center-image"></p>
+
+<p>The main routing resource is a CRD that resembles the following snippet.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">traefik.containo.us/v1alpha1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">IngressRoute</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">web-ingressroute</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">web</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">entryPoints</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">websecure</span>
+  <span class="na">routes</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">kind</span><span class="pi">:</span> <span class="s">Rule</span>
+    <span class="na">match</span><span class="pi">:</span> <span class="s">Host(`web.example.com`)</span>
+    <span class="na">services</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">backend-svc</span>
+      <span class="na">namespace</span><span class="pi">:</span> <span class="s">web</span>
+      <span class="na">port</span><span class="pi">:</span> <span class="m">443</span>
+      <span class="na">scheme</span><span class="pi">:</span> <span class="s">https</span>
+      <span class="na">passHostHeader</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">secretName</span><span class="pi">:</span> <span class="s">web-ingressroute-tls</span>
+</code></pre></div></div>
+
+<p>The secret here <code class="language-plaintext highlighter-rouge">web-ingressroute-tls</code> is a standard <code class="language-plaintext highlighter-rouge">tls</code> secret for the external route containing the private key, certificate, and ca certificate. Let’s mark it as secret (1).</p>
+
+<p>The target backend is a classic <a href="https://hub.docker.com/_/nginx" rel="nofollow" target="_blank">sidecar container <strong>“nginx”</strong></a> fronting the main container.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">ConfigMap</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">nginx-conf</span>
+<span class="na">data</span><span class="pi">:</span>
+  <span class="s">nginx.conf</span><span class="pi">:</span> <span class="pi">|</span>
+    <span class="s">user nginx;</span>
+    <span class="s">worker_processes  3;</span>
+    <span class="s">...</span>
+    <span class="s">http {</span>
+      <span class="s">server {</span>
+          <span class="s">listen 443 ssl;</span>
+          <span class="s">listen [::]:443 ssl;</span>
+          <span class="s">server_name  _;</span>
+
+          <span class="s">ssl_certificate /etc/nginx/ssl/cert.pem;</span>
+          <span class="s">ssl_certificate_key /etc/nginx/ssl/key.pem;</span>
+
+          <span class="s">location / {</span>
+            <span class="s">proxy_pass http://localhost:80;</span>
+            <span class="s">proxy_http_version 1.1;</span>
+            <span class="s">proxy_set_header X-Forwarded-Host $host;</span>
+            <span class="s">proxy_set_header X-Forwarded-Server $host;</span>
+            <span class="s">proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span>
+            <span class="s">proxy_set_header Host $http_host;</span>
+            <span class="s">proxy_set_header X-Forwarded-Proto $scheme;</span>
+          <span class="s">}</span>
+      <span class="s">}</span>
+    <span class="s">}</span>
+</code></pre></div></div>
+
+<p>The pod is exposed using a cluster service <code class="language-plaintext highlighter-rouge">backend-svc</code> as denoted in the ingress-route.</p>
+
+<p><code class="language-plaintext highlighter-rouge">backend-tls</code> contains SSL certificate files that <code class="language-plaintext highlighter-rouge">nginx</code> uses and mounts. At the same time, it is intended for <code class="language-plaintext highlighter-rouge">traefik</code> to trust as the target certificate. As expected for internal services, this is an automatically rotated <em>self-signed certificate</em> by an internal issuer or “let’s encrypt”. Here is the second <code class="language-plaintext highlighter-rouge">tls</code> secret (2).</p>
+
+<h2 id="initial-approach">Initial Approach</h2>
+
+<p>First, most resources out there might guide you to explore setting the TLS options of the route:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">tls</span><span class="pi">:</span>
+  <span class="na">options</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">backend-tls-opts</span>
+    <span class="na">namespace</span><span class="pi">:</span> <span class="s">web</span>
+<span class="nn">---</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">traefik.containo.us/v1alpha1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">TLSOption</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">backend-tls-opts</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">web</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">cipherSuites</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">...</span><span class="pi">]</span>
+  <span class="na">clientAuth</span><span class="pi">:</span>
+    <span class="na">clientAuthType</span><span class="pi">:</span> <span class="s">RequireAndVerifyClientCert</span>
+    <span class="na">secretNames</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">backend-tls</span>
+  <span class="na">minVersion</span><span class="pi">:</span> <span class="s">VersionTLS12</span>
+</code></pre></div></div>
+
+<p>But that didn’t work. <br>
+The router logs shows internal errors (500) when connecting to the upstream (pod IP).</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>traefikee-ingress-proxy-57.. 10.244.0.128 - - <span class="o">[</span>15/Mar/2023:10:45:50 +0000] <span class="s2">"GET / HTTP/2.0"</span> 500 21 <span class="s2">"-"</span> <span class="s2">"-"</span> 2987228 <span class="s2">"web-web-ingressroute-6cd908afc82ca51c00cf@kubernetescrd"</span> <span class="s2">"https://10.244.2.105:443"</span> 2ms
+</code></pre></div></div>
+
+<p>This is despite that <code class="language-plaintext highlighter-rouge">nginx</code> was functioning fine when forwarded locally.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl port-forward svc/backend-svc 8443:443
+</code></pre></div></div>
+
+<p>Serving requests and SSL/TLS settings were correct. The logs emit success (200) when reached over https. Basically, the backend itself was browsable.</p>
+
+<p>After further review, it turns out that <code class="language-plaintext highlighter-rouge">TLSOptions</code> as implemented above was merely for client side certificate when reaching the ingress router, an implementation of <em>mTLS</em> and not our case of <em>TLS passing</em>.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p><code class="language-plaintext highlighter-rouge">ServersTransport</code> was what is needed to let <code class="language-plaintext highlighter-rouge">traefik</code> trust the backend certificate instead of faulting.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">kind</span><span class="pi">:</span> <span class="s">ServersTransport</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">web-transport</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">web</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">certificatesSecrets</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">backend-tls</span>
+  <span class="na">rootCAsSecrets</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">backend-tls</span>
+  <span class="na">serverName</span><span class="pi">:</span> <span class="s">web.example.com</span>
+</code></pre></div></div>
+
+<p>And appending to the route:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">serversTransport</span><span class="pi">:</span> <span class="s">web-transport</span>
+</code></pre></div></div>
+
+<p>Of course you may turn off the destination certificate check by setting <code class="language-plaintext highlighter-rouge">insecureSkipVerify: true</code> but that would defeat the purpose we aim for, an end to end TLS flow (bridging) !</p>
+
+	</div>
+
+	
+<h2 class="comments-label">Comments</h2>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+      this.page.url = "https://www.abarrak.com/2023/03/31/e2e-treafik-tls-offloading";
+      this.page.identifier = "how-to-implement-end-to-end-tls-flow-using-traefik";
+  };
+
+  (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//abarrak.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+</article>
+
+<div id="post-nav">
+	<div class="next">
+		
+	</div>
+
+	<div class="previous">
+		
+		<a href="/2023/01/10/passing-aws-sap">
+			<span>Previous entry</span>
+			Passing AWS Solutions Architect Professional Exam
+		</a>
+		
+	</div>
+</div>
+
+		</div>
+	</div>
+
+	<footer class="site-footer">
+	<div class="wrapper-fluid footet-wrapper">
+
+		<!-- <h2 class="footer-heading">Blog</h2> -->
+
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-1 footer-left">
+				<a href="">Abdullah Barrak's Blog</a>
+				<ul class="contact-list">
+					<li>A passionate blog about computer programming, reading, thinking, and the like.</li>
+					<li><b>(2016 - 2023)</b></li>
+				</ul>
+			</div>
+
+			<div class="footer-col footer-col-1 footer-right">
+				<p class="center">
+					<a href="/tags">Tag Cloud</a> |
+					subscribe <a href="/feed.xml">via RSS</a>
+				</p>
+
+				<div class="social-links">
+				
+					<a href="https://github.com/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/github-icon.png" alt="Github Icon">
+					</a>
+				
+
+				
+					<a href="https://goodreads.com/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/goodreads-icon.png" alt="Goodreads Icon">
+					</a>
+				
+
+				
+					<a href="https://linkedin.com/in/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/linkedin-icon.png" alt="LinkedIn Icon">
+					</a>
+				
+
+				
+					<a href="https://twitter.com/abalhafi" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/twitter-icon.png" alt="Github Icon">
+					</a>
+				
+
+				
+					<a href="https://stackoverflow.com/users/2925286/abdullah-barrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/stackoverflow-icon.png" alt="stackoverflow Icon">
+					</a>
+				
+
+					<a href="mailto:abdullah@abarrak.com" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/mail-icon.png" alt="Email Icon">
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</footer>
+
+
+<script src="/public/js/all.min.js"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83251901-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-83251901-1');
+</script>
+
+
+
+
+</body>
+</html>

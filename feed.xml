@@ -5,9 +5,170 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 31 Mar 2023 23:40:30 +0300</pubDate>
-    <lastBuildDate>Fri, 31 Mar 2023 23:40:30 +0300</lastBuildDate>
+    <pubDate>Sat, 01 Apr 2023 05:04:10 +0300</pubDate>
+    <lastBuildDate>Sat, 01 Apr 2023 05:04:10 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/traefik-1.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;An interesting usecase I have encountered recently is establishing a secure path (bridge) between &lt;a href=&quot;https://doc.traefik.io/traefik/&quot;&gt;Traefik&lt;/a&gt; as ingress controller and its destination backends.&lt;/p&gt;
+
+&lt;p&gt;The post addresses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;traefik&lt;/code&gt; usage within Kubernetes, however it is applicable to other offerings.&lt;/p&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;h2 id=&quot;case&quot;&gt;Case&lt;/h2&gt;
+
+&lt;p&gt;A flow diagram is probably the way to explain the setup.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/traefik-ingress-passthrough.png&quot; class=&quot;post-image-2 resize-sm center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The main routing resource is a CRD that resembles the following snippet.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;traefik.containo.us/v1alpha1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;IngressRoute&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;web-ingressroute&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;web&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;entryPoints&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;websecure&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;routes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Rule&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Host(`web.example.com`)&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;backend-svc&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;web&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;443&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;scheme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;https&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;passHostHeader&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;secretName&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;web-ingressroute-tls&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The secret here &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;web-ingressroute-tls&lt;/code&gt; is a standard &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tls&lt;/code&gt; secret for the external route containing the private key, certificate, and ca certificate. Let’s mark it as secret (1).&lt;/p&gt;
+
+&lt;p&gt;The target backend is a classic &lt;a href=&quot;https://hub.docker.com/_/nginx&quot;&gt;sidecar container &lt;strong&gt;“nginx”&lt;/strong&gt;&lt;/a&gt; fronting the main container.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ConfigMap&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;nginx-conf&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;nginx.conf&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;user nginx;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;worker_processes  3;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;http {&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;server {&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;listen 443 ssl;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;listen [::]:443 ssl;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;server_name  _;&lt;/span&gt;
+
+          &lt;span class=&quot;s&quot;&gt;ssl_certificate /etc/nginx/ssl/cert.pem;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;ssl_certificate_key /etc/nginx/ssl/key.pem;&lt;/span&gt;
+
+          &lt;span class=&quot;s&quot;&gt;location / {&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;proxy_pass http://localhost:80;&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;proxy_http_version 1.1;&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Host $host;&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Server $host;&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;proxy_set_header Host $http_host;&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Proto $scheme;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The pod is exposed using a cluster service &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;backend-svc&lt;/code&gt; as denoted in the ingress-route.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;backend-tls&lt;/code&gt; contains SSL certificate files that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nginx&lt;/code&gt; uses and mounts. At the same time, it is intended for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;traefik&lt;/code&gt; to trust as the target certificate. As expected for internal services, this is an automatically rotated &lt;em&gt;self-signed certificate&lt;/em&gt; by an internal issuer or “let’s encrypt”. Here is the second &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tls&lt;/code&gt; secret (2).&lt;/p&gt;
+
+&lt;h2 id=&quot;initial-approach&quot;&gt;Initial Approach&lt;/h2&gt;
+
+&lt;p&gt;First, most resources out there might guide you to explore setting the TLS options of the route:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;tls&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;backend-tls-opts&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;web&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;apiVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;traefik.containo.us/v1alpha1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;TLSOption&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;backend-tls-opts&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;web&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;cipherSuites&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;clientAuth&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;clientAuthType&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;RequireAndVerifyClientCert&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;secretNames&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;backend-tls&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;minVersion&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;VersionTLS12&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;But that didn’t work. &lt;br /&gt;
+The router logs shows internal errors (500) when connecting to the upstream (pod IP).&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;traefikee-ingress-proxy-57.. 10.244.0.128 - - &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;15/Mar/2023:10:45:50 +0000] &lt;span class=&quot;s2&quot;&gt;&quot;GET / HTTP/2.0&quot;&lt;/span&gt; 500 21 &lt;span class=&quot;s2&quot;&gt;&quot;-&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-&quot;&lt;/span&gt; 2987228 &lt;span class=&quot;s2&quot;&gt;&quot;web-web-ingressroute-6cd908afc82ca51c00cf@kubernetescrd&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://10.244.2.105:443&quot;&lt;/span&gt; 2ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is despite that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nginx&lt;/code&gt; was functioning fine when forwarded locally.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl port-forward svc/backend-svc 8443:443
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Serving requests and SSL/TLS settings were correct. The logs emit success (200) when reached over https. Basically, the backend itself was browsable.&lt;/p&gt;
+
+&lt;p&gt;After further review, it turns out that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TLSOptions&lt;/code&gt; as implemented above was merely for client side certificate when reaching the ingress router, an implementation of &lt;em&gt;mTLS&lt;/em&gt; and not our case of &lt;em&gt;TLS passing&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ServersTransport&lt;/code&gt; was what is needed to let &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;traefik&lt;/code&gt; trust the backend certificate instead of faulting.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ServersTransport&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;web-transport&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;web&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;certificatesSecrets&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;backend-tls&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;rootCAsSecrets&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;backend-tls&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;serverName&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;web.example.com&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And appending to the route:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;serversTransport&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;web-transport&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Of course you may turn off the destination certificate check by setting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;insecureSkipVerify: true&lt;/code&gt; but that would defeat the purpose we aim for, an end to end TLS flow (bridging) !&lt;/p&gt;
+</description>
+        <pubDate>Fri, 31 Mar 2023 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/2023/03/31/e2e-treafik-tls-offloading</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2023/03/31/e2e-treafik-tls-offloading</guid>
+        
+        <category>Traefik</category>
+        
+        <category>Ingress Solutions</category>
+        
+        <category>Kubernetes</category>
+        
+        <category>SRE</category>
+        
+        <category>TLS</category>
+        
+        
+        <category>Kubernetes</category>
+        
+        <category>SRE</category>
+        
+        <category>Traefik</category>
+        
+      </item>
     
       <item>
         <title></title>
@@ -41,7 +202,7 @@
 
 &lt;p&gt;And Finally, &lt;a href=&quot;https://www.credly.com/badges/f082f973-a262-41ba-aad6-557076601b5b/public_url&amp;gt;&quot;&gt;&lt;span style=&quot;color: darkred&quot;&gt;the happy result letter&lt;/span&gt;&lt;/a&gt; came in with success! 🎉&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/public/images/aws-sap-cert.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/public/images/aws-sap-cert.png&quot; class=&quot;post-image-2 resize-sm center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Here things are more interesting than the associate exams. The breadth and depth of domains are much higher. Most if not all of the questions are &lt;strong&gt;compound items&lt;/strong&gt; that explore a combination of services placement or integrations together (e.g. IAM organization policies SCP and S3, on-premise gateways and connectors to services). Try to cover advanced networking, IAM, storage and files solutions, and IAM/AD/SSO offerings.&lt;/p&gt;
 
@@ -844,79 +1005,6 @@ find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quo
         <category>Image Processing</category>
         
         <category>Productivity</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/sinatra-logo.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In the past week, I’v been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.&lt;/p&gt;
-
-&lt;h3 id=&quot;symptoms&quot;&gt;&lt;strong&gt;Symptoms&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;The error was appearing in one of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.erb&lt;/code&gt; view files that contains a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;textarea&lt;/code&gt; field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:&lt;/p&gt;
-
-&lt;!-- post-excerpt --&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2016-08-26 19:15:53 - Encoding::CompatibilityError - incompatible character encodings: UTF-8 and US-ASCII:
-        /var/app/current/views/review.erb:69:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;block &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;singleton class&lt;span class=&quot;s1&quot;&gt;'
-        /var/app/current/views/review.erb:-7:in `instance_eval'&lt;/span&gt;
-        /var/app/current/views/review.erb:-7:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;singleton class&lt;span class=&quot;s1&quot;&gt;'
-        /var/app/current/views/review.erb:-9:in `__tilt_47353692136320'&lt;/span&gt;
-        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;call&lt;span class=&quot;s1&quot;&gt;'
-        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'&lt;/span&gt;
-        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;render&lt;span class=&quot;s1&quot;&gt;'
-        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'&lt;/span&gt;
-        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;erb&lt;span class=&quot;s1&quot;&gt;'
-        /var/app/current/helpers.rb:24:in `block (2 levels) in serve_page'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Guided by the error message indication. I attempted to fix the issue by ensuring that all parts are encoded as UTF-8. I set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;accept-charset&lt;/code&gt; attribute for the form and texteara tag to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;UTF-8&quot;&lt;/code&gt;, forced source files to be UTF-8 by inserting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# 😁&lt;/code&gt; comment, and checked the Sinatra routing is also set to have
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;headers 'Content-type' =&amp;gt; 'text/html; charset=utf-8'&lt;/code&gt;, But unfortunately none of that was solving the problem.&lt;/p&gt;
-
-&lt;p&gt;By taking a closer look at the stack trace, I figured that it was happening specifically during the template rendering phase, and might have something to do with one of Sinatra’s dependencies, Tilt rendering library.&lt;/p&gt;
-
-&lt;h3 id=&quot;solution&quot;&gt;&lt;strong&gt;Solution&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;Indeed it was caused by Tilt . In fact, it’s a known issue and has been pointed out in the gem’s &lt;a href=&quot;https://github.com/rtomayko/tilt#encodings&quot;&gt;repository main page&lt;/a&gt;.
-Setting ruby’s external encoding plus the source files to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UTF-8&lt;/code&gt; solved it for me just like mentioned in the link.&lt;/p&gt;
-
-&lt;p&gt;If you’ve structured your application in the modular style, then set encoding early in the class.&lt;/p&gt;
-
-&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyApplication&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sinatra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# set encoding.&lt;/span&gt;
-  &lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In classic applications, this would suffice.&lt;/p&gt;
-
-&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;That’s it. Hope It helps someone else !&lt;/p&gt;
-</description>
-        <pubDate>Fri, 26 Aug 2016 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</guid>
-        
-        <category>Sinatra</category>
-        
-        <category>Tilt</category>
-        
-        <category>UTF-8</category>
-        
-        <category>AWS</category>
-        
-        <category>encoding compatibility error</category>
-        
-        
-        <category>Software</category>
-        
-        <category>Ruby</category>
-        
-        <category>Sinatra</category>
-        
-        <category>Troubleshooting</category>
         
       </item>
     
