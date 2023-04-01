@@ -38,7 +38,7 @@ There's focus on [CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/
 
 And Finally, [<span style="color: darkred">the happy result letter</span>](https://www.credly.com/badges/f082f973-a262-41ba-aad6-557076601b5b/public_url>) came in with success! 🎉
 
-<img src="{{ site.baseurl_root }}/public/images/aws-sap-cert.png" class="post-image resize-sm center-image" />
+<img src="{{ site.baseurl_root }}/public/images/aws-sap-cert.png" class="post-image-2 resize-sm center-image" />
 
 Here things are more interesting than the associate exams. The breadth and depth of domains are much higher. Most if not all of the questions are **compound items** that explore a combination of services placement or integrations together (e.g. IAM organization policies SCP and S3, on-premise gateways and connectors to services). Try to cover advanced networking, IAM, storage and files solutions, and IAM/AD/SSO offerings.
 
