@@ -26,8 +26,8 @@
       tooltip: "اللغة البرمجية: جافاسكربت"
     - icon: git
       tooltip: "أخرى"
-      
-- title: ملحقات لـ(OpenCV) 
+
+- title: ملحقات لـ(OpenCV)
   description: ملحقات ودوال برمجية لمكتبة معالجة وتحليل الصور الرقمية (OpenCV).
   link: https://github.com/abarrak/opencv-helpers
   repo_link: https://github.com/abarrak/opencv-helpers
@@ -59,8 +59,19 @@
   technology_stack:
     - icon: nginx
       tooltip: "اللغة البرمجية: Lua"
-    - icon: openshift
-      tooltip: "النشر: أوبن شيفت (OpenShift)"
+    - icon: travis
+      tooltip: "الترابط والبناء: ترافيس"
+
+
+- title: مزامنة المستخدمين بين (3scale) و (Keycloak)
+  description: مكتبة سطر أوامر تمّكن من نقل حسابات مستخدمي (3sacle) إلى نظام الدخول الموّحد (Keycloak IDM).
+  link: https://rubygems.org/gems/keycloak_3scale_users
+  repo_link: https://github.com/abarrak/3scale-keycloak-users-migration
+  technology_stack:
+    - icon: ruby
+      tooltip: "اللغة البرمجية: روبي"
+    - icon: github_badge
+      tooltip: "الترابط والبناء: قيت هب آكشنز"
 
 - title: Except Nested
   description: ملحق إضافي مساعد للأدلة (Hash) لمكتبة ريلز (Active Support).

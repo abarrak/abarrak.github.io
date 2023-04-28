@@ -25,7 +25,7 @@
       tooltip: "Programming Language: JavaScript"
     - icon: git
       tooltip: "Others"
-      
+
 - title: OpenCV Helpers
   description: Facilitate image processing tasks using OpenCV library.
   link: https://github.com/abarrak/opencv-helpers
@@ -60,6 +60,16 @@
       tooltip: "Programming Language: Lua"
     - icon: openshift
       tooltip: "Deployment: Openshift"
+
+- title: 3scale Keycloak Users
+  description: A commandline utility to migrate the consumer accounts' users from the 3scale to keycloack.
+  link: https://rubygems.org/gems/keycloak_3scale_users
+  repo_link: https://github.com/abarrak/3scale-keycloak-users-migration
+  technology_stack:
+    - icon: ruby
+      tooltip: "Programming Language: Ruby"
+    - icon: github_badge
+      tooltip: "CI: Github Actions"
 
 - title: Except Nested
   description: Hash utility extension for Rails Active Support.
