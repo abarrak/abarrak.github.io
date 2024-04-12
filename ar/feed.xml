@@ -5,15 +5,15 @@
     <description></description>
     <link>https://www.abarrak.com/ar/</link>
     <atom:link href="https://www.abarrak.com/ar/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 12 Apr 2024 10:21:07 +0300</pubDate>
-    <lastBuildDate>Fri, 12 Apr 2024 10:21:07 +0300</lastBuildDate>
+    <pubDate>Fri, 12 Apr 2024 10:33:35 +0300</pubDate>
+    <lastBuildDate>Fri, 12 Apr 2024 10:33:35 +0300</lastBuildDate>
     <generator>Jekyll v4.2.0</generator>
     
       <item>
         <title></title>
         <description>&lt;p&gt;&lt;img src=&quot;/public/images/ansible.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;عند الحديث عن إمكانيات المشاركة في محرك آنسبل (Ansible) وإعادة استعمال وحداته التي تم تطويرها، يمكن تلخيص ذلك بوسيلتين: أولاً الوحدات (Roles) وهي عادةً تشمل أتمتة نشر وإدارة برمجية واحدة ومايتعلق بها. ثانياً؛ المجموعات (Collections) وتتضمن عادةً تجميعة من الوحدات roles ، بالإضافة لـ(plugins) مطورةً بلغة بايثون للاحتياجات المتقدمة.&lt;/p&gt;
+&lt;p&gt;يدعم محرك آنسبل نشر ومشاركة وحدات الأتمتة عبر (Ansible Galaxy) لكل من الوحدات (Roles)، والمجموعات (Collections).&lt;/p&gt;
 
 &lt;p&gt;هذه قائمة لبعض الوحدات (Roles) نشرتها للمستودع العام (Ansible Galaxy) خلال الأشهر الماضية:&lt;/p&gt;
 
