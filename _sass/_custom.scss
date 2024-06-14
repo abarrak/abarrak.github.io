@@ -247,7 +247,7 @@ hr.pretty:after {
   }
 
   hr {
-    @extend hr.pretty;
+    @extend hr, .pretty;
   }
 
   span {
@@ -323,7 +323,7 @@ hr.pretty:after {
   }
 
   hr {
-    @extend hr.pretty;
+    @extend hr, .pretty;
   }
 
   hr:after {
