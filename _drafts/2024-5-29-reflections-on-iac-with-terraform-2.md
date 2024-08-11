@@ -15,7 +15,7 @@ This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-wi
 
 ## Tips and Tricks
 
-1. Collect informative and actionable details about your environment from the external sources of providers [using `data` blocks](https://developer.hashicorp.com/terraform/language/data-sources) Seriously no need to hardcode these ids or names, and using `data` references increases the code quality a bit.
+1. Collect informative and actionable details about your environment from the external sources of providers [using `data` blocks](https://developer.hashicorp.com/terraform/language/data-sources). Seriously no need to hardcode these ids or names, and using `data` references increases the code quality a bit.
 
 2. Introduce variables to dry up and factorize your environment details, and custom settings. .. `variables.tf` describes the var lists blueprint and their spec (type, default, desc).  .. Then variables are set either on terraform.tfvars, command args, or env vars.Reference the vars in code blocks that are factorized `${vars.my_var}`.
 
@@ -37,10 +37,21 @@ This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-wi
 
 11. Use `for_each = something` and `each` iteration primitive (.key, .value, value.*) for granular data structure looping over sets.
 
-12. review  the built-in functions of interest to your configurations: tolist(), toset(), upper(), join(), lower(), max(), join(), endswith(), chomp(), regex(), map(), reverse(), flatten(), file(), base64*(), timestamp(), and much more..https://developer.hashicorp.com/terraform/language/functions
+12. review  the built-in functions of interest to your configurations: `tolist()`, `toset()`, `upper()`, `join()`, `lower()`, `max()`, `endswith()`, `chomp()`, `regex()`, `map()`, `reverse()`, `flatten()`, `file()`, `base64*()`, `timestamp()`, and much more.
 
-13. You can add validation rules and message to the vars in variables.tf.
+They come in handy during your IaC development and can helps solving many problems.<br>
+Refer to the docs: https://developer.hashicorp.com/terraform/language/functions
 
-14. Use the state cli command to show, list, or manipulate the state once needed (e.g. importing directly modified items outside IaC).
+13. You can add validation rules and message to your module vars in `variables.tf`.
+
+Here's an example:
+
+```terraform
+```
+
+14. Use the state cli command to show, list, or manipulate the state once needed (e.g. checking existing values, importing directly modified items outside IaC, etc.).
+
+```bash
+```
 
 15. Use `terraform console` to quickly experiment with HCL and terraform features and explore the current module data.
