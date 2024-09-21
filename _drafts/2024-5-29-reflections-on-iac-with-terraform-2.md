@@ -6,16 +6,16 @@ categories: [Automation, IaC, Cloud]
 
 <img src="{{ site.baseurl_root }}/public/images/iac-reflections-2.png" class="post-image resize-sm center-image" />
 
-This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-with-terraform) where I disscussed infrastructure as code concepts and how Terraform is approaching this area.
+This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-with-terraform) where I discussed concepts of infrastructure as code and how Terraform is approaching this subject. Here are few notes I took while working on IaC projects, each with an example to illustrate.
 
 <!-- post-excerpt -->
 
-```bash
-```
-
 ## Tips and Tricks
 
-1. Collect informative and actionable details about your environment from the external sources of providers [using `data` blocks](https://developer.hashicorp.com/terraform/language/data-sources). Seriously no need to hardcode these ids or names, and using `data` references increases the code quality a bit.
+1. Collect informative and actionable details about your environment from the external sources of providers [using `data` blocks](https://developer.hashicorp.com/terraform/language/data-sources). Seriously no need to hardcode these ids or names. Using `data` blocks is one way, and by that the code quality increases a bit.
+
+```yaml
+```
 
 2. Introduce variables to dry up and factorize your environment details, and custom settings. .. `variables.tf` describes the var lists blueprint and their spec (type, default, desc).  .. Then variables are set either on terraform.tfvars, command args, or env vars.Reference the vars in code blocks that are factorized `${vars.my_var}`.
 
