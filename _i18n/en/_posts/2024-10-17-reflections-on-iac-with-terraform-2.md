@@ -8,11 +8,11 @@ categories: [Automation, IaC, Cloud]
 
 This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-with-terraform) where I discussed the concept of infrastructure as code and Terraform. In this post, I will provide few useful notes I took while working on IaC projects, with examples to illustrate the techniques on two of the public providers (AWS / Oracle).
 
-<!-- post-excerpt -->
 
 ## Tips and Tricks
 
-1. Collect informative and actionable details about your environment [using `data` blocks](https://developer.hashicorp.com/terraform/language/data-sources).<br> Seriously no need to hardcode these ids or names, instead using `data` blocks is one way to query from the external providers, By that, the automation code quality and modularity increase a bit.
+1. Collect informative and actionable details about your environment [using `data` blocks](https://developer.hashicorp.com/terraform/language/data-sources). <br> Seriously no need to hardcode these ids or names, instead using `data` blocks is one way to query from the external providers, By that, the automation code quality and modularity increase a bit.
+<!-- post-excerpt -->
 
     ```bash
     # querying for references of aws vpc, and private route tables.
