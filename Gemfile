@@ -1,7 +1,7 @@
 source "https://rubygems.org"
-ruby "2.5.5"
+ruby "3.1.4"
 
-gem "jekyll", "4.2"
+gem "jekyll", "4.3"
 gem "nokogiri"
 
 group :jekyll_plugins do

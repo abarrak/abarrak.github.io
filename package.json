@@ -1,6 +1,6 @@
 {
   "name": "abarrak-blog",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "abarrak.com files ..",
   "main": "index.js",
   "scripts": {
