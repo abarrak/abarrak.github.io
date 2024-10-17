@@ -1,389 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title></title>
-    <description></description>
-    <link>https://www.abarrak.com/ar/</link>
-    <atom:link href="https://www.abarrak.com/ar/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 17 Oct 2024 16:41:13 +0300</pubDate>
-    <lastBuildDate>Thu, 17 Oct 2024 16:41:13 +0300</lastBuildDate>
-    <generator>Jekyll v4.3.0</generator>
-    
-      <item>
-        <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/ansible.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;يدعم محرك آنسبل نشر ومشاركة وحدات الأتمتة عبر (Ansible Galaxy) لكل من الوحدات (Roles)، والمجموعات (Collections).&lt;/p&gt;
-
-&lt;p&gt;هذه قائمة لبعض الوحدات (Roles) نشرتها للمستودع العام (Ansible Galaxy) خلال الأشهر الماضية:&lt;/p&gt;
-
-&lt;!-- post-excerpt --&gt;
-
-&lt;h3 id=&quot;1-سيرفر-دوكر&quot;&gt;1. سيرفر دوكر&lt;/h3&gt;
-&lt;p&gt;تختلف عن الوحدات الموجودة مسبقاً بدعم النشر العام لسيرفر دوكر عبر (TCP/SSH)، مما يسمح باستخدامه للبناء والربط خارجياً.&lt;/p&gt;
-
-&lt;p&gt;أيضاً، تم تسهيل إعداده بحيث يرتبط مع مستودعات دوكر (Image registries).&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://galaxy.ansible.com/abarrak/docker_server_role&quot;&gt;الرابط&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;2-بلْيك&quot;&gt;2. بلْيك&lt;/h3&gt;
-
-&lt;p&gt;نظام رفع ملفات مؤقت مع واجهة مستخدم مبسطة.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://galaxy.ansible.com/abarrak/plik_ansible_role&quot;&gt;الرابط&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;3-ريدس&quot;&gt;3. ريدس&lt;/h3&gt;
-
-&lt;p&gt;هذه الوحدة عبارة عن تسهيل لنشر نظام التخزين المؤقت redis لمنصة كوبرنتيس، وتعتمد على نسخة بِتْ نامي (helm chart).&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://galaxy.ansible.com/abarrak/redis_ansible_role&quot;&gt;الرابط&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;4-سامبا&quot;&gt;4. سامبا&lt;/h3&gt;
-
-&lt;p&gt;كتبتها بقصد تعلم وتجربة بروتوكول (Samba). مستمدة أساساً من &lt;a href=&quot;https://www.redhat.com/sysadmin/getting-started-samba&quot;&gt;هذه المقالة&lt;/a&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://galaxy.ansible.com/abarrak/samba_ansible_role&quot;&gt;الرابط&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;أرجو أن تقدم الفائدة للمهتمين بأحد هذه البرمجيات!&lt;/p&gt;
-</description>
-        <pubDate>Mon, 28 Nov 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/ar/2022/11/28/some-ansible-roles</link>
-        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/11/28/some-ansible-roles</guid>
-        
-        <category>لينكس</category>
-        
-        <category>الأتمتة</category>
-        
-        
-        <category>الأتمتة</category>
-        
-        <category>لينكس</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/ar-books-review-2.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;هذه تدوينة خفيفة، أعطي فيها انطباعات عن كتابين قيّمين قرأتهما في الأسابيع المنصرمة!&lt;/p&gt;
-
-&lt;p&gt;الأولُ سيرة ذاتية لعالم نفس عاصرَ أهوال الحرب العالمية الثانية؛ وعاش تجربة معسكرات الاعتقال النازية يروي تجربته مع خلاصاتٍ عن مدرسته العلاجية. أما الأخر؛ فكتاب تطوير ذات متفردٌ، يقدم نموذجاً لبناءِ تسلسلٍ من الفروقات التحسينية في الحياة اليومية وصولاً لمنشودات المرء من غايات ونجاحات.&lt;/p&gt;
-
-&lt;!-- post-excerpt --&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;1-الإنسان-و-البحث-عن-معنى-التسامي-بالذات-كظاهرة-إنساني-فيكتور-فرانكل&quot;&gt;1. الإنسان و البحث عن معنى: التسامي بالذات كظاهرة إنساني، فيكتور فرانكل&lt;/h2&gt;
-
-&lt;p&gt;كتاب قيّم ونظرة مختلفة لتطبيق العلاج النفسي بطريقة فلسفية ترتكز على إيجاد القيمة والمغزى للحياة.&lt;/p&gt;
-
-&lt;p&gt;سعى المؤلف لتقديم مبسط لنظريته في العلاج بالمعنى كموقف دفاعي ضد الفكر العدمي تجاه الإنسان، ووجد فيها السَلْوان لما عانه في معسكرات الاعتقال النازّية وقصّه افي الجزء الأول من الكتاب. &lt;a href=&quot;https://www.abjjad.com/author/2791670374/فيكتور-ايميل-فرانكل/quotes&quot;&gt;حافل بالاقتباسات الرائعة&lt;/a&gt;، كالآتي:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&quot;إنَّ الحياة ليست بحثاً عن المتعة كما يعتقد فرويد؛ او بحثاً عن السلطة كما علمنا ألفرد أدلر؛ لكنها بحث عن المعنى! إن أعظم مهمة لأي شخص تتمثل في أن يجد معنى في حياته وفي طريقة عيشه&quot;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;2-العادات-الذرية-منهج-سهل-لبناء-عادات-جيدة-والتخلص-من-العادات-السيئة-جيمس-كلير&quot;&gt;2. العادات الذرية: منهج سهل لبناء عادات جيدة والتخلص من العادات السيئة، جيمس كلير&lt;/h2&gt;
-
-&lt;p&gt;كتاب قيّم بحق، ومختلف.&lt;/p&gt;
-
-&lt;p&gt;يقدم المؤلف باستفاضة مفهوم الاعتماد على السلوك المنظم المتكرر “العادات” لبناء حياة إيجابية، بديلًا عن السعي نحو الأهداف أو النتائج مباشرة. وأيضًا، يقترح الأسس الأربعة لتثبيت واستدامة العادات الحسنة: (واضحة، جذابة، سهلة، مشبعة) وعكسها لتجنب العادات السلبية، مع أساليب عملية تنظم وتقرب هذه الأسس للنشاط اليومي. وختاماً يناقش كيفية التحقق من فاعلية العادات بالمراجعة والتأمّل. أنصح بقراءته.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sat, 05 Nov 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/ar/2022/11/05/reads-and-revisions-2</link>
-        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/11/05/reads-and-revisions-2</guid>
-        
-        <category>القراءة</category>
-        
-        <category>كتب</category>
-        
-        <category>العادات الذرية</category>
-        
-        <category>الإنسان والبحث عن معنى</category>
-        
-        
-        <category>عام</category>
-        
-        <category>كتب</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/iac-reflections.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;تعتبر (Terraform) الأداة مفتوحة المصدر الأشهر في مجال أتمتة عمليات البنية التحتية (IaC) منذ تقديمها لأول مرة عام ٢٠١٤ من شركة هاشي كورب.&lt;/p&gt;
-
-&lt;p&gt;تتمثل الفلسفة الأساسية فيها، عبر كتابة توصيف تفاعلي (stateful) لمكونات البنية التحتية، وإدارتها ومتابعتها وتسهيل مشاركتها، سواءً كانت في المصادر السحابية العامة أو الخاصة أو كليهما.&lt;/p&gt;
-
-&lt;p&gt;كتبتُ تدوينة عن تيرافورم وبعض الانطباعات عن الأداة وهيكلتها، &lt;a href=&quot;/2022/09/23/reflections-on-iac-with-terraform&quot;&gt;أحيل عليها هنا، لصعوبة النقل للعربية.&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;-تحديث-17102024&quot;&gt;&lt;b&gt;** تحديث (17/10/2024)&lt;/b&gt;&lt;/h4&gt;
-&lt;p&gt;نشرت تدوينة أخرى &lt;a href=&quot;/2024/10/17/reflections-on-iac-with-terraform-2&quot;&gt;تتضمن بعض الأساليب والتوصيات لمشاريع تيرافورم.&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 23 Sep 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/ar/2022/09/23/reflections-on-iac-with-terraform</link>
-        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/09/23/reflections-on-iac-with-terraform</guid>
-        
-        <category>الأتمتة</category>
-        
-        <category>البنية التحتية</category>
-        
-        <category>الحوسبة السحابية</category>
-        
-        
-        <category>الأتمتة</category>
-        
-        <category>البنية التحتية</category>
-        
-        <category>الحوسبة السحابية</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/ar-books-review-1.jpg&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;القراءة ترياقٌ مهم في وقتنا الحالي، زمن وسائل التواصل الاجتماعي، وتشتيت الأخبار المتسارعة، والمعلومات المعلبة.&lt;/p&gt;
-
-&lt;p&gt;لدي شيء من وقت الفراغ استقطعته لقراءة الكتب التالية، وهذه نبذة عنها وانطباعاتي حتى الآن.&lt;/p&gt;
-
-&lt;!-- post-excerpt --&gt;
-
-&lt;h2 id=&quot;1-الرجال-من-المريخ-والنساء-من-الزهرة-جون-غراي&quot;&gt;1. الرجال من المريخ والنساء من الزهرة، جون غراي&lt;/h2&gt;
-
-&lt;p&gt;استفتح المؤلف بسرد قصة من حياته بعد ولادة زوجته وقدوم مولودهم الثالث، وكون هذا المنعطف غيّر مسار حياتهم الزوجية، وألهمه لكتابة المؤلَف خلال السنين السبع التالية.&lt;/p&gt;
-
-&lt;p&gt;تجربة رائعة، وفصول حازت على إعجابي جداً، مثل الفصل ١، ٤، ٨. ابتكار المؤلف لمثال الكوكَبين واستخدامه للأوصاف خلال جميع الفصول إبداعي. لا يقتصر الأمر على التوصيف الأدبي بل عامة النصائح والأسس التي قدمها تستحق التأمل والتطبيق (مثل: الإنصات بلا شروط ونقد، إعطاء المساحة الخاصة، تحفيز كلا الطرفين بطريقته الخاصة، وأخيراً استكشاف وتحقيق الاحتياجات العاطفية المختلفة).&lt;/p&gt;
-
-&lt;p&gt;خلافاً للنقد الذي ناله الكتاب من بعض القرَّاء - بعض النَّقد للأسف موجَه وغريب-، لا أجد الكتاب إلا مرجعاً قيماً يقدم أساساً جوهرياً هو الاختلاف الطبيعي لتركيبة ونفسية وعقلية كلٍ من المرأة والرجل، وأنًَ ذلك يقود لاختلافات جوهرية في السلوك والتوقعات، وكيف يفهم كلُ طرفٍ ذلك، ويتصرف بناءً عليه.&lt;/p&gt;
-
-&lt;p&gt;بعد أربع سنين ونصف في عالم الزوجية، استفدت جداً من الكتاب 😇&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.goodreads.com/review/show/4588578661&quot;&gt;المراجعة على Goodreads&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;2-لماذا-ننام-اكتشف-طاقة-النوم-والأحلام-د-ماثيو-ووكر&quot;&gt;2. لماذا ننام (اكتشف طاقة النوم والأحلام)، د. ماثيو ووكر&lt;/h2&gt;
-
-&lt;p&gt;غاية في الأهمية، والمؤلف مبدع في كل أقسام الكتاب، المادة العلمية مبهرة، وبالنسبة لي مجليّة (eye opener). وأيضاً الكتابة رائعة ومتسلسلة.&lt;br /&gt;
-أنصح به بقوة من بين هذه القائمة، لعموم القراء بمختلف الاهتمامات. حقيقةً الموضوع يمس كل إنسان!&lt;/p&gt;
-
-&lt;h2 id=&quot;3-الجريمة-والعقاب-دوستويفسكي&quot;&gt;3. الجريمة والعقاب، دوستويفسكي&lt;/h2&gt;
-
-&lt;p&gt;الرواية الخالدة، ومن البداية يدخل القارىء عالم دوستويفسكي البديع ويعيش مع شخصياته ودواخلهم وأطوار حياتهم وأحداثها.
-&lt;br /&gt;
-كنت قد قرأت سابقاً جزئين من الإخوة كارامازوف وعندي تتفوق الجريمة والعقاب بالسلاسة والدخول مباشرة في صلب السرد والأحداث.&lt;/p&gt;
-
-&lt;p&gt;أسرني وصف دانييل جرانين دوستوفيسكي بـالموهبة الشافية! ..&lt;br /&gt;
-ما أجمل أن يعالج الروائي اعتلالات النفوس ويقلّم من نقائصها، وما أحوجنا للمواهب الشافية في حياتنا.&lt;/p&gt;
-
-&lt;h2 id=&quot;4-تفسير-سورة-الكهف-محمد-صالح-العثيمين&quot;&gt;4. تفسير سورة الكهف، محمد صالح العثيمين&lt;/h2&gt;
-
-&lt;p&gt;تفسير وتبيان لمعاني آيات سورة الكهف. يركز على الجوانب الإيمانية ودلالات القصص بدون الخوض في التفسير المنهجي المعتاد بعرض الأقوال والخلافات وما شابه.
-&lt;br /&gt;&lt;br /&gt;
-الميزة المشتركة في هذه المجموعة، جودتها جميعاً في رأيي الشخصي وعلو شأنها إنْ أدبياً أو علمياً، واجتماعياً.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 05 Mar 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/ar/2022/03/05/reads-and-revisions-1</link>
-        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/03/05/reads-and-revisions-1</guid>
-        
-        <category>القراءة</category>
-        
-        <category>كتب</category>
-        
-        <category>الكتابة</category>
-        
-        <category>الرجال من المريخ والنساء من الزهرة،</category>
-        
-        <category>لماذا ننام ماثيو ووكر، الجريمة والعقاب، دوستويفسكي</category>
-        
-        <category>تفسير سورة الكهف</category>
-        
-        
-        <category>عام</category>
-        
-        <category>كتب</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/linux-book.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;نشرتُ كتاباً مختصراً عن أساسيات نظام التشغيل لينكس وعملياته المختلفة بشكل عملي لمدراء الأنظمة. 📕&lt;/p&gt;
-
-&lt;p&gt;يوجد تجميعات من الأوامر المفيدة للعديد من المهام اليومية وغيرها.&lt;/p&gt;
-
-&lt;p&gt;أتمنى أن يلاقي استحسانكم، وأن يقدم الفائدة للمهتمين!&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://abarrak.gitbook.io/linux-sysops-handbook&quot;&gt;الكتاب.&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/abarrak/linux-sysops-handbook&quot;&gt;الكود المصدري.&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Tue, 22 Feb 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/ar/2022/02/22/linux-sysops-git-book</link>
-        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/02/22/linux-sysops-git-book</guid>
-        
-        <category>لينكس</category>
-        
-        <category>إدارة الأنظمة</category>
-        
-        <category>كتاب قيت</category>
-        
-        
-        <category>لينكس</category>
-        
-        <category>كتب</category>
-        
-        <category>نظم التشغيل</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;p&gt;&lt;br /&gt;
-&lt;img src=&quot;/public/images/dockerd-ddevmapper-pool-issue.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;المشكلة&quot;&gt;المشكلة&lt;/h2&gt;
-
-&lt;p&gt;من المتوقع المرور بعدد من المشكلات في أنظمة البناء والترابط (CI/CD) المعتمدة على دوكر (Docker)، وذلك نتيجةً لبعض القيود المعتادة في هذه البيئات، ولِمعمارية الخادم والعميل الأساسية في دوكر.&lt;/p&gt;
-
-&lt;p&gt;أدناه إحدى هذه المشكلات تعاملت معها مؤخراً. وهي تحصل أثناء اتصال النظام بـ الخادم &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dockerd&lt;/code&gt; من أجل بناء نماذج وحاويات تطبيق معين (Images)، أو جلْب نماذج موجودة خارجياً. يظهر نص الخطأ كالتالي:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;failed to prepare a4mv4dh8qcq283c7x47a4nwpg: devmapper: Thin Pool has 161986 free data blocks which is less than minimum required 163840 free data blocks. Create more free space in thin pool or use dm.min_free_space option to change behavior
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;!-- post-excerpt --&gt;
-
-&lt;h2 id=&quot;التحققات&quot;&gt;التحققات&lt;/h2&gt;
-
-&lt;p&gt;كما يظهر في عبارة الخطأ, تتعلق المشكلة بالوصول لاستهلاك كامل المساحة المحددة لمحرك التخزين لخادم دوكر &lt;a href=&quot;https://docs.docker.com/storage/storagedriver/device-mapper-driver/&quot;&gt;device mapper driver&lt;/a&gt;. ويتضح  وجود نقص  في مساحة &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Thin Pool&lt;/code&gt; أدى لفشل إنشاء أو جلْب النماذج الجديدة.&lt;/p&gt;
-
-&lt;p&gt;للتأكد, بالإمكان التحقق من مساحة القرص للخادم &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;df -H&lt;/code&gt; أو أوامر &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker system&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker system info
-docker system &lt;span class=&quot;nb&quot;&gt;df&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;حلول&quot;&gt;حلول&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;كحلٍ مؤقت، زيادة مساحة التخزين المتاحة لدوكر ستقوم بإزالة المشكلة، إن أمكننا التحكم بالمساحات وزياداتها.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;أيضاً، بالإمكان إجراء عمليات المسح الدوري لنماذج الحاويات غير المستخدمة يدوياً أو عبر إجراءات مجدولة (crontab).&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# delete specific unused images by pattern:&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;IMAGES&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;my-apps
-docker images | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$IMAGES&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{print $1 &quot;:&quot; $2}&apos;&lt;/span&gt; | xargs docker rmi
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;يمكن الحذف بواسطة &lt;a href=&quot;https://docs.docker.com/engine/reference/commandline/image_prune/#filtering&quot;&gt;تحديد عنوان أو تاريخ معين&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# delete 6 months old images:&lt;/span&gt;
-docker image prune &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--force&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--filter&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;until=4368h&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;وأيضاً، بإمكاننا إجراء الأمر &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prune&lt;/code&gt; لمحو كافة المصادر غير المستعملة أو المنتهية:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker system prune
-
-&lt;span class=&quot;c&quot;&gt;# This will remove all unused images:&lt;/span&gt;
-docker image prune &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Fri, 18 Feb 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/ar/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</link>
-        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</guid>
-        
-        <category>cicd</category>
-        
-        <category>pipelines</category>
-        
-        <category>ddevmapper pool issue</category>
-        
-        <category>dockerd</category>
-        
-        <category>docker</category>
-        
-        
-        <category>برمجيات</category>
-        
-        <category>CICD</category>
-        
-        <category>دوكر</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/writing.jpg&quot; class=&quot;post-image resize-sm center-image&quot; alt=&quot;writing&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;”أهلاً بالعالم !“، &lt;a href=&quot;https://en.wikipedia.org/wiki/%22Hello,_World!%22_program&quot;&gt;هي العبارة&lt;/a&gt; التي خطرت لي لأوجهها لك عزيزي القارىء ولكتابة أولى تدويناتي العربية هنا.&lt;/p&gt;
-
-&lt;p&gt;كنت قد نشرت سابقاً بعض المقالات عن محول النسخ للغة روبي &lt;a href=&quot;https://rvm.io/&quot;&gt;(RVM)&lt;/a&gt;، وبعض المراجعات لكتب قرأتها في السنوات الماضية، ولكن أعَدّتها كمسودات أثناء عمل تحسيني للمدونة ثم فقدتها!&lt;/p&gt;
-
-&lt;p&gt;استكمالاً للقسم الأساسي الإنجليزي من المدونة، سأقوم بإذن الله بنشر ما يتسنى لي من كتاباتٍ وآراء وأفكار، في مجالات شتى تستهويني -ملائمةً للغةِ الضّاد- وأرى فيها متعةً وفائدةً أرجوها للأصدقاء والزوار.&lt;/p&gt;
-
-&lt;!-- post-excerpt --&gt;
-
-&lt;h3 id=&quot;اهتمامات&quot;&gt;&lt;strong&gt;اهتمامات&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;سيتركز كثير من المحتوى عن التغيّرات الهيكلية والتنظيمية التي استجّدت السنوات الماضية لأنظمة الشبكة العالمية، بالانتقال نحو الحوسبة السحابية وما صاحبها من تحولات على مستوى التطوير والنشر والتشغيل السحابي ولمراكز البيانات. أيضاً، سأهتم بتغطية مواضيع تطوير البرمجيات مفتوحة المصدر وما يهتم به مجتمعها من حينٍ لآخر.&lt;/p&gt;
-
-&lt;h3 id=&quot;شيء-من-الماضي&quot;&gt;&lt;strong&gt;شيء من الماضي&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;من التعابير الشائعة في عالم التطوير التقني، مقولة لاري وول (مؤسس لغة بيرل Perl) &lt;a href=&quot;https://wiki.c2.com/?LazinessImpatienceHubris/&quot;&gt;عن الفضائل الثلاث للمبرمج&lt;/a&gt; وأولاها كثيراً مايستخدم عذراً لتأجيل للمشاريع الجانبية والكتابة 🤷🏻‍♂️ .. الأمل أن يكون كما قصده لاري، دافعاً للتحسين والإبداع.&lt;/p&gt;
-
-&lt;p&gt;قضيت جزءاً من الوقت خلال الفترة الماضية بين الدراسة الأكاديمية والعمل الوظيفي، وبإتمامي الأولى مؤخراً أرجو أن يتاح لي تقديم المزيد مستقبلاً.&lt;/p&gt;
-
-&lt;h3 id=&quot;اقتباسٌ-عابر&quot;&gt;&lt;strong&gt;اقتباسٌ عابر&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;اقتنت &lt;a href=&quot;https://twitter.com/zohor92&quot;&gt;زوجتي الرائعة&lt;/a&gt; 😀 كتاباً ذا عنوانٍ جاذب “متعة أن تكون في الثلاثين” لـ/ علا ديوب، فابتدأتُ قراءته، خصوصاً مع اقترابي من الثلاثين ربيعاً في يونيو القادم.&lt;/p&gt;
-
-&lt;p&gt;يتشكل الكتاب من مجموع مقالات واختيارات لكُتَّابٍ عدة، صاغتها المؤلفة وترجمتها في ثلاث فصول: الاستمتاع بالحياة، الحب، الصحة والجسد. بشكل عام، راق لي المحتوى وكالعديد من مؤلفات تطوير الذات وعلم النفس المبسط يوجد بعض التعميمات أو المحتوى الإنشائي نوعاً ما. ختاماً، اقتبس منه الآتي:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/public/images/to-be-in-30s-book.jpg&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;🌹&lt;/p&gt;
-</description>
-        <pubDate>Sat, 12 Feb 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/ar/2022/02/12/first-post</link>
-        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/02/12/first-post</guid>
-        
-        <category>الكتابة</category>
-        
-        <category>تدوينة عربية</category>
-        
-        <category>انطباعات</category>
-        
-        <category>القراءة</category>
-        
-        <category>اقتباسات</category>
-        
-        
-        <category>آراء وانطباعات</category>
-        
-        <category>عام</category>
-        
-        <category>اقتباسات</category>
-        
-      </item>
-    
-  </channel>
-</rss>

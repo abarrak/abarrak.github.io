@@ -3,10 +3,10 @@
   <channel>
     <title></title>
     <description></description>
-    <link>https://www.abarrak.com/</link>
-    <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 17 Oct 2024 16:41:12 +0300</pubDate>
-    <lastBuildDate>Thu, 17 Oct 2024 16:41:12 +0300</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 17 Oct 2024 21:02:35 +0300</pubDate>
+    <lastBuildDate>Thu, 17 Oct 2024 21:02:35 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
     
       <item>
@@ -17,93 +17,101 @@
 
 &lt;!-- post-excerpt --&gt;
 
+&lt;blockquote&gt;
+🔖 &amp;nbsp; &lt;b&gt;Note:&lt;/b&gt; I&apos;m using whitespace freely to break long lines, which is in most cases not allowed in HCL statements.
+&lt;/blockquote&gt;
+
 &lt;h2 id=&quot;tips-and-tricks&quot;&gt;Tips and Tricks&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
     &lt;p&gt;Collect informative and actionable details about your environment &lt;a href=&quot;https://developer.hashicorp.com/terraform/language/data-sources&quot;&gt;using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; blocks&lt;/a&gt;.&lt;br /&gt; Seriously no need to hardcode these ids or names, instead using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; blocks is one way to query from the external providers, By that, the automation code quality and modularity increase a bit.&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# querying for references of aws vpc, and private route tables.&lt;/span&gt;
- data &lt;span class=&quot;s2&quot;&gt;&quot;aws_vpc&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;main_vpc&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   filter &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-     name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;tag:Name&quot;&lt;/span&gt;
-     values &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.vpc_prefix&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-vpc&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+    &lt;p&gt;Here are examples showing how to query for some network resources.&lt;/p&gt;
+
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aws_vpc&quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;apps&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;tag:Name&quot;&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;apps-vpc&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
- data &lt;span class=&quot;s2&quot;&gt;&quot;aws_route_tables&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;main_private_subnet_route_tables&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   filter &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-     name   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;vpc-id&quot;&lt;/span&gt;
-     values &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;data.aws_vpc.vpc.id]
+ &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aws_route_tables&quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;apps&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;vpc-id&quot;&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;aws_vpc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;apps_vpc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;
+     &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-   filter &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-     name   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;tag:Name&quot;&lt;/span&gt;
-     values &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
-       &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.vpc_prefix&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-vpc-rt-private-a&quot;&lt;/span&gt;,
-       &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.vpc_prefix&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-vpc-rt-private-b&quot;&lt;/span&gt;,
-       &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.vpc_prefix&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-vpc-rt-private-c&quot;&lt;/span&gt;,
+   &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;tag:Name&quot;&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
+       &lt;span class=&quot;s&quot;&gt;&quot;*rt-private-a&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;s&quot;&gt;&quot;*rt-private-b&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;s&quot;&gt;&quot;*rt-private-c&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# query oci for dynamic routing gateway.&lt;/span&gt;
- data &lt;span class=&quot;s2&quot;&gt;&quot;oci_core_drgs&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;main_drg&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   compartment_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; data.main_compartment.id
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; data &lt;span class=&quot;s2&quot;&gt;&quot;oci_core_drgs&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;my_drg&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   compartment_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; data.comp.id
  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Introduce variables to dry up and factorize your environment settings.&lt;br /&gt;
- Conventionally, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;variables.tf&lt;/code&gt; file describes the specification of the configurable variables &lt;em&gt;(type, default, description)&lt;/em&gt;. Then, the variables are set either on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform.tfvars&lt;/code&gt; file, passed as command arguments, or environment variables.&lt;/p&gt;
+ Conventionally, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;variables.tf&lt;/code&gt; file describes the specification of the configurable variables &lt;em&gt;(type, default, description)&lt;/em&gt;. Then, the variables are set either in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform.tfvars&lt;/code&gt; file, passed as command arguments, or environment variables.&lt;/p&gt;
 
     &lt;p&gt;Reference the vars in your code blocks as follows&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;${vars.my_var}&lt;/code&gt;:&lt;/p&gt;
 
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# variables.tf&lt;/span&gt;
- variable &lt;span class=&quot;s2&quot;&gt;&quot;compartment_id&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+ variable &lt;span class=&quot;s2&quot;&gt;&quot;c_id&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
    &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; string
  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
- variable &lt;span class=&quot;s2&quot;&gt;&quot;main_ipsec_vpn_connection_routes&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+ variable &lt;span class=&quot;s2&quot;&gt;&quot;routes&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
    &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; list&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;string&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-   description &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;List of one or more static route between a VPN connection and a customer gateway.&quot;&lt;/span&gt;
+   description &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;VPN routes.&quot;&lt;/span&gt;
    default     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;
  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
  &lt;span class=&quot;c&quot;&gt;# tunnel.tf&lt;/span&gt;
- resource &lt;span class=&quot;s2&quot;&gt;&quot;oci_core_ipsec&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;main_ipsec_connection&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   compartment_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.compartment_id
-   static_routes  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.aws_hub_ipsec_vpn_connection_routes
+ resource &lt;span class=&quot;s2&quot;&gt;&quot;oci_core_ipsec&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;vpn&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   compartment_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.c_id
+   static_routes &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.routes
  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Use output to express and state unknown information till after the apply.&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# case from provisioned resource - aws.&lt;/span&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# user input&lt;/span&gt;
+ output &lt;span class=&quot;s2&quot;&gt;&quot;vpc_cidr_range&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   value &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.vpc_cidr_range
+   description &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;IPs CIDR.&quot;&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+ &lt;span class=&quot;c&quot;&gt;# provisioned resource - aws&lt;/span&gt;
  output &lt;span class=&quot;s2&quot;&gt;&quot;main_zone_id&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   value &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; try&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;aws_route53_zone.main.zone_id, &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   value &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; try&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+     aws_route53_zone.m.zone_id,
+     &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
- &lt;span class=&quot;c&quot;&gt;# case from provisioned resource - oci.&lt;/span&gt;
- output &lt;span class=&quot;s2&quot;&gt;&quot;compute_instances_details&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   description &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;The summary of created instances.&quot;&lt;/span&gt;
-   value       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; module.compute_instances.instances_summary
- &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
- &lt;span class=&quot;c&quot;&gt;# case from user input.&lt;/span&gt;
- output &lt;span class=&quot;s2&quot;&gt;&quot;vcn_cidr_range&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   value &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.vcn_cidr_range
+ &lt;span class=&quot;c&quot;&gt;# provisioned resource - oci&lt;/span&gt;
+ output &lt;span class=&quot;s2&quot;&gt;&quot;instances_details&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   value &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; module.ci.instances_summary
  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Declare a variable with sensitive flag for masking in logs and execution.&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# redact db password from logs, and output channels.&lt;/span&gt;
- output &lt;span class=&quot;s2&quot;&gt;&quot;auth_token&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   value     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; random_password.db_password.result
-   sensitive &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; output &lt;span class=&quot;s2&quot;&gt;&quot;auth_token&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   sensitive &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
+   &lt;/span&gt;value &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; random_password.pass.result
  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
@@ -111,47 +119,48 @@
     &lt;p&gt;Add locals to shorten long configuration parts or variables chain.&lt;/p&gt;
 
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; locals &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   availability_domain &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; data.oci_identity_availability_domain.ad.name
+   ad &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; data.oci_identity_availability_domain.ad.name
 
-   db_name             &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.account_prefix]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.business_unit&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-db&quot;&lt;/span&gt;
-   db_admin_user       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;postgres&quot;&lt;/span&gt;
-   db_config_id           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.db_system_default_config_id
+   db_name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.prefix]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-db&quot;&lt;/span&gt;
+   db_admin_user &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;postgres&quot;&lt;/span&gt;
+   conf_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.db_config_id
 
    tags &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; merge&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-     tomap&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt; Environment &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.env, Terraform   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;,
+     tomap&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt; Env &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.env &lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;,
      var.tags
    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;Revise the variable types: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;string&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;number&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;boolean&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;object&lt;/code&gt;.&lt;br /&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://developer.hashicorp.com/terraform/language/expressions/types&quot;&gt;Refer to the docs.&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Revise the variable types: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;string&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;number&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;boolean&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;object&lt;/code&gt;.&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; variable &lt;span class=&quot;s2&quot;&gt;&quot;db_subnet_ingress_rules&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; list&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;object&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt; protocol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; string, port &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; string&lt;span class=&quot;o&quot;&gt;}))&lt;/span&gt;
-   default     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; variable &lt;span class=&quot;s2&quot;&gt;&quot;db_ingress_ports&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; list&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;object&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; port &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; string &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
- db_subnet_ingress_rules &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[{&lt;/span&gt; protocol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;6&quot;&lt;/span&gt;, port &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;5432&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;
+ db_ingress_ports &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; port &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;5432&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://developer.hashicorp.com/terraform/language/expressions/types&quot;&gt;Refer to the docs for more.&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Loop through repetitive resources using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;count&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;count.index&lt;/code&gt;&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; resource &lt;span class=&quot;s2&quot;&gt;&quot;aws_eip&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;main_reserved_lb_ip&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; resource &lt;span class=&quot;s2&quot;&gt;&quot;aws_eip&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;eips&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
    count &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1
-   tags &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; merge&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Name&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;lb_reserved_ip_&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.index&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;, local.tags&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   tags &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; merge&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Name&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;lb_ip_&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.index&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;, local.tags&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Utilize &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hashicorp/random&lt;/code&gt; module to generate ids or credentials.&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; resource &lt;span class=&quot;s2&quot;&gt;&quot;random_password&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ec2_root_password&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   length           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 20
-   special          &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; resource &lt;span class=&quot;s2&quot;&gt;&quot;random_password&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ec2&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   length &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 20
+   special &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
    &lt;/span&gt;override_special &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;@!-=+&quot;&lt;/span&gt;
  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
@@ -160,34 +169,40 @@
     &lt;p&gt;Import child modules into the main module using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source&lt;/code&gt; attribute from various sources: &lt;br /&gt;
 local FS, git repository, github, a url, or the public terraform registry.&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# redshift database deployment via external module from the terraform registry.&lt;/span&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# redshift database deployment,&lt;/span&gt;
+ &lt;span class=&quot;c&quot;&gt;# via external module from the&lt;/span&gt;
+ &lt;span class=&quot;c&quot;&gt;# registry.&lt;/span&gt;
+ &lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
  module &lt;span class=&quot;s2&quot;&gt;&quot;redshift-db&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;terraform-aws-modules/redshift/aws&quot;&lt;/span&gt;
+   &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;terraform-aws-modules/redshift/aws&quot;&lt;/span&gt;
    version &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;3.4.1&quot;&lt;/span&gt;
 
-   cluster_identifier                  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.account_prefix&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-redshift-db&quot;&lt;/span&gt;
-   cluster_node_type                   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;dc2.large&quot;&lt;/span&gt;
-   cluster_number_of_nodes             &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 2
-   encrypted                           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
-   &lt;/span&gt;automated_snapshot_retention_period &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 5
+   cluster_identifier &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rd&quot;&lt;/span&gt;
+   cluster_number_of_nodes &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 2
+   cluster_node_type &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+     &lt;span class=&quot;s2&quot;&gt;&quot;dc2.large&quot;&lt;/span&gt;
 
-   cluster_database_name   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;redshift-db&quot;&lt;/span&gt;
-   cluster_master_username &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rd-db-user&quot;&lt;/span&gt;
-   cluster_master_password &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; random_password.rd_db_pass.result
+   cluster_database_name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rd&quot;&lt;/span&gt;
+   cluster_master_username &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+     &lt;span class=&quot;s2&quot;&gt;&quot;rd-user&quot;&lt;/span&gt;
+   cluster_master_password &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+     random_password.pass.result
 
-   wlm_json_configuration       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; jsonencode&lt;span class=&quot;o&quot;&gt;([{&lt;/span&gt; auto_wlm &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}])&lt;/span&gt;
-   enable_user_activity_logging &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
-   &lt;/span&gt;owner_account                &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
-   final_snapshot_identifier    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.account_prefix&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-final-snapshot&quot;&lt;/span&gt;
+   encrypted &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
+   &lt;/span&gt;wlm_json_configuration &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+     jsonencode&lt;span class=&quot;o&quot;&gt;([&lt;/span&gt;
+       &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; auto_wlm &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+     &lt;span class=&quot;o&quot;&gt;])&lt;/span&gt;
 
    cluster_iam_roles &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
-     local.s3_iam_role.iam_role_arn
+     local.s3_role.iam_role_arn
    &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 
-   subnets &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; data.aws_subnets.private_subnets
+   subnets &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; data.aws_subnets.a
+
    enhanced_vpc_routing &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
    &lt;/span&gt;publicly_accessible  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
-   &lt;/span&gt;vpc_security_group_ids &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;module.main_networking.main_sg.id]
+   &lt;/span&gt;vpc_security_group_ids &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;
    enable_logging &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
 
    &lt;/span&gt;tags &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
@@ -198,11 +213,12 @@ local FS, git repository, github, a url, or the public terraform registry.&lt;/p
     &lt;p&gt;When using multiple modules structure, variables can be passed around in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;module&lt;/code&gt; block.&lt;/p&gt;
 
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;module &lt;span class=&quot;s2&quot;&gt;&quot;postgres&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;../../base-modules/oci/postgres&quot;&lt;/span&gt;
-  compartment_id   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.compartment_id
-  tenancy_id       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.tenancy_id
-  db_name          &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.postgres_db_name
-  tags             &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.tags
+  &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;../base/oci_pg&quot;&lt;/span&gt;
+
+  tenancy_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.tenancy_id
+  db_name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.postgres_db_name
+
+  tags &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.tags
   &lt;span class=&quot;c&quot;&gt;# etc ...&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
@@ -211,37 +227,48 @@ local FS, git repository, github, a url, or the public terraform registry.&lt;/p
     &lt;p&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for_each&lt;/code&gt; iteration primitives (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.key&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;value.*&lt;/code&gt;) for granular data structure looping over sets.&lt;/p&gt;
 
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# basic looping.&lt;/span&gt;
-data &lt;span class=&quot;s2&quot;&gt;&quot;aws_subnet&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;public_subnet&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  for_each &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; toset&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;data.aws_subnets.public_subnets.ids&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; each.value
+data &lt;span class=&quot;s2&quot;&gt;&quot;aws_subnet&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;subnet&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  for_each &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; toset&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+    data.aws_subnets.all.ids
+  &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; each.value
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# basic looping with mapping.&lt;/span&gt;
-resource &lt;span class=&quot;s2&quot;&gt;&quot;aws_route53_record&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;main_zone_cnames&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  for_each &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;r &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;var.main_public_cnames : i[0] &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; target : r[1], ttl : r[2] &lt;span class=&quot;o&quot;&gt;}}&lt;/span&gt;
+resource &lt;span class=&quot;s2&quot;&gt;&quot;aws_route53_record&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;cnames&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  for_each &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;r &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;var.public_cnames :
+    r[0] &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      target : r[1], ttl : r[2]
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-  zone_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; aws_route53_zone.main.id
+  zone_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    aws_route53_zone.main.id
   &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;CNAME&quot;&lt;/span&gt;
   name    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; each.key
   ttl     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; each.value.ttl
   records &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;each.value.target]
 
   depends_on &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
-    aws_route53_zone.main_zone
+    aws_route53_zone.main
   &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# advanced example.&lt;/span&gt;
 resource &lt;span class=&quot;s2&quot;&gt;&quot;aws_route&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;private_subnets_vpn_routes&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  for_each &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; length&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;var.ipsec_vpn_connection_routes&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; 0 ? &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; : &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;pair &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;setproduct&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-      data.aws_route_tables.private_subnet_route_tables.ids,
-      var.ipsec_vpn_connection_routes
-    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; : &lt;span class=&quot;s2&quot;&gt;&quot;route-entry.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pair&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[0]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pair&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[1]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; rt_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; pair[0], dest_cidr &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; pair[1] &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  for_each &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;setproduct&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+    data.aws_route_tables.private.ids, var.vpn_route&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; :
+    &lt;span class=&quot;s2&quot;&gt;&quot;entry.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[0]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[1]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; rt_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; i[0], dest_cidr &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; i[1] &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-  route_table_id         &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; each.value.rt_id
-  destination_cidr_block &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; each.value.dest_cidr
-  gateway_id             &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; aws_vpn_gateway.ipsec_vpn_gateway.id
+
+  gateway_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    aws_vpn_gateway.vgw.id
+  route_table_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    each.value.rt_id
+  destination_cidr_block &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    each.value.dest_cidr
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
@@ -250,38 +277,46 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;aws_route&quot;&lt;/span&gt; &lt
 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tolist()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;toset()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;upper()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;join()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lower()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;max()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;endswith()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chomp()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;regex()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reverse()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flatten()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;file()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;base64*()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;timestamp()&lt;/code&gt;, and much more.&lt;/p&gt;
 
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;locals &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  normalized_prefix &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; lower&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;var.account_prefix&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-provider &lt;span class=&quot;s2&quot;&gt;&quot;kubernetes&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  host                   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; data.aws_eks_cluster.main.endpoint
-  token                  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; data.aws_eks_cluster_auth.main.token
-  cluster_ca_certificate &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; base64decode&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;data.aws_eks_cluster.main.certificate_authority.0.data&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  prefix &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; lower&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;var.acc_prefix&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
-    &lt;p&gt;They come in handy during your IaC development and can helps solving many problems.&lt;br /&gt;
-&lt;a href=&quot;https://developer.hashicorp.com/terraform/language/functions&quot;&gt;Refer to the docs here.&lt;/a&gt;&lt;/p&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;provider &lt;span class=&quot;s2&quot;&gt;&quot;kubernetes&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  cluster_ca_certificate &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    base64decode&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+      data.aws_eks_cluster.main.ca.0.data
+    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;They come in handy and can help solving several problems. &lt;br /&gt;&lt;a href=&quot;https://developer.hashicorp.com/terraform/language/functions&quot;&gt;Refer to the docs here.&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;You can add validation rules and message to your module vars in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;variables.tf&lt;/code&gt;.&lt;br /&gt;
 Here’s an example:&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;variable &lt;span class=&quot;s2&quot;&gt;&quot;vpc_prefix&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;variable &lt;span class=&quot;s2&quot;&gt;&quot;prefix&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; string
+
   validation &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    error_message &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;vpc_prefix should be less than 10 characters.&quot;&lt;/span&gt;
-    condition     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; length&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;var.vpc_prefix&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &amp;lt; 10
+    condition &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+      length&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;var.prefix&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &amp;lt; 10
+    error_message &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;only less than 10 chars.&quot;&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-variable &lt;span class=&quot;s2&quot;&gt;&quot;db_system_storage_iops&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  description &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;OCI DbSystem Performance Unit&quot;&lt;/span&gt;
-  default     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;300000&quot;&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; string
+variable &lt;span class=&quot;s2&quot;&gt;&quot;db_storage_iops&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; string
+  default &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;300000&quot;&lt;/span&gt;
+
   validation &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    condition &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; contains&lt;span class=&quot;o&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;300000&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;750000&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;, var.db_system_storage_iops&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    error_message &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Currently, the only supported performance tier are 300,000, and 750,000 IOPS.&quot;&lt;/span&gt;
+    condition &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; contains&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;300000&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;750000&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
+      var.db_storage_iops
+    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    error_message &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;Only IOPS: 300K / 750K.&quot;&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
@@ -292,32 +327,44 @@ variable &lt;span class=&quot;s2&quot;&gt;&quot;db_system_storage_iops&quot;&lt;
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# view the current state items.&lt;/span&gt;
 terraform state list
 
-&lt;span class=&quot;c&quot;&gt;# importing specific item that was done outside terraform&lt;/span&gt;
-terraform state &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;aws_customer_gateway.ipsec_gateway_cpe&quot;&lt;/span&gt;
-terraform import &lt;span class=&quot;s2&quot;&gt;&quot;aws_customer_gateway.ipsec_gateway_cpe&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;cgw-XXXXXX&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# clean outdated state.&lt;/span&gt;
+terraform state &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+ &lt;span class=&quot;s2&quot;&gt;&quot;aws_customer_gateway.main&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# importing drifted state.&lt;/span&gt;
+terraform import &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;aws_customer_gateway.main&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;cgw-new-id-XXX&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform console&lt;/code&gt; to quickly experiment with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HCL&lt;/code&gt; syntax and explore the current module data.&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# testing sort function for an IPs list.&lt;/span&gt;
-❯ terraform console                                                                                                                      infra-terraform/git/master
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; tolist&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;concat&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;10.200.18.0/24&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;10.34.150.0/24&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;10.10.100.0/25&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;])))&lt;/span&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# testing sorting out lists.&lt;/span&gt;
+❯ terraform console
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; tolist&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;concat&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;10.200.18.0/24&quot;&lt;/span&gt;,
+   &lt;span class=&quot;s2&quot;&gt;&quot;10.34.150.0/24&quot;&lt;/span&gt;,
+   &lt;span class=&quot;s2&quot;&gt;&quot;10.10.100.0/25&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;
 tolist&lt;span class=&quot;o&quot;&gt;([&lt;/span&gt;
   &lt;span class=&quot;s2&quot;&gt;&quot;10.10.100.0/25&quot;&lt;/span&gt;,
   &lt;span class=&quot;s2&quot;&gt;&quot;10.200.18.0/24&quot;&lt;/span&gt;,
   &lt;span class=&quot;s2&quot;&gt;&quot;10.34.150.0/24&quot;&lt;/span&gt;,
 &lt;span class=&quot;o&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Although, terraform and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HCL&lt;/code&gt; definition language may have limitation around dynamic behavior sometimes, you will find ways to structure and approach your automation code declaratively, most of the time!&lt;/p&gt;
+&lt;h3 id=&quot;final-thought-&quot;&gt;Final Thought ..&lt;/h3&gt;
+
+&lt;p&gt;Although, terraform and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HCL&lt;/code&gt; definition language may have limitation around dynamic behavior sometimes, you will find ways to structure and approach your automation code declaratively, most of the time.&lt;/p&gt;
 </description>
         <pubDate>Thu, 17 Oct 2024 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2024/10/17/reflections-on-iac-with-terraform-2</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2024/10/17/reflections-on-iac-with-terraform-2</guid>
+        <link>http://localhost:4000/2024/10/17/reflections-on-iac-with-terraform-2</link>
+        <guid isPermaLink="true">http://localhost:4000/2024/10/17/reflections-on-iac-with-terraform-2</guid>
         
         <category>Infrastructure as Code</category>
         
@@ -475,8 +522,8 @@ The router logs shows internal errors (500) when connecting to the upstream (pod
 &lt;p&gt;Of course you may turn off the destination certificate check by setting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;insecureSkipVerify: true&lt;/code&gt; but that would defeat the purpose we aim for, an end to end TLS flow (bridging) !&lt;/p&gt;
 </description>
         <pubDate>Fri, 31 Mar 2023 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2023/03/31/e2e-treafik-tls-offloading</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2023/03/31/e2e-treafik-tls-offloading</guid>
+        <link>http://localhost:4000/2023/03/31/e2e-treafik-tls-offloading</link>
+        <guid isPermaLink="true">http://localhost:4000/2023/03/31/e2e-treafik-tls-offloading</guid>
         
         <category>Traefik</category>
         
@@ -547,8 +594,8 @@ Keep them in bookmarks!&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 10 Jan 2023 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2023/01/10/passing-aws-sap</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2023/01/10/passing-aws-sap</guid>
+        <link>http://localhost:4000/2023/01/10/passing-aws-sap</link>
+        <guid isPermaLink="true">http://localhost:4000/2023/01/10/passing-aws-sap</guid>
         
         <category>AWS SAP</category>
         
@@ -588,8 +635,8 @@ Keep them in bookmarks!&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 28 Dec 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2022/12/28/on-aws-builder-lib</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2022/12/28/on-aws-builder-lib</guid>
+        <link>http://localhost:4000/2022/12/28/on-aws-builder-lib</link>
+        <guid isPermaLink="true">http://localhost:4000/2022/12/28/on-aws-builder-lib</guid>
         
         <category>Automation</category>
         
@@ -659,8 +706,8 @@ Keep them in bookmarks!&lt;/li&gt;
 &lt;p&gt;That’s it. I hope you find it insightful.&lt;/p&gt;
 </description>
         <pubDate>Mon, 28 Nov 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2022/11/28/some-ansible-roles</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2022/11/28/some-ansible-roles</guid>
+        <link>http://localhost:4000/2022/11/28/some-ansible-roles</link>
+        <guid isPermaLink="true">http://localhost:4000/2022/11/28/some-ansible-roles</guid>
         
         <category>Infrastructure as Code</category>
         
@@ -793,8 +840,8 @@ helm pull &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv
 &lt;p&gt;Several CNCF projects already are simplifying working on such environments, like &lt;a href=&quot;https://goharbor.io/docs/2.1.0/install-config/download-installer/&quot;&gt;harbor&lt;/a&gt;, &lt;a href=&quot;https://docs.ranchermanager.rancher.io/pages-for-subheaders/air-gapped-helm-cli-install&quot;&gt;rancher&lt;/a&gt;, &lt;a href=&quot;https://docs.k3s.io/installation/airgap&quot;&gt;k3s&lt;/a&gt;, among others. In case you’re working with helm applications that are not yet friendly in the offline mode, the steps discussed earlier using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;helmfile&lt;/code&gt; and some scripting should suffice for plenty of use cases.&lt;/p&gt;
 </description>
         <pubDate>Sat, 08 Oct 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2022/10/08/using-helmfile-for-offline-deployments</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2022/10/08/using-helmfile-for-offline-deployments</guid>
+        <link>http://localhost:4000/2022/10/08/using-helmfile-for-offline-deployments</link>
+        <guid isPermaLink="true">http://localhost:4000/2022/10/08/using-helmfile-for-offline-deployments</guid>
         
         <category>Helm</category>
         
@@ -938,8 +985,8 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;helm_release&quot;&lt;/span&gt; 
 &lt;p&gt;All in all, codifying infra and platform layers (e.g. using terraform) has a key benefit to organizations in adopting the DevOps practices which leads to operational excellence, eventually.&lt;/p&gt;
 </description>
         <pubDate>Fri, 23 Sep 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2022/09/23/reflections-on-iac-with-terraform</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2022/09/23/reflections-on-iac-with-terraform</guid>
+        <link>http://localhost:4000/2022/09/23/reflections-on-iac-with-terraform</link>
+        <guid isPermaLink="true">http://localhost:4000/2022/09/23/reflections-on-iac-with-terraform</guid>
         
         <category>Infrastructure as Code</category>
         
@@ -974,8 +1021,8 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;helm_release&quot;&lt;/span&gt; 
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 22 Feb 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2022/02/22/linux-sysops-git-book</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2022/02/22/linux-sysops-git-book</guid>
+        <link>http://localhost:4000/2022/02/22/linux-sysops-git-book</link>
+        <guid isPermaLink="true">http://localhost:4000/2022/02/22/linux-sysops-git-book</guid>
         
         <category>linxu</category>
         
@@ -1049,8 +1096,8 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;helm_release&quot;&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Fri, 18 Feb 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</guid>
+        <link>http://localhost:4000/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</link>
+        <guid isPermaLink="true">http://localhost:4000/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</guid>
         
         <category>cicd</category>
         
@@ -1196,8 +1243,8 @@ We have to set it up using default ordering scope, easily:&lt;/p&gt;
 &lt;p&gt;Keep in mind the additional storage cost of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; keys compared to sequential ones, which requires balancing the trade-offs when designing your data models.&lt;/p&gt;
 </description>
         <pubDate>Fri, 24 May 2019 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2019/05/24/uuid-primary-key-for-active-record-models</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2019/05/24/uuid-primary-key-for-active-record-models</guid>
+        <link>http://localhost:4000/2019/05/24/uuid-primary-key-for-active-record-models</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/05/24/uuid-primary-key-for-active-record-models</guid>
         
         <category>Active Record</category>
         
