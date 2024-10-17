@@ -10,93 +10,103 @@ This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-wi
 
 <!-- post-excerpt -->
 
+<blockquote>
+🔖 &nbsp; <b>Note:</b> I'm using whitespace freely to break long lines, which is in most cases not allowed in HCL statements.
+</blockquote>
+
 ## Tips and Tricks
+
 
 1. Collect informative and actionable details about your environment [using `data` blocks](https://developer.hashicorp.com/terraform/language/data-sources).<br> Seriously no need to hardcode these ids or names, instead using `data` blocks is one way to query from the external providers, By that, the automation code quality and modularity increase a bit.
 
-    ```bash
-    # querying for references of aws vpc, and private route tables.
-    data "aws_vpc" "main_vpc" {
+    Here are examples showing how to query for some network resources.
+
+    ```java
+    data "aws_vpc" "apps" {
       filter {
         name = "tag:Name"
-        values = ["${var.vpc_prefix}-vpc"]
+        values = ["apps-vpc"]
       }
     }
 
-    data "aws_route_tables" "main_private_subnet_route_tables" {
+    data "aws_route_tables" "apps" {
       filter {
         name   = "vpc-id"
-        values = [data.aws_vpc.vpc.id]
+        values = [
+          data.aws_vpc.apps_vpc.id
+        ]
       }
 
       filter {
         name   = "tag:Name"
         values = [
-          "${var.vpc_prefix}-vpc-rt-private-a",
-          "${var.vpc_prefix}-vpc-rt-private-b",
-          "${var.vpc_prefix}-vpc-rt-private-c",
+          "*rt-private-a",
+          "*rt-private-b",
+          "*rt-private-c",
       }
     }
     ```
 
     ```bash
-    # query oci for dynamic routing gateway.
-    data "oci_core_drgs" "main_drg" {
-      compartment_id = data.main_compartment.id
+    data "oci_core_drgs" "my_drg" {
+      compartment_id = data.comp.id
     }
     ```
 
+
 2. Introduce variables to dry up and factorize your environment settings.<br>
-    Conventionally, the `variables.tf` file describes the specification of the configurable variables *(type, default, description)*. Then, the variables are set either on `terraform.tfvars` file, passed as command arguments, or environment variables.
+    Conventionally, `variables.tf` file describes the specification of the configurable variables *(type, default, description)*. Then, the variables are set either in `terraform.tfvars` file, passed as command arguments, or environment variables.
 
     Reference the vars in your code blocks as follows`${vars.my_var}`:
 
     ```bash
     # variables.tf
-    variable "compartment_id" {
+    variable "c_id" {
       type = string
     }
 
-    variable "main_ipsec_vpn_connection_routes" {
+    variable "routes" {
       type        = list(string)
-      description = "List of one or more static route between a VPN connection and a customer gateway."
+      description = "VPN routes."
       default     = []
     }
 
     # tunnel.tf
-    resource "oci_core_ipsec" "main_ipsec_connection" {
-      compartment_id = var.compartment_id
-      static_routes  = var.aws_hub_ipsec_vpn_connection_routes
+    resource "oci_core_ipsec" "vpn" {
+      compartment_id = var.c_id
+      static_routes = var.routes
     }
     ```
 
 3. Use output to express and state unknown information till after the apply.
 
     ```bash
-    # case from provisioned resource - aws.
+    # user input
+    output "vpc_cidr_range" {
+      value = var.vpc_cidr_range
+      description = "IPs CIDR."
+    }
+
+    # provisioned resource - aws
     output "main_zone_id" {
-      value = try(aws_route53_zone.main.zone_id, "")
+      value = try(
+        aws_route53_zone.m.zone_id,
+        ""
+      )
     }
 
-    # case from provisioned resource - oci.
-    output "compute_instances_details" {
-      description = "The summary of created instances."
-      value       = module.compute_instances.instances_summary
-    }
-
-    # case from user input.
-    output "vcn_cidr_range" {
-      value = var.vcn_cidr_range
+    # provisioned resource - oci
+    output "instances_details" {
+      value = module.ci.instances_summary
     }
     ```
 
 4. Declare a variable with sensitive flag for masking in logs and execution.
 
     ```bash
-    # redact db password from logs, and output channels.
     output "auth_token" {
-      value     = random_password.db_password.result
       sensitive = true
+      value = random_password.pass.result
     }
     ```
 
@@ -104,47 +114,48 @@ This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-wi
 
     ```bash
     locals {
-      availability_domain = data.oci_identity_availability_domain.ad.name
+      ad = data.oci_identity_availability_domain.ad.name
 
-      db_name             = "${var.account_prefix]}-${var.business_unit}-db"
-      db_admin_user       = "postgres"
-      db_config_id           = var.db_system_default_config_id
+      db_name = "${var.prefix]}-db"
+      db_admin_user = "postgres"
+      conf_id = var.db_config_id
 
       tags = merge(
-        tomap({ Environment = var.env, Terraform   = "true"}),
+        tomap({ Env = var.env }),
         var.tags
       )
     }
     ```
 
-6. Revise the variable types: `string`, `number`, `boolean`, `list`, `map`, and `object`.<br>
-    - [Refer to the docs.](https://developer.hashicorp.com/terraform/language/expressions/types)
+6. Revise the variable types: `string`, `number`, `boolean`, `list`, `map`, and `object`.
 
     ```bash
-    variable "db_subnet_ingress_rules" {
-      type        = list(object({ protocol = string, port = string}))
-      default     = []
+    variable "db_ingress_ports" {
+      type = list(object( { port = string } ))
     }
 
-    db_subnet_ingress_rules = [{ protocol = "6", port = "5432" }]
+    db_ingress_ports = [
+      { port = "5432" }
+    ]
     ```
 
+    [Refer to the docs for more.](https://developer.hashicorp.com/terraform/language/expressions/types)
 
 7. Loop through repetitive resources using `count` and `count.index`
 
     ```bash
-    resource "aws_eip" "main_reserved_lb_ip" {
+    resource "aws_eip" "eips" {
       count = 1
-      tags = merge({ "Name" = "lb_reserved_ip_${count.index}"}, local.tags)
+      tags = merge({ "Name" = "lb_ip_${count.index}" }, local.tags)
     }
     ```
 
 8. Utilize `hashicorp/random` module to generate ids or credentials.
 
     ```bash
-    resource "random_password" "ec2_root_password" {
-      length           = 20
-      special          = true
+    resource "random_password" "ec2" {
+      length = 20
+      special = true
       override_special = "@!-=+"
     }
     ```
@@ -153,34 +164,40 @@ This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-wi
 local FS, git repository, github, a url, or the public terraform registry.
 
     ```bash
-    # redshift database deployment via external module from the terraform registry.
+    # redshift database deployment,
+    # via external module from the
+    # registry.
+    #
     module "redshift-db" {
-      source  = "terraform-aws-modules/redshift/aws"
+      source = "terraform-aws-modules/redshift/aws"
       version = "3.4.1"
 
-      cluster_identifier                  = "${var.account_prefix}-redshift-db"
-      cluster_node_type                   = "dc2.large"
-      cluster_number_of_nodes             = 2
-      encrypted                           = true
-      automated_snapshot_retention_period = 5
+      cluster_identifier = "rd"
+      cluster_number_of_nodes = 2
+      cluster_node_type =
+        "dc2.large"
 
-      cluster_database_name   = "redshift-db"
-      cluster_master_username = "rd-db-user"
-      cluster_master_password = random_password.rd_db_pass.result
+      cluster_database_name = "rd"
+      cluster_master_username =
+        "rd-user"
+      cluster_master_password =
+        random_password.pass.result
 
-      wlm_json_configuration       = jsonencode([{ auto_wlm = true }])
-      enable_user_activity_logging = true
-      owner_account                = ""
-      final_snapshot_identifier    = "${var.account_prefix}-final-snapshot"
+      encrypted = true
+      wlm_json_configuration =
+        jsonencode([
+          { auto_wlm = true }
+        ])
 
       cluster_iam_roles = [
-        local.s3_iam_role.iam_role_arn
+        local.s3_role.iam_role_arn
       ]
 
-      subnets = data.aws_subnets.private_subnets
+      subnets = data.aws_subnets.a
+
       enhanced_vpc_routing = true
       publicly_accessible  = true
-      vpc_security_group_ids = [module.main_networking.main_sg.id]
+      vpc_security_group_ids = []
       enable_logging = true
 
       tags = {}
@@ -191,11 +208,12 @@ local FS, git repository, github, a url, or the public terraform registry.
 
     ```bash
     module "postgres" {
-      source           = "../../base-modules/oci/postgres"
-      compartment_id   = var.compartment_id
-      tenancy_id       = var.tenancy_id
-      db_name          = var.postgres_db_name
-      tags             = var.tags
+      source = "../base/oci_pg"
+
+      tenancy_id = var.tenancy_id
+      db_name = var.postgres_db_name
+
+      tags = var.tags
       # etc ...
     }
     ```
@@ -205,37 +223,48 @@ local FS, git repository, github, a url, or the public terraform registry.
 
     ```bash
     # basic looping.
-    data "aws_subnet" "public_subnet" {
-      for_each = toset(data.aws_subnets.public_subnets.ids)
-      id       = each.value
+    data "aws_subnet" "subnet" {
+      for_each = toset(
+        data.aws_subnets.all.ids
+      )
+      id = each.value
     }
 
     # basic looping with mapping.
-    resource "aws_route53_record" "main_zone_cnames" {
-      for_each = { for r in var.main_public_cnames : i[0] => { target : r[1], ttl : r[2] }}
+    resource "aws_route53_record" "cnames" {
+      for_each = {
+        for r in var.public_cnames :
+        r[0] => {
+          target : r[1], ttl : r[2]
+        }
+      }
 
-      zone_id = aws_route53_zone.main.id
+      zone_id =
+        aws_route53_zone.main.id
       type    = "CNAME"
       name    = each.key
       ttl     = each.value.ttl
       records = [each.value.target]
 
       depends_on = [
-        aws_route53_zone.main_zone
+        aws_route53_zone.main
       ]
     }
 
     # advanced example.
     resource "aws_route" "private_subnets_vpn_routes" {
-      for_each = length(var.ipsec_vpn_connection_routes) == 0 ? {} : {
-        for pair in setproduct(
-          data.aws_route_tables.private_subnet_route_tables.ids,
-          var.ipsec_vpn_connection_routes
-        ) : "route-entry.${pair[0]}.${pair[1]}" => { rt_id = pair[0], dest_cidr = pair[1] }
+      for_each = {
+        for i in setproduct(
+        data.aws_route_tables.private.ids, var.vpn_route) :
+        "entry.${i[0]}.${i[1]}" => { rt_id = i[0], dest_cidr = i[1] }
       }
-      route_table_id         = each.value.rt_id
-      destination_cidr_block = each.value.dest_cidr
-      gateway_id             = aws_vpn_gateway.ipsec_vpn_gateway.id
+
+      gateway_id =
+        aws_vpn_gateway.vgw.id
+      route_table_id =
+        each.value.rt_id
+      destination_cidr_block =
+        each.value.dest_cidr
     }
     ```
 
@@ -244,39 +273,48 @@ local FS, git repository, github, a url, or the public terraform registry.
 
     ```bash
     locals {
-      normalized_prefix = lower(var.account_prefix)
-    }
-
-    provider "kubernetes" {
-      host                   = data.aws_eks_cluster.main.endpoint
-      token                  = data.aws_eks_cluster_auth.main.token
-      cluster_ca_certificate = base64decode(data.aws_eks_cluster.main.certificate_authority.0.data)
+      prefix = lower(var.acc_prefix)
     }
     ```
 
-    They come in handy during your IaC development and can helps solving many problems.<br>
-    [Refer to the docs here.](https://developer.hashicorp.com/terraform/language/functions)
+    ```bash
+    provider "kubernetes" {
+      cluster_ca_certificate =
+        base64decode(
+          data.aws_eks_cluster.main.ca.0.data
+        )
+    }
+    ```
+
+    They come in handy and can help solving several problems. <br>[Refer to the docs here.](https://developer.hashicorp.com/terraform/language/functions)
 
 
 13. You can add validation rules and message to your module vars in `variables.tf`.<br>
     Here's an example:
 
     ```bash
-    variable "vpc_prefix" {
+    variable "prefix" {
       type = string
+
       validation {
-        error_message = "vpc_prefix should be less than 10 characters."
-        condition     = length(var.vpc_prefix) < 10
+        condition =
+          length(var.prefix) < 10
+        error_message =
+          "only less than 10 chars."
       }
     }
 
-    variable "db_system_storage_iops" {
-      description = "OCI DbSystem Performance Unit"
-      default     = "300000"
-      type        = string
+    variable "db_storage_iops" {
+      type = string
+      default = "300000"
+
       validation {
-        condition = contains(["300000", "750000"], var.db_system_storage_iops)
-        error_message = "Currently, the only supported performance tier are 300,000, and 750,000 IOPS."
+        condition = contains(
+          ["300000", "750000"],
+          var.db_storage_iops
+        )
+        error_message =
+          "Only IOPS: 300K / 750K."
       }
     }
     ```
@@ -287,23 +325,35 @@ local FS, git repository, github, a url, or the public terraform registry.
     # view the current state items.
     terraform state list
 
-    # importing specific item that was done outside terraform
-    terraform state rm "aws_customer_gateway.ipsec_gateway_cpe"
-    terraform import "aws_customer_gateway.ipsec_gateway_cpe" "cgw-XXXXXX"
+    # clean outdated state.
+    terraform state rm \
+     "aws_customer_gateway.main"
+
+    # importing drifted state.
+    terraform import \
+      "aws_customer_gateway.main" \
+      "cgw-new-id-XXX"
     ```
 
 15. Use `terraform console` to quickly experiment with `HCL` syntax and explore the current module data.
 
     ```bash
-    # testing sort function for an IPs list.
-    ❯ terraform console                                                                                                                      infra-terraform/git/master
-    > tolist(concat(sort(["10.200.18.0/24", "10.34.150.0/24", "10.10.100.0/25" ])))
+    # testing sorting out lists.
+    ❯ terraform console
+    >
+    > tolist(concat(sort(
+      ["10.200.18.0/24",
+       "10.34.150.0/24",
+       "10.10.100.0/25"]
+      )))
     tolist([
       "10.10.100.0/25",
       "10.200.18.0/24",
       "10.34.150.0/24",
     ])
+    >
     ```
-<br>
 
-Although, terraform and `HCL` definition language may have limitation around dynamic behavior sometimes, you will find ways to structure and approach your automation code declaratively, most of the time!
+### Final Thought ..
+
+Although, terraform and `HCL` definition language may have limitation around dynamic behavior sometimes, you will find ways to structure and approach your automation code declaratively, most of the time.
