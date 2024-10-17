@@ -306,4 +306,4 @@ local FS, git repository, github, a url, or the public terraform registry.
     ```
 <br>
 
-Although, terraform and `HCL` definition language may have some limitation around dynamic behavior sometimes, you will find ways to structure and approach your automation code declaratively, most of the time!
+Although, terraform and `HCL` definition language may have limitation around dynamic behavior sometimes, you will find ways to structure and approach your automation code declaratively, most of the time!
