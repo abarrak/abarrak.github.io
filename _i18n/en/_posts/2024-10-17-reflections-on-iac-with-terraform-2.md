@@ -6,7 +6,7 @@ categories: [Automation, IaC, Cloud]
 
 <img src="{{ site.baseurl_root }}/public/images/iac-reflections-2.png" class="post-image resize-sm center-image" />
 
-This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-with-terraform) where I discussed the concept of infrastructure as code and Terraform. In this post, I will provide few useful notes I took while working on IaC projects, with related examples to illustrate the technique, on aws and oracle public cloud providers.
+This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-with-terraform) where I discussed the concept of infrastructure as code and Terraform. In this post, I will provide few useful notes I took while working on IaC projects, with related examples to illustrate the techniques on two public cloud providers (AWS / Oracle).
 
 <!-- post-excerpt -->
 
