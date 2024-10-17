@@ -5,15 +5,15 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 17 Oct 2024 16:04:39 +0300</pubDate>
-    <lastBuildDate>Thu, 17 Oct 2024 16:04:39 +0300</lastBuildDate>
+    <pubDate>Thu, 17 Oct 2024 16:06:27 +0300</pubDate>
+    <lastBuildDate>Thu, 17 Oct 2024 16:06:27 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
     
       <item>
         <title></title>
         <description>&lt;p&gt;&lt;img src=&quot;/public/images/iac-reflections-2.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;This post is a follow up on &lt;a href=&quot;/2022/09/23/reflections-on-iac-with-terraform&quot;&gt;the previous one&lt;/a&gt; where I discussed the concept of infrastructure as code and Terraform. In this post, I will provide few useful notes I took while working on IaC projects, with related examples to illustrate the techniques on two public cloud providers (AWS / Oracle).&lt;/p&gt;
+&lt;p&gt;This post is a follow up on &lt;a href=&quot;/2022/09/23/reflections-on-iac-with-terraform&quot;&gt;the previous one&lt;/a&gt; where I discussed the concept of infrastructure as code and Terraform. In this post, I will provide few useful notes I took while working on IaC projects, with related examples to illustrate the techniques on two of the public cloud providers (AWS / Oracle).&lt;/p&gt;
 
 &lt;!-- post-excerpt --&gt;
 
