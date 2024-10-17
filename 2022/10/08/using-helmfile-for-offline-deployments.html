@@ -125,15 +125,15 @@
   <span class="na">url</span><span class="pi">:</span> <span class="s">https://charts.dexidp.io</span>
 
 <span class="na">helmDefaults</span><span class="pi">:</span>
-  <span class="na">verify</span><span class="pi">:</span> <span class="no">true</span>
-  <span class="na">wait</span><span class="pi">:</span> <span class="no">true</span>
-  <span class="na">waitForJobs</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">verify</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">wait</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">waitForJobs</span><span class="pi">:</span> <span class="kc">true</span>
   <span class="na">timeout</span><span class="pi">:</span> <span class="m">600</span>
 
 <span class="na">releases</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">dex</span>
     <span class="na">namespace</span><span class="pi">:</span> <span class="s">dex</span>
-    <span class="na">createNamespace</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">createNamespace</span><span class="pi">:</span> <span class="kc">true</span>
     <span class="na">chart</span><span class="pi">:</span> <span class="s">dex/dex</span>
     <span class="na">version</span><span class="pi">:</span> <span class="s">0.11.1</span>
     <span class="na">values</span><span class="pi">:</span>
@@ -142,9 +142,9 @@
           <span class="na">storage</span><span class="pi">:</span>
             <span class="na">type</span><span class="pi">:</span> <span class="s">kubernetes</span>
             <span class="na">config</span><span class="pi">:</span>
-              <span class="na">inCluster</span><span class="pi">:</span> <span class="no">true</span>
+              <span class="na">inCluster</span><span class="pi">:</span> <span class="kc">true</span>
           <span class="na">oauth2</span><span class="pi">:</span>
-            <span class="na">skipApprovalScreen</span><span class="pi">:</span> <span class="no">true</span>
+            <span class="na">skipApprovalScreen</span><span class="pi">:</span> <span class="kc">true</span>
           <span class="na">staticClients</span><span class="pi">:</span> <span class="pi">[]</span>
           <span class="na">connectors</span><span class="pi">:</span> <span class="pi">[]</span>
  

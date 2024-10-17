@@ -5,9 +5,336 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 11 Aug 2024 22:17:16 +0300</pubDate>
-    <lastBuildDate>Sun, 11 Aug 2024 22:17:16 +0300</lastBuildDate>
-    <generator>Jekyll v4.2.0</generator>
+    <pubDate>Thu, 17 Oct 2024 15:58:06 +0300</pubDate>
+    <lastBuildDate>Thu, 17 Oct 2024 15:58:06 +0300</lastBuildDate>
+    <generator>Jekyll v4.3.0</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/iac-reflections-2.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This post is a follow up on &lt;a href=&quot;/2022/09/23/reflections-on-iac-with-terraform&quot;&gt;the previous one&lt;/a&gt; where I discussed the concept of infrastructure as code and Terraform. In this post, I will provide few useful notes I took while working on IaC projects, with related examples to illustrate the technique, on aws and oracle public cloud providers.&lt;/p&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;h2 id=&quot;tips-and-tricks&quot;&gt;Tips and Tricks&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Collect informative and actionable details about your environment &lt;a href=&quot;https://developer.hashicorp.com/terraform/language/data-sources&quot;&gt;using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; blocks&lt;/a&gt;.&lt;br /&gt; Seriously no need to hardcode these ids or names, instead using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; blocks is one way to query from the external providers, By that, the automation code quality and modularity increase a bit.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# querying for references of aws vpc, and private route tables.&lt;/span&gt;
+ data &lt;span class=&quot;s2&quot;&gt;&quot;aws_vpc&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;main_vpc&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   filter &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+     name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;tag:Name&quot;&lt;/span&gt;
+     values &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.vpc_prefix&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-vpc&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+ data &lt;span class=&quot;s2&quot;&gt;&quot;aws_route_tables&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;main_private_subnet_route_tables&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   filter &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+     name   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;vpc-id&quot;&lt;/span&gt;
+     values &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;data.aws_vpc.vpc.id]
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+   filter &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+     name   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;tag:Name&quot;&lt;/span&gt;
+     values &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
+       &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.vpc_prefix&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-vpc-rt-private-a&quot;&lt;/span&gt;,
+       &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.vpc_prefix&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-vpc-rt-private-b&quot;&lt;/span&gt;,
+       &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.vpc_prefix&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-vpc-rt-private-c&quot;&lt;/span&gt;,
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# query oci for dynamic routing gateway.&lt;/span&gt;
+ data &lt;span class=&quot;s2&quot;&gt;&quot;oci_core_drgs&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;main_drg&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   compartment_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; data.main_compartment.id
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Introduce variables to dry up and factorize your environment settings.&lt;br /&gt;
+ Conventionally, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;variables.tf&lt;/code&gt; file describes the specification of the configurable variables &lt;em&gt;(type, default, description)&lt;/em&gt;. Then, the variables are set either on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform.tfvars&lt;/code&gt; file, passed as command arguments, or environment variables.&lt;/p&gt;
+
+    &lt;p&gt;Reference the vars in your code blocks as follows&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;${vars.my_var}&lt;/code&gt;:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# variables.tf&lt;/span&gt;
+ variable &lt;span class=&quot;s2&quot;&gt;&quot;compartment_id&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; string
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+ variable &lt;span class=&quot;s2&quot;&gt;&quot;main_ipsec_vpn_connection_routes&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; list&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;string&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   description &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;List of one or more static route between a VPN connection and a customer gateway.&quot;&lt;/span&gt;
+   default     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+ &lt;span class=&quot;c&quot;&gt;# tunnel.tf&lt;/span&gt;
+ resource &lt;span class=&quot;s2&quot;&gt;&quot;oci_core_ipsec&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;main_ipsec_connection&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   compartment_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.compartment_id
+   static_routes  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.aws_hub_ipsec_vpn_connection_routes
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use output to express and state unknown information till after the apply.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# case from provisioned resource - aws.&lt;/span&gt;
+ output &lt;span class=&quot;s2&quot;&gt;&quot;main_zone_id&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   value &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; try&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;aws_route53_zone.main.zone_id, &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+ &lt;span class=&quot;c&quot;&gt;# case from provisioned resource - oci.&lt;/span&gt;
+ output &lt;span class=&quot;s2&quot;&gt;&quot;compute_instances_details&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   description &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;The summary of created instances.&quot;&lt;/span&gt;
+   value       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; module.compute_instances.instances_summary
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+ &lt;span class=&quot;c&quot;&gt;# case from user input.&lt;/span&gt;
+ output &lt;span class=&quot;s2&quot;&gt;&quot;vcn_cidr_range&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   value &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.vcn_cidr_range
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Declare a variable with sensitive flag for masking in logs and execution.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# redact db password from logs, and output channels.&lt;/span&gt;
+ output &lt;span class=&quot;s2&quot;&gt;&quot;auth_token&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   value     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; random_password.db_password.result
+   sensitive &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add locals to shorten long configuration parts or variables chain.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; locals &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   availability_domain &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; data.oci_identity_availability_domain.ad.name
+
+   db_name             &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.account_prefix]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.business_unit&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-db&quot;&lt;/span&gt;
+   db_admin_user       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;postgres&quot;&lt;/span&gt;
+   db_config_id           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.db_system_default_config_id
+
+   tags &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; merge&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+     tomap&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt; Environment &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.env, Terraform   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;,
+     var.tags
+   &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Revise the variable types: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;string&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;number&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;boolean&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;object&lt;/code&gt;.&lt;br /&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://developer.hashicorp.com/terraform/language/expressions/types&quot;&gt;Refer to the docs.&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; variable &lt;span class=&quot;s2&quot;&gt;&quot;db_subnet_ingress_rules&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; list&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;object&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt; protocol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; string, port &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; string&lt;span class=&quot;o&quot;&gt;}))&lt;/span&gt;
+   default     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+ db_subnet_ingress_rules &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[{&lt;/span&gt; protocol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;6&quot;&lt;/span&gt;, port &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;5432&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Loop through repetitive resources using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;count&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;count.index&lt;/code&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; resource &lt;span class=&quot;s2&quot;&gt;&quot;aws_eip&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;main_reserved_lb_ip&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   count &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1
+   tags &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; merge&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Name&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;lb_reserved_ip_&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.index&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;, local.tags&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Utilize &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hashicorp/random&lt;/code&gt; module to generate ids or credentials.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; resource &lt;span class=&quot;s2&quot;&gt;&quot;random_password&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ec2_root_password&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   length           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 20
+   special          &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
+   &lt;/span&gt;override_special &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;@!-=+&quot;&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Import child modules into the main module using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source&lt;/code&gt; attribute from various sources: &lt;br /&gt;
+local FS, git repository, github, a url, or the public terraform registry.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# redshift database deployment via external module from the terraform registry.&lt;/span&gt;
+ module &lt;span class=&quot;s2&quot;&gt;&quot;redshift-db&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;terraform-aws-modules/redshift/aws&quot;&lt;/span&gt;
+   version &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;3.4.1&quot;&lt;/span&gt;
+
+   cluster_identifier                  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.account_prefix&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-redshift-db&quot;&lt;/span&gt;
+   cluster_node_type                   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;dc2.large&quot;&lt;/span&gt;
+   cluster_number_of_nodes             &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 2
+   encrypted                           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
+   &lt;/span&gt;automated_snapshot_retention_period &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 5
+
+   cluster_database_name   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;redshift-db&quot;&lt;/span&gt;
+   cluster_master_username &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rd-db-user&quot;&lt;/span&gt;
+   cluster_master_password &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; random_password.rd_db_pass.result
+
+   wlm_json_configuration       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; jsonencode&lt;span class=&quot;o&quot;&gt;([{&lt;/span&gt; auto_wlm &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}])&lt;/span&gt;
+   enable_user_activity_logging &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
+   &lt;/span&gt;owner_account                &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
+   final_snapshot_identifier    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.account_prefix&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-final-snapshot&quot;&lt;/span&gt;
+
+   cluster_iam_roles &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
+     local.s3_iam_role.iam_role_arn
+   &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+
+   subnets &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; data.aws_subnets.private_subnets
+   enhanced_vpc_routing &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
+   &lt;/span&gt;publicly_accessible  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
+   &lt;/span&gt;vpc_security_group_ids &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;module.main_networking.main_sg.id]
+   enable_logging &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true
+
+   &lt;/span&gt;tags &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;When using multiple modules structure, variables can be passed around in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;module&lt;/code&gt; block.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;module &lt;span class=&quot;s2&quot;&gt;&quot;postgres&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;../../base-modules/oci/postgres&quot;&lt;/span&gt;
+  compartment_id   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.compartment_id
+  tenancy_id       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.tenancy_id
+  db_name          &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.postgres_db_name
+  tags             &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; var.tags
+  &lt;span class=&quot;c&quot;&gt;# etc ...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for_each&lt;/code&gt; iteration primitives (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.key&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;value.*&lt;/code&gt;) for granular data structure looping over sets.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# basic looping.&lt;/span&gt;
+data &lt;span class=&quot;s2&quot;&gt;&quot;aws_subnet&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;public_subnet&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  for_each &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; toset&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;data.aws_subnets.public_subnets.ids&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; each.value
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# basic looping with mapping.&lt;/span&gt;
+resource &lt;span class=&quot;s2&quot;&gt;&quot;aws_route53_record&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;main_zone_cnames&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  for_each &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;r &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;var.main_public_cnames : i[0] &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; target : r[1], ttl : r[2] &lt;span class=&quot;o&quot;&gt;}}&lt;/span&gt;
+
+  zone_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; aws_route53_zone.main.id
+  &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;CNAME&quot;&lt;/span&gt;
+  name    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; each.key
+  ttl     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; each.value.ttl
+  records &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;each.value.target]
+
+  depends_on &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
+    aws_route53_zone.main_zone
+  &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# advanced example.&lt;/span&gt;
+resource &lt;span class=&quot;s2&quot;&gt;&quot;aws_route&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;private_subnets_vpn_routes&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  for_each &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; length&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;var.ipsec_vpn_connection_routes&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; 0 ? &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; : &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;pair &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;setproduct&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+      data.aws_route_tables.private_subnet_route_tables.ids,
+      var.ipsec_vpn_connection_routes
+    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; : &lt;span class=&quot;s2&quot;&gt;&quot;route-entry.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pair&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[0]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pair&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[1]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; rt_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; pair[0], dest_cidr &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; pair[1] &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  route_table_id         &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; each.value.rt_id
+  destination_cidr_block &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; each.value.dest_cidr
+  gateway_id             &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; aws_vpn_gateway.ipsec_vpn_gateway.id
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;review  the built-in functions of interest to your configurations: &lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tolist()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;toset()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;upper()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;join()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lower()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;max()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;endswith()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chomp()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;regex()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reverse()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flatten()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;file()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;base64*()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;timestamp()&lt;/code&gt;, and much more.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;locals &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  normalized_prefix &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; lower&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;var.account_prefix&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+provider &lt;span class=&quot;s2&quot;&gt;&quot;kubernetes&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  host                   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; data.aws_eks_cluster.main.endpoint
+  token                  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; data.aws_eks_cluster_auth.main.token
+  cluster_ca_certificate &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; base64decode&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;data.aws_eks_cluster.main.certificate_authority.0.data&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;They come in handy during your IaC development and can helps solving many problems.&lt;br /&gt;
+&lt;a href=&quot;https://developer.hashicorp.com/terraform/language/functions&quot;&gt;Refer to the docs here.&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;You can add validation rules and message to your module vars in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;variables.tf&lt;/code&gt;.&lt;br /&gt;
+Here’s an example:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;variable &lt;span class=&quot;s2&quot;&gt;&quot;vpc_prefix&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; string
+  validation &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    error_message &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;vpc_prefix should be less than 10 characters.&quot;&lt;/span&gt;
+    condition     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; length&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;var.vpc_prefix&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &amp;lt; 10
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+variable &lt;span class=&quot;s2&quot;&gt;&quot;db_system_storage_iops&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  description &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;OCI DbSystem Performance Unit&quot;&lt;/span&gt;
+  default     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;300000&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; string
+  validation &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    condition &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; contains&lt;span class=&quot;o&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;300000&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;750000&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;, var.db_system_storage_iops&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    error_message &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Currently, the only supported performance tier are 300,000, and 750,000 IOPS.&quot;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use the state CLI command to show, list, or manipulate the state once needed &lt;em&gt;(e.g. checking existing values, importing directly modified items outside IaC, etc.)&lt;/em&gt;.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# view the current state items.&lt;/span&gt;
+terraform state list
+
+&lt;span class=&quot;c&quot;&gt;# importing specific item that was done outside terraform&lt;/span&gt;
+terraform state &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;aws_customer_gateway.ipsec_gateway_cpe&quot;&lt;/span&gt;
+terraform import &lt;span class=&quot;s2&quot;&gt;&quot;aws_customer_gateway.ipsec_gateway_cpe&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;cgw-XXXXXX&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;terraform console&lt;/code&gt; to quickly experiment with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HCL&lt;/code&gt; syntax and explore the current module data.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# testing sort function for an IPs list.&lt;/span&gt;
+❯ terraform console                                                                                                                      infra-terraform/git/master
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; tolist&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;concat&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;10.200.18.0/24&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;10.34.150.0/24&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;10.10.100.0/25&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;])))&lt;/span&gt;
+tolist&lt;span class=&quot;o&quot;&gt;([&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;10.10.100.0/25&quot;&lt;/span&gt;,
+  &lt;span class=&quot;s2&quot;&gt;&quot;10.200.18.0/24&quot;&lt;/span&gt;,
+  &lt;span class=&quot;s2&quot;&gt;&quot;10.34.150.0/24&quot;&lt;/span&gt;,
+&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Although, terraform and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HCL&lt;/code&gt; definition language may have some limitation around dynamic behavior sometimes, you will find ways to structure and approach your automation code declaratively, most of the time!&lt;/p&gt;
+</description>
+        <pubDate>Thu, 17 Oct 2024 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/2024/10/17/reflections-on-iac-with-terraform-2</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2024/10/17/reflections-on-iac-with-terraform-2</guid>
+        
+        <category>Infrastructure as Code</category>
+        
+        <category>Cloud Computing</category>
+        
+        <category>Linux</category>
+        
+        <category>Automation</category>
+        
+        
+        <category>Automation</category>
+        
+        <category>IaC</category>
+        
+        <category>Cloud</category>
+        
+      </item>
     
       <item>
         <title></title>
@@ -43,7 +370,7 @@
       &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;web&lt;/span&gt;
       &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;443&lt;/span&gt;
       &lt;span class=&quot;na&quot;&gt;scheme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;https&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;passHostHeader&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;passHostHeader&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;secretName&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;web-ingressroute-tls&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -56,7 +383,7 @@
 &lt;span class=&quot;na&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;nginx-conf&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;nginx.conf&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;nginx.conf&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
     &lt;span class=&quot;s&quot;&gt;user nginx;&lt;/span&gt;
     &lt;span class=&quot;s&quot;&gt;worker_processes  3;&lt;/span&gt;
     &lt;span class=&quot;s&quot;&gt;...&lt;/span&gt;
@@ -381,15 +708,15 @@ Keep them in bookmarks!&lt;/li&gt;
   &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;https://charts.dexidp.io&lt;/span&gt;
 
 &lt;span class=&quot;na&quot;&gt;helmDefaults&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;verify&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;wait&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;waitForJobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;verify&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;wait&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;waitForJobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;timeout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;600&lt;/span&gt;
 
 &lt;span class=&quot;na&quot;&gt;releases&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;dex&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;dex&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;createNamespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;createNamespace&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;chart&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;dex/dex&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0.11.1&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
@@ -398,9 +725,9 @@ Keep them in bookmarks!&lt;/li&gt;
           &lt;span class=&quot;na&quot;&gt;storage&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
             &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kubernetes&lt;/span&gt;
             &lt;span class=&quot;na&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-              &lt;span class=&quot;na&quot;&gt;inCluster&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;inCluster&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
           &lt;span class=&quot;na&quot;&gt;oauth2&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;na&quot;&gt;skipApprovalScreen&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;skipApprovalScreen&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
           &lt;span class=&quot;na&quot;&gt;staticClients&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[]&lt;/span&gt;
           &lt;span class=&quot;na&quot;&gt;connectors&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[]&lt;/span&gt;
  
@@ -704,7 +1031,7 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;helm_release&quot;&lt;/span&gt; 
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# delete specific unused images by pattern:&lt;/span&gt;
  &lt;span class=&quot;nv&quot;&gt;IMAGES&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;my-apps
- docker images | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$IMAGES&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{print $1 &quot;:&quot; $2}'&lt;/span&gt; | xargs docker rmi
+ docker images | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$IMAGES&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{print $1 &quot;:&quot; $2}&apos;&lt;/span&gt; | xargs docker rmi
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Or delete by &lt;a href=&quot;https://docs.docker.com/engine/reference/commandline/image_prune/#filtering&quot;&gt;label/date filteration&lt;/a&gt;:&lt;/p&gt;
@@ -788,7 +1115,7 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;helm_release&quot;&lt;/span&gt; 
      
  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EnableUuidOsspExtension&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;5.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;
-     &lt;span class=&quot;n&quot;&gt;enable_extension&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'uuid-ossp'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extension_enabled?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;uuid-ossp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;enable_extension&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;uuid-ossp&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extension_enabled?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;uuid-ossp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
@@ -890,121 +1217,6 @@ We have to set it up using default ordering scope, easily:&lt;/p&gt;
         <category>Rails</category>
         
         <category>Active Record</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/opt-img.jpg&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In many times you may find yourself in need for optimzing rapidly a bunch of images in your hands. There are handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:&lt;/p&gt;
-
-&lt;h3 id=&quot;1-optipng-advanced-png-optimizer&quot;&gt;&lt;a href=&quot;http://optipng.sourceforge.net/&quot;&gt;1. OptiPNG: Advanced PNG Optimizer&lt;/a&gt;:&lt;/h3&gt;
-
-&lt;p&gt;Get it for Mac OS X:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;optipng
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;For Linux Ubuntu:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;optipng
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To optimize an image, run:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;optipng &amp;lt;img-name&amp;gt;.png
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;!-- post-excerpt --&gt;
-
-&lt;p&gt;To wildcard all images recursively in the current directory and sub directories:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.png&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; optipng &lt;span class=&quot;nt&quot;&gt;-o7&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;2-jpegoptim&quot;&gt;&lt;a href=&quot;https://github.com/tjko/jpegoptim&quot;&gt;2. jpegoptim&lt;/a&gt;:&lt;/h3&gt;
-
-&lt;p&gt;Install for Mac OS X:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jpegoptim
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Install for Linux Ubuntu:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jpegoptim
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Run the next command to optimize an image, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-m&lt;/code&gt; controls the image quality (0-100):&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jpegoptim &lt;span class=&quot;nt&quot;&gt;-m70&lt;/span&gt; &amp;lt;img-name&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Or optimize all recursively:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.jpg&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; jpegoptim &lt;span class=&quot;nt&quot;&gt;-m80&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;3-gifsicle&quot;&gt;&lt;a href=&quot;https://www.lcdf.org/gifsicle/&quot;&gt;3. gifsicle&lt;/a&gt;:&lt;/h3&gt;
-
-&lt;p&gt;Install for Mac OS X:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gifsicle
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;For Linux Ubuntu:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gifsicle
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The commands for single image, and a group of images respectively, are:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# for single image.&lt;/span&gt;
-gifsicle &lt;span class=&quot;nt&quot;&gt;--batch&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-V&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-O2&lt;/span&gt; &amp;lt;image-name&amp;gt;.gif
-
-&lt;span class=&quot;c&quot;&gt;# to start from cureent dir and go down.&lt;/span&gt;
-find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.gif&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; gifsicle &lt;span class=&quot;nt&quot;&gt;--batch&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-V&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-O2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;aliases&quot;&gt;&lt;strong&gt;Aliases&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;Here are some aliases to keep commands nearby for fast run on the active directory images.&lt;/p&gt;
-
-&lt;p&gt;Be warn that those (also the previously mentioned commands) all alter the original images.&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_png&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;optipng -o7 *.png&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_jpg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jpegoptim -m80 *.jpg&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_gif&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gifsicle --batch -V -O2 *.gif&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can tweak the optimization level and other options to suit your needs.&lt;/p&gt;
-
-&lt;h3 id=&quot;imageoptim&quot;&gt;&lt;strong&gt;ImageOptim&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;If you’d like to use a GUI application, &lt;a href=&quot;https://imageoptim.com/mac&quot;&gt;ImageOptim&lt;/a&gt; is a pretty open source one for Mac OS X that supports multiple image formats.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/public/images/imageoptim.png&quot; alt=&quot;ImageOptim Screen Shot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Happy mature optimization :) !&lt;/p&gt;
-</description>
-        <pubDate>Tue, 30 Aug 2016 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</guid>
-        
-        <category>Image Processing</category>
-        
-        <category>optipng</category>
-        
-        <category>jpegoptim</category>
-        
-        <category>gifsicle</category>
-        
-        <category>ImageOptim</category>
-        
-        
-        <category>Image Processing</category>
-        
-        <category>Productivity</category>
         
       </item>
     

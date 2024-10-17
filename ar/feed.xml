@@ -5,9 +5,9 @@
     <description></description>
     <link>https://www.abarrak.com/ar/</link>
     <atom:link href="https://www.abarrak.com/ar/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 11 Aug 2024 22:17:17 +0300</pubDate>
-    <lastBuildDate>Sun, 11 Aug 2024 22:17:17 +0300</lastBuildDate>
-    <generator>Jekyll v4.2.0</generator>
+    <pubDate>Thu, 17 Oct 2024 15:58:07 +0300</pubDate>
+    <lastBuildDate>Thu, 17 Oct 2024 15:58:07 +0300</lastBuildDate>
+    <generator>Jekyll v4.3.0</generator>
     
       <item>
         <title></title>
@@ -129,6 +129,9 @@
 &lt;p&gt;تتمثل الفلسفة الأساسية فيها، عبر كتابة توصيف تفاعلي (stateful) لمكونات البنية التحتية، وإدارتها ومتابعتها وتسهيل مشاركتها، سواءً كانت في المصادر السحابية العامة أو الخاصة أو كليهما.&lt;/p&gt;
 
 &lt;p&gt;كتبتُ تدوينة عن تيرافورم وبعض الانطباعات عن الأداة وهيكلتها، &lt;a href=&quot;/2022/09/23/reflections-on-iac-with-terraform&quot;&gt;أحيل عليها هنا، لصعوبة النقل للعربية.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;-تحديث-17102024&quot;&gt;&lt;b&gt;** تحديث (17/10/2024)&lt;/b&gt;&lt;/h4&gt;
+&lt;p&gt;نشرت تدوينة أخرى &lt;a href=&quot;/2024/10/17/reflections-on-iac-with-terraform-2&quot;&gt;تتضمن بعض الأساليب والتوصيات لمشاريع تيرافورم.&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 23 Sep 2022 00:00:00 +0300</pubDate>
         <link>https://www.abarrak.com/ar/2022/09/23/reflections-on-iac-with-terraform</link>
@@ -287,7 +290,7 @@ docker system &lt;span class=&quot;nb&quot;&gt;df&lt;/span&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# delete specific unused images by pattern:&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;IMAGES&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;my-apps
-docker images | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$IMAGES&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{print $1 &quot;:&quot; $2}'&lt;/span&gt; | xargs docker rmi
+docker images | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$IMAGES&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{print $1 &quot;:&quot; $2}&apos;&lt;/span&gt; | xargs docker rmi
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;يمكن الحذف بواسطة &lt;a href=&quot;https://docs.docker.com/engine/reference/commandline/image_prune/#filtering&quot;&gt;تحديد عنوان أو تاريخ معين&lt;/a&gt;:&lt;/p&gt;

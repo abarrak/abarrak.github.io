@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="description" content="This post is a follow up on the previous one where I discussed the concept of infrastructure as code and Terraform. In this post, I will provide few useful n...">
+  <meta name="author" content="Abdullah Barrak">
+
+  <meta name="keywords" content="Infrastructure as Code, Cloud Computing, Linux, and Automation">
+	<meta name="theme-color" content="#943526">
+
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="This post is a follow up on the previous one where I discussed the concept of...">
+  <meta property="og:url" content="https://www.abarrak.com/2024/10/17/reflections-on-iac-with-terraform-2">
+	
+	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
+	
+	
+	<meta property="og:title" content="Abdullah Barrak • Reflections on IaC using Terraform - Part II">
+	
+	<link rel="canonical" href="https://www.abarrak.com/2024/10/17/reflections-on-iac-with-terraform-2">
+
+	<title>
+    
+      Reflections on IaC using Terraform - Part II •
+      Abdullah Barrak's Blog
+    
+  </title>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/icons/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/icons/favicon.ico">
+
+  <!-- Fonts -->
+	<link rel='stylesheet' id='libretto-fonts-css'  href='https://fonts.googleapis.com/css?family=Libre+Baskerville%3A400%2C700%2C400italic%7CPlayfair+Display%3A400%2C700%2C400italic%2C700italic%7CPlayfair+Display+SC%3A700%2C700italic%7CMontserrat%3A400%7CDroid+Sans+Mono%3A400&#038;subset=latin%2Clatin-ext' type='text/css' media='all'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/public/css/main.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/tooltipster-bundle.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/tooltipster-sideTip-shadow.min.css" type="text/css" media="all">
+  
+
+  <!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="https://www.abarrak.com/feed.xml">
+</head>
+
+<body>
+
+	<header class="site-header">
+	<div class="wrapper-fluid">
+		<a class="site-title" href="/">Abdullah Barrak</a>
+
+    <ul class="links">
+      <li><a href="/about">About</a></li>
+      <li><a href="/works">Works</a></li>
+      <li><a href="/contact">Contact</a></li>
+
+      <li class="lang_link">
+        <small>
+        
+        
+          
+          <a href="
+            /ar/
+          " >ع</a>
+        
+        </small>
+      </li>
+    </ul>
+	</div>
+
+</header>
+
+
+
+	<div class="page-content">
+		<div class="wrapper">
+			<header class="post-header">
+	<div>
+		<span></span><span class="post-meta">
+			
+				October 17, 2024
+			
+		</span>
+	</div>
+
+	<h1 class="post-title" itemprop="name headline">Reflections on IaC using Terraform - Part II</h1>
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="entry-content" itemprop="articleBody">
+		<p><img src="/public/images/iac-reflections-2.png" class="post-image resize-sm center-image"></p>
+
+<p>This post is a follow up on <a href="/2022/09/23/reflections-on-iac-with-terraform">the previous one</a> where I discussed the concept of infrastructure as code and Terraform. In this post, I will provide few useful notes I took while working on IaC projects, with related examples to illustrate the technique, on aws and oracle public cloud providers.</p>
+
+<!-- post-excerpt -->
+
+<h2 id="tips-and-tricks">Tips and Tricks</h2>
+
+<ol>
+  <li>
+    <p>Collect informative and actionable details about your environment <a href="https://developer.hashicorp.com/terraform/language/data-sources" rel="nofollow" target="_blank">using <code class="language-plaintext highlighter-rouge">data</code> blocks</a>.<br> Seriously no need to hardcode these ids or names, instead using <code class="language-plaintext highlighter-rouge">data</code> blocks is one way to query from the external providers, By that, the automation code quality and modularity increase a bit.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="c"># querying for references of aws vpc, and private route tables.</span>
+ data <span class="s2">"aws_vpc"</span> <span class="s2">"main_vpc"</span> <span class="o">{</span>
+   filter <span class="o">{</span>
+     name <span class="o">=</span> <span class="s2">"tag:Name"</span>
+     values <span class="o">=</span> <span class="o">[</span><span class="s2">"</span><span class="k">${</span><span class="nv">var</span><span class="p">.vpc_prefix</span><span class="k">}</span><span class="s2">-vpc"</span><span class="o">]</span>
+   <span class="o">}</span>
+ <span class="o">}</span>
+
+ data <span class="s2">"aws_route_tables"</span> <span class="s2">"main_private_subnet_route_tables"</span> <span class="o">{</span>
+   filter <span class="o">{</span>
+     name   <span class="o">=</span> <span class="s2">"vpc-id"</span>
+     values <span class="o">=</span> <span class="o">[</span>data.aws_vpc.vpc.id]
+   <span class="o">}</span>
+
+   filter <span class="o">{</span>
+     name   <span class="o">=</span> <span class="s2">"tag:Name"</span>
+     values <span class="o">=</span> <span class="o">[</span>
+       <span class="s2">"</span><span class="k">${</span><span class="nv">var</span><span class="p">.vpc_prefix</span><span class="k">}</span><span class="s2">-vpc-rt-private-a"</span>,
+       <span class="s2">"</span><span class="k">${</span><span class="nv">var</span><span class="p">.vpc_prefix</span><span class="k">}</span><span class="s2">-vpc-rt-private-b"</span>,
+       <span class="s2">"</span><span class="k">${</span><span class="nv">var</span><span class="p">.vpc_prefix</span><span class="k">}</span><span class="s2">-vpc-rt-private-c"</span>,
+   <span class="o">}</span>
+ <span class="o">}</span>
+</code></pre></div>    </div>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="c"># query oci for dynamic routing gateway.</span>
+ data <span class="s2">"oci_core_drgs"</span> <span class="s2">"main_drg"</span> <span class="o">{</span>
+   compartment_id <span class="o">=</span> data.main_compartment.id
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Introduce variables to dry up and factorize your environment settings.<br>
+ Conventionally, the <code class="language-plaintext highlighter-rouge">variables.tf</code> file describes the specification of the configurable variables <em>(type, default, description)</em>. Then, the variables are set either on <code class="language-plaintext highlighter-rouge">terraform.tfvars</code> file, passed as command arguments, or environment variables.</p>
+
+    <p>Reference the vars in your code blocks as follows<code class="language-plaintext highlighter-rouge">${vars.my_var}</code>:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="c"># variables.tf</span>
+ variable <span class="s2">"compartment_id"</span> <span class="o">{</span>
+   <span class="nb">type</span> <span class="o">=</span> string
+ <span class="o">}</span>
+
+ variable <span class="s2">"main_ipsec_vpn_connection_routes"</span> <span class="o">{</span>
+   <span class="nb">type</span>        <span class="o">=</span> list<span class="o">(</span>string<span class="o">)</span>
+   description <span class="o">=</span> <span class="s2">"List of one or more static route between a VPN connection and a customer gateway."</span>
+   default     <span class="o">=</span> <span class="o">[]</span>
+ <span class="o">}</span>
+
+ <span class="c"># tunnel.tf</span>
+ resource <span class="s2">"oci_core_ipsec"</span> <span class="s2">"main_ipsec_connection"</span> <span class="o">{</span>
+   compartment_id <span class="o">=</span> var.compartment_id
+   static_routes  <span class="o">=</span> var.aws_hub_ipsec_vpn_connection_routes
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Use output to express and state unknown information till after the apply.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="c"># case from provisioned resource - aws.</span>
+ output <span class="s2">"main_zone_id"</span> <span class="o">{</span>
+   value <span class="o">=</span> try<span class="o">(</span>aws_route53_zone.main.zone_id, <span class="s2">""</span><span class="o">)</span>
+ <span class="o">}</span>
+
+ <span class="c"># case from provisioned resource - oci.</span>
+ output <span class="s2">"compute_instances_details"</span> <span class="o">{</span>
+   description <span class="o">=</span> <span class="s2">"The summary of created instances."</span>
+   value       <span class="o">=</span> module.compute_instances.instances_summary
+ <span class="o">}</span>
+
+ <span class="c"># case from user input.</span>
+ output <span class="s2">"vcn_cidr_range"</span> <span class="o">{</span>
+   value <span class="o">=</span> var.vcn_cidr_range
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Declare a variable with sensitive flag for masking in logs and execution.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="c"># redact db password from logs, and output channels.</span>
+ output <span class="s2">"auth_token"</span> <span class="o">{</span>
+   value     <span class="o">=</span> random_password.db_password.result
+   sensitive <span class="o">=</span> <span class="nb">true</span>
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add locals to shorten long configuration parts or variables chain.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> locals <span class="o">{</span>
+   availability_domain <span class="o">=</span> data.oci_identity_availability_domain.ad.name
+
+   db_name             <span class="o">=</span> <span class="s2">"</span><span class="k">${</span><span class="nv">var</span><span class="p">.account_prefix]</span><span class="k">}</span><span class="s2">-</span><span class="k">${</span><span class="nv">var</span><span class="p">.business_unit</span><span class="k">}</span><span class="s2">-db"</span>
+   db_admin_user       <span class="o">=</span> <span class="s2">"postgres"</span>
+   db_config_id           <span class="o">=</span> var.db_system_default_config_id
+
+   tags <span class="o">=</span> merge<span class="o">(</span>
+     tomap<span class="o">({</span> Environment <span class="o">=</span> var.env, Terraform   <span class="o">=</span> <span class="s2">"true"</span><span class="o">})</span>,
+     var.tags
+   <span class="o">)</span>
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Revise the variable types: <code class="language-plaintext highlighter-rouge">string</code>, <code class="language-plaintext highlighter-rouge">number</code>, <code class="language-plaintext highlighter-rouge">boolean</code>, <code class="language-plaintext highlighter-rouge">list</code>, <code class="language-plaintext highlighter-rouge">map</code>, and <code class="language-plaintext highlighter-rouge">object</code>.<br>
+    <ul>
+      <li><a href="https://developer.hashicorp.com/terraform/language/expressions/types" rel="nofollow" target="_blank">Refer to the docs.</a></li>
+    </ul>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> variable <span class="s2">"db_subnet_ingress_rules"</span> <span class="o">{</span>
+   <span class="nb">type</span>        <span class="o">=</span> list<span class="o">(</span>object<span class="o">({</span> protocol <span class="o">=</span> string, port <span class="o">=</span> string<span class="o">}))</span>
+   default     <span class="o">=</span> <span class="o">[]</span>
+ <span class="o">}</span>
+
+ db_subnet_ingress_rules <span class="o">=</span> <span class="o">[{</span> protocol <span class="o">=</span> <span class="s2">"6"</span>, port <span class="o">=</span> <span class="s2">"5432"</span> <span class="o">}]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Loop through repetitive resources using <code class="language-plaintext highlighter-rouge">count</code> and <code class="language-plaintext highlighter-rouge">count.index</code></p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> resource <span class="s2">"aws_eip"</span> <span class="s2">"main_reserved_lb_ip"</span> <span class="o">{</span>
+   count <span class="o">=</span> 1
+   tags <span class="o">=</span> merge<span class="o">({</span> <span class="s2">"Name"</span> <span class="o">=</span> <span class="s2">"lb_reserved_ip_</span><span class="k">${</span><span class="nv">count</span><span class="p">.index</span><span class="k">}</span><span class="s2">"</span><span class="o">}</span>, local.tags<span class="o">)</span>
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Utilize <code class="language-plaintext highlighter-rouge">hashicorp/random</code> module to generate ids or credentials.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> resource <span class="s2">"random_password"</span> <span class="s2">"ec2_root_password"</span> <span class="o">{</span>
+   length           <span class="o">=</span> 20
+   special          <span class="o">=</span> <span class="nb">true
+   </span>override_special <span class="o">=</span> <span class="s2">"@!-=+"</span>
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Import child modules into the main module using <code class="language-plaintext highlighter-rouge">source</code> attribute from various sources: <br>
+local FS, git repository, github, a url, or the public terraform registry.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="c"># redshift database deployment via external module from the terraform registry.</span>
+ module <span class="s2">"redshift-db"</span> <span class="o">{</span>
+   <span class="nb">source</span>  <span class="o">=</span> <span class="s2">"terraform-aws-modules/redshift/aws"</span>
+   version <span class="o">=</span> <span class="s2">"3.4.1"</span>
+
+   cluster_identifier                  <span class="o">=</span> <span class="s2">"</span><span class="k">${</span><span class="nv">var</span><span class="p">.account_prefix</span><span class="k">}</span><span class="s2">-redshift-db"</span>
+   cluster_node_type                   <span class="o">=</span> <span class="s2">"dc2.large"</span>
+   cluster_number_of_nodes             <span class="o">=</span> 2
+   encrypted                           <span class="o">=</span> <span class="nb">true
+   </span>automated_snapshot_retention_period <span class="o">=</span> 5
+
+   cluster_database_name   <span class="o">=</span> <span class="s2">"redshift-db"</span>
+   cluster_master_username <span class="o">=</span> <span class="s2">"rd-db-user"</span>
+   cluster_master_password <span class="o">=</span> random_password.rd_db_pass.result
+
+   wlm_json_configuration       <span class="o">=</span> jsonencode<span class="o">([{</span> auto_wlm <span class="o">=</span> <span class="nb">true</span> <span class="o">}])</span>
+   enable_user_activity_logging <span class="o">=</span> <span class="nb">true
+   </span>owner_account                <span class="o">=</span> <span class="s2">""</span>
+   final_snapshot_identifier    <span class="o">=</span> <span class="s2">"</span><span class="k">${</span><span class="nv">var</span><span class="p">.account_prefix</span><span class="k">}</span><span class="s2">-final-snapshot"</span>
+
+   cluster_iam_roles <span class="o">=</span> <span class="o">[</span>
+     local.s3_iam_role.iam_role_arn
+   <span class="o">]</span>
+
+   subnets <span class="o">=</span> data.aws_subnets.private_subnets
+   enhanced_vpc_routing <span class="o">=</span> <span class="nb">true
+   </span>publicly_accessible  <span class="o">=</span> <span class="nb">true
+   </span>vpc_security_group_ids <span class="o">=</span> <span class="o">[</span>module.main_networking.main_sg.id]
+   enable_logging <span class="o">=</span> <span class="nb">true
+
+   </span>tags <span class="o">=</span> <span class="o">{}</span>
+ <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>When using multiple modules structure, variables can be passed around in <code class="language-plaintext highlighter-rouge">module</code> block.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>module <span class="s2">"postgres"</span> <span class="o">{</span>
+  <span class="nb">source</span>           <span class="o">=</span> <span class="s2">"../../base-modules/oci/postgres"</span>
+  compartment_id   <span class="o">=</span> var.compartment_id
+  tenancy_id       <span class="o">=</span> var.tenancy_id
+  db_name          <span class="o">=</span> var.postgres_db_name
+  tags             <span class="o">=</span> var.tags
+  <span class="c"># etc ...</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Use <code class="language-plaintext highlighter-rouge">for_each</code> iteration primitives (<code class="language-plaintext highlighter-rouge">.key</code>, <code class="language-plaintext highlighter-rouge">value.*</code>) for granular data structure looping over sets.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c"># basic looping.</span>
+data <span class="s2">"aws_subnet"</span> <span class="s2">"public_subnet"</span> <span class="o">{</span>
+  for_each <span class="o">=</span> toset<span class="o">(</span>data.aws_subnets.public_subnets.ids<span class="o">)</span>
+  <span class="nb">id</span>       <span class="o">=</span> each.value
+<span class="o">}</span>
+
+<span class="c"># basic looping with mapping.</span>
+resource <span class="s2">"aws_route53_record"</span> <span class="s2">"main_zone_cnames"</span> <span class="o">{</span>
+  for_each <span class="o">=</span> <span class="o">{</span> <span class="k">for </span>r <span class="k">in </span>var.main_public_cnames : i[0] <span class="o">=&gt;</span> <span class="o">{</span> target : r[1], ttl : r[2] <span class="o">}}</span>
+
+  zone_id <span class="o">=</span> aws_route53_zone.main.id
+  <span class="nb">type</span>    <span class="o">=</span> <span class="s2">"CNAME"</span>
+  name    <span class="o">=</span> each.key
+  ttl     <span class="o">=</span> each.value.ttl
+  records <span class="o">=</span> <span class="o">[</span>each.value.target]
+
+  depends_on <span class="o">=</span> <span class="o">[</span>
+    aws_route53_zone.main_zone
+  <span class="o">]</span>
+<span class="o">}</span>
+
+<span class="c"># advanced example.</span>
+resource <span class="s2">"aws_route"</span> <span class="s2">"private_subnets_vpn_routes"</span> <span class="o">{</span>
+  for_each <span class="o">=</span> length<span class="o">(</span>var.ipsec_vpn_connection_routes<span class="o">)</span> <span class="o">==</span> 0 ? <span class="o">{}</span> : <span class="o">{</span>
+    <span class="k">for </span>pair <span class="k">in </span>setproduct<span class="o">(</span>
+      data.aws_route_tables.private_subnet_route_tables.ids,
+      var.ipsec_vpn_connection_routes
+    <span class="o">)</span> : <span class="s2">"route-entry.</span><span class="k">${</span><span class="nv">pair</span><span class="p">[0]</span><span class="k">}</span><span class="s2">.</span><span class="k">${</span><span class="nv">pair</span><span class="p">[1]</span><span class="k">}</span><span class="s2">"</span> <span class="o">=&gt;</span> <span class="o">{</span> rt_id <span class="o">=</span> pair[0], dest_cidr <span class="o">=</span> pair[1] <span class="o">}</span>
+  <span class="o">}</span>
+  route_table_id         <span class="o">=</span> each.value.rt_id
+  destination_cidr_block <span class="o">=</span> each.value.dest_cidr
+  gateway_id             <span class="o">=</span> aws_vpn_gateway.ipsec_vpn_gateway.id
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>review  the built-in functions of interest to your configurations: <br>
+<code class="language-plaintext highlighter-rouge">tolist()</code>, <code class="language-plaintext highlighter-rouge">toset()</code>, <code class="language-plaintext highlighter-rouge">upper()</code>, <code class="language-plaintext highlighter-rouge">join()</code>, <code class="language-plaintext highlighter-rouge">lower()</code>, <code class="language-plaintext highlighter-rouge">max()</code>, <code class="language-plaintext highlighter-rouge">endswith()</code>, <code class="language-plaintext highlighter-rouge">chomp()</code>, <code class="language-plaintext highlighter-rouge">regex()</code>, <code class="language-plaintext highlighter-rouge">map()</code>, <code class="language-plaintext highlighter-rouge">reverse()</code>, <code class="language-plaintext highlighter-rouge">flatten()</code>, <code class="language-plaintext highlighter-rouge">file()</code>, <code class="language-plaintext highlighter-rouge">base64*()</code>, <code class="language-plaintext highlighter-rouge">timestamp()</code>, and much more.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>locals <span class="o">{</span>
+  normalized_prefix <span class="o">=</span> lower<span class="o">(</span>var.account_prefix<span class="o">)</span>
+<span class="o">}</span>
+
+provider <span class="s2">"kubernetes"</span> <span class="o">{</span>
+  host                   <span class="o">=</span> data.aws_eks_cluster.main.endpoint
+  token                  <span class="o">=</span> data.aws_eks_cluster_auth.main.token
+  cluster_ca_certificate <span class="o">=</span> base64decode<span class="o">(</span>data.aws_eks_cluster.main.certificate_authority.0.data<span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+
+    <p>They come in handy during your IaC development and can helps solving many problems.<br>
+<a href="https://developer.hashicorp.com/terraform/language/functions" rel="nofollow" target="_blank">Refer to the docs here.</a></p>
+  </li>
+  <li>
+    <p>You can add validation rules and message to your module vars in <code class="language-plaintext highlighter-rouge">variables.tf</code>.<br>
+Here’s an example:</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>variable <span class="s2">"vpc_prefix"</span> <span class="o">{</span>
+  <span class="nb">type</span> <span class="o">=</span> string
+  validation <span class="o">{</span>
+    error_message <span class="o">=</span> <span class="s2">"vpc_prefix should be less than 10 characters."</span>
+    condition     <span class="o">=</span> length<span class="o">(</span>var.vpc_prefix<span class="o">)</span> &lt; 10
+  <span class="o">}</span>
+<span class="o">}</span>
+
+variable <span class="s2">"db_system_storage_iops"</span> <span class="o">{</span>
+  description <span class="o">=</span> <span class="s2">"OCI DbSystem Performance Unit"</span>
+  default     <span class="o">=</span> <span class="s2">"300000"</span>
+  <span class="nb">type</span>        <span class="o">=</span> string
+  validation <span class="o">{</span>
+    condition <span class="o">=</span> contains<span class="o">([</span><span class="s2">"300000"</span>, <span class="s2">"750000"</span><span class="o">]</span>, var.db_system_storage_iops<span class="o">)</span>
+    error_message <span class="o">=</span> <span class="s2">"Currently, the only supported performance tier are 300,000, and 750,000 IOPS."</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Use the state CLI command to show, list, or manipulate the state once needed <em>(e.g. checking existing values, importing directly modified items outside IaC, etc.)</em>.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c"># view the current state items.</span>
+terraform state list
+
+<span class="c"># importing specific item that was done outside terraform</span>
+terraform state <span class="nb">rm</span> <span class="s2">"aws_customer_gateway.ipsec_gateway_cpe"</span>
+terraform import <span class="s2">"aws_customer_gateway.ipsec_gateway_cpe"</span> <span class="s2">"cgw-XXXXXX"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Use <code class="language-plaintext highlighter-rouge">terraform console</code> to quickly experiment with <code class="language-plaintext highlighter-rouge">HCL</code> syntax and explore the current module data.</p>
+
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="c"># testing sort function for an IPs list.</span>
+❯ terraform console                                                                                                                      infra-terraform/git/master
+<span class="o">&gt;</span> tolist<span class="o">(</span>concat<span class="o">(</span><span class="nb">sort</span><span class="o">([</span><span class="s2">"10.200.18.0/24"</span>, <span class="s2">"10.34.150.0/24"</span>, <span class="s2">"10.10.100.0/25"</span> <span class="o">])))</span>
+tolist<span class="o">([</span>
+  <span class="s2">"10.10.100.0/25"</span>,
+  <span class="s2">"10.200.18.0/24"</span>,
+  <span class="s2">"10.34.150.0/24"</span>,
+<span class="o">])</span>
+</code></pre></div>    </div>
+    <p><br></p>
+  </li>
+</ol>
+
+<p>Although, terraform and <code class="language-plaintext highlighter-rouge">HCL</code> definition language may have some limitation around dynamic behavior sometimes, you will find ways to structure and approach your automation code declaratively, most of the time!</p>
+
+	</div>
+
+	
+<h2 class="comments-label">Comments</h2>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+      this.page.url = "https://www.abarrak.com/2024/10/17/reflections-on-iac-with-terraform-2";
+      this.page.identifier = "reflections-on-iac-using-terraform-part-ii";
+  };
+
+  (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//abarrak.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+</article>
+
+<div id="post-nav">
+	<div class="next">
+		
+	</div>
+
+	<div class="previous">
+		
+		<a href="/2023/03/31/e2e-treafik-tls-offloading">
+			<span>Previous entry</span>
+			How to implement End-to-End TLS flow using Traefik
+		</a>
+		
+	</div>
+</div>
+
+		</div>
+	</div>
+
+	<footer class="site-footer">
+	<div class="wrapper-fluid footet-wrapper">
+
+		<!-- <h2 class="footer-heading">Blog</h2> -->
+
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-1 footer-left">
+				<a href="">Abdullah Barrak's Blog</a>
+				<ul class="contact-list">
+					<li>A passionate blog about computer programming, reading, thinking, and the like.</li>
+					<li><b>(2016 - 2024)</b></li>
+				</ul>
+			</div>
+
+			<div class="footer-col footer-col-1 footer-right">
+				<p class="center">
+					<a href="/tags">Tag Cloud</a> |
+					subscribe <a href="/feed.xml">via RSS</a>
+				</p>
+
+				<div class="social-links">
+				
+					<a href="https://github.com/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/github-icon.png" alt="Github Icon">
+					</a>
+				
+
+				
+					<a href="https://goodreads.com/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/goodreads-icon.png" alt="Goodreads Icon">
+					</a>
+				
+
+				
+					<a href="https://linkedin.com/in/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/linkedin-icon.png" alt="LinkedIn Icon">
+					</a>
+				
+
+				
+					<a href="https://x.com/abarrakx" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/twitter-icon.png" alt="Github Icon">
+					</a>
+				
+
+				
+					<a href="https://stackoverflow.com/users/2925286/abdullah-barrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/stackoverflow-icon.png" alt="stackoverflow Icon">
+					</a>
+				
+
+					<a href="mailto:abdullah@abarrak.com" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/mail-icon.png" alt="Email Icon">
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</footer>
+
+
+<script src="/public/js/all.min.js"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83251901-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-83251901-1');
+</script>
+
+
+
+
+</body>
+</html>
