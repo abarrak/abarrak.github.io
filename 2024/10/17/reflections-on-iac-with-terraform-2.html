@@ -100,13 +100,12 @@
 
 <p>This post is a follow up on <a href="/2022/09/23/reflections-on-iac-with-terraform">the previous one</a> where I discussed the concept of infrastructure as code and Terraform. In this post, I will provide few useful notes I took while working on IaC projects, with examples to illustrate the techniques on two of the public providers (AWS / Oracle).</p>
 
-<!-- post-excerpt -->
-
 <h2 id="tips-and-tricks">Tips and Tricks</h2>
 
 <ol>
   <li>
-    <p>Collect informative and actionable details about your environment <a href="https://developer.hashicorp.com/terraform/language/data-sources" rel="nofollow" target="_blank">using <code class="language-plaintext highlighter-rouge">data</code> blocks</a>.<br> Seriously no need to hardcode these ids or names, instead using <code class="language-plaintext highlighter-rouge">data</code> blocks is one way to query from the external providers, By that, the automation code quality and modularity increase a bit.</p>
+    <p>Collect informative and actionable details about your environment <a href="https://developer.hashicorp.com/terraform/language/data-sources" rel="nofollow" target="_blank">using <code class="language-plaintext highlighter-rouge">data</code> blocks</a>. <br> Seriously no need to hardcode these ids or names, instead using <code class="language-plaintext highlighter-rouge">data</code> blocks is one way to query from the external providers, By that, the automation code quality and modularity increase a bit.
+<!-- post-excerpt --></p>
 
     <div class="language-bash highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code> <span class="c"># querying for references of aws vpc, and private route tables.</span>

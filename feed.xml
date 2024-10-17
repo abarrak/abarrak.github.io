@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 17 Oct 2024 16:08:42 +0300</pubDate>
-    <lastBuildDate>Thu, 17 Oct 2024 16:08:42 +0300</lastBuildDate>
+    <pubDate>Thu, 17 Oct 2024 16:10:45 +0300</pubDate>
+    <lastBuildDate>Thu, 17 Oct 2024 16:10:45 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
     
       <item>
@@ -15,13 +15,12 @@
 
 &lt;p&gt;This post is a follow up on &lt;a href=&quot;/2022/09/23/reflections-on-iac-with-terraform&quot;&gt;the previous one&lt;/a&gt; where I discussed the concept of infrastructure as code and Terraform. In this post, I will provide few useful notes I took while working on IaC projects, with examples to illustrate the techniques on two of the public providers (AWS / Oracle).&lt;/p&gt;
 
-&lt;!-- post-excerpt --&gt;
-
 &lt;h2 id=&quot;tips-and-tricks&quot;&gt;Tips and Tricks&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
-    &lt;p&gt;Collect informative and actionable details about your environment &lt;a href=&quot;https://developer.hashicorp.com/terraform/language/data-sources&quot;&gt;using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; blocks&lt;/a&gt;.&lt;br /&gt; Seriously no need to hardcode these ids or names, instead using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; blocks is one way to query from the external providers, By that, the automation code quality and modularity increase a bit.&lt;/p&gt;
+    &lt;p&gt;Collect informative and actionable details about your environment &lt;a href=&quot;https://developer.hashicorp.com/terraform/language/data-sources&quot;&gt;using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; blocks&lt;/a&gt;. &lt;br /&gt; Seriously no need to hardcode these ids or names, instead using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; blocks is one way to query from the external providers, By that, the automation code quality and modularity increase a bit.
+&lt;!-- post-excerpt --&gt;&lt;/p&gt;
 
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# querying for references of aws vpc, and private route tables.&lt;/span&gt;
  data &lt;span class=&quot;s2&quot;&gt;&quot;aws_vpc&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;main_vpc&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
