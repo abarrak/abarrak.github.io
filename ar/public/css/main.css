@@ -80,14 +80,6 @@ article > .entry-content:first-letter {
     line-height: 30px;
   }
 }
-article > .entry-content:first-line {
-  color: #787065;
-  font-family: "Playfair Display SC", "Noto Naskh Arabic";
-  font-size: 1em;
-  font-style: normal !important;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
 
 .post-header, .page-header {
   border-bottom: 1px solid #d9d6d0;
