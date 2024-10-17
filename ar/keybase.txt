@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/abarrak
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://www.abarrak.com
+  * I am abarrak (https://keybase.io/abarrak) on keybase.
+  * I have a public key with fingerprint E093 93A3 967E 7CA3 9952  A78B 48F2 83F3 FC4E 7F23
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01206d9d3576edfcbec4c3d5822753127c8607966a7a64669362c857279b34893b0d0a",
+            "fingerprint": "e09393a3967e7ca39952a78b48f283f3fc4e7f23",
+            "host": "keybase.io",
+            "key_id": "48f283f3fc4e7f23",
+            "kid": "01013fd1e48f59a6e74735cf92773f6ab1e07b57fc88fbcf96bc47bc0bf533a284bb0a",
+            "uid": "af2119ba2aedd5d4f54bf1f07ce5f519",
+            "username": "abarrak"
+        },
+        "service": {
+            "hostname": "www.abarrak.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1472745206,
+    "expire_in": 157680000,
+    "prev": "56a5e2302d80d1e18e3a6a8089bd60071b3c5d69c02cc037c2ff415ed7fd4272",
+    "seqno": 7,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.56
+Comment: https://keybase.io/crypto
+
+yMNxAnicbZJ9UFRVGMYX6YslBUElpQwuzDgaMPf73LuVDQqBwLAMMwWMNNs9554L
+l4+9y+7C8iFRUDqKmhIOaGQwxuCMSQhFqewoiSggSfThaIOaSGpRSEBkinWXwf86
+/5w57/k9z3nOe07PYm+D0Sv+z6qpB8kVYV4D3fWFhrTzyX+VEVCTSwhTGZGL5yec
+J2OH05KryoSJICma5GVRZjjAY1lBECMWMTIn0DTgGIoGSOBJIPK8BCSe5XmR4Wkk
+cIAGImRYQWQgKZMSEUEoqjUL22121erUbTEpMiIjMSIPMED6LHK0BATICgotMAqj
+IBYDhWZ0Ybbm8Cj0cFBy4ChV02v6wjIf73/4R7lJilFkCusEJ0o8BixgOKSINACM
+wkuQwiSAHFCQIChQr/MQsQAiEiocw0i0wEI4n7tw3k5SaIoSoURLWJY5mVU4FiqU
+QgKEOYWjRA/owHarlI89NJTsdimXKI8g9GKRirCnr56LLAAulytqAYpCWr6uttk1
+p4a0PH0z2+m0mTxaZ4ltHsbQsmBjgapV1hupC4qw3aFqVsJE6SRyqh5fitX7znL6
+i0UQuNim2rFF9RD62wmkPjzH4CLdkuMlDtMMScsCqfeIEjAj8ZJACiKUeZIEFGQQ
+J/MiImmESAYgWlFYisMyUGSWBjThuViBVSNMQI8pZemWDjXLKjkL7Zgo/7o78zGD
+l9HwxOOLPB/MYPTxf/Tt8jL8DQeWfua+eDCgb0fAUMiJkYmi+qaW2YCJVbBy5Uxa
+9aYXVb9rY5N3zB++W76u0RB2qdoldXMjLXM+Jdun89113cU/VyalrNimoePjsyd9
+iPZUuTy1L6j4jcbBzI2VJ6sq7meapzN/900h+yeaQ3sUn+S46LDsHWn7D7jT9oV+
+aui8VBG9+V6dY3VX83B/6L69l5PSpxri7gcNb/1DDg/zVa8K+1ddKR0MTgfNlkV3
+ndTe4bOBP7qXbf028vbhazcbotdUthYm+VhG+0+ll7W7ZpeE/OM3yj5FHTpd0zOj
+nb8aWIsHbjS8E9M2FLCFjo8MTPAN/mR8bBe/vbS9NTbk5ffODU5O5iwF3evMlcdL
+4tK7HjRaJ9de/yGmY+BocH0N0xbz1dknL4v252JrvlONmeFPR49sWvYTgt+sPxwJ
+WseSzkQkqNcTn4/s3b2zvnFFWMYN+nbiUNuF0dVHvV/b8EHEQMaz5oPu2tSmncs7
+cfGbXsfWJ/mubg68sjzhzobR2guxe3JOGT86ZH69z3931kbbL1p84r1p9ytr5trf
+2tzp2tNkPBdkeWborklzT1fnnRE/7jqisAPyq1vGE+3vexcsHh6HM58rHdaXyt8+
+ktPg33yrN5yuSln5d8eJlrnJ77d9kRfO3Uz5bWKJ9QXcO36aeSgfq+gr+LVn6uKt
+qYqJOlRq/vdLp9/D8LX/AXN8x7o=
+=+Qcj
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/abarrak
+
+==================================================================
