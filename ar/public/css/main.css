@@ -484,11 +484,12 @@ pre > code {
 .about-list li .detail:last-child {
   margin-bottom: 0.75rem;
 }
-@media screen and (min-width: 400px) {
-  .about-list li .thesis {
-    display: block !important;
-    margin-left: 0.5rem;
-  }
+.about-list li .detail .tooltip {
+  border-bottom: 1px dotted #8c8b8b;
+}
+.about-list li .thesis {
+  display: block !important;
+  margin-left: 0.4rem;
 }
 
 .social-links {
@@ -1159,6 +1160,14 @@ hr.pretty:after, .works-list hr:after, .table-of-contents hr:after {
   -webkit-transform: rotate(60deg);
   -moz-transform: rotate(60deg);
   transform: rotate(60deg);
+}
+
+hr.light {
+  border: 0;
+  border-top: 0.0625rem dotted #8c8b8b;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .table-of-contents h2 {
