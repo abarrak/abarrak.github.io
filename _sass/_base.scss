@@ -33,7 +33,7 @@ article {
   background: #faf9f5;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05);
   margin-bottom: $spacing-unit;
-  padding: 3em 3em 1em;
+  padding: 1.5em 2em 1.2em;
 
   @include media-query($on-palm) {
     padding: 1em 1em 0.3em;
@@ -96,8 +96,8 @@ article {
     font-family: libretto-icons;
     font-size: 21px;
     line-height: 21px;
-    margin: 1rem auto 2rem;
-    padding: 10px;
+    margin: 0.4rem auto 0.8rem;
+    padding: .6rem;
     text-shadow: none;
   }
 
