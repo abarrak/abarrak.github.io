@@ -3,10 +3,10 @@
   <channel>
     <title></title>
     <description></description>
-    <link>https://www.abarrak.com/ar/</link>
-    <atom:link href="https://www.abarrak.com/ar/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 17 Oct 2024 23:19:24 +0300</pubDate>
-    <lastBuildDate>Thu, 17 Oct 2024 23:19:24 +0300</lastBuildDate>
+    <link>http://localhost:4000/ar/</link>
+    <atom:link href="http://localhost:4000/ar/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 21 Oct 2024 11:55:56 +0300</pubDate>
+    <lastBuildDate>Mon, 21 Oct 2024 11:55:56 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
     
       <item>
@@ -55,8 +55,8 @@
 &lt;p&gt;أرجو أن تقدم الفائدة للمهتمين بأحد هذه البرمجيات!&lt;/p&gt;
 </description>
         <pubDate>Mon, 28 Nov 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/ar/2022/11/28/some-ansible-roles</link>
-        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/11/28/some-ansible-roles</guid>
+        <link>http://localhost:4000/ar/2022/11/28/some-ansible-roles</link>
+        <guid isPermaLink="true">http://localhost:4000/ar/2022/11/28/some-ansible-roles</guid>
         
         <category>لينكس</category>
         
@@ -102,8 +102,8 @@
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 05 Nov 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/ar/2022/11/05/reads-and-revisions-2</link>
-        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/11/05/reads-and-revisions-2</guid>
+        <link>http://localhost:4000/ar/2022/11/05/reads-and-revisions-2</link>
+        <guid isPermaLink="true">http://localhost:4000/ar/2022/11/05/reads-and-revisions-2</guid>
         
         <category>القراءة</category>
         
@@ -134,8 +134,8 @@
 &lt;p&gt;نشرت تدوينة أخرى &lt;a href=&quot;/2024/10/17/reflections-on-iac-with-terraform-2&quot;&gt;تتضمن بعض الأساليب والتوصيات لمشاريع تيرافورم.&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 23 Sep 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/ar/2022/09/23/reflections-on-iac-with-terraform</link>
-        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/09/23/reflections-on-iac-with-terraform</guid>
+        <link>http://localhost:4000/ar/2022/09/23/reflections-on-iac-with-terraform</link>
+        <guid isPermaLink="true">http://localhost:4000/ar/2022/09/23/reflections-on-iac-with-terraform</guid>
         
         <category>الأتمتة</category>
         
@@ -195,8 +195,8 @@
 الميزة المشتركة في هذه المجموعة، جودتها جميعاً في رأيي الشخصي وعلو شأنها إنْ أدبياً أو علمياً، واجتماعياً.&lt;/p&gt;
 </description>
         <pubDate>Sat, 05 Mar 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/ar/2022/03/05/reads-and-revisions-1</link>
-        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/03/05/reads-and-revisions-1</guid>
+        <link>http://localhost:4000/ar/2022/03/05/reads-and-revisions-1</link>
+        <guid isPermaLink="true">http://localhost:4000/ar/2022/03/05/reads-and-revisions-1</guid>
         
         <category>القراءة</category>
         
@@ -233,8 +233,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 22 Feb 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/ar/2022/02/22/linux-sysops-git-book</link>
-        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/02/22/linux-sysops-git-book</guid>
+        <link>http://localhost:4000/ar/2022/02/22/linux-sysops-git-book</link>
+        <guid isPermaLink="true">http://localhost:4000/ar/2022/02/22/linux-sysops-git-book</guid>
         
         <category>لينكس</category>
         
@@ -308,8 +308,8 @@ docker image prune &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Fri, 18 Feb 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/ar/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</link>
-        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</guid>
+        <link>http://localhost:4000/ar/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</link>
+        <guid isPermaLink="true">http://localhost:4000/ar/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</guid>
         
         <category>cicd</category>
         
@@ -363,8 +363,8 @@ docker image prune &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
 &lt;p&gt;🌹&lt;/p&gt;
 </description>
         <pubDate>Sat, 12 Feb 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/ar/2022/02/12/first-post</link>
-        <guid isPermaLink="true">https://www.abarrak.com/ar/2022/02/12/first-post</guid>
+        <link>http://localhost:4000/ar/2022/02/12/first-post</link>
+        <guid isPermaLink="true">http://localhost:4000/ar/2022/02/12/first-post</guid>
         
         <category>الكتابة</category>
         

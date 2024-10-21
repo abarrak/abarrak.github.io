@@ -16,14 +16,14 @@
 
   <meta property="og:type" content="article">
   <meta property="og:description" content="This post is a follow up on the previous one where I discussed the concept of...">
-  <meta property="og:url" content="https://www.abarrak.com/2024/10/17/reflections-on-iac-with-terraform-2">
+  <meta property="og:url" content="http://localhost:4000/2024/10/17/reflections-on-iac-with-terraform-2">
 	
-	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
+	<meta property="og:image" content="http://localhost:4000/public/thumbnail-1.jpg">
 	
 	
 	<meta property="og:title" content="Abdullah Barrak • Reflections on IaC using Terraform - Part II">
 	
-	<link rel="canonical" href="https://www.abarrak.com/2024/10/17/reflections-on-iac-with-terraform-2">
+	<link rel="canonical" href="http://localhost:4000/2024/10/17/reflections-on-iac-with-terraform-2">
 
 	<title>
     
@@ -48,7 +48,7 @@
   
 
   <!-- RSS -->
-	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="https://www.abarrak.com/feed.xml">
+	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="http://localhost:4000/feed.xml">
 </head>
 
 <body>
@@ -179,7 +179,7 @@
 
  <span class="c"># provisioned resource - oci</span>
  output <span class="s2">"instances_details"</span> <span class="o">{</span>
-   value <span class="o">=</span> module.ci.instances_summary
+   value <span class="o">=</span> module.i.instances_summary
  <span class="o">}</span>
 </code></pre></div>    </div>
   </li>
@@ -189,7 +189,7 @@
     <div class="language-bash highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code> output <span class="s2">"auth_token"</span> <span class="o">{</span>
    sensitive <span class="o">=</span> <span class="nb">true
-   </span>value <span class="o">=</span> random_password.pass.result
+   </span>value <span class="o">=</span> random_password.p.result
  <span class="o">}</span>
 </code></pre></div>    </div>
   </li>
@@ -198,7 +198,9 @@
 
     <div class="language-bash highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code> locals <span class="o">{</span>
-   ad <span class="o">=</span> data.oci_identity_availability_domain.ad.name
+   az <span class="o">=</span> data.
+        aws_availability_zone.
+        main.name_suffix
 
    db_name <span class="o">=</span> <span class="s2">"</span><span class="k">${</span><span class="nv">var</span><span class="p">.prefix]</span><span class="k">}</span><span class="s2">-db"</span>
    db_admin_user <span class="o">=</span> <span class="s2">"postgres"</span>
@@ -216,7 +218,9 @@
 
     <div class="language-bash highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code> variable <span class="s2">"db_ingress_ports"</span> <span class="o">{</span>
-   <span class="nb">type</span> <span class="o">=</span> list<span class="o">(</span>object<span class="o">(</span> <span class="o">{</span> port <span class="o">=</span> string <span class="o">}</span> <span class="o">))</span>
+   <span class="nb">type</span> <span class="o">=</span> list<span class="o">(</span>object<span class="o">(</span>
+     <span class="o">{</span> port <span class="o">=</span> string <span class="o">}</span>
+   <span class="o">))</span>
  <span class="o">}</span>
 
  db_ingress_ports <span class="o">=</span> <span class="o">[</span>
@@ -232,7 +236,10 @@
     <div class="language-bash highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code> resource <span class="s2">"aws_eip"</span> <span class="s2">"eips"</span> <span class="o">{</span>
    count <span class="o">=</span> 1
-   tags <span class="o">=</span> merge<span class="o">({</span> <span class="s2">"Name"</span> <span class="o">=</span> <span class="s2">"lb_ip_</span><span class="k">${</span><span class="nv">count</span><span class="p">.index</span><span class="k">}</span><span class="s2">"</span> <span class="o">}</span>, local.tags<span class="o">)</span>
+   tags <span class="o">=</span> merge<span class="o">({</span>
+     <span class="s2">"Name"</span> <span class="o">=</span>
+     <span class="s2">"lb_ip_</span><span class="k">${</span><span class="nv">count</span><span class="p">.index</span><span class="k">}</span><span class="s2">"</span>
+     <span class="o">}</span>, local.tags<span class="o">)</span>
  <span class="o">}</span>
 </code></pre></div>    </div>
   </li>
@@ -320,7 +327,7 @@ data <span class="s2">"aws_subnet"</span> <span class="s2">"subnet"</span> <span
 <span class="o">}</span>
 
 <span class="c"># basic looping with mapping.</span>
-resource <span class="s2">"aws_route53_record"</span> <span class="s2">"cnames"</span> <span class="o">{</span>
+resource <span class="s2">"aws_route53_record"</span> <span class="s2">"cns"</span> <span class="o">{</span>
   for_each <span class="o">=</span> <span class="o">{</span>
     <span class="k">for </span>r <span class="k">in </span>var.public_cnames :
     r[0] <span class="o">=&gt;</span> <span class="o">{</span>
@@ -341,11 +348,13 @@ resource <span class="s2">"aws_route53_record"</span> <span class="s2">"cnames"<
 <span class="o">}</span>
 
 <span class="c"># advanced example.</span>
-resource <span class="s2">"aws_route"</span> <span class="s2">"private_subnets_vpn_routes"</span> <span class="o">{</span>
+resource <span class="s2">"aws_route"</span> <span class="s2">"vpn_routes"</span> <span class="o">{</span>
   for_each <span class="o">=</span> <span class="o">{</span>
     <span class="k">for </span>i <span class="k">in </span>setproduct<span class="o">(</span>
-    data.aws_route_tables.private.ids, var.vpn_route<span class="o">)</span> :
-    <span class="s2">"entry.</span><span class="k">${</span><span class="nv">i</span><span class="p">[0]</span><span class="k">}</span><span class="s2">.</span><span class="k">${</span><span class="nv">i</span><span class="p">[1]</span><span class="k">}</span><span class="s2">"</span> <span class="o">=&gt;</span> <span class="o">{</span> rt_id <span class="o">=</span> i[0], dest_cidr <span class="o">=</span> i[1] <span class="o">}</span>
+      data.aws_route_tables.p.ids,
+      var.vpn_route<span class="o">)</span> :
+      <span class="s2">"rt-entry.</span><span class="k">${</span><span class="nv">i</span><span class="p">[0]</span><span class="k">}</span><span class="s2">.</span><span class="k">${</span><span class="nv">i</span><span class="p">[1]</span><span class="k">}</span><span class="s2">"</span> <span class="o">=&gt;</span>
+      <span class="o">{</span> rt_id <span class="o">=</span> i[0], cidr <span class="o">=</span> i[1] <span class="o">}</span>
   <span class="o">}</span>
 
   gateway_id <span class="o">=</span>
@@ -353,7 +362,7 @@ resource <span class="s2">"aws_route"</span> <span class="s2">"private_subnets_v
   route_table_id <span class="o">=</span>
     each.value.rt_id
   destination_cidr_block <span class="o">=</span>
-    each.value.dest_cidr
+    each.value.cidr
 <span class="o">}</span>
 </code></pre></div>    </div>
   </li>
@@ -371,7 +380,9 @@ resource <span class="s2">"aws_route"</span> <span class="s2">"private_subnets_v
 <div class="highlight"><pre class="highlight"><code>provider <span class="s2">"kubernetes"</span> <span class="o">{</span>
   cluster_ca_certificate <span class="o">=</span>
     base64decode<span class="o">(</span>
-      data.aws_eks_cluster.main.ca.0.data
+      data.aws_eks_cluster.main.
+      certificate_authority.
+      0.data
     <span class="o">)</span>
 <span class="o">}</span>
 </code></pre></div>    </div>
@@ -455,25 +466,6 @@ tolist<span class="o">([</span>
 	</div>
 
 	
-<h2 class="comments-label">Comments</h2>
-<div id="disqus_thread"></div>
-<script>
-  var disqus_config = function () {
-      this.page.url = "https://www.abarrak.com/2024/10/17/reflections-on-iac-with-terraform-2";
-      this.page.identifier = "reflections-on-iac-using-terraform-part-ii";
-  };
-
-  (function() {
-      var d = document, s = d.createElement('script');
-      s.src = '//abarrak.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-  })();
-</script>
-<noscript>
-Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow" target="_blank">comments powered by Disqus.</a>
-</noscript>
-
 
 </article>
 
@@ -558,19 +550,9 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
 </footer>
 
 
-<script src="/public/js/all.min.js"></script>
+<script src="/public/js/blog.js"></script>
 
 
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83251901-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-83251901-1');
-</script>
 
 
 
