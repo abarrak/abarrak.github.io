@@ -6,8 +6,23 @@
       <li><a href="{{ site.baseurl }}/about">{% t about %}</a></li>
       <li><a href="{{ site.baseurl }}/works">{% t works %}</a></li>
       <li><a href="{{ site.baseurl }}/contact">{% t contact %}</a></li>
+      <li class="lang_link">
+        <small>
+          {% assign is_post_url = page.url | split: '-' | size %}
+          {% if site.lang == "ar" %}
+          {% capture en_link %}
+          {{ site.baseurl_root }}{% if is_post_url <= 1 %}{{page.url}}{% else %}/{% endif %} {% endcapture %} <a
+            href="{{ en_link }}">{% t 'english' %}</a>
+            {% elsif site.lang == "en" %}
+            {% capture ar_link %}
+            {{ site.baseurl_root }}/ar{% if is_post_url <= 1 %}{{page.url}}{% else %}/{% endif %} {% endcapture %} <a
+              href="{{ ar_link }}">{% t 'arabic' %}</a>
+              {% endif %}
+        </small>
+      </li>
     </ul>
-	</div>
+
+  </div>
 
 </header>
 
