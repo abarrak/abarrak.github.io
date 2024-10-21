@@ -3,10 +3,10 @@
   <channel>
     <title></title>
     <description></description>
-    <link>http://localhost:4000/ar/</link>
-    <atom:link href="http://localhost:4000/ar/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 21 Oct 2024 16:17:07 +0300</pubDate>
-    <lastBuildDate>Mon, 21 Oct 2024 16:17:07 +0300</lastBuildDate>
+    <link>https://www.abarrak.com/ar/</link>
+    <atom:link href="https://www.abarrak.com/ar/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 21 Oct 2024 16:20:52 +0300</pubDate>
+    <lastBuildDate>Mon, 21 Oct 2024 16:20:52 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
     
       <item>
@@ -30,8 +30,8 @@
 بالإضافة للعديد من التخصيصات للتصميمِ، وصفحةِ المنشورات، ودعم اللغة، وغيرها، متاحة على &lt;a href=&quot;https://github.com/abarrak/abarrak.github.io/tree/src&quot;&gt;قِت هاب هنا&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Sat, 12 Feb 2022 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/ar/orientation</link>
-        <guid isPermaLink="true">http://localhost:4000/ar/orientation</guid>
+        <link>https://www.abarrak.com/ar/orientation</link>
+        <guid isPermaLink="true">https://www.abarrak.com/ar/orientation</guid>
         
         <category>الكتابة</category>
         
