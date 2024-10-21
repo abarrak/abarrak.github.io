@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 21 Oct 2024 11:57:23 +0300</pubDate>
-    <lastBuildDate>Mon, 21 Oct 2024 11:57:23 +0300</lastBuildDate>
+    <pubDate>Mon, 21 Oct 2024 12:05:47 +0300</pubDate>
+    <lastBuildDate>Mon, 21 Oct 2024 12:05:47 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
     
       <item>
@@ -674,69 +674,6 @@ Keep them in bookmarks!&lt;/li&gt;
     
       <item>
         <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/ansible.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Reuse and module sharing in Ansible can be achieved through two methods: A “Role” which forms conceptually a single component and its related tasks. Second, “Content Collections” which form what we could consider as a namespace having a group of roles, in addition to “plugins” that provide the ability to craft custom modules.&lt;/p&gt;
-
-&lt;p&gt;Here’s a list of some roles I have published into the galaxy over the past months:&lt;/p&gt;
-
-&lt;!-- post-excerpt --&gt;
-
-&lt;h3 id=&quot;1-docker-server&quot;&gt;1. Docker Server&lt;/h3&gt;
-
-&lt;p&gt;This roles differs from others in the community by the support to expose TCP/SSH socket for the docker daemon to allow external docker clients to build and use the server as centralized containers engine. Additionally, supports connecting to external image registries by setting the needed variables.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://galaxy.ansible.com/abarrak/docker_server_role&quot;&gt;Link&lt;/a&gt; - &lt;a href=&quot;https://github.com/abarrak/docker-server-role&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;2-plik-server&quot;&gt;2. Plik Server&lt;/h3&gt;
-
-&lt;p&gt;A temporary file upload system with minimal GUI.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://galaxy.ansible.com/abarrak/plik_ansible_role&quot;&gt;Link&lt;/a&gt; - &lt;a href=&quot;https://github.com/abarrak/plik-ansible-role&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;3-redis&quot;&gt;3. Redis&lt;/h3&gt;
-
-&lt;p&gt;This is merely a wrapper to deploy Bitnami’s redis chart to Kubernetes cluster.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://galaxy.ansible.com/abarrak/redis_ansible_role&quot;&gt;Link&lt;/a&gt; - &lt;a href=&quot;https://github.com/abarrak/redis-ansible-role&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;4-samba&quot;&gt;4. Samba&lt;/h3&gt;
-
-&lt;p&gt;I wrote this role to learn and experiment with the protocol. Mainly, translated from &lt;a href=&quot;https://www.redhat.com/sysadmin/getting-started-samba&quot;&gt;this article&lt;/a&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://galaxy.ansible.com/abarrak/samba_ansible_role&quot;&gt;Link&lt;/a&gt; - &lt;a href=&quot;https://github.com/abarrak/samba-ansible-role&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;That’s it. I hope you find it insightful.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 28 Nov 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2022/11/28/some-ansible-roles</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2022/11/28/some-ansible-roles</guid>
-        
-        <category>Infrastructure as Code</category>
-        
-        <category>Linux</category>
-        
-        <category>Automation</category>
-        
-        
-        <category>Automation</category>
-        
-        <category>IaC</category>
-        
-        <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
         <description>&lt;p&gt;&lt;img src=&quot;/public/images/helm.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/roboll/helmfile&quot;&gt;Helmfile is an orchestrator tool&lt;/a&gt; for collecting, building, and deploying cloud-native apps. Basically it’s the packager for helm chart based applications.&lt;/p&gt;
@@ -1275,6 +1212,121 @@ We have to set it up using default ordering scope, easily:&lt;/p&gt;
         <category>Rails</category>
         
         <category>Active Record</category>
+        
+      </item>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/opt-img.jpg&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In many times you may find yourself in need for optimzing rapidly a bunch of images in your hands. There are handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:&lt;/p&gt;
+
+&lt;h3 id=&quot;1-optipng-advanced-png-optimizer&quot;&gt;&lt;a href=&quot;http://optipng.sourceforge.net/&quot;&gt;1. OptiPNG: Advanced PNG Optimizer&lt;/a&gt;:&lt;/h3&gt;
+
+&lt;p&gt;Get it for Mac OS X:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;optipng
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For Linux Ubuntu:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;optipng
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To optimize an image, run:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;optipng &amp;lt;img-name&amp;gt;.png
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;p&gt;To wildcard all images recursively in the current directory and sub directories:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.png&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; optipng &lt;span class=&quot;nt&quot;&gt;-o7&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2-jpegoptim&quot;&gt;&lt;a href=&quot;https://github.com/tjko/jpegoptim&quot;&gt;2. jpegoptim&lt;/a&gt;:&lt;/h3&gt;
+
+&lt;p&gt;Install for Mac OS X:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jpegoptim
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Install for Linux Ubuntu:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jpegoptim
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Run the next command to optimize an image, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-m&lt;/code&gt; controls the image quality (0-100):&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jpegoptim &lt;span class=&quot;nt&quot;&gt;-m70&lt;/span&gt; &amp;lt;img-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Or optimize all recursively:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.jpg&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; jpegoptim &lt;span class=&quot;nt&quot;&gt;-m80&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-gifsicle&quot;&gt;&lt;a href=&quot;https://www.lcdf.org/gifsicle/&quot;&gt;3. gifsicle&lt;/a&gt;:&lt;/h3&gt;
+
+&lt;p&gt;Install for Mac OS X:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gifsicle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For Linux Ubuntu:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gifsicle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The commands for single image, and a group of images respectively, are:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# for single image.&lt;/span&gt;
+gifsicle &lt;span class=&quot;nt&quot;&gt;--batch&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-V&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-O2&lt;/span&gt; &amp;lt;image-name&amp;gt;.gif
+
+&lt;span class=&quot;c&quot;&gt;# to start from cureent dir and go down.&lt;/span&gt;
+find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.gif&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; gifsicle &lt;span class=&quot;nt&quot;&gt;--batch&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-V&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-O2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;aliases&quot;&gt;&lt;strong&gt;Aliases&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Here are some aliases to keep commands nearby for fast run on the active directory images.&lt;/p&gt;
+
+&lt;p&gt;Be warn that those (also the previously mentioned commands) all alter the original images.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_png&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;optipng -o7 *.png&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_jpg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jpegoptim -m80 *.jpg&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_gif&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gifsicle --batch -V -O2 *.gif&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can tweak the optimization level and other options to suit your needs.&lt;/p&gt;
+
+&lt;h3 id=&quot;imageoptim&quot;&gt;&lt;strong&gt;ImageOptim&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;If you’d like to use a GUI application, &lt;a href=&quot;https://imageoptim.com/mac&quot;&gt;ImageOptim&lt;/a&gt; is a pretty open source one for Mac OS X that supports multiple image formats.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/imageoptim.png&quot; alt=&quot;ImageOptim Screen Shot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Happy mature optimization :) !&lt;/p&gt;
+</description>
+        <pubDate>Tue, 30 Aug 2016 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</guid>
+        
+        <category>Image Processing</category>
+        
+        <category>optipng</category>
+        
+        <category>jpegoptim</category>
+        
+        <category>gifsicle</category>
+        
+        <category>ImageOptim</category>
+        
+        
+        <category>Image Processing</category>
+        
+        <category>Productivity</category>
         
       </item>
     
