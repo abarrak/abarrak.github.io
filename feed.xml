@@ -3,10 +3,10 @@
   <channel>
     <title></title>
     <description></description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 21 Oct 2024 11:55:56 +0300</pubDate>
-    <lastBuildDate>Mon, 21 Oct 2024 11:55:56 +0300</lastBuildDate>
+    <link>https://www.abarrak.com/</link>
+    <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 21 Oct 2024 11:57:23 +0300</pubDate>
+    <lastBuildDate>Mon, 21 Oct 2024 11:57:23 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
     
       <item>
@@ -374,8 +374,8 @@ tolist&lt;span class=&quot;o&quot;&gt;([&lt;/span&gt;
 &lt;p&gt;Although, terraform and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HCL&lt;/code&gt; definition language may have limitation around dynamic behavior sometimes, you will find ways to structure and approach your automation code declaratively, most of the time.&lt;/p&gt;
 </description>
         <pubDate>Thu, 17 Oct 2024 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2024/10/17/reflections-on-iac-with-terraform-2</link>
-        <guid isPermaLink="true">http://localhost:4000/2024/10/17/reflections-on-iac-with-terraform-2</guid>
+        <link>https://www.abarrak.com/2024/10/17/reflections-on-iac-with-terraform-2</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2024/10/17/reflections-on-iac-with-terraform-2</guid>
         
         <category>Infrastructure as Code</category>
         
@@ -533,8 +533,8 @@ The router logs shows internal errors (500) when connecting to the upstream (pod
 &lt;p&gt;Of course you may turn off the destination certificate check by setting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;insecureSkipVerify: true&lt;/code&gt; but that would defeat the purpose we aim for, an end to end TLS flow (bridging) !&lt;/p&gt;
 </description>
         <pubDate>Fri, 31 Mar 2023 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2023/03/31/e2e-treafik-tls-offloading</link>
-        <guid isPermaLink="true">http://localhost:4000/2023/03/31/e2e-treafik-tls-offloading</guid>
+        <link>https://www.abarrak.com/2023/03/31/e2e-treafik-tls-offloading</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2023/03/31/e2e-treafik-tls-offloading</guid>
         
         <category>Traefik</category>
         
@@ -605,8 +605,8 @@ Keep them in bookmarks!&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 10 Jan 2023 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2023/01/10/passing-aws-sap</link>
-        <guid isPermaLink="true">http://localhost:4000/2023/01/10/passing-aws-sap</guid>
+        <link>https://www.abarrak.com/2023/01/10/passing-aws-sap</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2023/01/10/passing-aws-sap</guid>
         
         <category>AWS SAP</category>
         
@@ -646,8 +646,8 @@ Keep them in bookmarks!&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 28 Dec 2022 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2022/12/28/on-aws-builder-lib</link>
-        <guid isPermaLink="true">http://localhost:4000/2022/12/28/on-aws-builder-lib</guid>
+        <link>https://www.abarrak.com/2022/12/28/on-aws-builder-lib</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2022/12/28/on-aws-builder-lib</guid>
         
         <category>Automation</category>
         
@@ -717,8 +717,8 @@ Keep them in bookmarks!&lt;/li&gt;
 &lt;p&gt;That’s it. I hope you find it insightful.&lt;/p&gt;
 </description>
         <pubDate>Mon, 28 Nov 2022 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2022/11/28/some-ansible-roles</link>
-        <guid isPermaLink="true">http://localhost:4000/2022/11/28/some-ansible-roles</guid>
+        <link>https://www.abarrak.com/2022/11/28/some-ansible-roles</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2022/11/28/some-ansible-roles</guid>
         
         <category>Infrastructure as Code</category>
         
@@ -851,8 +851,8 @@ helm pull &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv
 &lt;p&gt;Several CNCF projects already are simplifying working on such environments, like &lt;a href=&quot;https://goharbor.io/docs/2.1.0/install-config/download-installer/&quot;&gt;harbor&lt;/a&gt;, &lt;a href=&quot;https://docs.ranchermanager.rancher.io/pages-for-subheaders/air-gapped-helm-cli-install&quot;&gt;rancher&lt;/a&gt;, &lt;a href=&quot;https://docs.k3s.io/installation/airgap&quot;&gt;k3s&lt;/a&gt;, among others. In case you’re working with helm applications that are not yet friendly in the offline mode, the steps discussed earlier using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;helmfile&lt;/code&gt; and some scripting should suffice for plenty of use cases.&lt;/p&gt;
 </description>
         <pubDate>Sat, 08 Oct 2022 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2022/10/08/using-helmfile-for-offline-deployments</link>
-        <guid isPermaLink="true">http://localhost:4000/2022/10/08/using-helmfile-for-offline-deployments</guid>
+        <link>https://www.abarrak.com/2022/10/08/using-helmfile-for-offline-deployments</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2022/10/08/using-helmfile-for-offline-deployments</guid>
         
         <category>Helm</category>
         
@@ -996,8 +996,8 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;helm_release&quot;&lt;/span&gt; 
 &lt;p&gt;All in all, codifying infra and platform layers (e.g. using terraform) has a key benefit to organizations in adopting the DevOps practices which leads to operational excellence, eventually.&lt;/p&gt;
 </description>
         <pubDate>Fri, 23 Sep 2022 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2022/09/23/reflections-on-iac-with-terraform</link>
-        <guid isPermaLink="true">http://localhost:4000/2022/09/23/reflections-on-iac-with-terraform</guid>
+        <link>https://www.abarrak.com/2022/09/23/reflections-on-iac-with-terraform</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2022/09/23/reflections-on-iac-with-terraform</guid>
         
         <category>Infrastructure as Code</category>
         
@@ -1032,8 +1032,8 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;helm_release&quot;&lt;/span&gt; 
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 22 Feb 2022 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2022/02/22/linux-sysops-git-book</link>
-        <guid isPermaLink="true">http://localhost:4000/2022/02/22/linux-sysops-git-book</guid>
+        <link>https://www.abarrak.com/2022/02/22/linux-sysops-git-book</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2022/02/22/linux-sysops-git-book</guid>
         
         <category>linxu</category>
         
@@ -1107,8 +1107,8 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;helm_release&quot;&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Fri, 18 Feb 2022 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</link>
-        <guid isPermaLink="true">http://localhost:4000/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</guid>
+        <link>https://www.abarrak.com/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2022/02/18/resolving-dockerd-pool-size-less-than-minimum</guid>
         
         <category>cicd</category>
         
@@ -1254,8 +1254,8 @@ We have to set it up using default ordering scope, easily:&lt;/p&gt;
 &lt;p&gt;Keep in mind the additional storage cost of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:uuid&lt;/code&gt; keys compared to sequential ones, which requires balancing the trade-offs when designing your data models.&lt;/p&gt;
 </description>
         <pubDate>Fri, 24 May 2019 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/2019/05/24/uuid-primary-key-for-active-record-models</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/05/24/uuid-primary-key-for-active-record-models</guid>
+        <link>https://www.abarrak.com/2019/05/24/uuid-primary-key-for-active-record-models</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2019/05/24/uuid-primary-key-for-active-record-models</guid>
         
         <category>Active Record</category>
         
