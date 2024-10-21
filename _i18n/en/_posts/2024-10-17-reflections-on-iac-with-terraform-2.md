@@ -97,7 +97,7 @@ This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-wi
 
     # provisioned resource - oci
     output "instances_details" {
-      value = module.ci.instances_summary
+      value = module.i.instances_summary
     }
     ```
 
@@ -106,7 +106,7 @@ This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-wi
     ```bash
     output "auth_token" {
       sensitive = true
-      value = random_password.pass.result
+      value = random_password.p.result
     }
     ```
 
@@ -114,7 +114,9 @@ This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-wi
 
     ```bash
     locals {
-      ad = data.oci_identity_availability_domain.ad.name
+      az = data.
+           aws_availability_zone.
+           main.name_suffix
 
       db_name = "${var.prefix]}-db"
       db_admin_user = "postgres"
@@ -131,7 +133,9 @@ This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-wi
 
     ```bash
     variable "db_ingress_ports" {
-      type = list(object( { port = string } ))
+      type = list(object(
+        { port = string }
+      ))
     }
 
     db_ingress_ports = [
@@ -146,7 +150,10 @@ This post is a follow up on [the previous one](/2022/09/23/reflections-on-iac-wi
     ```bash
     resource "aws_eip" "eips" {
       count = 1
-      tags = merge({ "Name" = "lb_ip_${count.index}" }, local.tags)
+      tags = merge({
+        "Name" =
+        "lb_ip_${count.index}"
+        }, local.tags)
     }
     ```
 
@@ -231,7 +238,7 @@ local FS, git repository, github, a url, or the public terraform registry.
     }
 
     # basic looping with mapping.
-    resource "aws_route53_record" "cnames" {
+    resource "aws_route53_record" "cns" {
       for_each = {
         for r in var.public_cnames :
         r[0] => {
@@ -252,11 +259,13 @@ local FS, git repository, github, a url, or the public terraform registry.
     }
 
     # advanced example.
-    resource "aws_route" "private_subnets_vpn_routes" {
+    resource "aws_route" "vpn_routes" {
       for_each = {
         for i in setproduct(
-        data.aws_route_tables.private.ids, var.vpn_route) :
-        "entry.${i[0]}.${i[1]}" => { rt_id = i[0], dest_cidr = i[1] }
+          data.aws_route_tables.p.ids,
+          var.vpn_route) :
+          "rt-entry.${i[0]}.${i[1]}" =>
+          { rt_id = i[0], cidr = i[1] }
       }
 
       gateway_id =
@@ -264,7 +273,7 @@ local FS, git repository, github, a url, or the public terraform registry.
       route_table_id =
         each.value.rt_id
       destination_cidr_block =
-        each.value.dest_cidr
+        each.value.cidr
     }
     ```
 
@@ -281,7 +290,9 @@ local FS, git repository, github, a url, or the public terraform registry.
     provider "kubernetes" {
       cluster_ca_certificate =
         base64decode(
-          data.aws_eks_cluster.main.ca.0.data
+          data.aws_eks_cluster.main.
+          certificate_authority.
+          0.data
         )
     }
     ```
