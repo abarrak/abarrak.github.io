@@ -8,6 +8,7 @@ layout: default
 		<li>
 			<article>
 				<header class="post-header">
+					{% if post.permalink != "orientation" %}
 					<div>
 						<span>{% t 'posted_on' %}</span>
 						<span class="post-meta">
@@ -18,6 +19,7 @@ layout: default
 						{% endif %}
 						</span>
 					</div>
+					{% endif %}
 
 					<h2>
 						<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
@@ -27,9 +29,11 @@ layout: default
 				<div class="entry-content">
 					{{ post.excerpt }}
 
-			    <div class="button-container">
-			      <a class="button" href="{{ post.url | prepend: site.baseurl }}">{% t 'read_more' %}</a>
-			    </div>
+					{% if post.excerpt.size != post.content.size %}
+			    	<div class="button-container">
+			      	<a class="button" href="{{ post.url | prepend: site.baseurl }}">{% t 'read_more' %}</a>
+			    	</div>
+					{% endif %}
 				</div>
 			</article>
 		</li>
@@ -37,4 +41,6 @@ layout: default
 	</ul>
 </div>
 
-{% include paginator.html %}
+{% if site.lang == 'en' %}
+	{% include paginator.html %}
+{% endif %}

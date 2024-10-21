@@ -229,6 +229,13 @@ hr.pretty:after {
   transform: rotate(60deg);
 }
 
+hr.light {
+  border: 0;
+  border-top: .0625rem dotted #8c8b8b;
+  text-align: center;
+  margin-top: $spacing-unit / 2;
+  margin-bottom: $spacing-unit / 2;
+}
 
 // ** Table of Contents, Tags
 .table-of-contents {
