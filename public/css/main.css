@@ -1116,6 +1116,10 @@ pre code {
   text-transform: uppercase;
 }
 
+.post-header.orientation:before, .orientation.page-header:before {
+  content: none !important;
+}
+
 .button-container {
   -webkit-user-select: none;
   -moz-user-select: none;
