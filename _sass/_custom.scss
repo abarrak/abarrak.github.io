@@ -149,6 +149,12 @@ pre code {
   text-transform: uppercase;
 }
 
+.post-header.orientation {
+  &:before {
+    content: none !important;
+  }
+}
+
 // ** Buttons
 @mixin no-select {
   -webkit-user-select: none;

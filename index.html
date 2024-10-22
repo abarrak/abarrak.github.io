@@ -7,7 +7,7 @@ layout: default
 		{% for post in paginator.posts %}
 		<li>
 			<article>
-				<header class="post-header">
+				<header class="post-header {% if post.permalink == "orientation" %} orientation {% endif %}">
 					{% if post.permalink != "orientation" %}
 					<div>
 						<span>{% t 'posted_on' %}</span>
@@ -22,7 +22,11 @@ layout: default
 					{% endif %}
 
 					<h2>
-						<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+					{% if post.permalink == 'orientation' %}
+						<a class="post-link">{{ post.title }}</a>
+					{% else %}
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+					{% endif %}
 					</h2>
 				</header>
 
