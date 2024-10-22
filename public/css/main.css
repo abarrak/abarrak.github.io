@@ -316,8 +316,9 @@ pre > code {
   margin-left: 0;
 }
 .site-header .links li.lang_link {
-  border: 1px gray dotted;
+  border: 0.5px gray solid;
   border-radius: 2rem !important;
+  background-color: #f3f3f1;
   margin-left: 0.8rem;
   padding-left: 0.7rem;
   padding-right: 0.7rem;
@@ -329,23 +330,39 @@ pre > code {
   color: #787065;
   text-decoration: all;
 }
+.site-header .links li.lang_link:hover {
+  border-color: rgb(94, 0, 0);
+  background-color: #efefef;
+}
+.site-header .links li.lang_link:hover a {
+  color: rgb(94, 0, 0);
+  border-bottom: 0px;
+}
 .site-header .links li.lang_link a:hover {
-  color: black;
+  color: rgb(94, 0, 0);
   border-bottom: 0px;
 }
 @media screen and (max-width: 600px) {
   .site-header .links {
+    font-size: 0.7rem;
+    margin-top: 0.4rem;
+    padding-top: 0.3rem;
     float: none;
-    text-align: center;
-    font-size: 14px;
+    text-align: right;
   }
-  .site-header li:before {
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
+  .site-header .links li {
+    text-align: right;
+  }
+  .site-header .links li:before {
+    margin-right: 0.1rem;
+    margin-left: 0.1rem;
     content: "|";
   }
-  .site-header li:first-child:before {
+  .site-header .links li:first-child:before {
     content: "";
+  }
+  .site-header .links li.lang_link {
+    margin-left: 0.2rem !important;
   }
 }
 
@@ -362,7 +379,8 @@ pre > code {
 }
 @media screen and (max-width: 600px) {
   .site-title {
-    font-size: 20px;
+    font-size: 1.12rem;
+    float: left;
   }
 }
 
@@ -371,12 +389,12 @@ pre > code {
   padding: 30px 0 15px 0;
 }
 
-.footet-wrapper {
+.footer-wrapper {
   padding-left: 120px;
   padding-right: 120px;
 }
 @media screen and (max-width: 800px) {
-  .footet-wrapper {
+  .footer-wrapper {
     padding-right: 30px;
     padding-left: 30px;
   }
