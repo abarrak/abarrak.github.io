@@ -8,7 +8,7 @@ categories: [Kubernetes, SRE, Traefik]
 
 An interesting usecase I have encountered recently is establishing a secure path (bridge) between [Traefik](https://doc.traefik.io/traefik/) as ingress controller and its destination backends.
 
-The post addresses `traefik` usage within Kubernetes, however it is applicable to other offerings.
+The post addresses `traefik` usage within Kubernetes, however it is applicable to other setups.
 
 <!-- post-excerpt -->
 

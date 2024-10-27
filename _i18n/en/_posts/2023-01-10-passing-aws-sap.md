@@ -12,7 +12,7 @@ Around last September 2022, after the expiration of my previous amazon web servi
 
 ## Preparation
 
-When you have working knowledge in the cloud and AWS specifically, it is optimal to seek first the associate level certificates since they're information oriented with good study and practice, your chances for passing are high. By doing so, you also prepare for the professional and specialty levels afterward.
+When you have working knowledge in the cloud and AWS specifically, it is good idea to take first the associate level certificates since these are information oriented. With study and practice, your chances for passing are high. By doing so, you also prepare for the professional and specialty levels afterward.
 
 <!-- post-excerpt -->
 
@@ -23,7 +23,7 @@ And that's what I did by clearing out the following two certificates!
 
 This is mostly focused on developer centric roles when working with AWS.
 
-Besides the essentials (EC2, IAM, ELB, R53, RDS, S3, CloudFront, KMS, CloudWatch), other development relevant services and topics are covered with precise questions like lambda workloads, serverless offerings (Dynamo, API Gateway, Cognito), CI/CD offerings, working with secrets and configuration as  indicated in [the official guide](https://aws.amazon.com/certification/certified-developer-associate/). Also, Practical DynamoDB, lambda, and S3 questions with snippet of code are expected.
+Besides the essentials (EC2, IAM, ELB, R53, RDS, S3, CloudFront, KMS, CloudWatch), other development relevant services and topics are covered with precise questions such as lambda workloads, serverless offerings (Dynamo, API Gateway, Cognito), CI/CD managed pipelines, and working with secrets and configuration. All is indicated in [the official guide](https://aws.amazon.com/certification/certified-developer-associate/). Also, some questions may contain snippet of code in questions related to DynamoDB, S3, and Lambda.
 
 Notably, I found this one the easiest in the associate category. 💡
 
@@ -40,11 +40,11 @@ And Finally, [<span style="color: darkred">the happy result letter</span>](https
 
 <img src="{{ site.baseurl_root }}/public/images/aws-sap-cert.png" class="post-image-2 resize-sm center-image" />
 
-Here things are more interesting than the associate exams. The breadth and depth of domains are much higher. Most if not all of the questions are **compound items** that explore a combination of services placement or integrations together (e.g. IAM organization policies SCP and S3, on-premise gateways and connectors to services). Try to cover advanced networking, IAM, storage and files solutions, and IAM/AD/SSO offerings.
+Here things are more interesting than the associate exams. The breadth and depth of domains are much higher. Most if not all of the questions are **compound items** that explore a combination of services placement or integrations together (e.g. IAM organization policies SCP and S3, on-premise gateways and connectors to services). Try to cover advanced networking, IAM, storage and files solutions, and IAM/AD/SSO as well.
 
 ### Tips
 
-- Follow a curriculum to review any gaps you have, and practice with the instructor through labs.
+- Follow a curriculum to review any gaps you have, and practice with the instructor in labs.
   <br>
   [Maarek's courses](https://www.udemy.com/user/stephane-maarek/) are recommended.
 - The official AWS pages all have PDF exam samples with answers. <br>

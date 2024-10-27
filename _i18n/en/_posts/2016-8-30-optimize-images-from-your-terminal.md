@@ -6,7 +6,7 @@ categories: [Image Processing, Productivity]
 
 <img src="{{ site.baseurl_root }}/public/images/opt-img.jpg" class="post-image resize-md center-image" />
 
-In many times you may find yourself in need for optimzing rapidly a bunch of images in your hands. There are handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:
+In many times you may need to optimze rapidly a bunch of images at your hands. There are handy utilities that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:
 
 ### [1. OptiPNG: Advanced PNG Optimizer](http://optipng.sourceforge.net/):
 

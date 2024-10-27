@@ -48,7 +48,8 @@ releases:
     version: 0.11.1
     values:
       - config:
-          issuer: {{ requiredEnv "OIDC_ISSUER" }}
+          issuer:
+          {{ requiredEnv "OIDC_ISSUER" }}
           storage:
             type: kubernetes
             config:
@@ -57,7 +58,7 @@ releases:
             skipApprovalScreen: true
           staticClients: []
           connectors: []
- 
+
       - ingress: {}
 {% endraw %}
 ```
@@ -83,7 +84,7 @@ ${IMAGE}:${IMAGE_VERSION}
 docker save registry.local.lan/{IMAGE}:${IMAGE_VERSION} \
 -o ./output/images/{IMAGE}:${IMAGE_VERSION}.tar
 
-helm repo add ${CHART_REPO} 
+helm repo add ${CHART_REPO}
 helm pull ${CHART} --version ${CHART_VERSION} --destination ./output/charts/
 ```
 
@@ -94,13 +95,15 @@ $ BUILD_TIME=$(date +%Y-%d-%m-at-%H-%M)
 $ ./offline.sh
 $ export $(cat .env | xargs)
 $ helmfile fetch
-$ helmfile build > ./output/final-$BUILD_TIME.yml
+$ helmfile build \
+  > ./output/final-$BUILD_TIME.yml
 ```
 
 In case `helmfile` binary is not available in the target environment, just template plain manifests.
 
 ```bash
-$ helmfile template > ./output/final-${BUILD_TIME}.yml
+$ helmfile template \
+   > ./output/final-${BUILD_TIME}.yml
 ```
 
 Finally, on the production node you would run something similar to this:
@@ -108,7 +111,8 @@ Finally, on the production node you would run something similar to this:
 ```bash
 $ docker load -i ./output/*.tar
 $ docker push
-$ helmfile sync --skip-deps -f ./output/final-*.yml 
+$ helmfile sync --skip-deps \
+  -f ./output/final-*.yml
 ```
 
 ```bash
@@ -116,10 +120,8 @@ $ helmfile sync --skip-deps -f ./output/final-*.yml
 $ kubectl apply -f ./output/final-*.yml
 ```
 
-As you can see, this method is extensible and can be generalized in many ways for any helm-based deployment. For the complete example listing, refere to [the github repo here.](https://github.com/abarrak/dex-helmfile-offline)
+As you can see, this method is extensible and can be generalized for any helm-based deployment. For the complete example listing, refer to [the github repo here.](https://github.com/abarrak/dex-helmfile-offline)
 
-## Conclusion 
+## Conclusion
 
- The challenge that is imposed due certain security or compliance reasons in air-gapped environments should not be used as an excuse to not adopt best practices of cloud native delivery! 
-
- Several CNCF projects already are simplifying working on such environments, like [harbor](https://goharbor.io/docs/2.1.0/install-config/download-installer/), [rancher](https://docs.ranchermanager.rancher.io/pages-for-subheaders/air-gapped-helm-cli-install), [k3s](https://docs.k3s.io/installation/airgap), among others. In case you're working with helm applications that are not yet friendly in the offline mode, the steps discussed earlier using `helmfile` and some scripting should suffice for plenty of use cases.
+Certain security or compliance challenges imposed in air-gapped environments can make it hard to deliver cloud native deployments. Luckily, several CNCF projects ([harbor](https://goharbor.io/docs/2.1.0/install-config/download-installer/), [rancher](https://docs.ranchermanager.rancher.io/pages-for-subheaders/air-gapped-helm-cli-install), [k3s](https://docs.k3s.io/installation/airgap), to name few) provide options to tackle such environments. Additionally, the presented  approach above is generic for any helm application to be deployed properly in offline mode.

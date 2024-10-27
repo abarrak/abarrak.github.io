@@ -10,18 +10,18 @@ Terraform has emerged as one of the top open source infrastructure as code (IaC)
 
 The design philosophy behind the tool is to have **declarative**, and **stateful** representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of such resources.
 
-The classical example for provisioning AWS EC2 instance concisely captures the design principles.
+The classical example to provision compute VM to show the main principle.
 
 <!-- post-excerpt -->
 
 ```bash
 provider "aws" { }
 
-resource "aws_vpc" "example" {
+resource "aws_vpc" "vpc" {
   cidr_block = "10.0.0.0/16"
 }
 
-resource "aws_instance" "example_ec2" {
+resource "aws_instance" "this" {
   ami = "ami-026b57f3c383c2eec"
   instance_type = "t2.micro"
   tags = {
@@ -34,7 +34,7 @@ This is not limited to only compute resources, [many of AWS services are availab
 
 ## Simplified Workflow
 
-The main workflow is conventionally promoted, which is an essential feature:
+The main workflow is conventionally as follows:
 
 <img src="{{ site.baseurl_root }}/public/images/terraform-diagram.png" class="post-image-2 resize-md center-image" />
 
@@ -62,9 +62,9 @@ terraform destroy
 
 ## Structure
 
-It's recommended to factorize input values across environments into `variable` sections.
+It is recommended to factorize input values across environments into `variable` blocks.
 <br>
-This as well allows for security aspects implementation, like protecting sensitive data.
+This enhances for security posture as well, like protecting sensitive data.
 
 Moreover, `output` blocks provide a way to capture and log information after applying state changes.
 
@@ -79,14 +79,14 @@ $ tree
 └── variables.tf
 ```
 
-The  variables and output files are separated to organize things up.
+The variables and output files are separated to organize things up.
 
 Finally, the state is tracked in `.tfstate` file  managed internally by Terraform.
 
 
 ## Providers
 
-The mechanism behind provisioning the intended state of an infrastructure or platform, is carried on by **"providers"**. which are simply extensions written in `Go` language and expose the resource types they implement, interfacing with the target infrastructure/platform APIs.
+The mechanism behind provisioning the intended state of an infrastructure or platform, is performed on by **"providers"**. They are terraform extensions written in `Go` language exposing the resource types they implement, and interfacing with the target infrastructure / platform APIs.
 
 ```apl
 provider "aws" {
@@ -94,7 +94,7 @@ provider "aws" {
 }
 ```
 
-Major cloud providers [are available in the public terraform registry](https://registry.terraform.io), along with many of platform agnostic plugins, such as `Helm` and `Kubernetes`.
+Major cloud providers [are available on the public terraform registry](https://registry.terraform.io), along with many of platform agnostic plugins, such as `Helm` and `Kubernetes`.
 
 <img src="{{ site.baseurl_root }}/public/images/providers-iac.png" class="post-image-2 resize-md center-image" />
 
@@ -124,10 +124,10 @@ resource "helm_release" "redis" {
 
 Compared to Ansible as an orchestration tool on the infrastructure layer, I find that Terraform overall is more expressive and concise to enable building on modules in much elegant and feasible manner, with the excellent readability of HCL and dependency management of plugins.
 
-The state is a major difference to consider too.
+The state is a major difference to consider here.
 
 Ansible takes a stateless approach by always exchanging the desired state with the target resources in order to know the actual state then apply the delta, if needed. On the other hand, Terraform is stateful and manages the state in local or remote manner.
 
 ## Summary
 
-All in all, codifying infra and platform layers (e.g. using terraform) has a key benefit to organizations in adopting the DevOps practices which leads to operational excellence, eventually.
+All in all, codifying infra and platform layers *(e.g. using terraform)* can bring key benefits to organizations in adopting the DevOps practices, leading to operational excellence, eventually.

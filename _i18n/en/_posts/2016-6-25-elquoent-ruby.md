@@ -8,13 +8,13 @@ categories: [Software, Ruby, Book Review]
 
 Recently, I've read Oslen Russ's <a href="https://amzn.com/0321584104" target="_blank">"Eloquent Ruby"</a> and it was delightful read overall.
 
-The book has a considerable reputation among the community programmers. It's divided into (4) units on Ruby foundations and the software process practices.
+The book has a considerable reputation among the community. It is divided into (4) units about Ruby foundations, and the software process practices.
 
 <!-- post-excerpt -->
 
 <br>
 
-**Part (1)** and **(2)** form the first half of the book. They start with the language basics, types and features, in addition to the coverage of OOP methodologies in Ruby (classes, modules, blocks).
+**Part (1)** and **(2)** form the first half of the book. They start with the language basics, types, and features. In addition, It covers  OOP methodologies in Ruby (classes, modules, blocks).
 
 
 <br>
@@ -23,7 +23,7 @@ In **Part (3)**, we see the language metaprogramming capabilities and techniques
 
 <br>
 
-Putting all covered topics in action is what **Part (4)** concerned about. The subjects in this part are internal and external DSLs constructions, and publishing Gems (packages), along with a brief tour on some of Ruby's popular Implementations.
+Putting the discussed topics in action is what **Part (4)** is concerned about. The subjects in this part are internal and external DSLs constructions, and publishing Gems (packages), along with a brief tour of some of the popular runtime implementations of ruby.
 
 <br>
 
@@ -34,4 +34,4 @@ I liked the writing style the author followed, which was example driven and kind
 ### **Conclusion**
  Albeit there is a small portion of the book that's outdated, I would argue that the majority of its content is still relevant now and times to come.
 
- If you're looking for eloquently written material that explores and explains important aspects and background of the Ruby programming language without going into lengthy documentation details, then go with Eloquent Ruby !
+ If you are looking for eloquently written materials that explore and explain many key aspects of Ruby without going into lengthy documentation details, then go with Eloquent Ruby!
