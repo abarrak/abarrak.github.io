@@ -8,14 +8,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="It’s advised that using universally unique identifiers (UUIDs) for exposed resource identifiers is more secure, and convenient for database distribution.As e...">
+	<meta name="description" content="Using universally unique identifiers (UUIDs) for exposed resource identifiers is more secure, and convenient for database distribution. It is relatively simp...">
   <meta name="author" content="Abdullah Barrak">
 
   <meta name="keywords" content="Active Record, UUID Primary Key, Postgres, Ruby, and Rails">
 	<meta name="theme-color" content="#943526">
 
   <meta property="og:type" content="article">
-  <meta property="og:description" content="It’s advised that using universally unique identifiers (UUIDs) for exposed re...">
+  <meta property="og:description" content="Using universally unique identifiers (UUIDs) for exposed resource identifiers...">
   <meta property="og:url" content="https://www.abarrak.com/2019/05/24/uuid-primary-key-for-active-record-models">
 	
 	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
@@ -96,9 +96,7 @@
 	<div class="entry-content" itemprop="articleBody">
 		<p><img src="/public/images/uuids-db.png" class="post-image center-image"></p>
 
-<p>It’s advised that using universally unique identifiers (UUIDs) for exposed resource identifiers is <a href="https://github.com/eliotsykes/rails-security-checklist#ids" rel="nofollow" target="_blank">more secure</a>, and <a href="https://tomharrisonjr.com/uuid-or-guid-as-primary-keys-be-careful-7b2aa3dcb439" rel="nofollow" target="_blank">convenient for database distribution</a>.</p>
-
-<p>As expected, it’s relatively simple to configure Active Record to generate with <code class="language-plaintext highlighter-rouge">UUID</code> primary key based migrations.</p>
+<p>Using universally unique identifiers (UUIDs) for exposed resource identifiers is <a href="https://github.com/eliotsykes/rails-security-checklist#ids" rel="nofollow" target="_blank">more secure</a>, and <a href="https://tomharrisonjr.com/uuid-or-guid-as-primary-keys-be-careful-7b2aa3dcb439" rel="nofollow" target="_blank">convenient for database distribution</a>. It is relatively simple to configure Active Record to generate <code class="language-plaintext highlighter-rouge">UUID</code> primary keys in migrations.</p>
 
 <h2 id="setup">Setup</h2>
 
@@ -109,19 +107,22 @@
     <p>Setup the default generation inside <code class="language-plaintext highlighter-rouge">config/application.rb</code>:</p>
 
     <div class="language-ruby highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="c1"># config/application.rb</span>
-   
-<span class="k">module</span> <span class="nn">SampleApp</span>
-  <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
-    <span class="o">...</span>
-    <span class="c1"># Change the primary key default type to UUIDs.</span>
-    <span class="n">config</span><span class="p">.</span><span class="nf">generators</span> <span class="k">do</span> <span class="o">|</span><span class="n">g</span><span class="o">|</span>
-      <span class="n">g</span><span class="p">.</span><span class="nf">orm</span> <span class="ss">:active_record</span><span class="p">,</span> <span class="ss">primary_key_type: :uuid</span>
-    <span class="k">end</span>
+<div class="highlight"><pre class="highlight"><code> <span class="c1"># config/application.rb</span>
+
+ <span class="k">module</span> <span class="nn">SampleApp</span>
+   <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
+     <span class="o">...</span>
+     <span class="c1"># Change the primary key</span>
+     <span class="c1"># default type to UUIDs.</span>
+     <span class="n">config</span><span class="p">.</span><span class="nf">generators</span> <span class="k">do</span> <span class="o">|</span><span class="n">g</span><span class="o">|</span>
+       <span class="n">g</span><span class="p">.</span><span class="nf">orm</span> <span class="ss">:active_record</span><span class="p">,</span>
+             <span class="ss">primary_key_type: :uuid</span>
+     <span class="k">end</span>
    <span class="k">end</span>
-<span class="k">end</span>
+ <span class="k">end</span>
 </code></pre></div>    </div>
-    <!-- post-excerpt -->
+
+    <p><!-- post-excerpt --></p>
   </li>
   <li>
     <p>Enable the database support:</p>
@@ -135,8 +136,9 @@
     <p>Enable  <code class="language-plaintext highlighter-rouge">uuid-ossp</code> extension for random <code class="language-plaintext highlighter-rouge">:uuid</code> generation at the DB level.</p>
     <div class="language-ruby highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code> <span class="c1"># db/migrations/xxxxx_enable_uuid_ossp_extension.rb.rb</span>
-     
- <span class="k">class</span> <span class="nc">EnableUuidOsspExtension</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">5.2</span><span class="p">]</span>
+
+ <span class="k">class</span> <span class="nc">EnableUuidOsspExtension</span> <span class="o">&lt;</span>
+       <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">5.2</span><span class="p">]</span>
    <span class="k">def</span> <span class="nf">change</span>
      <span class="n">enable_extension</span> <span class="s1">'uuid-ossp'</span> <span class="k">unless</span> <span class="n">extension_enabled?</span><span class="p">(</span><span class="s2">"uuid-ossp"</span><span class="p">)</span>
    <span class="k">end</span>
@@ -159,14 +161,17 @@
 </ul>
 
 <p><br>
-Now newly generated tables they will contain <code class="language-plaintext highlighter-rouge">:uuid</code> as primary key.</p>
+Now newly generated tables will use <code class="language-plaintext highlighter-rouge">:uuid</code> by default for primary keys.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># db/migrations/xxxxx_create_customers.rb</span>
 
-<span class="k">class</span> <span class="nc">CreateCustomers</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">5.2</span><span class="p">]</span>
+<span class="k">class</span> <span class="nc">CreateCustomers</span> <span class="o">&lt;</span>
+      <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">5.2</span><span class="p">]</span>
  <span class="k">def</span> <span class="nf">change</span>
-   <span class="n">create_table</span> <span class="ss">:customers</span><span class="p">,</span> <span class="ss">id: :uuid</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-     <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:full_name</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span><span class="p">,</span> <span class="ss">index: </span><span class="kp">true</span>
+   <span class="n">create_table</span> <span class="ss">:customers</span><span class="p">,</span>
+                <span class="ss">id: :uuid</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+     <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:full_name</span><span class="p">,</span>
+              <span class="ss">null: </span><span class="kp">false</span><span class="p">,</span> <span class="ss">index: </span><span class="kp">true</span>
      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">index: </span><span class="kp">true</span>
 
      <span class="n">t</span><span class="p">.</span><span class="nf">uuid</span> <span class="ss">:ceeated_by</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
@@ -174,8 +179,10 @@ Now newly generated tables they will contain <code class="language-plaintext hig
 
      <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
    <span class="k">end</span>
-   <span class="n">add_foreign_key</span> <span class="ss">:customers</span><span class="p">,</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">column: :ceeated_by</span>
-   <span class="n">add_foreign_key</span> <span class="ss">:customers</span><span class="p">,</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">column: :updated_by</span>
+   <span class="n">add_foreign_key</span> <span class="ss">:customers</span><span class="p">,</span> <span class="ss">:users</span><span class="p">,</span>
+                   <span class="ss">column: :created_by</span>
+   <span class="n">add_foreign_key</span> <span class="ss">:customers</span><span class="p">,</span> <span class="ss">:users</span><span class="p">,</span>
+                   <span class="ss">column: :updated_by</span>
  <span class="k">end</span>
 <span class="k">end</span>
 </code></pre></div></div>
@@ -184,22 +191,25 @@ Now newly generated tables they will contain <code class="language-plaintext hig
 
 <p>In case you don’t require <code class="language-plaintext highlighter-rouge">UUID</code> key type, it’s possible to get the <code class="language-plaintext highlighter-rouge">integer</code> or <code class="language-plaintext highlighter-rouge">bigint</code> types back again:</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">create_table</span> <span class="ss">:cities</span><span class="p">,</span> <span class="ss">id: :integer</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
- <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:name</span>
- <span class="n">t</span><span class="p">.</span><span class="nf">float</span> <span class="ss">:population</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">create_table</span> <span class="ss">:cities</span><span class="p">,</span>
+             <span class="ss">id: :integer</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:name</span>
+  <span class="n">t</span><span class="p">.</span><span class="nf">float</span> <span class="ss">:population</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
 <h2 id="ordering-results">Ordering Results</h2>
 
-<p>A drawback of querying UUID-based tables is that ordering is not simply inferred as with the sequential keys. 
+<p>A drawback of querying UUID-based tables is that ordering is not inferred as with the sequential keys.
 We have to set it up using default ordering scope, easily:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># app/models/customer.rb</span>
 
 <span class="k">class</span> <span class="nc">Customer</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
  <span class="o">...</span>
- <span class="n">default_scope</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">order</span><span class="p">(</span><span class="ss">created_at: :asc</span><span class="p">)</span> <span class="p">}</span>
+ <span class="n">default_scope</span> <span class="o">-&gt;</span> <span class="p">{</span>
+   <span class="n">order</span><span class="p">(</span><span class="ss">created_at: :asc</span><span class="p">)</span>
+ <span class="p">}</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
@@ -211,7 +221,7 @@ We have to set it up using default ordering scope, easily:</p>
  <span class="k">def</span> <span class="nf">change</span>
    <span class="n">add_index</span> <span class="ss">:customers</span><span class="p">,</span> <span class="ss">:created_at</span>
    <span class="n">add_index</span> <span class="ss">:surveys</span><span class="p">,</span> <span class="ss">:created_at</span>
-   <span class="n">add_index</span> <span class="ss">:additional_informations</span><span class="p">,</span> <span class="ss">:created_at</span>
+   <span class="n">add_index</span> <span class="ss">:more_info</span><span class="p">,</span> <span class="ss">:created_at</span>
  <span class="k">end</span>
 <span class="k">end</span>
 </code></pre></div></div>

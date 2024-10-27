@@ -136,7 +136,8 @@
     <span class="na">version</span><span class="pi">:</span> <span class="s">0.11.1</span>
     <span class="na">values</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="na">config</span><span class="pi">:</span>
-          <span class="na">issuer</span><span class="pi">:</span> <span class="pi">{{</span> <span class="nv">requiredEnv "OIDC_ISSUER"</span> <span class="pi">}}</span>
+          <span class="na">issuer</span><span class="pi">:</span>
+          <span class="pi">{{</span> <span class="nv">requiredEnv "OIDC_ISSUER"</span> <span class="pi">}}</span>
           <span class="na">storage</span><span class="pi">:</span>
             <span class="na">type</span><span class="pi">:</span> <span class="s">kubernetes</span>
             <span class="na">config</span><span class="pi">:</span>
@@ -145,7 +146,7 @@
             <span class="na">skipApprovalScreen</span><span class="pi">:</span> <span class="kc">true</span>
           <span class="na">staticClients</span><span class="pi">:</span> <span class="pi">[]</span>
           <span class="na">connectors</span><span class="pi">:</span> <span class="pi">[]</span>
- 
+
       <span class="pi">-</span> <span class="na">ingress</span><span class="pi">:</span> <span class="pi">{}</span>
 
 </code></pre></div></div>
@@ -170,7 +171,7 @@ docker tag registry.local.lan/<span class="k">${</span><span class="nv">IMAGE</s
 docker save registry.local.lan/<span class="o">{</span>IMAGE<span class="o">}</span>:<span class="k">${</span><span class="nv">IMAGE_VERSION</span><span class="k">}</span> <span class="se">\</span>
 <span class="nt">-o</span> ./output/images/<span class="o">{</span>IMAGE<span class="o">}</span>:<span class="k">${</span><span class="nv">IMAGE_VERSION</span><span class="k">}</span>.tar
 
-helm repo add <span class="k">${</span><span class="nv">CHART_REPO</span><span class="k">}</span> 
+helm repo add <span class="k">${</span><span class="nv">CHART_REPO</span><span class="k">}</span>
 helm pull <span class="k">${</span><span class="nv">CHART</span><span class="k">}</span> <span class="nt">--version</span> <span class="k">${</span><span class="nv">CHART_VERSION</span><span class="k">}</span> <span class="nt">--destination</span> ./output/charts/
 </code></pre></div></div>
 
@@ -180,32 +181,33 @@ helm pull <span class="k">${</span><span class="nv">CHART</span><span class="k">
 <span class="nv">$ </span>./offline.sh
 <span class="nv">$ </span><span class="nb">export</span> <span class="si">$(</span><span class="nb">cat</span> .env | xargs<span class="si">)</span>
 <span class="nv">$ </span>helmfile fetch
-<span class="nv">$ </span>helmfile build <span class="o">&gt;</span> ./output/final-<span class="nv">$BUILD_TIME</span>.yml
+<span class="nv">$ </span>helmfile build <span class="se">\</span>
+  <span class="o">&gt;</span> ./output/final-<span class="nv">$BUILD_TIME</span>.yml
 </code></pre></div></div>
 
 <p>In case <code class="language-plaintext highlighter-rouge">helmfile</code> binary is not available in the target environment, just template plain manifests.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>helmfile template <span class="o">&gt;</span> ./output/final-<span class="k">${</span><span class="nv">BUILD_TIME</span><span class="k">}</span>.yml
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>helmfile template <span class="se">\</span>
+   <span class="o">&gt;</span> ./output/final-<span class="k">${</span><span class="nv">BUILD_TIME</span><span class="k">}</span>.yml
 </code></pre></div></div>
 
 <p>Finally, on the production node you would run something similar to this:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker load <span class="nt">-i</span> ./output/<span class="k">*</span>.tar
 <span class="nv">$ </span>docker push
-<span class="nv">$ </span>helmfile <span class="nb">sync</span> <span class="nt">--skip-deps</span> <span class="nt">-f</span> ./output/final-<span class="k">*</span>.yml 
+<span class="nv">$ </span>helmfile <span class="nb">sync</span> <span class="nt">--skip-deps</span> <span class="se">\</span>
+  <span class="nt">-f</span> ./output/final-<span class="k">*</span>.yml
 </code></pre></div></div>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># In case `helm` is not available:</span>
 <span class="nv">$ </span>kubectl apply <span class="nt">-f</span> ./output/final-<span class="k">*</span>.yml
 </code></pre></div></div>
 
-<p>As you can see, this method is extensible and can be generalized in many ways for any helm-based deployment. For the complete example listing, refere to <a href="https://github.com/abarrak/dex-helmfile-offline" rel="nofollow" target="_blank">the github repo here.</a></p>
+<p>As you can see, this method is extensible and can be generalized for any helm-based deployment. For the complete example listing, refer to <a href="https://github.com/abarrak/dex-helmfile-offline" rel="nofollow" target="_blank">the github repo here.</a></p>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>The challenge that is imposed due certain security or compliance reasons in air-gapped environments should not be used as an excuse to not adopt best practices of cloud native delivery!</p>
-
-<p>Several CNCF projects already are simplifying working on such environments, like <a href="https://goharbor.io/docs/2.1.0/install-config/download-installer/" rel="nofollow" target="_blank">harbor</a>, <a href="https://docs.ranchermanager.rancher.io/pages-for-subheaders/air-gapped-helm-cli-install" rel="nofollow" target="_blank">rancher</a>, <a href="https://docs.k3s.io/installation/airgap" rel="nofollow" target="_blank">k3s</a>, among others. In case you’re working with helm applications that are not yet friendly in the offline mode, the steps discussed earlier using <code class="language-plaintext highlighter-rouge">helmfile</code> and some scripting should suffice for plenty of use cases.</p>
+<p>Certain security or compliance challenges imposed in air-gapped environments can make it hard to deliver cloud native deployments. Luckily, several CNCF projects (<a href="https://goharbor.io/docs/2.1.0/install-config/download-installer/" rel="nofollow" target="_blank">harbor</a>, <a href="https://docs.ranchermanager.rancher.io/pages-for-subheaders/air-gapped-helm-cli-install" rel="nofollow" target="_blank">rancher</a>, <a href="https://docs.k3s.io/installation/airgap" rel="nofollow" target="_blank">k3s</a>, to name few) provide options to tackle such environments. Additionally, the presented  approach above is generic for any helm application to be deployed properly in offline mode.</p>
 
 	</div>
 

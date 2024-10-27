@@ -110,7 +110,7 @@
 
 <p>The design philosophy behind the tool is to have <strong>declarative</strong>, and <strong>stateful</strong> representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of such resources.</p>
 
-<p>The classical example for provisioning AWS EC2 instance concisely captures the design principles.</p>
+<p>The classical example to provision compute VM to show the main principle.</p>
 
 
 
@@ -149,14 +149,15 @@
 
 <p>I have published a short handbook on basic Linux administration covering multiple topics 📕</p>
 
-<p>There are cheatsheets that help in various tasks.</p>
-
-<p>I hope you like it and it would be of a good benefit to interested people.</p>
+<p>Hopefully it would be useful read for new sysadmins, and interested people.</p>
 
 <ul>
   <li><a href="https://abarrak.gitbook.io/linux-sysops-handbook" rel="nofollow" target="_blank">Book.</a></li>
   <li><a href="https://github.com/abarrak/linux-sysops-handbook" rel="nofollow" target="_blank">Source.</a></li>
 </ul>
+
+<p><strong>Update:</strong> <br>
+<a href="https://news.ycombinator.com/item?id=30430594" rel="nofollow" target="_blank">The book is published on HN</a>, and gained good momentum, contributions, and feedback!</p>
 
 
 					
@@ -191,9 +192,9 @@
 
 <h2 id="problem">Problem</h2>
 
-<p>Sometimes, when working with docker engine on CI systems, certain type of errors could arise from the challenging restrictions or limits on the environment. This is typical with the inherent server-client architecture of docker.</p>
+<p>Sometimes, when working with docker engine on CI systems, certain type of errors could arise from the challenging restrictions in the environment. This is typical due the inherent server-client architecture in docker.</p>
 
-<p>Here’s one of the problems that I’ve seen recently. When a client is connecting to <code class="language-plaintext highlighter-rouge">dockerd</code> in order to build an application image or prepare and pull external images, the server reports this issue:</p>
+<p>Here’s one of the problems that I’ve seen recently. When a client is connecting to <code class="language-plaintext highlighter-rouge">dockerd</code> in order to build an image or pull external images:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>failed to prepare a4mv4dh8qcq283c7x47a4nwpg: devmapper: Thin Pool has 161986 free data blocks which is less than minimum required 163840 free data blocks. Create more free space in thin pool or use dm.min_free_space option to change behavior
 </code></pre></div></div>
@@ -233,9 +234,7 @@
 				<div class="entry-content">
 					<p><img src="/public/images/uuids-db.png" class="post-image center-image"></p>
 
-<p>It’s advised that using universally unique identifiers (UUIDs) for exposed resource identifiers is <a href="https://github.com/eliotsykes/rails-security-checklist#ids" rel="nofollow" target="_blank">more secure</a>, and <a href="https://tomharrisonjr.com/uuid-or-guid-as-primary-keys-be-careful-7b2aa3dcb439" rel="nofollow" target="_blank">convenient for database distribution</a>.</p>
-
-<p>As expected, it’s relatively simple to configure Active Record to generate with <code class="language-plaintext highlighter-rouge">UUID</code> primary key based migrations.</p>
+<p>Using universally unique identifiers (UUIDs) for exposed resource identifiers is <a href="https://github.com/eliotsykes/rails-security-checklist#ids" rel="nofollow" target="_blank">more secure</a>, and <a href="https://tomharrisonjr.com/uuid-or-guid-as-primary-keys-be-careful-7b2aa3dcb439" rel="nofollow" target="_blank">convenient for database distribution</a>. It is relatively simple to configure Active Record to generate <code class="language-plaintext highlighter-rouge">UUID</code> primary keys in migrations.</p>
 
 <h2 id="setup">Setup</h2>
 
@@ -246,20 +245,23 @@
     <p>Setup the default generation inside <code class="language-plaintext highlighter-rouge">config/application.rb</code>:</p>
 
     <div class="language-ruby highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code><span class="c1"># config/application.rb</span>
-   
-<span class="k">module</span> <span class="nn">SampleApp</span>
-  <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
-    <span class="o">...</span>
-    <span class="c1"># Change the primary key default type to UUIDs.</span>
-    <span class="n">config</span><span class="p">.</span><span class="nf">generators</span> <span class="k">do</span> <span class="o">|</span><span class="n">g</span><span class="o">|</span>
-      <span class="n">g</span><span class="p">.</span><span class="nf">orm</span> <span class="ss">:active_record</span><span class="p">,</span> <span class="ss">primary_key_type: :uuid</span>
-    <span class="k">end</span>
+<div class="highlight"><pre class="highlight"><code> <span class="c1"># config/application.rb</span>
+
+ <span class="k">module</span> <span class="nn">SampleApp</span>
+   <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
+     <span class="o">...</span>
+     <span class="c1"># Change the primary key</span>
+     <span class="c1"># default type to UUIDs.</span>
+     <span class="n">config</span><span class="p">.</span><span class="nf">generators</span> <span class="k">do</span> <span class="o">|</span><span class="n">g</span><span class="o">|</span>
+       <span class="n">g</span><span class="p">.</span><span class="nf">orm</span> <span class="ss">:active_record</span><span class="p">,</span>
+             <span class="ss">primary_key_type: :uuid</span>
+     <span class="k">end</span>
    <span class="k">end</span>
-<span class="k">end</span>
+ <span class="k">end</span>
 </code></pre></div>    </div>
   </li>
 </ol>
+
 
 
 					
@@ -295,7 +297,7 @@
 				<div class="entry-content">
 					<p><img src="/public/images/opt-img.jpg" class="post-image resize-md center-image"></p>
 
-<p>In many times you may find yourself in need for optimzing rapidly a bunch of images in your hands. There are handy utility libraries that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:</p>
+<p>In many times you may need to optimze rapidly a bunch of images at your hands. There are handy utilities that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:</p>
 
 <h3 id="1-optipng-advanced-png-optimizer">
 <a href="http://optipng.sourceforge.net/" rel="nofollow" target="_blank">1. OptiPNG: Advanced PNG Optimizer</a>:</h3>

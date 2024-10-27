@@ -8,14 +8,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="In the past week, I’v been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I publish...">
+	<meta name="description" content="In the past week, I have been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I publ...">
   <meta name="author" content="Abdullah Barrak">
 
   <meta name="keywords" content="Sinatra, Tilt, UTF-8, AWS, and encoding compatibility error">
 	<meta name="theme-color" content="#943526">
 
   <meta property="og:type" content="article">
-  <meta property="og:description" content="In the past week, I’v been deploying a Sinatra app to AWS Elastic Beanstalk. ...">
+  <meta property="og:description" content="In the past week, I have been deploying a Sinatra app to AWS Elastic Beanstal...">
   <meta property="og:url" content="https://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode">
 	
 	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
@@ -96,7 +96,7 @@
 	<div class="entry-content" itemprop="articleBody">
 		<p><img src="/public/images/sinatra-logo.png" class="post-image resize-sm center-image"></p>
 
-<p>In the past week, I’v been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.</p>
+<p>In the past week, I have been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.</p>
 
 <h3 id="symptoms"><strong>Symptoms</strong></h3>
 <p>The error was appearing in one of the <code class="language-plaintext highlighter-rouge">.erb</code> view files that contains a <code class="language-plaintext highlighter-rouge">textarea</code> field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:</p>
@@ -104,16 +104,16 @@
 <!-- post-excerpt -->
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2016-08-26 19:15:53 - Encoding::CompatibilityError - incompatible character encodings: UTF-8 and US-ASCII:
-        /var/app/current/views/review.erb:69:in <span class="sb">`</span>block <span class="k">in </span>singleton class<span class="s1">'
-        /var/app/current/views/review.erb:-7:in `instance_eval'</span>
-        /var/app/current/views/review.erb:-7:in <span class="sb">`</span>singleton class<span class="s1">'
-        /var/app/current/views/review.erb:-9:in `__tilt_47353692136320'</span>
-        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in <span class="sb">`</span>call<span class="s1">'
-        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'</span>
-        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in <span class="sb">`</span>render<span class="s1">'
-        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'</span>
-        /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in <span class="sb">`</span>erb<span class="s1">'
-        /var/app/current/helpers.rb:24:in `block (2 levels) in serve_page'</span>
+  /var/app/current/views/review.erb:69:in <span class="sb">`</span>block <span class="k">in </span>singleton class<span class="s1">'
+  /var/app/current/views/review.erb:-7:in `instance_eval'</span>
+  /var/app/current/views/review.erb:-7:in <span class="sb">`</span>singleton class<span class="s1">'
+  /var/app/current/views/review.erb:-9:in `__tilt_47353692136320'</span>
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in <span class="sb">`</span>call<span class="s1">'
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate'</span>
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in <span class="sb">`</span>render<span class="s1">'
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render'</span>
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in <span class="sb">`</span>erb<span class="s1">'
+  /var/app/current/helpers.rb:24:in `block (2 levels) in serve_page'</span>
 </code></pre></div></div>
 <p>Guided by the error message indication. I attempted to fix the issue by ensuring that all parts are encoded as UTF-8. I set <code class="language-plaintext highlighter-rouge">accept-charset</code> attribute for the form and texteara tag to <code class="language-plaintext highlighter-rouge">"UTF-8"</code>, forced source files to be UTF-8 by inserting <code class="language-plaintext highlighter-rouge"># 😁</code> comment, and checked the Sinatra routing is also set to have
 <code class="language-plaintext highlighter-rouge">headers 'Content-type' =&gt; 'text/html; charset=utf-8'</code>, But unfortunately none of that was solving the problem.</p>
