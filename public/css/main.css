@@ -1049,8 +1049,8 @@ pre code {
 .profile-image {
   float: right;
   position: relative;
-  margin-top: -1.5rem;
-  margin-right: -1rem;
+  margin-top: 0;
+  margin-right: 0;
   display: inline;
   width: 10rem;
   height: 10rem;
