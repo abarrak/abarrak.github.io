@@ -4,13 +4,9 @@ tags: [Helm, Helmfile, Kubernetes, Air-Gapped, Automation]
 categories: [Automation, Kubernetes, Helm, Cloud]
 ---
 
-<img src="{{ site.baseurl_root }}/public/images/helm.png" class="post-image resize-md center-image" />
-
 [Helmfile is an orchestrator tool](https://github.com/roboll/helmfile) for collecting, building, and deploying cloud-native apps. Basically it's the packager for helm chart based applications.
 
 One of the interesting ideas I came along recently, is utilizing it for working in air-gapped environments, where access to the internet is not feasible.
-
-<!-- post-excerpt -->
 
 ## Use Case
 
@@ -20,6 +16,7 @@ The diagram below depicts the flow.
 
 <img src="{{ site.baseurl_root }}/public/images/offline-deployment.png" class="post-image-2 resize-md center-image" />
 
+<!-- post-excerpt -->
 
 ## Example Deployment
 

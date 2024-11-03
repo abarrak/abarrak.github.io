@@ -94,7 +94,7 @@ article {
     content: "p";
     display: inline-block;
     font-family: libretto-icons;
-    font-size: 21px;
+    font-size: 20px;
     line-height: 21px;
     margin: 0.4rem auto 0.8rem;
     padding: .6rem;
@@ -103,11 +103,11 @@ article {
 
   > div {
     color: $grey-color;
-    font-size: $base-font-size;
+    font-size: $base-font-size - 2;
     font-style: italic;
 
     @include media-query($on-palm) {
-      font-size: $small-font-size;
+      font-size: $small-font-size - 1;
     }
 
     &:before {
@@ -115,7 +115,7 @@ article {
       content: "~";
       display: inline-block;
       font-family: libretto-icons;
-      font-size: 24px;
+      font-size: 20px;
       margin: 0 0.25rem;
       text-shadow: none;
       vertical-align: -6px;
@@ -126,7 +126,7 @@ article {
       content: "`";
       display: inline-block;
       font-family: libretto-icons;
-      font-size: 24px;
+      font-size: 20px;
       margin: 0 0.25rem;
       text-shadow: none;
       vertical-align: -6px;
