@@ -225,6 +225,8 @@
 
 <p>I have enjoyed reading <a href="https://aws.amazon.com/builders-library/reliability-and-constant-work/" rel="nofollow" target="_blank">this piece on stability and reliability by Colm MacCárthaigh</a>. It is part of a concise and valuable series by AWS about the art of system operations collected under the name “Amazon Builders’ Library”.</p>
 
+<p>The comparison between coffee urn and computers when building reliable operational model is perfect and up to the point. Then, three characteristics taken from this analogy are observed: 1. have a simple constant function that does not scale based on load stress solely, 2. no different modes or operational branching, 3. anti-fragility which is the preparations that hold systems reliable when most needed. The author mentions the coined term for these principles on reliability: <strong>“Constant Work Patterns”</strong>. Route 53 and S3 are presented as use cases that fit and demonstrate the model.</p>
+
 
 
 					
@@ -258,11 +260,17 @@
 				</header>
 
 				<div class="entry-content">
-					<p><img src="/public/images/helm.png" class="post-image resize-md center-image"></p>
-
-<p><a href="https://github.com/roboll/helmfile" rel="nofollow" target="_blank">Helmfile is an orchestrator tool</a> for collecting, building, and deploying cloud-native apps. Basically it’s the packager for helm chart based applications.</p>
+					<p><a href="https://github.com/roboll/helmfile" rel="nofollow" target="_blank">Helmfile is an orchestrator tool</a> for collecting, building, and deploying cloud-native apps. Basically it’s the packager for helm chart based applications.</p>
 
 <p>One of the interesting ideas I came along recently, is utilizing it for working in air-gapped environments, where access to the internet is not feasible.</p>
+
+<h2 id="use-case">Use Case</h2>
+
+<p>Let’s say you were deploying an application to a Kubernetes cluster. The idea is to package all dependencies and manifests beforehand in a local or control machine, then push the consolidated deployment directory to the offline machine.</p>
+
+<p>The diagram below depicts the flow.</p>
+
+<p><img src="/public/images/offline-deployment.png" class="post-image-2 resize-md center-image"></p>
 
 
 

@@ -98,7 +98,7 @@ article > .entry-content:first-letter {
   content: "p";
   display: inline-block;
   font-family: libretto-icons;
-  font-size: 21px;
+  font-size: 20px;
   line-height: 21px;
   margin: 0.4rem auto 0.8rem;
   padding: 0.6rem;
@@ -106,12 +106,12 @@ article > .entry-content:first-letter {
 }
 .post-header > div, .page-header > div {
   color: #a09a92;
-  font-size: 16px;
+  font-size: 14px;
   font-style: italic;
 }
 @media screen and (max-width: 600px) {
   .post-header > div, .page-header > div {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 .post-header > div:before, .page-header > div:before {
@@ -119,7 +119,7 @@ article > .entry-content:first-letter {
   content: "~";
   display: inline-block;
   font-family: libretto-icons;
-  font-size: 24px;
+  font-size: 20px;
   margin: 0 0.25rem;
   text-shadow: none;
   vertical-align: -6px;
@@ -129,7 +129,7 @@ article > .entry-content:first-letter {
   content: "`";
   display: inline-block;
   font-family: libretto-icons;
-  font-size: 24px;
+  font-size: 20px;
   margin: 0 0.25rem;
   text-shadow: none;
   vertical-align: -6px;
@@ -316,14 +316,13 @@ pre > code {
   margin-left: 0;
 }
 .site-header .links li.lang_link {
-  border: 0.5px gray solid;
-  border-radius: 2rem !important;
+  border: 0.055rem gray solid;
   background-color: #f3f3f1;
-  margin-left: 0.8rem;
-  padding-left: 0.7rem;
-  padding-right: 0.7rem;
-  padding-top: 0.3rem;
-  padding-bottom: 0.4rem;
+  margin-left: 0.5rem;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.3rem;
   font-weight: bolder;
 }
 .site-header .links li.lang_link a {
@@ -362,7 +361,7 @@ pre > code {
     content: "";
   }
   .site-header .links li.lang_link {
-    margin-left: 0.2rem !important;
+    margin-left: 0.3rem !important;
   }
 }
 
@@ -598,11 +597,16 @@ pre > code {
 .post-link {
   display: block;
   font-family: "Playfair Display", "Noto Naskh Arabic";
-  font-size: 38px;
+  font-size: 1.9rem;
+}
+@media screen and (max-width: 800px) {
+  .post-link {
+    font-size: 1.4rem;
+  }
 }
 @media screen and (max-width: 600px) {
   .post-link {
-    font-size: 1.1em;
+    font-size: 1.1rem;
   }
 }
 
@@ -617,13 +621,13 @@ pre > code {
 .post-title {
   color: #a09a92;
   font-family: "Playfair Display", "Noto Naskh Arabic";
-  font-size: 36px;
+  font-size: 1.9rem;
   letter-spacing: -1px;
   line-height: 1;
 }
 @media screen and (max-width: 800px) {
   .post-title {
-    font-size: 28px;
+    font-size: 1.5rem;
     line-height: 1.2;
   }
 }
@@ -1078,33 +1082,33 @@ pre code {
 }
 
 .resize-xs {
-  max-width: 30%;
+  max-width: 20%;
 }
 
 .resize-sm {
-  max-width: 40%;
+  max-width: 30%;
 }
 
 .resize-md {
-  max-width: 50%;
+  max-width: 40%;
 }
 
 .resize-lg {
-  max-width: 70%;
+  max-width: 50%;
 }
 
 @media screen and (max-width: 600px) {
   .resize-xs {
-    max-width: 50%;
+    max-width: 30%;
   }
   .resize-sm {
-    max-width: 60%;
+    max-width: 50%;
   }
   .resize-md {
-    max-width: 70%;
+    max-width: 60%;
   }
   .resize-lg {
-    max-width: 90%;
+    max-width: 80%;
   }
 }
 .comments-label {

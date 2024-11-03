@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 29 Oct 2024 14:32:07 +0300</pubDate>
-    <lastBuildDate>Tue, 29 Oct 2024 14:32:07 +0300</lastBuildDate>
+    <pubDate>Sun, 03 Nov 2024 18:15:47 +0300</pubDate>
+    <lastBuildDate>Sun, 03 Nov 2024 18:15:47 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
     
       <item>
@@ -633,11 +633,11 @@ Keep them in bookmarks!&lt;/li&gt;
 
 &lt;p&gt;I have enjoyed reading &lt;a href=&quot;https://aws.amazon.com/builders-library/reliability-and-constant-work/&quot;&gt;this piece on stability and reliability by Colm MacCárthaigh&lt;/a&gt;. It is part of a concise and valuable series by AWS about the art of system operations collected under the name “Amazon Builders’ Library”.&lt;/p&gt;
 
-&lt;!-- post-excerpt --&gt;
-
 &lt;p&gt;The comparison between coffee urn and computers when building reliable operational model is perfect and up to the point. Then, three characteristics taken from this analogy are observed: 1. have a simple constant function that does not scale based on load stress solely, 2. no different modes or operational branching, 3. anti-fragility which is the preparations that hold systems reliable when most needed. The author mentions the coined term for these principles on reliability: &lt;strong&gt;“Constant Work Patterns”&lt;/strong&gt;. Route 53 and S3 are presented as use cases that fit and demonstrate the model.&lt;/p&gt;
 
-&lt;p&gt;The article has references to other content in the library. I would defiently check them out!&lt;/p&gt;
+&lt;!-- post-excerpt --&gt;
+
+&lt;p&gt;The article has references to other content in the library. I would definitely check them out!&lt;/p&gt;
 
 &lt;p&gt;Finally, thanks to whomever shared this recently &lt;a href=&quot;https://news.ycombinator.com/item?id=34103426&quot;&gt;on HN&lt;/a&gt;!&lt;/p&gt;
 
@@ -671,13 +671,9 @@ Keep them in bookmarks!&lt;/li&gt;
     
       <item>
         <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/helm.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/roboll/helmfile&quot;&gt;Helmfile is an orchestrator tool&lt;/a&gt; for collecting, building, and deploying cloud-native apps. Basically it’s the packager for helm chart based applications.&lt;/p&gt;
+        <description>&lt;p&gt;&lt;a href=&quot;https://github.com/roboll/helmfile&quot;&gt;Helmfile is an orchestrator tool&lt;/a&gt; for collecting, building, and deploying cloud-native apps. Basically it’s the packager for helm chart based applications.&lt;/p&gt;
 
 &lt;p&gt;One of the interesting ideas I came along recently, is utilizing it for working in air-gapped environments, where access to the internet is not feasible.&lt;/p&gt;
-
-&lt;!-- post-excerpt --&gt;
 
 &lt;h2 id=&quot;use-case&quot;&gt;Use Case&lt;/h2&gt;
 
@@ -686,6 +682,8 @@ Keep them in bookmarks!&lt;/li&gt;
 &lt;p&gt;The diagram below depicts the flow.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/images/offline-deployment.png&quot; class=&quot;post-image-2 resize-md center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;!-- post-excerpt --&gt;
 
 &lt;h2 id=&quot;example-deployment&quot;&gt;Example Deployment&lt;/h2&gt;
 
