@@ -1,3 +1,23 @@
+- title: 3scale Profile Policy
+  description: An accounts' profile sharing policy for APICast gateway of 3scale.
+  link: https://github.com/ElmCompany/3scale-profile-share-policy
+  repo_link: https://github.com/ElmCompany/3scale-profile-share-policy
+  technology_stack:
+    - icon: nginx
+      tooltip: "Programming Language: Lua"
+    - icon: openshift
+      tooltip: "Deployment: Openshift"
+
+- title: 3scale Keycloak Users
+  description: A commandline utility to migrate the consumer accounts' users from the 3scale to keycloack.
+  link: https://rubygems.org/gems/keycloak_3scale_users
+  repo_link: https://github.com/abarrak/3scale-keycloak-users-migration
+  technology_stack:
+    - icon: ruby
+      tooltip: "Programming Language: Ruby"
+    - icon: github_badge
+      tooltip: "CI: Github Actions"
+
 - title: Network Client
   description: A thin resilient JSON web client built around Ruby's Net::HTTP.
   link: https://rubygems.org/gems/network-client
@@ -26,6 +46,29 @@
     - icon: git
       tooltip: "Others"
 
+- title: Ansible Roles
+  description: A bunch of ansible automation roles for various components.
+  type: list
+  sub_items:
+    - description: Docker Server
+      link: https://galaxy.ansible.com/abarrak/docker_server_role
+      source: https://github.com/abarrak/docker-server-role
+    - description: Plik Server
+      link: https://galaxy.ansible.com/abarrak/plik_ansible_role
+      source: https://github.com/abarrak/plik-ansible-role
+    - description: Redis on Kubernetes
+      link: https://galaxy.ansible.com/abarrak/redis_ansible_role
+      source: https://github.com/abarrak/redis-ansible-role
+    - description: Gatus
+      link:
+      source:
+    - description: Samba
+      link: https://galaxy.ansible.com/abarrak/samba_ansible_role
+      source: https://github.com/abarrak/samba-ansible-role
+  technology_stack:
+  - icon: python
+    tooltip: "Programming Language: Python"
+
 - title: OpenCV Helpers
   description: Facilitate image processing tasks using OpenCV library.
   link: https://github.com/abarrak/opencv-helpers
@@ -51,25 +94,6 @@
     - icon: aws
       tooltip: "Deployment: AWS"
 
-- title: 3scale Profile Policy
-  description: An accounts' profile sharing policy for APICast gateway of 3scale.
-  link: https://github.com/ElmCompany/3scale-profile-share-policy
-  repo_link: https://github.com/ElmCompany/3scale-profile-share-policy
-  technology_stack:
-    - icon: nginx
-      tooltip: "Programming Language: Lua"
-    - icon: openshift
-      tooltip: "Deployment: Openshift"
-
-- title: 3scale Keycloak Users
-  description: A commandline utility to migrate the consumer accounts' users from the 3scale to keycloack.
-  link: https://rubygems.org/gems/keycloak_3scale_users
-  repo_link: https://github.com/abarrak/3scale-keycloak-users-migration
-  technology_stack:
-    - icon: ruby
-      tooltip: "Programming Language: Ruby"
-    - icon: github_badge
-      tooltip: "CI: Github Actions"
 
 - title: Except Nested
   description: Hash utility extension for Rails Active Support.
