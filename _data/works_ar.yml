@@ -1,3 +1,34 @@
+- title: وحدات الأتمتة (Ansible Roles)
+  description: مجموعة من مكتبات أتمتة آنسبل لبرمحيات مختلفة.
+  link: https://galaxy.ansible.com/ui/standalone/namespaces/71/
+  repo_link: https://github.com/abarrak?tab=repositories&q=ansible&type=&language=&sort=
+  type: list
+  sub_items:
+    - description: Docker Server
+      link: https://galaxy.ansible.com/abarrak/docker_server_role
+      source: https://github.com/abarrak/docker-server-role
+    - description: Plik Server
+      link: https://galaxy.ansible.com/abarrak/plik_ansible_role
+      source: https://github.com/abarrak/plik-ansible-role
+    - description: Redis on Kubernetes
+      link: https://galaxy.ansible.com/abarrak/redis_ansible_role
+      source: https://github.com/abarrak/redis-ansible-role
+    - description: Gatus
+      link: https://galaxy.ansible.com/ui/standalone/roles/abarrak/gatus
+      source: https://github.com/abarrak/gatus-ansible
+    - description: Samba
+      link: https://galaxy.ansible.com/abarrak/samba_ansible_role
+      source: https://github.com/abarrak/samba-ansible-role
+  technology_stack:
+  - icon: redhat
+    tooltip: "نظام لينكس"
+  - icon: docker
+    tooltip: "سيرفر دوكر"
+  - icon: redis
+    tooltip: قاعدة بيانات مؤقتة Redis
+  - icon: python
+    tooltip: "اللغة البرمجية: بايثون"
+
 - title: وثيقة بيانات الحساب العامة (3scale)
   description: مكتبة مساعدة لتمرير بيانات حساب العملاء إلى الواجهات البرمجية في نظام (3scale).
   link: https://github.com/ElmCompany/3scale-profile-share-policy
