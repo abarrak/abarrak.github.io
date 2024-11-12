@@ -168,8 +168,6 @@ img {
 }
 
 figure {
-  background: #fff;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.025);
   padding: 0.5em;
 }
 
@@ -1278,6 +1276,11 @@ hr.light {
 }
 .works-list hr:after {
   background: whitesmoke;
+}
+
+.key-text {
+  font-weight: bold;
+  color: #943526;
 }
 
 /**

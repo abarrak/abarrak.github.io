@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="description" content="This post reviews four main virtualization options in short.💡 VM technologies are essentially considered by people when addressing on-premise use cases or wh...">
+  <meta name="author" content="Abdullah Barrak">
+
+  <meta name="keywords" content="virtualization">
+	<meta name="theme-color" content="#943526">
+
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="This post reviews four main virtualization options in short.💡 VM technologies...">
+  <meta property="og:url" content="https://www.abarrak.com/2024/11/12/virtualization-overview">
+	
+	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
+	
+	
+	<meta property="og:title" content="Abdullah Barrak • A Short Essay on Popular Virtualization Technologies">
+	
+	<link rel="canonical" href="https://www.abarrak.com/2024/11/12/virtualization-overview">
+
+	<title>
+    
+      A Short Essay on Popular Virtualization Technologies •
+      Abdullah Barrak's Blog
+    
+  </title>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/icons/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/icons/favicon.ico">
+
+  <!-- Fonts -->
+	<link rel='stylesheet' id='libretto-fonts-css'  href='https://fonts.googleapis.com/css?family=Libre+Baskerville%3A400%2C700%2C400italic%7CPlayfair+Display%3A400%2C700%2C400italic%2C700italic%7CPlayfair+Display+SC%3A700%2C700italic%7CMontserrat%3A400%7CDroid+Sans+Mono%3A400&#038;subset=latin%2Clatin-ext' type='text/css' media='all'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/public/css/main.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/tooltipster-bundle.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/tooltipster-sideTip-shadow.min.css" type="text/css" media="all">
+  
+
+  <!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="https://www.abarrak.com/feed.xml">
+</head>
+
+<body>
+
+	<header class="site-header">
+	<div class="wrapper-fluid">
+		<a class="site-title" href="/">Abdullah Barrak</a>
+
+    <ul class="links">
+      <li><a href="/about">About</a></li>
+      <li><a href="/works">Works</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li class="lang_link" class="tooltip" title="Language">
+        <small>
+          
+          
+             <a
+              href="
+            /ar/ ">ع</a>
+              
+        </small>
+      </li>
+    </ul>
+
+  </div>
+</header>
+
+
+
+	<div class="page-content">
+		<div class="wrapper">
+			<header class="post-header">
+	<div>
+		<span></span><span class="post-meta">
+			
+				November 12, 2024
+			
+		</span>
+	</div>
+
+	<h1 class="post-title" itemprop="name headline">A Short Essay on Popular Virtualization Technologies</h1>
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="entry-content" itemprop="articleBody">
+		<p>This post reviews four main virtualization options in short.<br></p>
+
+<blockquote>
+💡 VM technologies are essentially considered by people when addressing on-premise use cases or when building DR for data centers.
+</blockquote>
+
+<h3 id="vmware-virtualization">VMware Virtualization</h3>
+
+<ul>
+  <li>
+    <p>Started at (2003).</p>
+  </li>
+  <li>
+    <p>Offers type-1 hypervisor that runs on bare-metal called <span class="key-text">ESXi</span> with minimum disk image footprint (32MB), with resources, storage, and networking capabilities, and UI console <span class="key-text">(DCUI)</span>.</p>
+  </li>
+</ul>
+
+<!-- post-excerpt -->
+
+<ul>
+  <li>
+    <p>Includes distributed management system <span class="key-text">(vCenter)</span> for managing ESXi hosts, access control, migration (vMotion), HA, and distrusted resource scheduler (DRS).</p>
+  </li>
+  <li>
+    <p><span class="key-text">vSphere client</span> UI: A web client for managing a single ESXi hosts directly.</p>
+  </li>
+</ul>
+
+<figure>
+  <img src="/public/images/virtualization-1.png" class="post-image-2 resize-md center-image">
+  <figcaption>Fig.1: Outline setup for VMware.</figcaption>
+</figure>
+
+<h3 id="kvm">KVM</h3>
+
+<ul>
+  <li>
+    <p>Started at (2007).</p>
+  </li>
+  <li>
+    <p>Linux based Kernel virtual machines.</p>
+  </li>
+  <li>
+    <p>free and open-source .</p>
+  </li>
+  <li>
+    <p>Basically, it’s a kernel module that allows the kernel to function as a hypervisor.</p>
+  </li>
+  <li>
+    <p>Originally designed for x86 processors then ported to others (ARM, ESA/390, PowerPC).</p>
+  </li>
+  <li>
+    <p>Supports <span class="key-text">HAV</span> (hardware-assisted virtualization).</p>
+  </li>
+  <li>
+    <p><a href="https://libvirt.org/" rel="nofollow" target="_blank">Libvirt</a> is an abstraction library which facilitates working with KVM toolchains and its adapters.</p>
+  </li>
+  <li>
+    <p>License: GNU GPL v2.</p>
+  </li>
+</ul>
+
+<figure>
+  <img src="/public/images/virtualization-2.png" class="post-image-2 resize-md center-image">
+  <figcaption>Fig.2: KVM Internal Design.</figcaption>
+</figure>
+
+<h3 id="red-hat-virtualization">Red Hat Virtualization</h3>
+
+<ul>
+  <li>
+    <p>Started at (2009).</p>
+  </li>
+  <li>
+    <p>An enterprise solution based on Linux KVM.</p>
+  </li>
+  <li>
+    <p>Has integrations with AD and FreeIPA for domain and access control.</p>
+  </li>
+  <li>
+    <p>Servers management UI.</p>
+  </li>
+  <li>
+    <p>Superseded by OpenShift, now in maintenance mode since 2020.</p>
+  </li>
+</ul>
+
+<figure>
+  <img src="/public/images/virtualization-3.png" class="post-image-2 resize-md center-image">
+  <figcaption>Fig.3: RedHat virtual manager UI.</figcaption>
+</figure>
+
+<h3 id="hyper-v">Hyper-V</h3>
+
+<ul>
+  <li>
+    <p>Started at (2008) by Microsoft.</p>
+  </li>
+  <li>
+    <p>A native hypervisor for x86-64 systems only.</p>
+  </li>
+  <li>
+    <p>Separates VMs using isolated partitions running their guest OSs.</p>
+  </li>
+  <li>
+    <p>A single hyper-v with command line (CMD) is free.</p>
+  </li>
+  <li>
+    <p>Requires <span class="key-text">HAV</span> (hardware-assisted virtualization).</p>
+  </li>
+</ul>
+
+<figure>
+  <img src="/public/images/virtualization-4.png" class="post-image-2 resize-md center-image">
+  <figcaption>Fig. 4: Hyper-V overview.</figcaption>
+</figure>
+
+<figure>
+  <img src="/public/images/virtualization-5.png" class="post-image-2 resize-md center-image">
+  <figcaption>Fig. 5: Installation screen for Hyper-V 2019.</figcaption>
+</figure>
+
+<h4 id="takeaway"><b>Takeaway:</b></h4>
+<p>VMware stands out as enterprise solution for corporate and regularity requirements, especially when the support is a must. Conversely, for small projects and applications, I find KVM-QEMU based setup a good option.</p>
+
+	</div>
+
+	
+<h2 class="comments-label">Comments</h2>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+      this.page.url = "https://www.abarrak.com/2024/11/12/virtualization-overview";
+      this.page.identifier = "a-short-essay-on-popular-virtualization-technologies";
+  };
+
+  (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//abarrak.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+</article>
+
+<div id="post-nav">
+	<div class="next">
+		
+	</div>
+
+	<div class="previous">
+		
+		<a href="/2024/10/17/reflections-on-iac-with-terraform-2">
+			<span>Previous entry</span>
+			Reflections on IaC using Terraform - Part II
+		</a>
+		
+	</div>
+</div>
+
+		</div>
+	</div>
+
+	<footer class="site-footer">
+	<div class="wrapper-fluid footer-wrapper">
+
+		<!-- <h2 class="footer-heading">Blog</h2> -->
+
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-1 footer-left">
+				<a href="">Abdullah Barrak's Blog</a>
+				<ul class="contact-list">
+					<li>A passionate blog about computer programming, reading, thinking, and the like.</li>
+					<li><b>(2016 - 2024)</b></li>
+				</ul>
+			</div>
+
+			<div class="footer-col footer-col-1 footer-right">
+				<p class="center">
+					<a href="/tags">Tag Cloud</a> |
+					subscribe <a href="/feed.xml">via RSS</a>
+				</p>
+
+				<div class="social-links" id="social">
+				
+					<a href="https://github.com/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/github-icon.png" alt="Github Icon">
+					</a>
+				
+
+				
+					<a href="https://goodreads.com/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/goodreads-icon.png" alt="Goodreads Icon">
+					</a>
+				
+
+				
+					<a href="https://linkedin.com/in/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/linkedin-icon.png" alt="LinkedIn Icon">
+					</a>
+				
+
+				
+					<a href="https://x.com/abarrakx" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/twitter-icon.png" alt="Github Icon">
+					</a>
+				
+
+				
+					<a href="https://stackoverflow.com/users/2925286/abdullah-barrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/stackoverflow-icon.png" alt="stackoverflow Icon">
+					</a>
+				
+
+					<a href="mailto:abdullah@abarrak.com" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/mail-icon.png" alt="Email Icon">
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</footer>
+
+
+<script src="/public/js/all.min.js"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83251901-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-83251901-1');
+</script>
+
+
+
+
+</body>
+</html>

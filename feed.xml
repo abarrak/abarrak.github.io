@@ -5,9 +5,149 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 04 Nov 2024 17:05:10 +0300</pubDate>
-    <lastBuildDate>Mon, 04 Nov 2024 17:05:10 +0300</lastBuildDate>
+    <pubDate>Tue, 12 Nov 2024 14:17:53 +0300</pubDate>
+    <lastBuildDate>Tue, 12 Nov 2024 14:17:53 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;This post reviews four main virtualization options in short.&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+💡 VM technologies are essentially considered by people when addressing on-premise use cases or when building DR for data centers.
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;vmware-virtualization&quot;&gt;VMware Virtualization&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Started at (2003).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Offers type-1 hypervisor that runs on bare-metal called &lt;span class=&quot;key-text&quot;&gt;ESXi&lt;/span&gt; with minimum disk image footprint (32MB), with resources, storage, and networking capabilities, and UI console &lt;span class=&quot;key-text&quot;&gt;(DCUI)&lt;/span&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Includes distributed management system &lt;span class=&quot;key-text&quot;&gt;(vCenter)&lt;/span&gt; for managing ESXi hosts, access control, migration (vMotion), HA, and distrusted resource scheduler (DRS).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;span class=&quot;key-text&quot;&gt;vSphere client&lt;/span&gt; UI: A web client for managing a single ESXi hosts directly.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;/public/images/virtualization-1.png&quot; class=&quot;post-image-2 resize-md center-image&quot; /&gt;
+  &lt;figcaption&gt;Fig.1: Outline setup for VMware.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;kvm&quot;&gt;KVM&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Started at (2007).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Linux based Kernel virtual machines.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;free and open-source .&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Basically, it’s a kernel module that allows the kernel to function as a hypervisor.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Originally designed for x86 processors then ported to others (ARM, ESA/390, PowerPC).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Supports &lt;span class=&quot;key-text&quot;&gt;HAV&lt;/span&gt; (hardware-assisted virtualization).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://libvirt.org/&quot;&gt;Libvirt&lt;/a&gt; is an abstraction library which facilitates working with KVM toolchains and its adapters.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;License: GNU GPL v2.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;/public/images/virtualization-2.png&quot; class=&quot;post-image-2 resize-md center-image&quot; /&gt;
+  &lt;figcaption&gt;Fig.2: KVM Internal Design.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;red-hat-virtualization&quot;&gt;Red Hat Virtualization&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Started at (2009).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;An enterprise solution based on Linux KVM.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Has integrations with AD and FreeIPA for domain and access control.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Servers management UI.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Superseded by OpenShift, now in maintenance mode since 2020.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;/public/images/virtualization-3.png&quot; class=&quot;post-image-2 resize-md center-image&quot; /&gt;
+  &lt;figcaption&gt;Fig.3: RedHat virtual manager UI.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&quot;hyper-v&quot;&gt;Hyper-V&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Started at (2008) by Microsoft.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A native hypervisor for x86-64 systems only.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Separates VMs using isolated partitions running their guest OSs.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A single hyper-v with command line (CMD) is free.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Requires &lt;span class=&quot;key-text&quot;&gt;HAV&lt;/span&gt; (hardware-assisted virtualization).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;/public/images/virtualization-4.png&quot; class=&quot;post-image-2 resize-md center-image&quot; /&gt;
+  &lt;figcaption&gt;Fig. 4: Hyper-V overview.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;/public/images/virtualization-5.png&quot; class=&quot;post-image-2 resize-md center-image&quot; /&gt;
+  &lt;figcaption&gt;Fig. 5: Installation screen for Hyper-V 2019.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h4 id=&quot;takeaway&quot;&gt;&lt;b&gt;Takeaway:&lt;/b&gt;&lt;/h4&gt;
+&lt;p&gt;VMware stands out as enterprise solution for corporate and regularity requirements, especially when the support is a must. Conversely, for small projects and applications, I find KVM-QEMU based setup a good option.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 12 Nov 2024 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/2024/11/12/virtualization-overview</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2024/11/12/virtualization-overview</guid>
+        
+        <category>virtualization</category>
+        
+        
+        <category>Virtualization</category>
+        
+        <category>Operating Systems</category>
+        
+      </item>
     
       <item>
         <title></title>
@@ -1226,121 +1366,6 @@ We have to set it up using default ordering scope, easily:&lt;/p&gt;
         <category>Rails</category>
         
         <category>Active Record</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/opt-img.jpg&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In many times you may need to optimze rapidly a bunch of images at your hands. There are handy utilities that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:&lt;/p&gt;
-
-&lt;h3 id=&quot;1-optipng-advanced-png-optimizer&quot;&gt;&lt;a href=&quot;http://optipng.sourceforge.net/&quot;&gt;1. OptiPNG: Advanced PNG Optimizer&lt;/a&gt;:&lt;/h3&gt;
-
-&lt;p&gt;Get it for Mac OS X:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;optipng
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;For Linux Ubuntu:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;optipng
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To optimize an image, run:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;optipng &amp;lt;img-name&amp;gt;.png
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;!-- post-excerpt --&gt;
-
-&lt;p&gt;To wildcard all images recursively in the current directory and sub directories:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.png&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; optipng &lt;span class=&quot;nt&quot;&gt;-o7&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;2-jpegoptim&quot;&gt;&lt;a href=&quot;https://github.com/tjko/jpegoptim&quot;&gt;2. jpegoptim&lt;/a&gt;:&lt;/h3&gt;
-
-&lt;p&gt;Install for Mac OS X:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jpegoptim
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Install for Linux Ubuntu:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jpegoptim
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Run the next command to optimize an image, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-m&lt;/code&gt; controls the image quality (0-100):&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jpegoptim &lt;span class=&quot;nt&quot;&gt;-m70&lt;/span&gt; &amp;lt;img-name&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Or optimize all recursively:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.jpg&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; jpegoptim &lt;span class=&quot;nt&quot;&gt;-m80&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;3-gifsicle&quot;&gt;&lt;a href=&quot;https://www.lcdf.org/gifsicle/&quot;&gt;3. gifsicle&lt;/a&gt;:&lt;/h3&gt;
-
-&lt;p&gt;Install for Mac OS X:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gifsicle
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;For Linux Ubuntu:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gifsicle
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The commands for single image, and a group of images respectively, are:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# for single image.&lt;/span&gt;
-gifsicle &lt;span class=&quot;nt&quot;&gt;--batch&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-V&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-O2&lt;/span&gt; &amp;lt;image-name&amp;gt;.gif
-
-&lt;span class=&quot;c&quot;&gt;# to start from cureent dir and go down.&lt;/span&gt;
-find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.gif&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; gifsicle &lt;span class=&quot;nt&quot;&gt;--batch&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-V&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-O2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;aliases&quot;&gt;&lt;strong&gt;Aliases&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;Here are some aliases to keep commands nearby for fast run on the active directory images.&lt;/p&gt;
-
-&lt;p&gt;Be warn that those (also the previously mentioned commands) all alter the original images.&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_png&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;optipng -o7 *.png&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_jpg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jpegoptim -m80 *.jpg&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_gif&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gifsicle --batch -V -O2 *.gif&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can tweak the optimization level and other options to suit your needs.&lt;/p&gt;
-
-&lt;h3 id=&quot;imageoptim&quot;&gt;&lt;strong&gt;ImageOptim&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;If you’d like to use a GUI application, &lt;a href=&quot;https://imageoptim.com/mac&quot;&gt;ImageOptim&lt;/a&gt; is a pretty open source one for Mac OS X that supports multiple image formats.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/public/images/imageoptim.png&quot; alt=&quot;ImageOptim Screen Shot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Happy mature optimization :) !&lt;/p&gt;
-</description>
-        <pubDate>Tue, 30 Aug 2016 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</guid>
-        
-        <category>Image Processing</category>
-        
-        <category>optipng</category>
-        
-        <category>jpegoptim</category>
-        
-        <category>gifsicle</category>
-        
-        <category>ImageOptim</category>
-        
-        
-        <category>Image Processing</category>
-        
-        <category>Productivity</category>
         
       </item>
     
