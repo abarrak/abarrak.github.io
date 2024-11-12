@@ -63,23 +63,6 @@ article a {
     font-size: 80%;
   }
 }
-article > .entry-content:first-letter {
-  color: #b7b1a9;
-  display: inline-block;
-  float: left;
-  font-family: "Playfair Display", "Noto Naskh Arabic";
-  font-size: 121px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 70px;
-  margin: 6px 10px 0 -5px;
-}
-@media screen and (max-width: 600px) {
-  article > .entry-content:first-letter {
-    font-size: 70px;
-    line-height: 30px;
-  }
-}
 
 .post-header, .page-header {
   border-bottom: 1px solid #d9d6d0;
@@ -177,11 +160,16 @@ figure > img {
 
 figcaption {
   color: #a09a92;
-  font-size: 16px;
+  font-size: 0.9rem;
   font-style: italic;
   line-height: 1.2;
-  margin: 1em 0.5em 0.5em;
+  margin: 1em 0.3em 0;
   text-align: center;
+}
+@media screen and (max-width: 600px) {
+  figcaption {
+    font-size: 0.75rem;
+  }
 }
 
 ul, ol {
