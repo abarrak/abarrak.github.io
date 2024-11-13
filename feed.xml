@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 12 Nov 2024 17:32:59 +0300</pubDate>
-    <lastBuildDate>Tue, 12 Nov 2024 17:32:59 +0300</lastBuildDate>
+    <pubDate>Wed, 13 Nov 2024 11:05:16 +0300</pubDate>
+    <lastBuildDate>Wed, 13 Nov 2024 11:05:16 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
     
       <item>
@@ -35,7 +35,7 @@
     &lt;p&gt;Includes distributed management system &lt;span class=&quot;key-text&quot;&gt;(vCenter)&lt;/span&gt; for managing ESXi hosts, access control, migration (vMotion), HA, and distrusted resource scheduler (DRS).&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;span class=&quot;key-text&quot;&gt;vSphere client&lt;/span&gt; UI: A web client for managing a single ESXi hosts directly.&lt;/p&gt;
+    &lt;p&gt;&lt;span class=&quot;key-text&quot;&gt;vSphere client&lt;/span&gt; UI: A web client for managing multiple ESXi hosts and vCenter resources.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
