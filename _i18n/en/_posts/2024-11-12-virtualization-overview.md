@@ -31,9 +31,9 @@ This post reviews four main virtualization options in short.<br>
 
 * Started at (2007).
 
-* Linux based Kernel virtual machines.
+* Linux based kernel virtual machines.
 
-* free and open-source .
+* Free and open-source .
 
 * Basically, it's a kernel module that allows the kernel to function as a hypervisor.
 
