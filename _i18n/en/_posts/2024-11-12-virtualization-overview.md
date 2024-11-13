@@ -20,7 +20,7 @@ This post reviews four main virtualization options in short.<br>
 
 * Includes distributed management system <span class="key-text">(vCenter)</span> for managing ESXi hosts, access control, migration (vMotion), HA, and distrusted resource scheduler (DRS).
 
-* <span class="key-text">vSphere client</span> UI: A web client for managing a single ESXi hosts directly.
+* <span class="key-text">vSphere client</span> UI: A web client for managing multiple ESXi hosts and vCenter resources.
 
 <figure>
   <img src="{{ site.baseurl_root }}/public/images/virtualization-1.png" class="post-image-2 resize-md center-image">
