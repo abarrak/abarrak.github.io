@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Nov 2024 11:05:33 +0300</pubDate>
-    <lastBuildDate>Wed, 13 Nov 2024 11:05:33 +0300</lastBuildDate>
+    <pubDate>Sun, 22 Dec 2024 23:26:26 +0300</pubDate>
+    <lastBuildDate>Sun, 22 Dec 2024 23:26:26 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
     
       <item>
@@ -697,78 +697,6 @@ The router logs shows internal errors (500) when connecting to the upstream (pod
     
       <item>
         <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/aws-exams.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Around last September 2022, after the expiration of my previous amazon web services certificate [SAA] , I decided to prepare and take the next level professional certificate [AWS SAP].&lt;/p&gt;
-
-&lt;h2 id=&quot;preparation&quot;&gt;Preparation&lt;/h2&gt;
-
-&lt;p&gt;When you have working knowledge in the cloud and AWS specifically, it is good idea to take first the associate level certificates since these are information oriented. With study and practice, your chances for passing are high. By doing so, you also prepare for the professional and specialty levels afterward.&lt;/p&gt;
-
-&lt;!-- post-excerpt --&gt;
-
-&lt;p&gt;And that’s what I did by clearing out the following two certificates!&lt;/p&gt;
-
-&lt;h3 id=&quot;certified-developer&quot;&gt;Certified Developer&lt;/h3&gt;
-
-&lt;p&gt;This is mostly focused on developer centric roles when working with AWS.&lt;/p&gt;
-
-&lt;p&gt;Besides the essentials (EC2, IAM, ELB, R53, RDS, S3, CloudFront, KMS, CloudWatch), other development relevant services and topics are covered with precise questions such as lambda workloads, serverless offerings (Dynamo, API Gateway, Cognito), CI/CD managed pipelines, and working with secrets and configuration. All is indicated in &lt;a href=&quot;https://aws.amazon.com/certification/certified-developer-associate/&quot;&gt;the official guide&lt;/a&gt;. Also, some questions may contain snippet of code in questions related to DynamoDB, S3, and Lambda.&lt;/p&gt;
-
-&lt;p&gt;Notably, I found this one the easiest in the associate category. 💡&lt;/p&gt;
-
-&lt;h3 id=&quot;certified-sysops-admin&quot;&gt;Certified SysOps Admin&lt;/h3&gt;
-
-&lt;p&gt;This is basically the most involved exam in the associate level in my experience.&lt;/p&gt;
-
-&lt;p&gt;There’s focus on &lt;a href=&quot;https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html&quot;&gt;CloudFormation&lt;/a&gt;, &lt;a href=&quot;https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html&quot;&gt;Systems Manager&lt;/a&gt;, Logging and monitoring, &lt;a href=&quot;https://docs.aws.amazon.com/eventbridge/index.html&quot;&gt;Event Bridge&lt;/a&gt;, &lt;a href=&quot;https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html&quot;&gt;AWS Config&lt;/a&gt;, among other services as detailed &lt;a href=&quot;https://d1.awsstatic.com/training-and-certification/docs-sysops-associate/AWS-Certified-SysOps-Administrator-Associate_Exam-Guide.pdf&quot;&gt;in the 6 domains&lt;/a&gt;. Uniquely, this one includes a lab section with 3 practical questions which you would solve through the AWS Console.&lt;/p&gt;
-
-&lt;h3 id=&quot;solutions-architect-professional&quot;&gt;Solutions Architect Professional&lt;/h3&gt;
-
-&lt;p&gt;And Finally, &lt;a href=&quot;https://www.credly.com/badges/f082f973-a262-41ba-aad6-557076601b5b/public_url&amp;gt;&quot;&gt;&lt;span style=&quot;color: darkred&quot;&gt;the happy result letter&lt;/span&gt;&lt;/a&gt; came in with success! 🎉&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/public/images/aws-sap-cert.png&quot; class=&quot;post-image-2 resize-sm center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here things are more interesting than the associate exams. The breadth and depth of domains are much higher. Most if not all of the questions are &lt;strong&gt;compound items&lt;/strong&gt; that explore a combination of services placement or integrations together (e.g. IAM organization policies SCP and S3, on-premise gateways and connectors to services). Try to cover advanced networking, IAM, storage and files solutions, and IAM/AD/SSO as well.&lt;/p&gt;
-
-&lt;h3 id=&quot;tips&quot;&gt;Tips&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Follow a curriculum to review any gaps you have, and practice with the instructor in labs.
-&lt;br /&gt;
-&lt;a href=&quot;https://www.udemy.com/user/stephane-maarek/&quot;&gt;Maarek’s courses&lt;/a&gt; are recommended.&lt;/li&gt;
-  &lt;li&gt;The official AWS pages all have PDF exam samples with answers. &lt;br /&gt;
-Go through them to know what to expect, questions style, and how domains are examined.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/open-guides/og-aws&quot;&gt;AWS open guides are very valuable summary&lt;/a&gt;. &lt;br /&gt;
-Keep them in bookmarks!&lt;/li&gt;
-  &lt;li&gt;Have a good night sleep 😴 and attend 20-15 minutes earlier.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Tue, 10 Jan 2023 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2023/01/10/passing-aws-sap</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2023/01/10/passing-aws-sap</guid>
-        
-        <category>AWS SAP</category>
-        
-        <category>Solutions Architect</category>
-        
-        <category>Cloud</category>
-        
-        <category>AWS</category>
-        
-        
-        <category>Exams</category>
-        
-        <category>Architecture</category>
-        
-        <category>Cloud</category>
-        
-        <category>AWS</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
         <description>&lt;p&gt;&lt;img src=&quot;/public/images/aws-b-lib.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I have enjoyed reading &lt;a href=&quot;https://aws.amazon.com/builders-library/reliability-and-constant-work/&quot;&gt;this piece on stability and reliability by Colm MacCárthaigh&lt;/a&gt;. It is part of a concise and valuable series by AWS about the art of system operations collected under the name “Amazon Builders’ Library”.&lt;/p&gt;
@@ -1366,6 +1294,121 @@ We have to set it up using default ordering scope, easily:&lt;/p&gt;
         <category>Rails</category>
         
         <category>Active Record</category>
+        
+      </item>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/opt-img.jpg&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In many times you may need to optimze rapidly a bunch of images at your hands. There are handy utilities that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:&lt;/p&gt;
+
+&lt;h3 id=&quot;1-optipng-advanced-png-optimizer&quot;&gt;&lt;a href=&quot;http://optipng.sourceforge.net/&quot;&gt;1. OptiPNG: Advanced PNG Optimizer&lt;/a&gt;:&lt;/h3&gt;
+
+&lt;p&gt;Get it for Mac OS X:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;optipng
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For Linux Ubuntu:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;optipng
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To optimize an image, run:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;optipng &amp;lt;img-name&amp;gt;.png
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;p&gt;To wildcard all images recursively in the current directory and sub directories:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.png&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; optipng &lt;span class=&quot;nt&quot;&gt;-o7&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2-jpegoptim&quot;&gt;&lt;a href=&quot;https://github.com/tjko/jpegoptim&quot;&gt;2. jpegoptim&lt;/a&gt;:&lt;/h3&gt;
+
+&lt;p&gt;Install for Mac OS X:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jpegoptim
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Install for Linux Ubuntu:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jpegoptim
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Run the next command to optimize an image, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-m&lt;/code&gt; controls the image quality (0-100):&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jpegoptim &lt;span class=&quot;nt&quot;&gt;-m70&lt;/span&gt; &amp;lt;img-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Or optimize all recursively:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.jpg&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; jpegoptim &lt;span class=&quot;nt&quot;&gt;-m80&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-gifsicle&quot;&gt;&lt;a href=&quot;https://www.lcdf.org/gifsicle/&quot;&gt;3. gifsicle&lt;/a&gt;:&lt;/h3&gt;
+
+&lt;p&gt;Install for Mac OS X:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gifsicle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For Linux Ubuntu:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gifsicle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The commands for single image, and a group of images respectively, are:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# for single image.&lt;/span&gt;
+gifsicle &lt;span class=&quot;nt&quot;&gt;--batch&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-V&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-O2&lt;/span&gt; &amp;lt;image-name&amp;gt;.gif
+
+&lt;span class=&quot;c&quot;&gt;# to start from cureent dir and go down.&lt;/span&gt;
+find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.gif&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; gifsicle &lt;span class=&quot;nt&quot;&gt;--batch&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-V&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-O2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;aliases&quot;&gt;&lt;strong&gt;Aliases&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Here are some aliases to keep commands nearby for fast run on the active directory images.&lt;/p&gt;
+
+&lt;p&gt;Be warn that those (also the previously mentioned commands) all alter the original images.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_png&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;optipng -o7 *.png&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_jpg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jpegoptim -m80 *.jpg&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_gif&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gifsicle --batch -V -O2 *.gif&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can tweak the optimization level and other options to suit your needs.&lt;/p&gt;
+
+&lt;h3 id=&quot;imageoptim&quot;&gt;&lt;strong&gt;ImageOptim&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;If you’d like to use a GUI application, &lt;a href=&quot;https://imageoptim.com/mac&quot;&gt;ImageOptim&lt;/a&gt; is a pretty open source one for Mac OS X that supports multiple image formats.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/imageoptim.png&quot; alt=&quot;ImageOptim Screen Shot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Happy mature optimization :) !&lt;/p&gt;
+</description>
+        <pubDate>Tue, 30 Aug 2016 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</guid>
+        
+        <category>Image Processing</category>
+        
+        <category>optipng</category>
+        
+        <category>jpegoptim</category>
+        
+        <category>gifsicle</category>
+        
+        <category>ImageOptim</category>
+        
+        
+        <category>Image Processing</category>
+        
+        <category>Productivity</category>
         
       </item>
     

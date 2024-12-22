@@ -90,51 +90,6 @@
 						<span>Posted on</span>
 						<span class="post-meta">
 						
-							October 8, 2022
-						
-						</span>
-					</div>
-					
-
-					<h2>
-					
-            <a class="post-link" href="/2022/10/08/using-helmfile-for-offline-deployments">Use Helmfile for Deployment in Offline Environments</a>
-					
-					</h2>
-				</header>
-
-				<div class="entry-content">
-					<p><a href="https://github.com/roboll/helmfile" rel="nofollow" target="_blank">Helmfile is an orchestrator tool</a> for collecting, building, and deploying cloud-native apps. Basically it’s the packager for helm chart based applications.</p>
-
-<p>One of the interesting ideas I came along recently, is utilizing it for working in air-gapped environments, where access to the internet is not feasible.</p>
-
-<h2 id="use-case">Use Case</h2>
-
-<p>Let’s say you were deploying an application to a Kubernetes cluster. The idea is to package all dependencies and manifests beforehand in a local or control machine, then push the consolidated deployment directory to the offline machine.</p>
-
-<p>The diagram below depicts the flow.</p>
-
-<p><img src="/public/images/offline-deployment.png" class="post-image-2 resize-md center-image"></p>
-
-
-
-					
-			    	<div class="button-container">
-			      	<a class="button" href="/2022/10/08/using-helmfile-for-offline-deployments">Read more ..</a>
-			    	</div>
-					
-				</div>
-			</article>
-		</li>
-		
-		<li>
-			<article>
-				<header class="post-header ">
-					
-					<div>
-						<span>Posted on</span>
-						<span class="post-meta">
-						
 							September 23, 2022
 						
 						</span>
@@ -312,6 +267,61 @@
 					
 			    	<div class="button-container">
 			      	<a class="button" href="/2019/05/24/uuid-primary-key-for-active-record-models">Read more ..</a>
+			    	</div>
+					
+				</div>
+			</article>
+		</li>
+		
+		<li>
+			<article>
+				<header class="post-header ">
+					
+					<div>
+						<span>Posted on</span>
+						<span class="post-meta">
+						
+							August 30, 2016
+						
+						</span>
+					</div>
+					
+
+					<h2>
+					
+            <a class="post-link" href="/2016/08/30/optimize-images-from-your-terminal">Optimize Image Files from Your Terminal</a>
+					
+					</h2>
+				</header>
+
+				<div class="entry-content">
+					<p><img src="/public/images/opt-img.jpg" class="post-image resize-md center-image"></p>
+
+<p>In many times you may need to optimze rapidly a bunch of images at your hands. There are handy utilities that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:</p>
+
+<h3 id="1-optipng-advanced-png-optimizer">
+<a href="http://optipng.sourceforge.net/" rel="nofollow" target="_blank">1. OptiPNG: Advanced PNG Optimizer</a>:</h3>
+
+<p>Get it for Mac OS X:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>optipng
+</code></pre></div></div>
+
+<p>For Linux Ubuntu:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>optipng
+</code></pre></div></div>
+
+<p>To optimize an image, run:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>optipng &lt;img-name&gt;.png
+</code></pre></div></div>
+
+
+
+					
+			    	<div class="button-container">
+			      	<a class="button" href="/2016/08/30/optimize-images-from-your-terminal">Read more ..</a>
 			    	</div>
 					
 				</div>
