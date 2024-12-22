@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "3.1.4"
+ruby "3.2.6"
 
 gem "jekyll", "4.3"
 gem "nokogiri"
