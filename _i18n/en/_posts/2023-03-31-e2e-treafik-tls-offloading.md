@@ -58,22 +58,22 @@ data:
     ...
     http {
       server {
-          listen 443 ssl;
-          listen [::]:443 ssl;
-          server_name  _;
+        listen 443 ssl;
+        listen [::]:443 ssl;
+        server_name  _;
 
-          ssl_certificate /etc/nginx/ssl/cert.pem;
-          ssl_certificate_key /etc/nginx/ssl/key.pem;
+        ssl_certificate /etc/nginx/ssl/cert.pem;
+        ssl_certificate_key /etc/nginx/ssl/key.pem;
 
-          location / {
-            proxy_pass http://localhost:80;
-            proxy_http_version 1.1;
-            proxy_set_header X-Forwarded-Host $host;
-            proxy_set_header X-Forwarded-Server $host;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header Host $http_host;
-            proxy_set_header X-Forwarded-Proto $scheme;
-          }
+        location / {
+          proxy_pass http://localhost:80;
+          proxy_http_version 1.1;
+          proxy_set_header X-Forwarded-Host $host;
+          proxy_set_header X-Forwarded-Server $host;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header Host $http_host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+        }
       }
     }
 ```

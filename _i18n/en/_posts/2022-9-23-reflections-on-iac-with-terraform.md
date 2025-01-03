@@ -8,9 +8,9 @@ categories: [Automation, IaC, Cloud]
 
 Terraform has emerged as one of the top open source infrastructure as code (IaC) tools, since its initial release by Hashicorp back in 2014.
 
-The design philosophy behind the tool is to have **declarative**, and **stateful** representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of such resources.
+The design philosophy behind the tool is to have **declarative**, and **stateful** representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of the cloud resources.
 
-The classical example to provision compute VM to show the main principle.
+The classical example to show the main idea creating a VM:
 
 <!-- post-excerpt -->
 
@@ -81,7 +81,7 @@ $ tree
 
 The variables and output files are separated to organize things up.
 
-Finally, the state is tracked in `.tfstate` file  managed internally by Terraform.
+The state is tracked in `.tfstate` file, and managed internally by Terraform.
 
 
 ## Providers
@@ -94,12 +94,12 @@ provider "aws" {
 }
 ```
 
-Major cloud providers [are available on the public terraform registry](https://registry.terraform.io), along with many of platform agnostic plugins, such as `Helm` and `Kubernetes`.
+The major providers [are available on the public terraform registry](https://registry.terraform.io), along with many platform agnostic plugins, such as `Helm` and `Kubernetes`.
 
 <img src="{{ site.baseurl_root }}/public/images/providers-iac.png" class="post-image-2 resize-md center-image" />
 
 
-Here's an example for a simple helm releasing technique to build on:
+Here's an example for a simple helm releasing technique:
 
 ```bash
 provider "helm" {
