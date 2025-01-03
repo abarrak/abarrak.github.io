@@ -145,22 +145,22 @@
     <span class="s">...</span>
     <span class="s">http {</span>
       <span class="s">server {</span>
-          <span class="s">listen 443 ssl;</span>
-          <span class="s">listen [::]:443 ssl;</span>
-          <span class="s">server_name  _;</span>
+        <span class="s">listen 443 ssl;</span>
+        <span class="s">listen [::]:443 ssl;</span>
+        <span class="s">server_name  _;</span>
 
-          <span class="s">ssl_certificate /etc/nginx/ssl/cert.pem;</span>
-          <span class="s">ssl_certificate_key /etc/nginx/ssl/key.pem;</span>
+        <span class="s">ssl_certificate /etc/nginx/ssl/cert.pem;</span>
+        <span class="s">ssl_certificate_key /etc/nginx/ssl/key.pem;</span>
 
-          <span class="s">location / {</span>
-            <span class="s">proxy_pass http://localhost:80;</span>
-            <span class="s">proxy_http_version 1.1;</span>
-            <span class="s">proxy_set_header X-Forwarded-Host $host;</span>
-            <span class="s">proxy_set_header X-Forwarded-Server $host;</span>
-            <span class="s">proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span>
-            <span class="s">proxy_set_header Host $http_host;</span>
-            <span class="s">proxy_set_header X-Forwarded-Proto $scheme;</span>
-          <span class="s">}</span>
+        <span class="s">location / {</span>
+          <span class="s">proxy_pass http://localhost:80;</span>
+          <span class="s">proxy_http_version 1.1;</span>
+          <span class="s">proxy_set_header X-Forwarded-Host $host;</span>
+          <span class="s">proxy_set_header X-Forwarded-Server $host;</span>
+          <span class="s">proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span>
+          <span class="s">proxy_set_header Host $http_host;</span>
+          <span class="s">proxy_set_header X-Forwarded-Proto $scheme;</span>
+        <span class="s">}</span>
       <span class="s">}</span>
     <span class="s">}</span>
 </code></pre></div></div>
@@ -288,7 +288,7 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
 				<a href="">Abdullah Barrak's Blog</a>
 				<ul class="contact-list">
 					<li>A passionate blog about computer programming, reading, thinking, and the like.</li>
-					<li><b>(2016 - 2024)</b></li>
+					<li><b>(2016 - 2025)</b></li>
 				</ul>
 			</div>
 

@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 27 Dec 2024 22:05:25 +0300</pubDate>
-    <lastBuildDate>Fri, 27 Dec 2024 22:05:25 +0300</lastBuildDate>
+    <pubDate>Fri, 03 Jan 2025 17:08:10 +0300</pubDate>
+    <lastBuildDate>Fri, 03 Jan 2025 17:08:10 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
     
       <item>
@@ -587,22 +587,22 @@ tolist&lt;span class=&quot;o&quot;&gt;([&lt;/span&gt;
     &lt;span class=&quot;s&quot;&gt;...&lt;/span&gt;
     &lt;span class=&quot;s&quot;&gt;http {&lt;/span&gt;
       &lt;span class=&quot;s&quot;&gt;server {&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;listen 443 ssl;&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;listen [::]:443 ssl;&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;server_name  _;&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;listen 443 ssl;&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;listen [::]:443 ssl;&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;server_name  _;&lt;/span&gt;
 
-          &lt;span class=&quot;s&quot;&gt;ssl_certificate /etc/nginx/ssl/cert.pem;&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;ssl_certificate_key /etc/nginx/ssl/key.pem;&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;ssl_certificate /etc/nginx/ssl/cert.pem;&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;ssl_certificate_key /etc/nginx/ssl/key.pem;&lt;/span&gt;
 
-          &lt;span class=&quot;s&quot;&gt;location / {&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;proxy_pass http://localhost:80;&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;proxy_http_version 1.1;&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Host $host;&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Server $host;&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;proxy_set_header Host $http_host;&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Proto $scheme;&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;location / {&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;proxy_pass http://localhost:80;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;proxy_http_version 1.1;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Host $host;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Server $host;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;proxy_set_header Host $http_host;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Proto $scheme;&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;}&lt;/span&gt;
       &lt;span class=&quot;s&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;s&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -883,9 +883,9 @@ helm pull &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv
 
 &lt;p&gt;Terraform has emerged as one of the top open source infrastructure as code (IaC) tools, since its initial release by Hashicorp back in 2014.&lt;/p&gt;
 
-&lt;p&gt;The design philosophy behind the tool is to have &lt;strong&gt;declarative&lt;/strong&gt;, and &lt;strong&gt;stateful&lt;/strong&gt; representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of such resources.&lt;/p&gt;
+&lt;p&gt;The design philosophy behind the tool is to have &lt;strong&gt;declarative&lt;/strong&gt;, and &lt;strong&gt;stateful&lt;/strong&gt; representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of the cloud resources.&lt;/p&gt;
 
-&lt;p&gt;The classical example to provision compute VM to show the main principle.&lt;/p&gt;
+&lt;p&gt;The classical example to show the main idea creating a VM:&lt;/p&gt;
 
 &lt;!-- post-excerpt --&gt;
 
@@ -951,7 +951,7 @@ This enhances for security posture as well, like protecting sensitive data.&lt;/
 
 &lt;p&gt;The variables and output files are separated to organize things up.&lt;/p&gt;
 
-&lt;p&gt;Finally, the state is tracked in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.tfstate&lt;/code&gt; file  managed internally by Terraform.&lt;/p&gt;
+&lt;p&gt;The state is tracked in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.tfstate&lt;/code&gt; file, and managed internally by Terraform.&lt;/p&gt;
 
 &lt;h2 id=&quot;providers&quot;&gt;Providers&lt;/h2&gt;
 
@@ -962,11 +962,11 @@ This enhances for security posture as well, like protecting sensitive data.&lt;/
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Major cloud providers &lt;a href=&quot;https://registry.terraform.io&quot;&gt;are available on the public terraform registry&lt;/a&gt;, along with many of platform agnostic plugins, such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Helm&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Kubernetes&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The major providers &lt;a href=&quot;https://registry.terraform.io&quot;&gt;are available on the public terraform registry&lt;/a&gt;, along with many platform agnostic plugins, such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Helm&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Kubernetes&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/images/providers-iac.png&quot; class=&quot;post-image-2 resize-md center-image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Here’s an example for a simple helm releasing technique to build on:&lt;/p&gt;
+&lt;p&gt;Here’s an example for a simple helm releasing technique:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;provider &lt;span class=&quot;s2&quot;&gt;&quot;helm&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   kubernetes &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
@@ -1015,41 +1015,6 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;helm_release&quot;&lt;/span&gt; 
         <category>IaC</category>
         
         <category>Cloud</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/linux-book.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I have published a short handbook on basic Linux administration covering multiple topics 📕&lt;/p&gt;
-
-&lt;p&gt;Hopefully it would be useful read for new sysadmins, and interested people.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://abarrak.gitbook.io/linux-sysops-handbook&quot;&gt;Book.&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/abarrak/linux-sysops-handbook&quot;&gt;Source.&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; &lt;br /&gt;
-&lt;a href=&quot;https://news.ycombinator.com/item?id=30430594&quot;&gt;The book is published on HN&lt;/a&gt;, and gained good momentum, contributions, and feedback!&lt;/p&gt;
-</description>
-        <pubDate>Tue, 22 Feb 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2022/02/22/linux-sysops-git-book</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2022/02/22/linux-sysops-git-book</guid>
-        
-        <category>linux</category>
-        
-        <category>system administration</category>
-        
-        <category>gitbook</category>
-        
-        
-        <category>Linux</category>
-        
-        <category>Books</category>
-        
-        <category>Operating Systems</category>
         
       </item>
     
@@ -1409,6 +1374,79 @@ find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quo
         <category>Image Processing</category>
         
         <category>Productivity</category>
+        
+      </item>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/sinatra-logo.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the past week, I have been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.&lt;/p&gt;
+
+&lt;h3 id=&quot;symptoms&quot;&gt;&lt;strong&gt;Symptoms&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;The error was appearing in one of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.erb&lt;/code&gt; view files that contains a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;textarea&lt;/code&gt; field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:&lt;/p&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2016-08-26 19:15:53 - Encoding::CompatibilityError - incompatible character encodings: UTF-8 and US-ASCII:
+  /var/app/current/views/review.erb:69:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;block &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;singleton class&lt;span class=&quot;s1&quot;&gt;&apos;
+  /var/app/current/views/review.erb:-7:in `instance_eval&apos;&lt;/span&gt;
+  /var/app/current/views/review.erb:-7:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;singleton class&lt;span class=&quot;s1&quot;&gt;&apos;
+  /var/app/current/views/review.erb:-9:in `__tilt_47353692136320&apos;&lt;/span&gt;
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;call&lt;span class=&quot;s1&quot;&gt;&apos;
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate&apos;&lt;/span&gt;
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;render&lt;span class=&quot;s1&quot;&gt;&apos;
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render&apos;&lt;/span&gt;
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;erb&lt;span class=&quot;s1&quot;&gt;&apos;
+  /var/app/current/helpers.rb:24:in `block (2 levels) in serve_page&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Guided by the error message indication. I attempted to fix the issue by ensuring that all parts are encoded as UTF-8. I set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;accept-charset&lt;/code&gt; attribute for the form and texteara tag to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;UTF-8&quot;&lt;/code&gt;, forced source files to be UTF-8 by inserting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# 😁&lt;/code&gt; comment, and checked the Sinatra routing is also set to have
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;headers &apos;Content-type&apos; =&amp;gt; &apos;text/html; charset=utf-8&apos;&lt;/code&gt;, But unfortunately none of that was solving the problem.&lt;/p&gt;
+
+&lt;p&gt;By taking a closer look at the stack trace, I figured that it was happening specifically during the template rendering phase, and might have something to do with one of Sinatra’s dependencies, Tilt rendering library.&lt;/p&gt;
+
+&lt;h3 id=&quot;solution&quot;&gt;&lt;strong&gt;Solution&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Indeed it was caused by Tilt . In fact, it’s a known issue and has been pointed out in the gem’s &lt;a href=&quot;https://github.com/rtomayko/tilt#encodings&quot;&gt;repository main page&lt;/a&gt;.
+Setting ruby’s external encoding plus the source files to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UTF-8&lt;/code&gt; solved it for me just like mentioned in the link.&lt;/p&gt;
+
+&lt;p&gt;If you’ve structured your application in the modular style, then set encoding early in the class.&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyApplication&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sinatra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# set encoding.&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In classic applications, this would suffice.&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That’s it. Hope It helps someone else !&lt;/p&gt;
+</description>
+        <pubDate>Fri, 26 Aug 2016 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</guid>
+        
+        <category>Sinatra</category>
+        
+        <category>Tilt</category>
+        
+        <category>UTF-8</category>
+        
+        <category>AWS</category>
+        
+        <category>encoding compatibility error</category>
+        
+        
+        <category>Software</category>
+        
+        <category>Ruby</category>
+        
+        <category>Sinatra</category>
+        
+        <category>Troubleshooting</category>
         
       </item>
     
