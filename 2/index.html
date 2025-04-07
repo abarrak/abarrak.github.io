@@ -92,6 +92,51 @@
 						<span>Posted on</span>
 						<span class="post-meta">
 						
+							October 8, 2022
+						
+						</span>
+					</div>
+					
+
+					<h2>
+					
+            <a class="post-link" href="/2022/10/08/using-helmfile-for-offline-deployments">Use Helmfile for Deployment in Offline Environments</a>
+					
+					</h2>
+				</header>
+
+				<div class="entry-content">
+					<p><a href="https://github.com/roboll/helmfile" rel="nofollow" target="_blank">Helmfile is an orchestrator tool</a> for collecting, building, and deploying cloud-native apps. Basically it’s the packager for helm chart based applications.</p>
+
+<p>One of the interesting ideas I came along recently, is utilizing it for working in air-gapped environments, where access to the internet is not feasible.</p>
+
+<h2 id="use-case">Use Case</h2>
+
+<p>Let’s say you were deploying an application to a Kubernetes cluster. The idea is to package all dependencies and manifests beforehand in a local or control machine, then push the consolidated deployment directory to the offline machine.</p>
+
+<p>The diagram below depicts the flow.</p>
+
+<p><img src="/public/images/offline-deployment.png" class="post-image-2 resize-md center-image"></p>
+
+
+
+					
+			    	<div class="button-container">
+			      	<a class="button" href="/2022/10/08/using-helmfile-for-offline-deployments">Read more ..</a>
+			    	</div>
+					
+				</div>
+			</article>
+		</li>
+		
+		<li>
+			<article>
+				<header class="post-header ">
+					
+					<div>
+						<span>Posted on</span>
+						<span class="post-meta">
+						
 							September 23, 2022
 						
 						</span>
@@ -282,46 +327,6 @@
 					
 			    	<div class="button-container">
 			      	<a class="button" href="/2016/08/30/optimize-images-from-your-terminal">Read more ..</a>
-			    	</div>
-					
-				</div>
-			</article>
-		</li>
-		
-		<li>
-			<article>
-				<header class="post-header ">
-					
-					<div>
-						<span>Posted on</span>
-						<span class="post-meta">
-						
-							August 26, 2016
-						
-						</span>
-					</div>
-					
-
-					<h2>
-					
-            <a class="post-link" href="/2016/08/26/fix-sinatra-tilt-unicode">Fixing Sinatra UTF-8 issue in Tilt rendered templates</a>
-					
-					</h2>
-				</header>
-
-				<div class="entry-content">
-					<p><img src="/public/images/sinatra-logo.png" class="post-image resize-sm center-image"></p>
-
-<p>In the past week, I have been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.</p>
-
-<h3 id="symptoms"><strong>Symptoms</strong></h3>
-<p>The error was appearing in one of the <code class="language-plaintext highlighter-rouge">.erb</code> view files that contains a <code class="language-plaintext highlighter-rouge">textarea</code> field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:</p>
-
-
-
-					
-			    	<div class="button-container">
-			      	<a class="button" href="/2016/08/26/fix-sinatra-tilt-unicode">Read more ..</a>
 			    	</div>
 					
 				</div>

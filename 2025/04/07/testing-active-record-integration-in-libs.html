@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="description" content="When I was writing the expiry calculator gem (extracted from Rails app for license management), The library’s main logic has some sort of integration with Ac...">
+  <meta name="author" content="Abdullah Barrak">
+
+  <meta name="keywords" content="rails, activerecord, unit testing, testing, and rspec">
+	<meta name="theme-color" content="#943526">
+
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="When I was writing the expiry calculator gem (extracted from Rails app for li...">
+  <meta property="og:url" content="https://www.abarrak.com/2025/04/07/testing-active-record-integration-in-libs">
+	
+	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
+	
+	
+	<meta property="og:title" content="Abdullah Barrak • Testing Active Record Integration in Ruby Gems">
+	
+	<link rel="canonical" href="https://www.abarrak.com/2025/04/07/testing-active-record-integration-in-libs">
+
+	<title>
+    
+      Testing Active Record Integration in Ruby Gems •
+      Abdullah Barrak's Blog
+    
+  </title>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/icons/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/icons/favicon.ico">
+
+  <!-- Fonts -->
+	<link rel='stylesheet' id='libretto-fonts-css'  href='https://fonts.googleapis.com/css?family=Libre+Baskerville%3A400%2C700%2C400italic%7CPlayfair+Display%3A400%2C700%2C400italic%2C700italic%7CPlayfair+Display+SC%3A700%2C700italic%7CMontserrat%3A400%7CDroid+Sans+Mono%3A400&#038;subset=latin%2Clatin-ext' type='text/css' media='all'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/public/css/main.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/tooltipster-bundle.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/tooltipster-sideTip-shadow.min.css" type="text/css" media="all">
+  
+
+  <!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak" href="https://www.abarrak.com/feed.xml">
+</head>
+
+<body>
+
+	<header class="site-header">
+	<div class="wrapper-fluid">
+		<a class="site-title" href="/">Abdullah Barrak</a>
+
+    <ul class="links">
+      <li><a href="/about">About</a></li>
+      <li><a href="/works">Works</a></li>
+      <li><a href="/contact">Contact</a></li>
+
+      <li class="lang_link " class="tooltip" title="Language">
+        <small>
+          
+          
+          
+          <a href="
+          /ar/
+          ">ع</a>
+          
+        </small>
+      </li>
+    </ul>
+
+  </div>
+</header>
+
+
+
+	<div class="page-content">
+		<div class="wrapper">
+			<header class="post-header">
+	<div>
+		<span></span><span class="post-meta">
+			
+				April 7, 2025
+			
+		</span>
+	</div>
+
+	<h1 class="post-title" itemprop="name headline">Testing Active Record Integration in Ruby Gems</h1>
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="entry-content" itemprop="articleBody">
+		<p>When I was writing <a href="https://github.com/abarrak/expiry_calculator" rel="nofollow" target="_blank">the expiry calculator</a> gem (extracted from Rails app for license management), The library’s main logic has some sort of integration with <strong>ActiveRecord</strong>, and I needed to verify that the easy way.</p>
+
+<p>Mocking the built-in active record connection pool and tables mapping showed to be cumbersome and may not not ideally allow me to validate the intended behaviour. Luckily, I found pieces in SO and Github to do the unit testing in few simple steps, with a on the fly db (Sqlite). I have put it together in the following guide polished for <strong>Rspec</strong> and with ad-hoc migration methods.</p>
+
+<!-- post-excerpt -->
+
+<h2 id="steps">Steps</h2>
+
+<ol>
+  <li>Adding the required libraries in the dev group of our Gem spec file.</li>
+</ol>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">spec</span><span class="o">|</span>
+  <span class="c1"># ..</span>
+  <span class="n">spec</span><span class="p">.</span><span class="nf">add_development_dependency</span> <span class="s2">"activerecord"</span><span class="p">,</span> <span class="s2">"~&gt; 7"</span>
+  <span class="n">spec</span><span class="p">.</span><span class="nf">add_development_dependency</span> <span class="s2">"sqlite3"</span><span class="p">,</span> <span class="s2">"~&gt; 2"</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<ol>
+  <li>The db setup and migration logic is extracted in a spec helper.<br>
+Replace <code class="language-plaintext highlighter-rouge">post_table</code> with your intended model with the attributes (columns) you need.</li>
+</ol>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># spec/support/db_helper.rb</span>
+<span class="k">module</span> <span class="nn">TestDbHelper</span>
+  <span class="k">def</span> <span class="nf">establish_coonection</span>
+    <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">establish_connection</span> <span class="ss">adapter: </span><span class="s2">"sqlite3"</span><span class="p">,</span> <span class="ss">database: </span><span class="s2">":memory:"</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">up</span>
+    <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">connection</span><span class="p">.</span><span class="nf">create_table</span> <span class="ss">:post_table</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:name</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">date</span> <span class="ss">:post_date</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">down</span>
+    <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">connection</span><span class="p">.</span><span class="nf">drop_table</span> <span class="ss">:post_table</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<ol>
+  <li>For convenience, I mixed in the helper in the example and example group classes of <strong>rspec</strong>.</li>
+</ol>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s2">"support/db_helper"</span>
+
+<span class="no">RSpec</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="c1"># ...</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">include</span> <span class="no">TestDbHelper</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">extend</span> <span class="no">TestDbHelper</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Then, invoke the db functions.<br>
+Also build an active record model anonymously in <code class="language-plaintext highlighter-rouge">let</code> statements.</li>
+</ol>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">RSpec</span><span class="p">.</span><span class="nf">describe</span> <span class="no">MyGemClass</span> <span class="k">do</span>
+  <span class="c1"># ...</span>
+  <span class="n">context</span> <span class="s2">"Active Record Cases"</span> <span class="k">do</span>
+
+    <span class="n">establish_coonection</span>
+
+    <span class="n">before</span> <span class="p">{</span> <span class="n">up</span> <span class="p">}</span>
+    <span class="n">after</span> <span class="p">{</span> <span class="n">down</span> <span class="p">}</span>
+
+    <span class="n">let</span><span class="p">(</span><span class="ss">:post_class</span><span class="p">)</span> <span class="k">do</span>
+      <span class="no">Class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="nf">table_name</span> <span class="o">=</span> <span class="s2">"post_table"</span> <span class="p">}</span>
+    <span class="k">end</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:post</span><span class="p">)</span> <span class="p">{</span> <span class="n">active_record_class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">post_date: </span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
+
+  <span class="c1"># ...</span>
+
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<ol>
+  <li>At last, here’s an edited test case of the model against by the gem’s original test <code class="language-plaintext highlighter-rouge">(calculate)</code>.</li>
+</ol>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1">#  ...</span>
+    <span class="n">it</span> <span class="s2">"supports active_record parameter with accessor attr"</span> <span class="k">do</span>
+      <span class="n">expect</span><span class="p">(</span><span class="n">subject</span><span class="p">.</span><span class="nf">calculate</span><span class="p">(</span><span class="n">post</span><span class="p">,</span> <span class="ss">:post_date</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">end</span>
+</code></pre></div></div>
+
+<p>Done.</p>
+
+<p><img src="/public/images/respec-test-ar-models-in-gems.png" class="post-image resize-lg center-image"></p>
+
+
+	</div>
+
+	
+<h2 class="comments-label">Comments</h2>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+      this.page.url = "https://www.abarrak.com/2025/04/07/testing-active-record-integration-in-libs";
+      this.page.identifier = "testing-active-record-integration-in-ruby-gems";
+  };
+
+  (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//abarrak.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+</article>
+
+<div id="post-nav">
+	<div class="next">
+		
+	</div>
+
+	<div class="previous">
+		
+		<a href="/2024/11/12/virtualization-overview">
+			<span>Previous entry</span>
+			A Short Essay on Popular Virtualization Technologies
+		</a>
+		
+	</div>
+</div>
+
+		</div>
+	</div>
+
+	<footer class="site-footer">
+	<div class="wrapper-fluid footer-wrapper">
+
+		<!-- <h2 class="footer-heading">Blog</h2> -->
+
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-1 footer-left">
+				<a href="">Abdullah Barrak's Blog</a>
+				<ul class="contact-list">
+					<li>A passionate blog about computer programming, reading, thinking, and the like.</li>
+					<li><b>(2016 - 2025)</b></li>
+				</ul>
+			</div>
+
+			<div class="footer-col footer-col-1 footer-right">
+				<p class="center">
+					<a href="/tags">Tag Cloud</a> |
+					subscribe <a href="/feed.xml">via RSS</a>
+				</p>
+
+				<div class="social-links" id="social">
+				
+					<a href="https://github.com/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/github-icon.png" alt="Github Icon">
+					</a>
+				
+
+				
+					<a href="https://goodreads.com/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/goodreads-icon.png" alt="Goodreads Icon">
+					</a>
+				
+
+				
+					<a href="https://linkedin.com/in/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/linkedin-icon.png" alt="LinkedIn Icon">
+					</a>
+				
+
+				
+					<a href="https://x.com/abarrakx" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/twitter-icon.png" alt="Github Icon">
+					</a>
+				
+
+				
+					<a href="https://stackoverflow.com/users/2925286/abdullah-barrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/stackoverflow-icon.png" alt="stackoverflow Icon">
+					</a>
+				
+
+					<a href="mailto:abdullah@abarrak.com" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/mail-icon.png" alt="Email Icon">
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</footer>
+
+
+<script src="/public/js/all.min.js"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83251901-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-83251901-1');
+</script>
+
+
+
+
+</body>
+</html>

@@ -92,6 +92,43 @@
 						<span>Posted on</span>
 						<span class="post-meta">
 						
+							April 7, 2025
+						
+						</span>
+					</div>
+					
+
+					<h2>
+					
+            <a class="post-link" href="/2025/04/07/testing-active-record-integration-in-libs">Testing Active Record Integration in Ruby Gems</a>
+					
+					</h2>
+				</header>
+
+				<div class="entry-content">
+					<p>When I was writing <a href="https://github.com/abarrak/expiry_calculator" rel="nofollow" target="_blank">the expiry calculator</a> gem (extracted from Rails app for license management), The library’s main logic has some sort of integration with <strong>ActiveRecord</strong>, and I needed to verify that the easy way.</p>
+
+<p>Mocking the built-in active record connection pool and tables mapping showed to be cumbersome and may not not ideally allow me to validate the intended behaviour. Luckily, I found pieces in SO and Github to do the unit testing in few simple steps, with a on the fly db (Sqlite). I have put it together in the following guide polished for <strong>Rspec</strong> and with ad-hoc migration methods.</p>
+
+
+
+					
+			    	<div class="button-container">
+			      	<a class="button" href="/2025/04/07/testing-active-record-integration-in-libs">Read more ..</a>
+			    	</div>
+					
+				</div>
+			</article>
+		</li>
+		
+		<li>
+			<article>
+				<header class="post-header ">
+					
+					<div>
+						<span>Posted on</span>
+						<span class="post-meta">
+						
 							November 12, 2024
 						
 						</span>
@@ -243,51 +280,6 @@
 					
 			    	<div class="button-container">
 			      	<a class="button" href="/2022/12/28/on-aws-builder-lib">Read more ..</a>
-			    	</div>
-					
-				</div>
-			</article>
-		</li>
-		
-		<li>
-			<article>
-				<header class="post-header ">
-					
-					<div>
-						<span>Posted on</span>
-						<span class="post-meta">
-						
-							October 8, 2022
-						
-						</span>
-					</div>
-					
-
-					<h2>
-					
-            <a class="post-link" href="/2022/10/08/using-helmfile-for-offline-deployments">Use Helmfile for Deployment in Offline Environments</a>
-					
-					</h2>
-				</header>
-
-				<div class="entry-content">
-					<p><a href="https://github.com/roboll/helmfile" rel="nofollow" target="_blank">Helmfile is an orchestrator tool</a> for collecting, building, and deploying cloud-native apps. Basically it’s the packager for helm chart based applications.</p>
-
-<p>One of the interesting ideas I came along recently, is utilizing it for working in air-gapped environments, where access to the internet is not feasible.</p>
-
-<h2 id="use-case">Use Case</h2>
-
-<p>Let’s say you were deploying an application to a Kubernetes cluster. The idea is to package all dependencies and manifests beforehand in a local or control machine, then push the consolidated deployment directory to the offline machine.</p>
-
-<p>The diagram below depicts the flow.</p>
-
-<p><img src="/public/images/offline-deployment.png" class="post-image-2 resize-md center-image"></p>
-
-
-
-					
-			    	<div class="button-container">
-			      	<a class="button" href="/2022/10/08/using-helmfile-for-offline-deployments">Read more ..</a>
 			    	</div>
 					
 				</div>
