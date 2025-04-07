@@ -8,14 +8,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="     When I was writing the expiry calculator gem (extracted from license management system), the library’s main logic has some sort of integration with Acti...">
+	<meta name="description" content="     When I was writing the expiry calculator gem (extracted from a license management system), the library’s main logic has some sort of integration with Ac...">
   <meta name="author" content="Abdullah Barrak">
 
   <meta name="keywords" content="rails, activerecord, unit testing, testing, and rspec">
 	<meta name="theme-color" content="#943526">
 
   <meta property="og:type" content="article">
-  <meta property="og:description" content="     When I was writing the expiry calculator gem (extracted from license man...">
+  <meta property="og:description" content="     When I was writing the expiry calculator gem (extracted from a license m...">
   <meta property="og:url" content="https://www.abarrak.com/2025/04/07/testing-active-record-integration-in-libs">
 	
 	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
@@ -96,9 +96,9 @@
 
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="entry-content" itemprop="articleBody">
-		<p>     When I was writing <a href="https://github.com/abarrak/expiry_calculator" rel="nofollow" target="_blank">the expiry calculator</a> gem (extracted from license management system), the library’s main logic has some sort of integration with <strong>ActiveRecord</strong>, and I needed to verify that the easy way.</p>
+		<p>     When I was writing <a href="https://github.com/abarrak/expiry_calculator" rel="nofollow" target="_blank">the expiry calculator</a> gem (extracted from a license management system), the library’s main logic has some sort of integration with <strong>ActiveRecord</strong>, and I needed to verify that the easy way.</p>
 
-<p>     Mocking the built-in active record connection pool and tables mapping showed to be cumbersome and may not not ideally allow me to validate the intended behaviour. Luckily, I found pieces in SO and Github to do the unit testing in few simple steps, with a on the fly db (Sqlite). I have put it together in the following guide polished for <strong>Rspec</strong> and with ad-hoc migration methods.</p>
+<p>     Mocking the built-in active record connection pool and tables mapping showed to be cumbersome and may not not ideally allow me to validate the intended behaviour. Luckily, I found pieces in SO and Github to do the unit testing in few simple steps, with on the fly db (Sqlite). I have put it together in the following guide, polished for <strong>Rspec</strong> with ad-hoc migration methods.</p>
 
 <!-- post-excerpt -->
 
@@ -114,7 +114,7 @@
 </code></pre></div></div>
 
 <p><strong>2.</strong> The db setup logic is extracted in a helper.<br>
-   Replace <code class="language-plaintext highlighter-rouge">post_table</code> with your intended model with the attributes (columns) you need.</p>
+   Replace <code class="language-plaintext highlighter-rouge">posts</code> with your intended model with the attributes (columns) you need.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># spec/support/db_helper.rb</span>
 <span class="k">module</span> <span class="nn">TestDbHelper</span>
@@ -123,15 +123,15 @@
   <span class="k">end</span>
 
   <span class="k">def</span> <span class="nf">up</span>
-    <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">connection</span><span class="p">.</span><span class="nf">create_table</span> <span class="ss">:post_table</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+    <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">connection</span><span class="p">.</span><span class="nf">create_table</span> <span class="ss">:posts</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
       <span class="n">t</span><span class="p">.</span><span class="nf">integer</span> <span class="ss">:name</span>
-      <span class="n">t</span><span class="p">.</span><span class="nf">date</span> <span class="ss">:post_date</span>
+      <span class="n">t</span><span class="p">.</span><span class="nf">date</span> <span class="ss">:ends_at</span>
       <span class="n">t</span><span class="p">.</span><span class="nf">timestamps</span>
     <span class="k">end</span>
   <span class="k">end</span>
 
   <span class="k">def</span> <span class="nf">down</span>
-    <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">connection</span><span class="p">.</span><span class="nf">drop_table</span> <span class="ss">:post_table</span>
+    <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">connection</span><span class="p">.</span><span class="nf">drop_table</span> <span class="ss">:posts</span>
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre></div></div>
@@ -147,8 +147,8 @@
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><strong>4.</strong> Then, invoke the db functions.<br>
-   Also build an active record model anonymously in <code class="language-plaintext highlighter-rouge">let</code> statements.</p>
+<p><strong>4.</strong> Then, we invoke the db functions.<br>
+   Also we build an anonymous model in <code class="language-plaintext highlighter-rouge">let</code> statements.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">RSpec</span><span class="p">.</span><span class="nf">describe</span> <span class="no">MyGemClass</span> <span class="k">do</span>
   <span class="c1"># ...</span>
@@ -159,20 +159,20 @@
     <span class="n">before</span> <span class="p">{</span> <span class="n">up</span> <span class="p">}</span>
     <span class="n">after</span> <span class="p">{</span> <span class="n">down</span> <span class="p">}</span>
 
-    <span class="n">let</span><span class="p">(</span><span class="ss">:post_class</span><span class="p">)</span> <span class="k">do</span>
-      <span class="no">Class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="nf">table_name</span> <span class="o">=</span> <span class="s2">"post_table"</span> <span class="p">}</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:model_class</span><span class="p">)</span> <span class="k">do</span>
+      <span class="no">Class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="nf">table_name</span> <span class="o">=</span> <span class="s2">"posts"</span> <span class="p">}</span>
     <span class="k">end</span>
 
-    <span class="n">let</span><span class="p">(</span><span class="ss">:post</span><span class="p">)</span> <span class="p">{</span> <span class="n">post_class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">post_date: </span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:model</span><span class="p">)</span> <span class="p">{</span> <span class="n">model_class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">ends_at: </span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
 
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><strong>5.</strong> At last, here’s an edited test case of the model against by the gem’s original test <code class="language-plaintext highlighter-rouge">(calculate)</code>.</p>
+<p><strong>5.</strong> Lastly, we use the model to test against in our case (<code class="language-plaintext highlighter-rouge">(calculate)</code> here).</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">it</span> <span class="s2">"supports active_record parameter with attr accessor"</span> <span class="k">do</span>
-  <span class="n">expect</span><span class="p">(</span><span class="n">subject</span><span class="p">.</span><span class="nf">calculate</span><span class="p">(</span><span class="n">post</span><span class="p">,</span> <span class="ss">:post_date</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+  <span class="n">expect</span><span class="p">(</span><span class="n">subject</span><span class="p">.</span><span class="nf">calculate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="ss">:ends_at</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
