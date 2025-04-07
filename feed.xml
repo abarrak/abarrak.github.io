@@ -5,13 +5,13 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 07 Apr 2025 14:47:24 +0300</pubDate>
-    <lastBuildDate>Mon, 07 Apr 2025 14:47:24 +0300</lastBuildDate>
+    <pubDate>Mon, 07 Apr 2025 14:59:30 +0300</pubDate>
+    <lastBuildDate>Mon, 07 Apr 2025 14:59:30 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
     
       <item>
         <title></title>
-        <description>&lt;p&gt;     When I was writing &lt;a href=&quot;https://github.com/abarrak/expiry_calculator&quot;&gt;the expiry calculator&lt;/a&gt; gem (extracted from Rails app for license management), The library’s main logic has some sort of integration with &lt;strong&gt;ActiveRecord&lt;/strong&gt;, and I needed to verify that the easy way.&lt;/p&gt;
+        <description>&lt;p&gt;     When I was writing &lt;a href=&quot;https://github.com/abarrak/expiry_calculator&quot;&gt;the expiry calculator&lt;/a&gt; gem (extracted from license management system), the library’s main logic has some sort of integration with &lt;strong&gt;ActiveRecord&lt;/strong&gt;, and I needed to verify that the easy way.&lt;/p&gt;
 
 &lt;p&gt;     Mocking the built-in active record connection pool and tables mapping showed to be cumbersome and may not not ideally allow me to validate the intended behaviour. Luckily, I found pieces in SO and Github to do the unit testing in few simple steps, with a on the fly db (Sqlite). I have put it together in the following guide polished for &lt;strong&gt;Rspec&lt;/strong&gt; and with ad-hoc migration methods.&lt;/p&gt;
 
