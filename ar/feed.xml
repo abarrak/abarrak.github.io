@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <description></description>
+    <link>https://www.abarrak.com/ar/</link>
+    <atom:link href="https://www.abarrak.com/ar/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 07 Apr 2025 10:59:54 +0300</pubDate>
+    <lastBuildDate>Mon, 07 Apr 2025 10:59:54 +0300</lastBuildDate>
+    <generator>Jekyll v4.3.0</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/writing.jpg&quot; class=&quot;post-image resize-sm center-image&quot; alt=&quot;writing&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;عزيزي القاىء، ستجد في القسم الأساسي الإنجليزي الكتابات المنشورة في مجالات تقنية وعامة.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/&quot;&gt;المدوّنة&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/tags&quot;&gt;التصنيفات&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;واستكمالاً له، &lt;a href=&quot;https://x.com/abarrakx&quot;&gt;ستجد منشوراتي المصغّرة على تويتر (x)&lt;/a&gt;، ملائمةً للغةِ الضّاد.&lt;br /&gt;
+ راجياً فيها متعةً وفائدةً للأصدقاء والزوار.&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;⚒️ الحلول الرّقمية&lt;/b&gt;&lt;br /&gt;
+أهم البرمجيات والأدوات التي كتبتُها موجودة في  &lt;a href=&quot;/ar/works&quot;&gt;قائمة الأعمال&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;📒 المصدر &lt;/b&gt;&lt;br /&gt;
+هذه الصفحات مبنيَّة على &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;نظام جايكل&lt;/a&gt; مفتوح المصدر.&lt;br /&gt;
+بالإضافة للعديد من التخصيصات للتصميمِ، وصفحةِ المنشورات، ودعم اللغة، وغيرها، متاحة على &lt;a href=&quot;https://github.com/abarrak/abarrak.github.io/tree/src&quot;&gt;قِت هاب هنا&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 12 Feb 2022 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/ar/orientation</link>
+        <guid isPermaLink="true">https://www.abarrak.com/ar/orientation</guid>
+        
+        <category>الكتابة</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
