@@ -1271,6 +1271,10 @@ hr.light {
   color: #943526;
 }
 
+.hide {
+  display: none !important;
+}
+
 /**
  * Devicons 1.8.0 made by Theodore Vorillas / http://vorillaz.com
  */

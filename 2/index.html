@@ -60,14 +60,16 @@
       <li><a href="/about">About</a></li>
       <li><a href="/works">Works</a></li>
       <li><a href="/contact">Contact</a></li>
-      <li class="lang_link" class="tooltip" title="Language">
+
+      <li class="lang_link hide" class="tooltip" title="Language">
         <small>
           
           
-             <a
-              href="
-            /ar/2/ ">ع</a>
-              
+          
+          <a href="
+          /ar/2/
+          ">ع</a>
+          
         </small>
       </li>
     </ul>
@@ -81,51 +83,6 @@
 		<div class="wrapper">
 			<div class="home">
 	<ul class="post-list">
-		
-		<li>
-			<article>
-				<header class="post-header ">
-					
-					<div>
-						<span>Posted on</span>
-						<span class="post-meta">
-						
-							October 8, 2022
-						
-						</span>
-					</div>
-					
-
-					<h2>
-					
-            <a class="post-link" href="/2022/10/08/using-helmfile-for-offline-deployments">Use Helmfile for Deployment in Offline Environments</a>
-					
-					</h2>
-				</header>
-
-				<div class="entry-content">
-					<p><a href="https://github.com/roboll/helmfile" rel="nofollow" target="_blank">Helmfile is an orchestrator tool</a> for collecting, building, and deploying cloud-native apps. Basically it’s the packager for helm chart based applications.</p>
-
-<p>One of the interesting ideas I came along recently, is utilizing it for working in air-gapped environments, where access to the internet is not feasible.</p>
-
-<h2 id="use-case">Use Case</h2>
-
-<p>Let’s say you were deploying an application to a Kubernetes cluster. The idea is to package all dependencies and manifests beforehand in a local or control machine, then push the consolidated deployment directory to the offline machine.</p>
-
-<p>The diagram below depicts the flow.</p>
-
-<p><img src="/public/images/offline-deployment.png" class="post-image-2 resize-md center-image"></p>
-
-
-
-					
-			    	<div class="button-container">
-			      	<a class="button" href="/2022/10/08/using-helmfile-for-offline-deployments">Read more ..</a>
-			    	</div>
-					
-				</div>
-			</article>
-		</li>
 		
 		<li>
 			<article>
@@ -153,9 +110,9 @@
 
 <p>Terraform has emerged as one of the top open source infrastructure as code (IaC) tools, since its initial release by Hashicorp back in 2014.</p>
 
-<p>The design philosophy behind the tool is to have <strong>declarative</strong>, and <strong>stateful</strong> representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of such resources.</p>
+<p>The design philosophy behind the tool is to have <strong>declarative</strong>, and <strong>stateful</strong> representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of the cloud resources.</p>
 
-<p>The classical example to provision compute VM to show the main principle.</p>
+<p>The classical example to show the main idea creating a VM:</p>
 
 
 
@@ -163,48 +120,6 @@
 			    	<div class="button-container">
 			      	<a class="button" href="/2022/09/23/reflections-on-iac-with-terraform">Read more ..</a>
 			    	</div>
-					
-				</div>
-			</article>
-		</li>
-		
-		<li>
-			<article>
-				<header class="post-header ">
-					
-					<div>
-						<span>Posted on</span>
-						<span class="post-meta">
-						
-							February 22, 2022
-						
-						</span>
-					</div>
-					
-
-					<h2>
-					
-            <a class="post-link" href="/2022/02/22/linux-sysops-git-book">A Git Book on Linux SysOps Essentials</a>
-					
-					</h2>
-				</header>
-
-				<div class="entry-content">
-					<p><img src="/public/images/linux-book.png" class="post-image resize-md center-image"></p>
-
-<p>I have published a short handbook on basic Linux administration covering multiple topics 📕</p>
-
-<p>Hopefully it would be useful read for new sysadmins, and interested people.</p>
-
-<ul>
-  <li><a href="https://abarrak.gitbook.io/linux-sysops-handbook" rel="nofollow" target="_blank">Book.</a></li>
-  <li><a href="https://github.com/abarrak/linux-sysops-handbook" rel="nofollow" target="_blank">Source.</a></li>
-</ul>
-
-<p><strong>Update:</strong> <br>
-<a href="https://news.ycombinator.com/item?id=30430594" rel="nofollow" target="_blank">The book is published on HN</a>, and gained good momentum, contributions, and feedback!</p>
-
-
 					
 				</div>
 			</article>
@@ -318,6 +233,101 @@
 			</article>
 		</li>
 		
+		<li>
+			<article>
+				<header class="post-header ">
+					
+					<div>
+						<span>Posted on</span>
+						<span class="post-meta">
+						
+							August 30, 2016
+						
+						</span>
+					</div>
+					
+
+					<h2>
+					
+            <a class="post-link" href="/2016/08/30/optimize-images-from-your-terminal">Optimize Image Files from Your Terminal</a>
+					
+					</h2>
+				</header>
+
+				<div class="entry-content">
+					<p><img src="/public/images/opt-img.jpg" class="post-image resize-md center-image"></p>
+
+<p>In many times you may need to optimze rapidly a bunch of images at your hands. There are handy utilities that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:</p>
+
+<h3 id="1-optipng-advanced-png-optimizer">
+<a href="http://optipng.sourceforge.net/" rel="nofollow" target="_blank">1. OptiPNG: Advanced PNG Optimizer</a>:</h3>
+
+<p>Get it for Mac OS X:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>optipng
+</code></pre></div></div>
+
+<p>For Linux Ubuntu:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get <span class="nb">install </span>optipng
+</code></pre></div></div>
+
+<p>To optimize an image, run:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>optipng &lt;img-name&gt;.png
+</code></pre></div></div>
+
+
+
+					
+			    	<div class="button-container">
+			      	<a class="button" href="/2016/08/30/optimize-images-from-your-terminal">Read more ..</a>
+			    	</div>
+					
+				</div>
+			</article>
+		</li>
+		
+		<li>
+			<article>
+				<header class="post-header ">
+					
+					<div>
+						<span>Posted on</span>
+						<span class="post-meta">
+						
+							August 26, 2016
+						
+						</span>
+					</div>
+					
+
+					<h2>
+					
+            <a class="post-link" href="/2016/08/26/fix-sinatra-tilt-unicode">Fixing Sinatra UTF-8 issue in Tilt rendered templates</a>
+					
+					</h2>
+				</header>
+
+				<div class="entry-content">
+					<p><img src="/public/images/sinatra-logo.png" class="post-image resize-sm center-image"></p>
+
+<p>In the past week, I have been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.</p>
+
+<h3 id="symptoms"><strong>Symptoms</strong></h3>
+<p>The error was appearing in one of the <code class="language-plaintext highlighter-rouge">.erb</code> view files that contains a <code class="language-plaintext highlighter-rouge">textarea</code> field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:</p>
+
+
+
+					
+			    	<div class="button-container">
+			      	<a class="button" href="/2016/08/26/fix-sinatra-tilt-unicode">Read more ..</a>
+			    	</div>
+					
+				</div>
+			</article>
+		</li>
+		
 	</ul>
 </div>
 
@@ -361,7 +371,7 @@
 				<a href="">Abdullah Barrak's Blog</a>
 				<ul class="contact-list">
 					<li>A passionate blog about computer programming, reading, thinking, and the like.</li>
-					<li><b>(2016 - 2024)</b></li>
+					<li><b>(2016 - 2025)</b></li>
 				</ul>
 			</div>
 

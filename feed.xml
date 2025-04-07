@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Nov 2024 11:05:33 +0300</pubDate>
-    <lastBuildDate>Wed, 13 Nov 2024 11:05:33 +0300</lastBuildDate>
+    <pubDate>Mon, 07 Apr 2025 10:57:40 +0300</pubDate>
+    <lastBuildDate>Mon, 07 Apr 2025 10:57:40 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
     
       <item>
@@ -133,8 +133,25 @@
   &lt;figcaption&gt;Fig. 5: Installation screen for Hyper-V 2019.&lt;/figcaption&gt;
 &lt;/figure&gt;
 
+&lt;h3 id=&quot;openstack&quot;&gt;OpenStack&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The largest open source cloud infrastructure solution.&lt;/li&gt;
+  &lt;li&gt;Split to multiple components such as: &lt;a href=&quot;https://docs.openstack.org/cinder/latest/&quot;&gt;Cinder&lt;/a&gt; (storage), &lt;a href=&quot;https://github.com/openstack/nova&quot;&gt;Nova&lt;/a&gt; (compute), and &lt;a href=&quot;https://docs.openstack.org/neutron/latest/&quot;&gt;Neutron&lt;/a&gt; (networking).&lt;/li&gt;
+  &lt;li&gt;OpenStack requires dedicated review for it is own. &lt;br /&gt;
+&lt;a href=&quot;https://www.openstack.org/software/&quot;&gt;The main reference&lt;/a&gt;, and here’s a &lt;a href=&quot;https://blog.purestorage.com/purely-educational/hyper-v-vs-openstack-a-comprehensive-comparison-of-virtualization-platforms/&quot;&gt;good comparision article between it and hyper-V&lt;/a&gt; for virtualization cases.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;/public/images/virtualization-6.png&quot; class=&quot;post-image-2 resize-md center-image&quot; /&gt;
+  &lt;figcaption&gt;Fig. 6: OpenStack.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
 &lt;h4 id=&quot;takeaway&quot;&gt;&lt;b&gt;Takeaway:&lt;/b&gt;&lt;/h4&gt;
+
 &lt;p&gt;VMware stands out as enterprise solution for corporate and regularity requirements, especially when the support is a must. Conversely, for small projects and applications, I find KVM-QEMU based setup a good option.&lt;/p&gt;
+
+&lt;p&gt;Finally, for building on-premise solution on top of open technologies, &lt;strong&gt;OpenStack is the obviously viable option&lt;/strong&gt;.&lt;/p&gt;
 </description>
         <pubDate>Tue, 12 Nov 2024 00:00:00 +0300</pubDate>
         <link>https://www.abarrak.com/2024/11/12/virtualization-overview</link>
@@ -587,22 +604,22 @@ tolist&lt;span class=&quot;o&quot;&gt;([&lt;/span&gt;
     &lt;span class=&quot;s&quot;&gt;...&lt;/span&gt;
     &lt;span class=&quot;s&quot;&gt;http {&lt;/span&gt;
       &lt;span class=&quot;s&quot;&gt;server {&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;listen 443 ssl;&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;listen [::]:443 ssl;&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;server_name  _;&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;listen 443 ssl;&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;listen [::]:443 ssl;&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;server_name  _;&lt;/span&gt;
 
-          &lt;span class=&quot;s&quot;&gt;ssl_certificate /etc/nginx/ssl/cert.pem;&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;ssl_certificate_key /etc/nginx/ssl/key.pem;&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;ssl_certificate /etc/nginx/ssl/cert.pem;&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;ssl_certificate_key /etc/nginx/ssl/key.pem;&lt;/span&gt;
 
-          &lt;span class=&quot;s&quot;&gt;location / {&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;proxy_pass http://localhost:80;&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;proxy_http_version 1.1;&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Host $host;&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Server $host;&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;proxy_set_header Host $http_host;&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Proto $scheme;&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;location / {&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;proxy_pass http://localhost:80;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;proxy_http_version 1.1;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Host $host;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Server $host;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;proxy_set_header Host $http_host;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;proxy_set_header X-Forwarded-Proto $scheme;&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;}&lt;/span&gt;
       &lt;span class=&quot;s&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;s&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -692,78 +709,6 @@ The router logs shows internal errors (500) when connecting to the upstream (pod
         <category>SRE</category>
         
         <category>Traefik</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/aws-exams.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Around last September 2022, after the expiration of my previous amazon web services certificate [SAA] , I decided to prepare and take the next level professional certificate [AWS SAP].&lt;/p&gt;
-
-&lt;h2 id=&quot;preparation&quot;&gt;Preparation&lt;/h2&gt;
-
-&lt;p&gt;When you have working knowledge in the cloud and AWS specifically, it is good idea to take first the associate level certificates since these are information oriented. With study and practice, your chances for passing are high. By doing so, you also prepare for the professional and specialty levels afterward.&lt;/p&gt;
-
-&lt;!-- post-excerpt --&gt;
-
-&lt;p&gt;And that’s what I did by clearing out the following two certificates!&lt;/p&gt;
-
-&lt;h3 id=&quot;certified-developer&quot;&gt;Certified Developer&lt;/h3&gt;
-
-&lt;p&gt;This is mostly focused on developer centric roles when working with AWS.&lt;/p&gt;
-
-&lt;p&gt;Besides the essentials (EC2, IAM, ELB, R53, RDS, S3, CloudFront, KMS, CloudWatch), other development relevant services and topics are covered with precise questions such as lambda workloads, serverless offerings (Dynamo, API Gateway, Cognito), CI/CD managed pipelines, and working with secrets and configuration. All is indicated in &lt;a href=&quot;https://aws.amazon.com/certification/certified-developer-associate/&quot;&gt;the official guide&lt;/a&gt;. Also, some questions may contain snippet of code in questions related to DynamoDB, S3, and Lambda.&lt;/p&gt;
-
-&lt;p&gt;Notably, I found this one the easiest in the associate category. 💡&lt;/p&gt;
-
-&lt;h3 id=&quot;certified-sysops-admin&quot;&gt;Certified SysOps Admin&lt;/h3&gt;
-
-&lt;p&gt;This is basically the most involved exam in the associate level in my experience.&lt;/p&gt;
-
-&lt;p&gt;There’s focus on &lt;a href=&quot;https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html&quot;&gt;CloudFormation&lt;/a&gt;, &lt;a href=&quot;https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html&quot;&gt;Systems Manager&lt;/a&gt;, Logging and monitoring, &lt;a href=&quot;https://docs.aws.amazon.com/eventbridge/index.html&quot;&gt;Event Bridge&lt;/a&gt;, &lt;a href=&quot;https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html&quot;&gt;AWS Config&lt;/a&gt;, among other services as detailed &lt;a href=&quot;https://d1.awsstatic.com/training-and-certification/docs-sysops-associate/AWS-Certified-SysOps-Administrator-Associate_Exam-Guide.pdf&quot;&gt;in the 6 domains&lt;/a&gt;. Uniquely, this one includes a lab section with 3 practical questions which you would solve through the AWS Console.&lt;/p&gt;
-
-&lt;h3 id=&quot;solutions-architect-professional&quot;&gt;Solutions Architect Professional&lt;/h3&gt;
-
-&lt;p&gt;And Finally, &lt;a href=&quot;https://www.credly.com/badges/f082f973-a262-41ba-aad6-557076601b5b/public_url&amp;gt;&quot;&gt;&lt;span style=&quot;color: darkred&quot;&gt;the happy result letter&lt;/span&gt;&lt;/a&gt; came in with success! 🎉&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/public/images/aws-sap-cert.png&quot; class=&quot;post-image-2 resize-sm center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here things are more interesting than the associate exams. The breadth and depth of domains are much higher. Most if not all of the questions are &lt;strong&gt;compound items&lt;/strong&gt; that explore a combination of services placement or integrations together (e.g. IAM organization policies SCP and S3, on-premise gateways and connectors to services). Try to cover advanced networking, IAM, storage and files solutions, and IAM/AD/SSO as well.&lt;/p&gt;
-
-&lt;h3 id=&quot;tips&quot;&gt;Tips&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Follow a curriculum to review any gaps you have, and practice with the instructor in labs.
-&lt;br /&gt;
-&lt;a href=&quot;https://www.udemy.com/user/stephane-maarek/&quot;&gt;Maarek’s courses&lt;/a&gt; are recommended.&lt;/li&gt;
-  &lt;li&gt;The official AWS pages all have PDF exam samples with answers. &lt;br /&gt;
-Go through them to know what to expect, questions style, and how domains are examined.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/open-guides/og-aws&quot;&gt;AWS open guides are very valuable summary&lt;/a&gt;. &lt;br /&gt;
-Keep them in bookmarks!&lt;/li&gt;
-  &lt;li&gt;Have a good night sleep 😴 and attend 20-15 minutes earlier.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Tue, 10 Jan 2023 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2023/01/10/passing-aws-sap</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2023/01/10/passing-aws-sap</guid>
-        
-        <category>AWS SAP</category>
-        
-        <category>Solutions Architect</category>
-        
-        <category>Cloud</category>
-        
-        <category>AWS</category>
-        
-        
-        <category>Exams</category>
-        
-        <category>Architecture</category>
-        
-        <category>Cloud</category>
-        
-        <category>AWS</category>
         
       </item>
     
@@ -955,9 +900,9 @@ helm pull &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv
 
 &lt;p&gt;Terraform has emerged as one of the top open source infrastructure as code (IaC) tools, since its initial release by Hashicorp back in 2014.&lt;/p&gt;
 
-&lt;p&gt;The design philosophy behind the tool is to have &lt;strong&gt;declarative&lt;/strong&gt;, and &lt;strong&gt;stateful&lt;/strong&gt; representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of such resources.&lt;/p&gt;
+&lt;p&gt;The design philosophy behind the tool is to have &lt;strong&gt;declarative&lt;/strong&gt;, and &lt;strong&gt;stateful&lt;/strong&gt; representation for the underlying IT infrastructure (whether it be on public, on-premise, or hybrid cloud), which in turns simplify the control, collaboration, and auditing of the cloud resources.&lt;/p&gt;
 
-&lt;p&gt;The classical example to provision compute VM to show the main principle.&lt;/p&gt;
+&lt;p&gt;The classical example to show the main idea creating a VM:&lt;/p&gt;
 
 &lt;!-- post-excerpt --&gt;
 
@@ -1023,7 +968,7 @@ This enhances for security posture as well, like protecting sensitive data.&lt;/
 
 &lt;p&gt;The variables and output files are separated to organize things up.&lt;/p&gt;
 
-&lt;p&gt;Finally, the state is tracked in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.tfstate&lt;/code&gt; file  managed internally by Terraform.&lt;/p&gt;
+&lt;p&gt;The state is tracked in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.tfstate&lt;/code&gt; file, and managed internally by Terraform.&lt;/p&gt;
 
 &lt;h2 id=&quot;providers&quot;&gt;Providers&lt;/h2&gt;
 
@@ -1034,11 +979,11 @@ This enhances for security posture as well, like protecting sensitive data.&lt;/
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Major cloud providers &lt;a href=&quot;https://registry.terraform.io&quot;&gt;are available on the public terraform registry&lt;/a&gt;, along with many of platform agnostic plugins, such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Helm&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Kubernetes&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The major providers &lt;a href=&quot;https://registry.terraform.io&quot;&gt;are available on the public terraform registry&lt;/a&gt;, along with many platform agnostic plugins, such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Helm&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Kubernetes&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/images/providers-iac.png&quot; class=&quot;post-image-2 resize-md center-image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Here’s an example for a simple helm releasing technique to build on:&lt;/p&gt;
+&lt;p&gt;Here’s an example for a simple helm releasing technique:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;provider &lt;span class=&quot;s2&quot;&gt;&quot;helm&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   kubernetes &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
@@ -1087,41 +1032,6 @@ resource &lt;span class=&quot;s2&quot;&gt;&quot;helm_release&quot;&lt;/span&gt; 
         <category>IaC</category>
         
         <category>Cloud</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;p&gt;&lt;img src=&quot;/public/images/linux-book.png&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I have published a short handbook on basic Linux administration covering multiple topics 📕&lt;/p&gt;
-
-&lt;p&gt;Hopefully it would be useful read for new sysadmins, and interested people.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://abarrak.gitbook.io/linux-sysops-handbook&quot;&gt;Book.&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/abarrak/linux-sysops-handbook&quot;&gt;Source.&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; &lt;br /&gt;
-&lt;a href=&quot;https://news.ycombinator.com/item?id=30430594&quot;&gt;The book is published on HN&lt;/a&gt;, and gained good momentum, contributions, and feedback!&lt;/p&gt;
-</description>
-        <pubDate>Tue, 22 Feb 2022 00:00:00 +0300</pubDate>
-        <link>https://www.abarrak.com/2022/02/22/linux-sysops-git-book</link>
-        <guid isPermaLink="true">https://www.abarrak.com/2022/02/22/linux-sysops-git-book</guid>
-        
-        <category>linux</category>
-        
-        <category>system administration</category>
-        
-        <category>gitbook</category>
-        
-        
-        <category>Linux</category>
-        
-        <category>Books</category>
-        
-        <category>Operating Systems</category>
         
       </item>
     
@@ -1366,6 +1276,194 @@ We have to set it up using default ordering scope, easily:&lt;/p&gt;
         <category>Rails</category>
         
         <category>Active Record</category>
+        
+      </item>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/opt-img.jpg&quot; class=&quot;post-image resize-md center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In many times you may need to optimze rapidly a bunch of images at your hands. There are handy utilities that can help you reduce image sizes with simple commands in the terminal. The following lists some of these tools:&lt;/p&gt;
+
+&lt;h3 id=&quot;1-optipng-advanced-png-optimizer&quot;&gt;&lt;a href=&quot;http://optipng.sourceforge.net/&quot;&gt;1. OptiPNG: Advanced PNG Optimizer&lt;/a&gt;:&lt;/h3&gt;
+
+&lt;p&gt;Get it for Mac OS X:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;optipng
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For Linux Ubuntu:&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;optipng
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To optimize an image, run:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;optipng &amp;lt;img-name&amp;gt;.png
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;p&gt;To wildcard all images recursively in the current directory and sub directories:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.png&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; optipng &lt;span class=&quot;nt&quot;&gt;-o7&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2-jpegoptim&quot;&gt;&lt;a href=&quot;https://github.com/tjko/jpegoptim&quot;&gt;2. jpegoptim&lt;/a&gt;:&lt;/h3&gt;
+
+&lt;p&gt;Install for Mac OS X:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jpegoptim
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Install for Linux Ubuntu:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jpegoptim
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Run the next command to optimize an image, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-m&lt;/code&gt; controls the image quality (0-100):&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jpegoptim &lt;span class=&quot;nt&quot;&gt;-m70&lt;/span&gt; &amp;lt;img-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Or optimize all recursively:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.jpg&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; jpegoptim &lt;span class=&quot;nt&quot;&gt;-m80&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-gifsicle&quot;&gt;&lt;a href=&quot;https://www.lcdf.org/gifsicle/&quot;&gt;3. gifsicle&lt;/a&gt;:&lt;/h3&gt;
+
+&lt;p&gt;Install for Mac OS X:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gifsicle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For Linux Ubuntu:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gifsicle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The commands for single image, and a group of images respectively, are:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# for single image.&lt;/span&gt;
+gifsicle &lt;span class=&quot;nt&quot;&gt;--batch&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-V&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-O2&lt;/span&gt; &amp;lt;image-name&amp;gt;.gif
+
+&lt;span class=&quot;c&quot;&gt;# to start from cureent dir and go down.&lt;/span&gt;
+find &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-iname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;*.gif&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-exec&lt;/span&gt; gifsicle &lt;span class=&quot;nt&quot;&gt;--batch&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-V&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-O2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;aliases&quot;&gt;&lt;strong&gt;Aliases&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Here are some aliases to keep commands nearby for fast run on the active directory images.&lt;/p&gt;
+
+&lt;p&gt;Be warn that those (also the previously mentioned commands) all alter the original images.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_png&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;optipng -o7 *.png&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_jpg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jpegoptim -m80 *.jpg&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;compress_gif&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gifsicle --batch -V -O2 *.gif&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can tweak the optimization level and other options to suit your needs.&lt;/p&gt;
+
+&lt;h3 id=&quot;imageoptim&quot;&gt;&lt;strong&gt;ImageOptim&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;If you’d like to use a GUI application, &lt;a href=&quot;https://imageoptim.com/mac&quot;&gt;ImageOptim&lt;/a&gt; is a pretty open source one for Mac OS X that supports multiple image formats.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/public/images/imageoptim.png&quot; alt=&quot;ImageOptim Screen Shot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Happy mature optimization :) !&lt;/p&gt;
+</description>
+        <pubDate>Tue, 30 Aug 2016 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2016/08/30/optimize-images-from-your-terminal</guid>
+        
+        <category>Image Processing</category>
+        
+        <category>optipng</category>
+        
+        <category>jpegoptim</category>
+        
+        <category>gifsicle</category>
+        
+        <category>ImageOptim</category>
+        
+        
+        <category>Image Processing</category>
+        
+        <category>Productivity</category>
+        
+      </item>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;&lt;img src=&quot;/public/images/sinatra-logo.png&quot; class=&quot;post-image resize-sm center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the past week, I have been deploying a Sinatra app to AWS Elastic Beanstalk. In development environment, everything was working just fine, but when I published the application and tested it in production, I encountered a weird problem in one of the templates that was supposed to be supporting uft-8 text without any issues.&lt;/p&gt;
+
+&lt;h3 id=&quot;symptoms&quot;&gt;&lt;strong&gt;Symptoms&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;The error was appearing in one of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.erb&lt;/code&gt; view files that contains a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;textarea&lt;/code&gt; field. When it is populated with a non English text at the server, the application crashes with 500 code. Here’s a fragment of the error stack trace:&lt;/p&gt;
+
+&lt;!-- post-excerpt --&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2016-08-26 19:15:53 - Encoding::CompatibilityError - incompatible character encodings: UTF-8 and US-ASCII:
+  /var/app/current/views/review.erb:69:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;block &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;singleton class&lt;span class=&quot;s1&quot;&gt;&apos;
+  /var/app/current/views/review.erb:-7:in `instance_eval&apos;&lt;/span&gt;
+  /var/app/current/views/review.erb:-7:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;singleton class&lt;span class=&quot;s1&quot;&gt;&apos;
+  /var/app/current/views/review.erb:-9:in `__tilt_47353692136320&apos;&lt;/span&gt;
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;call&lt;span class=&quot;s1&quot;&gt;&apos;
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:167:in `evaluate&apos;&lt;/span&gt;
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/tilt-2.0.5/lib/tilt/template.rb:102:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;render&lt;span class=&quot;s1&quot;&gt;&apos;
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:823:in `render&apos;&lt;/span&gt;
+  /opt/rubies/ruby-2.2.5/lib/ruby/gems/2.2.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:667:in &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;erb&lt;span class=&quot;s1&quot;&gt;&apos;
+  /var/app/current/helpers.rb:24:in `block (2 levels) in serve_page&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Guided by the error message indication. I attempted to fix the issue by ensuring that all parts are encoded as UTF-8. I set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;accept-charset&lt;/code&gt; attribute for the form and texteara tag to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;UTF-8&quot;&lt;/code&gt;, forced source files to be UTF-8 by inserting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# 😁&lt;/code&gt; comment, and checked the Sinatra routing is also set to have
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;headers &apos;Content-type&apos; =&amp;gt; &apos;text/html; charset=utf-8&apos;&lt;/code&gt;, But unfortunately none of that was solving the problem.&lt;/p&gt;
+
+&lt;p&gt;By taking a closer look at the stack trace, I figured that it was happening specifically during the template rendering phase, and might have something to do with one of Sinatra’s dependencies, Tilt rendering library.&lt;/p&gt;
+
+&lt;h3 id=&quot;solution&quot;&gt;&lt;strong&gt;Solution&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Indeed it was caused by Tilt . In fact, it’s a known issue and has been pointed out in the gem’s &lt;a href=&quot;https://github.com/rtomayko/tilt#encodings&quot;&gt;repository main page&lt;/a&gt;.
+Setting ruby’s external encoding plus the source files to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UTF-8&lt;/code&gt; solved it for me just like mentioned in the link.&lt;/p&gt;
+
+&lt;p&gt;If you’ve structured your application in the modular style, then set encoding early in the class.&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyApplication&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sinatra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# set encoding.&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In classic applications, this would suffice.&lt;/p&gt;
+
+&lt;div class=&quot;language-rb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_external&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That’s it. Hope It helps someone else !&lt;/p&gt;
+</description>
+        <pubDate>Fri, 26 Aug 2016 00:00:00 +0300</pubDate>
+        <link>https://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</link>
+        <guid isPermaLink="true">https://www.abarrak.com/2016/08/26/fix-sinatra-tilt-unicode</guid>
+        
+        <category>Sinatra</category>
+        
+        <category>Tilt</category>
+        
+        <category>UTF-8</category>
+        
+        <category>AWS</category>
+        
+        <category>encoding compatibility error</category>
+        
+        
+        <category>Software</category>
+        
+        <category>Ruby</category>
+        
+        <category>Sinatra</category>
+        
+        <category>Troubleshooting</category>
         
       </item>
     
