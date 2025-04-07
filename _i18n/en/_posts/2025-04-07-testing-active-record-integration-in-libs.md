@@ -82,7 +82,7 @@ RSpec.describe MyGemClass do
 end
 ```
 
-**5.** Lastly, we use the model to test against in our case (`(calculate)` here).
+**5.** Lastly, we use the model to test against in our case (`calculate` here).
 
 ```ruby
 it "supports active_record parameter with attr accessor" do
