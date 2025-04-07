@@ -8,14 +8,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="When I was writing the expiry calculator gem (extracted from Rails app for license management), The library’s main logic has some sort of integration with Ac...">
+	<meta name="description" content="     When I was writing the expiry calculator gem (extracted from Rails app for license management), The library’s main logic has some sort of integration wi...">
   <meta name="author" content="Abdullah Barrak">
 
   <meta name="keywords" content="rails, activerecord, unit testing, testing, and rspec">
 	<meta name="theme-color" content="#943526">
 
   <meta property="og:type" content="article">
-  <meta property="og:description" content="When I was writing the expiry calculator gem (extracted from Rails app for li...">
+  <meta property="og:description" content="     When I was writing the expiry calculator gem (extracted from Rails app f...">
   <meta property="og:url" content="https://www.abarrak.com/2025/04/07/testing-active-record-integration-in-libs">
 	
 	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
@@ -96,29 +96,27 @@
 
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="entry-content" itemprop="articleBody">
-		<p>When I was writing <a href="https://github.com/abarrak/expiry_calculator" rel="nofollow" target="_blank">the expiry calculator</a> gem (extracted from Rails app for license management), The library’s main logic has some sort of integration with <strong>ActiveRecord</strong>, and I needed to verify that the easy way.</p>
+		<p>     When I was writing <a href="https://github.com/abarrak/expiry_calculator" rel="nofollow" target="_blank">the expiry calculator</a> gem (extracted from Rails app for license management), The library’s main logic has some sort of integration with <strong>ActiveRecord</strong>, and I needed to verify that the easy way.</p>
 
-<p>Mocking the built-in active record connection pool and tables mapping showed to be cumbersome and may not not ideally allow me to validate the intended behaviour. Luckily, I found pieces in SO and Github to do the unit testing in few simple steps, with a on the fly db (Sqlite). I have put it together in the following guide polished for <strong>Rspec</strong> and with ad-hoc migration methods.</p>
+<p>     Mocking the built-in active record connection pool and tables mapping showed to be cumbersome and may not not ideally allow me to validate the intended behaviour. Luckily, I found pieces in SO and Github to do the unit testing in few simple steps, with a on the fly db (Sqlite). I have put it together in the following guide polished for <strong>Rspec</strong> and with ad-hoc migration methods.</p>
 
 <!-- post-excerpt -->
 
 <h2 id="steps">Steps</h2>
 
-<ol>
-  <li>Adding the required libraries in the dev group of our Gem spec file.</li>
-</ol>
+<p><strong>1)</strong> Adding the required libraries in the dev group of our Gem spec file.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Gem</span><span class="o">::</span><span class="no">Specification</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">spec</span><span class="o">|</span>
   <span class="c1"># ..</span>
-  <span class="n">spec</span><span class="p">.</span><span class="nf">add_development_dependency</span> <span class="s2">"activerecord"</span><span class="p">,</span> <span class="s2">"~&gt; 7"</span>
-  <span class="n">spec</span><span class="p">.</span><span class="nf">add_development_dependency</span> <span class="s2">"sqlite3"</span><span class="p">,</span> <span class="s2">"~&gt; 2"</span>
+  <span class="n">spec</span><span class="p">.</span><span class="nf">add_development_dependency</span>
+    <span class="s2">"activerecord"</span><span class="p">,</span> <span class="s2">"~&gt; 7"</span>
+  <span class="n">spec</span><span class="p">.</span><span class="nf">add_development_dependency</span>
+    <span class="s2">"sqlite3"</span><span class="p">,</span> <span class="s2">"~&gt; 2"</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
-<ol>
-  <li>The db setup and migration logic is extracted in a spec helper.<br>
-Replace <code class="language-plaintext highlighter-rouge">post_table</code> with your intended model with the attributes (columns) you need.</li>
-</ol>
+<p><strong>2.</strong> The db setup and migration logic is extracted in a spec helper.<br>
+   Replace <code class="language-plaintext highlighter-rouge">post_table</code> with your intended model with the attributes (columns) you need.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># spec/support/db_helper.rb</span>
 <span class="k">module</span> <span class="nn">TestDbHelper</span>
@@ -140,9 +138,7 @@ Replace <code class="language-plaintext highlighter-rouge">post_table</code> wit
 <span class="k">end</span>
 </code></pre></div></div>
 
-<ol>
-  <li>For convenience, I mixed in the helper in the example and example group classes of <strong>rspec</strong>.</li>
-</ol>
+<p><strong>3.</strong> For convenience, I mixed in the helper in the example and example group classes of <strong>rspec</strong>.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s2">"support/db_helper"</span>
 
@@ -153,10 +149,8 @@ Replace <code class="language-plaintext highlighter-rouge">post_table</code> wit
 <span class="k">end</span>
 </code></pre></div></div>
 
-<ol>
-  <li>Then, invoke the db functions.<br>
-Also build an active record model anonymously in <code class="language-plaintext highlighter-rouge">let</code> statements.</li>
-</ol>
+<p><strong>4.</strong> Then, invoke the db functions.<br>
+   Also build an active record model anonymously in <code class="language-plaintext highlighter-rouge">let</code> statements.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">RSpec</span><span class="p">.</span><span class="nf">describe</span> <span class="no">MyGemClass</span> <span class="k">do</span>
   <span class="c1"># ...</span>
@@ -170,28 +164,23 @@ Also build an active record model anonymously in <code class="language-plaintext
     <span class="n">let</span><span class="p">(</span><span class="ss">:post_class</span><span class="p">)</span> <span class="k">do</span>
       <span class="no">Class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">)</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="nf">table_name</span> <span class="o">=</span> <span class="s2">"post_table"</span> <span class="p">}</span>
     <span class="k">end</span>
-    <span class="n">let</span><span class="p">(</span><span class="ss">:post</span><span class="p">)</span> <span class="p">{</span> <span class="n">active_record_class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">post_date: </span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
 
-  <span class="c1"># ...</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:post</span><span class="p">)</span> <span class="p">{</span> <span class="n">post_class</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">post_date: </span><span class="no">Date</span><span class="p">.</span><span class="nf">today</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="p">}</span>
 
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
-<ol>
-  <li>At last, here’s an edited test case of the model against by the gem’s original test <code class="language-plaintext highlighter-rouge">(calculate)</code>.</li>
-</ol>
+<p><strong>5.</strong> At last, here’s an edited test case of the model against by the gem’s original test <code class="language-plaintext highlighter-rouge">(calculate)</code>.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1">#  ...</span>
-    <span class="n">it</span> <span class="s2">"supports active_record parameter with accessor attr"</span> <span class="k">do</span>
-      <span class="n">expect</span><span class="p">(</span><span class="n">subject</span><span class="p">.</span><span class="nf">calculate</span><span class="p">(</span><span class="n">post</span><span class="p">,</span> <span class="ss">:post_date</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-    <span class="k">end</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">it</span> <span class="s2">"supports active_record parameter with attr accessor"</span> <span class="k">do</span>
+  <span class="n">expect</span><span class="p">(</span><span class="n">subject</span><span class="p">.</span><span class="nf">calculate</span><span class="p">(</span><span class="n">post</span><span class="p">,</span> <span class="ss">:post_date</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">end</span>
 </code></pre></div></div>
 
 <p>Done.</p>
 
 <p><img src="/public/images/respec-test-ar-models-in-gems.png" class="post-image resize-lg center-image"></p>
-
 
 	</div>
 
