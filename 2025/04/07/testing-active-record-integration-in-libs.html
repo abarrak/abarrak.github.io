@@ -169,7 +169,7 @@
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><strong>5.</strong> Lastly, we use the model to test against in our case (<code class="language-plaintext highlighter-rouge">(calculate)</code> here).</p>
+<p><strong>5.</strong> Lastly, we use the model to test against in our case (<code class="language-plaintext highlighter-rouge">calculate</code> here).</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">it</span> <span class="s2">"supports active_record parameter with attr accessor"</span> <span class="k">do</span>
   <span class="n">expect</span><span class="p">(</span><span class="n">subject</span><span class="p">.</span><span class="nf">calculate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="ss">:ends_at</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
