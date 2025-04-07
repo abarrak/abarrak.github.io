@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
 end
 ```
 
-**2.** The db setup and migration logic is extracted in a spec helper.<br>
+**2.** The db setup logic is extracted in a helper.<br>
    Replace `post_table` with your intended model with the attributes (columns) you need.
 
 ```ruby
