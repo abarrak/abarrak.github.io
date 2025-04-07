@@ -5,8 +5,8 @@
     <description></description>
     <link>https://www.abarrak.com/</link>
     <atom:link href="https://www.abarrak.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 07 Apr 2025 12:49:49 +0300</pubDate>
-    <lastBuildDate>Mon, 07 Apr 2025 12:49:49 +0300</lastBuildDate>
+    <pubDate>Mon, 07 Apr 2025 13:06:11 +0300</pubDate>
+    <lastBuildDate>Mon, 07 Apr 2025 13:06:11 +0300</lastBuildDate>
     <generator>Jekyll v4.3.0</generator>
     
       <item>
@@ -30,7 +30,7 @@
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;2.&lt;/strong&gt; The db setup and migration logic is extracted in a spec helper.&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;2.&lt;/strong&gt; The db setup logic is extracted in a helper.&lt;br /&gt;
    Replace &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post_table&lt;/code&gt; with your intended model with the attributes (columns) you need.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# spec/support/db_helper.rb&lt;/span&gt;
