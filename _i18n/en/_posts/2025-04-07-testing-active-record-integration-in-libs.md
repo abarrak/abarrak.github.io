@@ -5,9 +5,9 @@ categories: [Ruby, Rails, Active Record, Unit Testing]
 ---
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When I was writing [the expiry calculator](https://github.com/abarrak/expiry_calculator) gem (extracted from license management system), the library's main logic has some sort of integration with **ActiveRecord**, and I needed to verify that the easy way.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When I was writing [the expiry calculator](https://github.com/abarrak/expiry_calculator) gem (extracted from a license management system), the library's main logic has some sort of integration with **ActiveRecord**, and I needed to verify that the easy way.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mocking the built-in active record connection pool and tables mapping showed to be cumbersome and may not not ideally allow me to validate the intended behaviour. Luckily, I found pieces in SO and Github to do the unit testing in few simple steps, with a on the fly db (Sqlite). I have put it together in the following guide polished for **Rspec** and with ad-hoc migration methods.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mocking the built-in active record connection pool and tables mapping showed to be cumbersome and may not not ideally allow me to validate the intended behaviour. Luckily, I found pieces in SO and Github to do the unit testing in few simple steps, with on the fly db (Sqlite). I have put it together in the following guide, polished for **Rspec** with ad-hoc migration methods.
 
 <!-- post-excerpt -->
 
@@ -24,7 +24,7 @@ end
 ```
 
 **2.** The db setup logic is extracted in a helper.<br>
-   Replace `post_table` with your intended model with the attributes (columns) you need.
+   Replace `posts` with your intended model with the attributes (columns) you need.
 
 ```ruby
 # spec/support/db_helper.rb
@@ -34,15 +34,15 @@ module TestDbHelper
   end
 
   def up
-    ActiveRecord::Base.connection.create_table :post_table do |t|
+    ActiveRecord::Base.connection.create_table :posts do |t|
       t.integer :name
-      t.date :post_date
+      t.date :ends_at
       t.timestamps
     end
   end
 
   def down
-    ActiveRecord::Base.connection.drop_table :post_table
+    ActiveRecord::Base.connection.drop_table :posts
   end
 end
 ```
@@ -59,8 +59,8 @@ RSpec.configure do |config|
 end
 ```
 
-**4.** Then, invoke the db functions.<br>
-   Also build an active record model anonymously in `let` statements.
+**4.** Then, we invoke the db functions.<br>
+   Also we build an anonymous model in `let` statements.
 
 ```ruby
 RSpec.describe MyGemClass do
@@ -72,21 +72,21 @@ RSpec.describe MyGemClass do
     before { up }
     after { down }
 
-    let(:post_class) do
-      Class.new(ActiveRecord::Base) { self.table_name = "post_table" }
+    let(:model_class) do
+      Class.new(ActiveRecord::Base) { self.table_name = "posts" }
     end
 
-    let(:post) { post_class.new(post_date: Date.today + 10) }
+    let(:model) { model_class.new(ends_at: Date.today + 10) }
 
   end
 end
 ```
 
-**5.** At last, here's an edited test case of the model against by the gem's original test `(calculate)`.
+**5.** Lastly, we use the model to test against in our case (`(calculate)` here).
 
 ```ruby
 it "supports active_record parameter with attr accessor" do
-  expect(subject.calculate(post, :post_date)).to eq(10)
+  expect(subject.calculate(model, :ends_at)).to eq(10)
 end
 ```
 
