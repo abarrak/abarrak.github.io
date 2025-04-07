@@ -90,6 +90,21 @@ This post reviews four main virtualization options in short.<br>
   <figcaption>Fig. 5: Installation screen for Hyper-V 2019.</figcaption>
 </figure>
 
+### OpenStack
+
+* The largest open source cloud infrastructure solution.
+* Split to multiple components such as: [Cinder](https://docs.openstack.org/cinder/latest/) (storage), [Nova](https://github.com/openstack/nova) (compute), and [Neutron](https://docs.openstack.org/neutron/latest/) (networking).
+* OpenStack requires dedicated review for it is own. <br>
+  [The main reference](https://www.openstack.org/software/), and here's a [good comparision article between it and hyper-V](https://blog.purestorage.com/purely-educational/hyper-v-vs-openstack-a-comprehensive-comparison-of-virtualization-platforms/) for virtualization cases.
+
+<figure>
+  <img src="{{ site.baseurl_root }}/public/images/virtualization-6.png" class="post-image-2 resize-md center-image">
+  <figcaption>Fig. 6: OpenStack.</figcaption>
+</figure>
+
 
 #### <b>Takeaway:</b>
+
 VMware stands out as enterprise solution for corporate and regularity requirements, especially when the support is a must. Conversely, for small projects and applications, I find KVM-QEMU based setup a good option.
+
+Finally, for building on-premise solution on top of open technologies, **OpenStack is the obviously viable option**.
