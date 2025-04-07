@@ -65,7 +65,7 @@ end
 ```ruby
 RSpec.describe MyGemClass do
   # ...
-  context "Active Record Cases" do
+  context "Arguments" do
 
     establish_coonection
 
