@@ -18,10 +18,8 @@ categories: [Ruby, Rails, Active Record, Unit Testing]
 ```ruby
 Gem::Specification.new do |spec|
   # ..
-  spec.add_development_dependency
-    "activerecord", "~> 7"
-  spec.add_development_dependency
-    "sqlite3", "~> 2"
+  spec.add_development_dependency "activerecord", "~> 7"
+  spec.add_development_dependency "sqlite3", "~> 2"
 end
 ```
 
