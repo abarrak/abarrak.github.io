@@ -5,7 +5,7 @@ categories: [Ruby, Rails, Active Record, Unit Testing]
 ---
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When I was writing [the expiry calculator](https://github.com/abarrak/expiry_calculator) gem (extracted from Rails app for license management), The library's main logic has some sort of integration with **ActiveRecord**, and I needed to verify that the easy way.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When I was writing [the expiry calculator](https://github.com/abarrak/expiry_calculator) gem (extracted from license management system), the library's main logic has some sort of integration with **ActiveRecord**, and I needed to verify that the easy way.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mocking the built-in active record connection pool and tables mapping showed to be cumbersome and may not not ideally allow me to validate the intended behaviour. Luckily, I found pieces in SO and Github to do the unit testing in few simple steps, with a on the fly db (Sqlite). I have put it together in the following guide polished for **Rspec** and with ad-hoc migration methods.
 
