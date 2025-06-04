@@ -59,6 +59,16 @@
     - icon: travis
       tooltip: "CI: Travis"
 
+- title: Rclone Helm
+  description: A helm chart to deploy rclone jobs in kubernetes clusters.
+  link: https://artifacthub.io/packages/helm/rclone/rclone
+  repo_link: https://github.com/abarrak/rclone-helm/tree/main
+  technology_stack:
+    - icon: go
+      tooltip: "Templating Language: Helm"
+    - icon: github_badge
+      tooltip: "CI: Github Actions"
+
 - title: Why Compiled Languages?
   description: A simple experiment on compiled and dynamic programming languages comparision.
   link: https://www.whycompiledlanguages.com
@@ -86,7 +96,6 @@
       tooltip: "Programming Language: Python"
     - icon: travis
       tooltip: "CI: Travis"
-
 
 - title: Optical Reader
   description: A SaaS OCR functionality built on top of Tesseract.

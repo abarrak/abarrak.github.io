@@ -60,7 +60,6 @@
     - icon: travis
       tooltip: "الترابط والبناء: ترافيس"
 
-
 - title: لِمَ اللغات المجمّعَة؟
   description: تجربة مبسطة تقارن بين أداء اللغات المجمعة والمترجمة.
   link: https://www.whycompiledlanguages.com
@@ -136,4 +135,13 @@
     - icon: travis
       tooltip: "الترابط والبناء: ترافيس"
 
+- title: Rclone Helm
+  description: مكتبة لنشر وإدارة أداة النسخ المؤتمت (rcloen) لكوبرنتيس.
+  link: https://artifacthub.io/packages/helm/rclone/rclone
+  repo_link: https://github.com/abarrak/rclone-helm/tree/main
+  technology_stack:
+    - icon: go
+      tooltip: "اللغة البرمجية: هيلم"
+    - icon: github_badge
+      tooltip: "الترابط والبناء: قيت هب آكشنز"
 
