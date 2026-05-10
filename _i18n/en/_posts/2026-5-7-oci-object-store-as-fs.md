@@ -15,6 +15,8 @@ categories: [Object Storage, Cloud, Oracle Cloud, OCI]
 This is the most viable option to use the bucket as file-system, from the workload VM or server. <br>
 For this option, you'll need to set up OCI config and API Key, configured somewhere , then use it for the tool.
 
+<!-- post-excerpt -->
+
 * Install the OCI CLI.
 
 ```bash
@@ -23,7 +25,6 @@ sudo dnf python36-oci-cli
 # Or install the CLI for other OS (on-premise).
 bash -c "$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)"
 ```
-<!-- post-excerpt -->
 
 
 * Install the tool (OCIFS).
