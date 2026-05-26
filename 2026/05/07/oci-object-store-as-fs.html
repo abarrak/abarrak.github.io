@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="description" content="     Since 2024 Storage Gateway is removed from oracle cloud infrastructure. However, there are other options mentioned to use buckets in OCI as file system....">
+  <meta name="author" content="Abdullah Barrak Alotaibi">
+
+  <meta name="keywords" content="Object Storage, Cloud, Oracle Cloud, and OCI">
+	<meta name="theme-color" content="#943526">
+
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="     Since 2024 Storage Gateway is removed from oracle cloud infrastructure. ...">
+  <meta property="og:url" content="https://www.abarrak.com/2026/05/07/oci-object-store-as-fs">
+	
+	<meta property="og:image" content="https://www.abarrak.com/public/thumbnail-1.jpg">
+	
+	
+	<meta property="og:title" content="Abdullah Barrak Alotaibi • OCI Object Storage as File System">
+	
+	<link rel="canonical" href="https://www.abarrak.com/2026/05/07/oci-object-store-as-fs">
+
+	<title>
+    
+      OCI Object Storage as File System •
+      Abdullah Barrak's Blog
+    
+  </title>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/icons/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/icons/favicon.ico">
+
+  <!-- Fonts -->
+	<link rel='stylesheet' id='libretto-fonts-css'  href='https://fonts.googleapis.com/css?family=Libre+Baskerville%3A400%2C700%2C400italic%7CPlayfair+Display%3A400%2C700%2C400italic%2C700italic%7CPlayfair+Display+SC%3A700%2C700italic%7CMontserrat%3A400%7CDroid+Sans+Mono%3A400&#038;subset=latin%2Clatin-ext' type='text/css' media='all'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/public/css/main.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/tooltipster-bundle.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/public/css/tooltipster-sideTip-shadow.min.css" type="text/css" media="all">
+  
+
+  <!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" title="Abdullah Barrak Alotaibi" href="https://www.abarrak.com/feed.xml">
+</head>
+
+<body>
+
+	<header class="site-header">
+	<div class="wrapper-fluid">
+		<a class="site-title" href="/">Abdullah Barrak Alotaibi</a>
+
+    <ul class="links">
+      <li><a href="/about">About</a></li>
+      <li><a href="/works">Works</a></li>
+      <li><a href="/contact">Contact</a></li>
+
+      <li class="lang_link " class="tooltip" title="Language">
+        <small>
+          
+          
+          
+          <a href="
+          /ar/
+          ">ع</a>
+          
+        </small>
+      </li>
+    </ul>
+
+  </div>
+</header>
+
+
+
+	<div class="page-content">
+		<div class="wrapper">
+			<header class="post-header">
+	<div>
+		<span></span><span class="post-meta">
+			
+				May 7, 2026
+			
+		</span>
+	</div>
+
+	<h1 class="post-title" itemprop="name headline">OCI Object Storage as File System</h1>
+</header>
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="entry-content" itemprop="articleBody">
+		<p><img src="/public/images/oci-logo.png" class="post-image resize-sm center-image"></p>
+
+<p>     Since 2024 <strong>Storage Gateway</strong> <a href="https://docs.oracle.com/en-us/iaas/releasenotes/changes/d67506ea-eb9b-4eeb-8c2b-e05e2dea70a4/index.htm" rel="nofollow" target="_blank">is removed from oracle cloud infrastructure</a>. However, there are other options mentioned to use buckets in OCI as file system. Detailed in this article.</p>
+
+<h2 id="options">Options</h2>
+
+<h3 id="1-access-via-ocifs">
+<strong>1)</strong> Access via OCIFs.</h3>
+
+<p>This is the most viable option to use the bucket as file-system, from the workload VM or server. <br>
+For this option, you’ll need to set up OCI config and API Key, configured somewhere , then use it for the tool.</p>
+
+<!-- post-excerpt -->
+
+<ul>
+  <li>Install the OCI CLI.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># On RHEL-based OS ..</span>
+<span class="nb">sudo </span>dnf python36-oci-cli
+<span class="c"># Or install the CLI for other OS (on-premise).</span>
+bash <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-L</span> https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh<span class="si">)</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Install the tool (OCIFS).</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Only available inside Oracle Linux.</span>
+<span class="nb">sudo </span>dnf ocifs
+</code></pre></div></div>
+
+<p>The tool is only readily available for Oracle Linux distro <em>-at the time of writing-</em>. It is part of a oracle’s hosted repository (<em>ol9_oci_included</em>). However, it is compatible with other RHEL-based distros. Contact the support to obtain it.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># use the package directly as RPM for other distors than OracleLinux.</span>
+<span class="c">#</span>
+dnf <span class="nb">install </span>fuse fuse-common fuse-libs jansson
+rpm <span class="nt">-ivh</span> /tmp/ocifs-pkg/fuse-2.9.9-17.el9.aarch64.rpm
+rpm <span class="nt">-ivh</span> /tmp/ocifs-pkg/ocifs-1.2.0-6.el9.aarch64.rpm
+</code></pre></div></div>
+
+<ul>
+  <li>Setup the service account’s config and API Key.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Setup the config</span>
+<span class="nb">mkdir</span> ~/.oci/
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh"> &gt; ~/.oci/config
+[DEFAULT]
+user=&lt;OCID_ID_HERE&gt;
+fingerprint=&lt;FINGERPRINT&gt;
+tenancy=&lt;TENANT&gt;
+region=&lt;REGION&gt;
+key_file=~/.oci/oci_api_key.pem
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<ul>
+  <li>Add the key in <code class="language-plaintext highlighter-rouge">~/.oci/oci_api_key.pem</code>, and change placeholders with actual info.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Setup API Key</span>
+vi ~/.oci/oci_api_key.pem
+<span class="nb">chmod </span>400 ~/.oci/oci_api_key.pem
+</code></pre></div></div>
+
+<ul>
+  <li>Mount the bucket to a directory and use it.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> ~/oci_s3_mount
+ocifs my-bucket-main ~/oci_s3_mount
+<span class="nb">echo</span> <span class="s2">"hello world"</span> <span class="o">&gt;&gt;</span> ~/oci_s3_mount/b.txt
+</code></pre></div></div>
+
+<p><img src="/public/images/oci-bucket-fs.png" class="post-image resize-lg center-image"></p>
+
+<h3 id="2-workaround-access-using-s3-cli">
+<strong>2.)</strong> Workaround: Access using S3 CLI.</h3>
+
+<p>Object storage is s3-compatible. It can be to read, write, sync to it using <code class="language-plaintext highlighter-rouge">aws s3</code> CLI.</p>
+
+<p>If using <strong>OCIFS</strong> tool is not feaisble for any reason, then S3 SDK CLI is sufficent for many cases, and helpful to address the requirement at hand. Below is a snippet for quick setup.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># add credentils.</span>
+<span class="nb">export </span><span class="nv">AWS_REGION</span><span class="o">=</span><span class="s2">"&lt;REGION&gt;"</span>
+<span class="nb">export </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s2">"&lt;KEY_ID&gt;"</span>
+<span class="nb">export </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s2">"&lt;ACCESS_KEY&gt;"</span>
+
+<span class="c"># install tools.</span>
+<span class="nb">sudo </span>dnf <span class="nb">install </span>python39-oci-cli
+<span class="nb">sudo </span>dnf <span class="nb">install </span>awscli
+
+<span class="c"># Use (test file) ..</span>
+aws aws s3api get-object <span class="nt">--bucket</span><span class="o">=</span><span class="s2">"my-bucket-main"</span> <span class="nt">--endpoint-url</span><span class="o">=</span><span class="s2">"https://&lt;OCI_NAMESPACE_HERE&gt;.compat.objectstorage.&lt;REGION&gt;.oraclecloud.com"</span> <span class="nt">--key</span> a.txt a.txt
+
+<span class="c"># Or, use via private endpoint (requires OCI cli) ..</span>
+oci os object get <span class="nt">--namespace</span> <span class="s2">"&lt;OCI_NAMESPACE_HERE&gt;"</span> <span class="nt">--bucket-name</span> <span class="s2">"my-bucket-main"</span> <span class="nt">--name</span> <span class="s2">"a.txt"</span> <span class="nt">--endpoint</span> https://&lt;PRIVATE_URL&gt;.private.objectstorage.&lt;REGION&gt;.oci.customer-oci.com <span class="nt">--file</span> -
+</code></pre></div></div>
+
+<p>Replace <oci_namespace_here> and <region> with the actual info, respectively.</region></oci_namespace_here></p>
+
+<hr>
+
+<h4 id="further-resources">Further Resources</h4>
+
+<ul>
+  <li>
+<a href="https://blogs.oracle.com/linux/introducing-ocifs" rel="nofollow" target="_blank">Intro</a>.</li>
+  <li>
+<a href="https://docs.oracle.com/en-us/iaas/oracle-linux/oci/ocifs.htm" rel="nofollow" target="_blank">Advanced Options</a>.</li>
+  <li>
+<a href="https://docs.oracle.com/en-us/iaas/private-cloud-appliance/pca/installing-the-oci-cli.htm" rel="nofollow" target="_blank">Install of CLI on windows serviers</a>.</li>
+</ul>
+
+	</div>
+
+	
+<h2 class="comments-label">Comments</h2>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+      this.page.url = "https://www.abarrak.com/2026/05/07/oci-object-store-as-fs";
+      this.page.identifier = "oci-object-storage-as-file-system";
+  };
+
+  (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//abarrak.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow" target="_blank">comments powered by Disqus.</a>
+</noscript>
+
+
+</article>
+
+<div id="post-nav">
+	<div class="next">
+		
+	</div>
+
+	<div class="previous">
+		
+		<a href="/2025/04/07/testing-active-record-integration-in-libs">
+			<span>Previous entry</span>
+			Testing Active Record Integration in Ruby Gems
+		</a>
+		
+	</div>
+</div>
+
+		</div>
+	</div>
+
+	<footer class="site-footer">
+	<div class="wrapper-fluid footer-wrapper">
+
+		<!-- <h2 class="footer-heading">Blog</h2> -->
+
+		<div class="footer-col-wrapper">
+			<div class="footer-col footer-col-1 footer-left">
+				<a href="">Abdullah Barrak's Blog</a>
+				<ul class="contact-list">
+					<li>A passionate blog about computer programming, reading, thinking, and the like.</li>
+					<li><b>(2016 - 2026)</b></li>
+				</ul>
+			</div>
+
+			<div class="footer-col footer-col-1 footer-right">
+				<p class="center">
+					<a href="/tags">Tag Cloud</a> |
+					subscribe <a href="/feed.xml">via RSS</a>
+				</p>
+
+				<div class="social-links" id="social">
+				
+					<a href="https://github.com/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/github-icon.png" alt="Github Icon">
+					</a>
+				
+
+				
+					<a href="https://goodreads.com/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/goodreads-icon.png" alt="Goodreads Icon">
+					</a>
+				
+
+				
+					<a href="https://linkedin.com/in/abarrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/linkedin-icon.png" alt="LinkedIn Icon">
+					</a>
+				
+
+				
+					<a href="https://x.com/abarrakx" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/twitter-icon.png" alt="Github Icon">
+					</a>
+				
+
+				
+					<a href="https://stackoverflow.com/users/2925286/abdullah-barrak" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/stackoverflow-icon.png" alt="stackoverflow Icon">
+					</a>
+				
+
+					<a href="mailto:abdullah@abarrak.com" rel="nofollow" target="_blank">
+						<img class="icon" src="/public/icons/mail-icon.png" alt="Email Icon">
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</footer>
+
+
+<script src="/public/js/all.min.js"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83251901-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-83251901-1');
+</script>
+
+
+
+
+</body>
+</html>
