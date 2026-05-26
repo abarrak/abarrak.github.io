@@ -54,10 +54,11 @@
     }
 
     li.lang_link {
-      border: 0.055rem gray solid;
+      border: 0.02rem gray solid;
       // border-radius: 4rem !important;
       background-color: #f3f3f1;
       margin-left: 0.5rem;
+      float: relative;
 
       padding-left: 0.6rem;
       padding-right: 0.6rem;
@@ -86,8 +87,8 @@
 
   @include media-query($on-palm) {
     .links {
-      font-size: 0.7rem;
-      margin-top: 0.4rem;
+      font-size: 0.55rem;
+      margin-top: 0.3rem;
       padding-top: 0.3rem;
       float: none;
       text-align: right;
@@ -125,8 +126,10 @@
   }
 
   @include media-query($on-palm) {
-    font-size: 1.12rem;
+    font-size: 1rem;
     float: left;
+    padding-right: 0.2rem;
+    font-weight: 100;
   }
 }
 
